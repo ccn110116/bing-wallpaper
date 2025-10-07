@@ -36,11 +36,14 @@ export default {
         region = 'en-US'; // Default to en-US if region is invalid
     }
 
+    console.log(`Fetching data for region: ${region}`);
     const imageData = await getImageData(region);
 
     if (!imageData || imageData.length === 0) {
+      console.error(`No image data found for the current month in region: ${region}.`);
       return new Response(`No image data found for the current month in region: ${region}.`, { status: 404 });
     }
+    console.log(`Successfully fetched ${imageData.length} images.`);
 
     const latestImage = imageData[0];
 
@@ -53,6 +56,7 @@ export default {
       </div>
     `).join('');
 
+    console.log('Setting up HTMLRewriter with latest image:', latestImage);
     const rewriter = new HTMLRewriter()
       .on('.bgimg-header', {
         element(element) {
