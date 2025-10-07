@@ -25,26 +25,25 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    // Serve static assets if the path has a file extension
-    if (pathname.match(/\.[a-zA-Z]+$/)) {
+    const region = pathname.split('/')[1] || 'en-US';
+    const supportedRegions = ['en-US', 'zh-CN', 'zh-HK', 'zh-TW'];
+
+    // If the path is not the root and not a supported region, treat it as a static asset
+    if (pathname !== '/' && !supportedRegions.includes(region)) {
       return env.ASSETS.fetch(request);
     }
 
     // --- Dynamic Page Rendering ---
-    let region = pathname.split('/')[1] || 'en-US';
-    if (!['en-US', 'zh-CN', 'zh-HK', 'zh-TW'].includes(region)) {
-        region = 'en-US'; // Default to en-US if region is invalid
+    let activeRegion = region;
+    if (!supportedRegions.includes(activeRegion)) {
+        activeRegion = 'en-US'; // Default to en-US if region is invalid
     }
 
-    console.log(`Fetching data for region: ${region}`);
-    const imageData = await getImageData(region);
+    const imageData = await getImageData(activeRegion);
 
     if (!imageData || imageData.length === 0) {
-      console.error(`No image data found for the current month in region: ${region}.`);
-      return new Response(`No image data found for the current month in region: ${region}.`, { status: 404 });
+      return new Response(`No image data found for the current month in region: ${activeRegion}.`, { status: 404 });
     }
-    console.log(`Successfully fetched ${imageData.length} images.`);
-    console.log('imageData:', JSON.stringify(imageData, null, 2));
 
     const latestImage = imageData[0];
 
@@ -57,11 +56,10 @@ export default {
       </div>
     `).join('');
 
-    console.log('Setting up HTMLRewriter with latest image:', latestImage);
     const rewriter = new HTMLRewriter()
-      .on('.bgimg-header', {
+      .on('head', {
         element(element) {
-          element.setAttribute('style', `background-image: url('${latestImage.url}&pid=hp&w=2000');`);
+          element.append(`<style>.bgimg-header { background-image: url('${latestImage.url}&pid=hp&w=2000'); }</style>`, { html: true });
         },
       })
       .on('.w3-display-middle p', {
