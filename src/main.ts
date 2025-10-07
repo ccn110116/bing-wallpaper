@@ -1,4 +1,4 @@
-import { generateSite } from './core/siteGenerator';
+import { generateSite, generateMonthsJson } from './core/siteGenerator';
 import { log } from './utils/logUtils';
 
 async function main() {
@@ -7,6 +7,7 @@ async function main() {
   await generateSite('zh-CN');
   await generateSite('zh-HK');
   await generateSite('zh-TW');
+  await generateMonthsJson();
   log('Bing Wallpaper fetch finished.');
 }
 

@@ -22,6 +22,16 @@ async function getImageData(region: string): Promise<BingImage[] | null> {
   }
 }
 
+async function getMonthsData(): Promise<string[] | null> {
+  try {
+    const data = await import(`./assets/data/months.json`);
+    return data.default;
+  } catch (e) {
+    console.error(`Could not load months data`, e);
+    return null;
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -47,7 +57,10 @@ export default {
         activeRegion = 'en-US'; // Default to en-US if region is invalid
     }
 
-    const imageData = await getImageData(activeRegion);
+    const [imageData, monthsData] = await Promise.all([
+      getImageData(activeRegion),
+      getMonthsData()
+    ]);
 
     if (!imageData || imageData.length === 0) {
       return new Response(`No image data found for the current month in region: ${activeRegion}.`, { status: 404 });
@@ -58,10 +71,11 @@ export default {
     const imageGridHTML = imageData.map(img => {
       const baseUrl = img.url;
       return `
-      <div class="third" style="position: relative; height: 249px;">
-        <a href="${baseUrl}" target="_blank">
-          <img class="bigImg hover-shadow" src="${baseUrl}&w=384&h=216" style="width:95%" onload="this.classList.add('loaded')">
-        </a>
+      <div class="portfolio-item" onclick="openLightbox('${baseUrl}&w=2000', '${img.desc}')">
+        <img src="${baseUrl}&w=384&h=216" alt="${img.desc}">
+        <div class="description">
+          <p>${img.desc}</p>
+        </div>
       </div>
     `}).join('');
 
@@ -86,32 +100,6 @@ export default {
       .on('#img_list', {
         element(element) {
           element.setInnerContent(imageGridHTML, { html: true });
-        },
-      })
-      .on('#month_list', {
-        element(element) {
-          let monthHTML = `
-            <div class="container">
-                <h4>按月份查看</h4>
-            </div>
-            <div class="container white">
-                <p>`;
-          const now = new Date();
-          let year = now.getFullYear();
-          let month = now.getMonth() + 1;
-          for (let i = 0; i < 48; i++) {
-            const monthStr = `${year}-${month.toString().padStart(2, '0')}`;
-            monthHTML += `<a class="tag button hover-green light-grey margin-bottom" href="${monthStr}.html">${monthStr}</a> `;
-            month--;
-            if (month === 0) {
-              month = 12;
-              year--;
-            }
-          }
-          monthHTML += `
-                </p>
-            </div>`;
-          element.setInnerContent(monthHTML, { html: true });
         },
       });
 

@@ -93,6 +93,27 @@ ${images.map(img => `| ${img.date} | [${img.desc}](${img.url}) |`).join('\n')}
   log('Updated README.md');
 }
 
+export async function generateMonthsJson() {
+  const allMonths = new Set<string>();
+  const regionDirs = await fs.readdir(DATA_PATH);
+
+  for (const regionDir of regionDirs) {
+    const regionPath = path.resolve(DATA_PATH, regionDir);
+    const stats = await fs.stat(regionPath);
+    if (stats.isDirectory()) {
+      const files = await fs.readdir(regionPath);
+      files
+        .filter(file => file.endsWith('.json'))
+        .forEach(file => allMonths.add(file.replace('.json', '')));
+    }
+  }
+
+  const sortedMonths = Array.from(allMonths).sort().reverse();
+  const filePath = path.resolve(DATA_PATH, 'months.json');
+  await fs.writeFile(filePath, JSON.stringify(sortedMonths, null, 2));
+  log(`Generated ${filePath}`);
+}
+
 async function cleanupOldJsonFiles(region: string) {
   const regionPath = path.resolve(DATA_PATH, region);
   try {

@@ -9,6 +9,7 @@
     <meta name="keywords" content="bing wallpaper, 必应壁纸, 必应4k壁纸, 必应超清壁纸, 壁纸">
     <link rel="icon" href="/img/fav.jpg">
     <link rel="stylesheet" href="/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
 </head>
 <script>
     function headerImgloading() {
@@ -30,6 +31,12 @@
     window.onload = headerImgloading; // 页面加载时执行
 </script>
 <body>
+<div id="overlay" class="overlay" onclick="w3_close()"></div>
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
 <div style="position: relative; height: 100vh;">
     <div class="smallImg-header"></div> <!-- 模糊的小图 -->
     <div class="bgimg-header">
@@ -42,29 +49,27 @@
     </div>
 </div>
 </div>
-<menu class="display-container content center" style="max-width:100%; height: 10px">
-    <div class="bar light-grey round display-bottommiddle card  round-xlarge">
+<nav class="sticky-nav">
+    <div class="bar light-grey round card round-xlarge" style="max-width: 800px; margin: auto;">
         <a href="/" class="bar-item button hover-green">首页</a>
-        <a href="#portfolio" class="bar-item button hover-green"  onclick="w3_open()">归档</a>
+        <a href="#portfolio" class="bar-item button hover-green" onclick="w3_open()">归档</a>
         <a href="/zh-cn" class="bar-item button hover-green">中国</a>
-        <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hover-green  hide-small">GitHub</a>
+        <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hover-green hide-small">GitHub</a>
         <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hover-green hide-small">关于</a>
     </div>
-</menu>
+</nav>
 
 <!-- Sidebar (hidden by default) -->
 <sidebar class="sidebar bar-block card top xlarge animate-left" style="display:none;z-index:2;max-width:200px;min-width:100px" id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="bar-item button">收起</a>
-    <a href="2025-10.html" onclick="w3_close()" class="bar-item button hover-green large">2025-10</a><a href="2025-09.html" onclick="w3_close()" class="bar-item button hover-green large">2025-09</a><a href="2025-08.html" onclick="w3_close()" class="bar-item button hover-green large">2025-08</a><a href="2025-07.html" onclick="w3_close()" class="bar-item button hover-green large">2025-07</a><a href="2025-06.html" onclick="w3_close()" class="bar-item button hover-green large">2025-06</a><a href="2025-05.html" onclick="w3_close()" class="bar-item button hover-green large">2025-05</a><a href="2025-04.html" onclick="w3_close()" class="bar-item button hover-green large">2025-04</a><a href="2025-03.html" onclick="w3_close()" class="bar-item button hover-green large">2025-03</a><a href="2025-02.html" onclick="w3_close()" class="bar-item button hover-green large">2025-02</a><a href="2025-01.html" onclick="w3_close()" class="bar-item button hover-green large">2025-01</a><a href="2024-12.html" onclick="w3_close()" class="bar-item button hover-green large">2024-12</a><a href="2024-11.html" onclick="w3_close()" class="bar-item button hover-green large">2024-11</a><a href="2024-10.html" onclick="w3_close()" class="bar-item button hover-green large">2024-10</a><a href="2024-09.html" onclick="w3_close()" class="bar-item button hover-green large">2024-09</a><a href="2024-08.html" onclick="w3_close()" class="bar-item button hover-green large">2024-08</a><a href="2024-07.html" onclick="w3_close()" class="bar-item button hover-green large">2024-07</a><a href="2024-06.html" onclick="w3_close()" class="bar-item button hover-green large">2024-06</a><a href="2024-05.html" onclick="w3_close()" class="bar-item button hover-green large">2024-05</a><a href="2024-04.html" onclick="w3_close()" class="bar-item button hover-green large">2024-04</a><a href="2024-03.html" onclick="w3_close()" class="bar-item button hover-green large">2024-03</a><a href="2024-02.html" onclick="w3_close()" class="bar-item button hover-green large">2024-02</a><a href="2024-01.html" onclick="w3_close()" class="bar-item button hover-green large">2024-01</a><a href="2023-12.html" onclick="w3_close()" class="bar-item button hover-green large">2023-12</a><a href="2023-11.html" onclick="w3_close()" class="bar-item button hover-green large">2023-11</a><a href="2023-10.html" onclick="w3_close()" class="bar-item button hover-green large">2023-10</a><a href="2023-09.html" onclick="w3_close()" class="bar-item button hover-green large">2023-09</a><a href="2023-08.html" onclick="w3_close()" class="bar-item button hover-green large">2023-08</a><a href="2023-07.html" onclick="w3_close()" class="bar-item button hover-green large">2023-07</a><a href="2023-06.html" onclick="w3_close()" class="bar-item button hover-green large">2023-06</a><a href="2023-05.html" onclick="w3_close()" class="bar-item button hover-green large">2023-05</a><a href="2023-04.html" onclick="w3_close()" class="bar-item button hover-green large">2023-04</a><a href="2023-03.html" onclick="w3_close()" class="bar-item button hover-green large">2023-03</a><a href="2023-02.html" onclick="w3_close()" class="bar-item button hover-green large">2023-02</a><a href="2023-01.html" onclick="w3_close()" class="bar-item button hover-green large">2023-01</a><a href="2022-12.html" onclick="w3_close()" class="bar-item button hover-green large">2022-12</a><a href="2022-11.html" onclick="w3_close()" class="bar-item button hover-green large">2022-11</a><a href="2022-10.html" onclick="w3_close()" class="bar-item button hover-green large">2022-10</a><a href="2022-09.html" onclick="w3_close()" class="bar-item button hover-green large">2022-09</a><a href="2022-08.html" onclick="w3_close()" class="bar-item button hover-green large">2022-08</a><a href="2022-07.html" onclick="w3_close()" class="bar-item button hover-green large">2022-07</a><a href="2022-06.html" onclick="w3_close()" class="bar-item button hover-green large">2022-06</a><a href="2022-05.html" onclick="w3_close()" class="bar-item button hover-green large">2022-05</a><a href="2022-04.html" onclick="w3_close()" class="bar-item button hover-green large">2022-04</a><a href="2022-03.html" onclick="w3_close()" class="bar-item button hover-green large">2022-03</a><a href="2022-02.html" onclick="w3_close()" class="bar-item button hover-green large">2022-02</a><a href="2022-01.html" onclick="w3_close()" class="bar-item button hover-green large">2022-01</a><a href="2021-12.html" onclick="w3_close()" class="bar-item button hover-green large">2021-12</a><a href="2021-11.html" onclick="w3_close()" class="bar-item button hover-green large">2021-11</a><a href="2021-10.html" onclick="w3_close()" class="bar-item button hover-green large">2021-10</a><a href="2021-09.html" onclick="w3_close()" class="bar-item button hover-green large">2021-09</a><a href="2021-08.html" onclick="w3_close()" class="bar-item button hover-green large">2021-08</a><a href="2021-07.html" onclick="w3_close()" class="bar-item button hover-green large">2021-07</a><a href="2021-06.html" onclick="w3_close()" class="bar-item button hover-green large">2021-06</a><a href="2021-05.html" onclick="w3_close()" class="bar-item button hover-green large">2021-05</a><a href="2021-04.html" onclick="w3_close()" class="bar-item button hover-green large">2021-04</a><a href="2021-03.html" onclick="w3_close()" class="bar-item button hover-green large">2021-03</a><a href="2021-02.html" onclick="w3_close()" class="bar-item button hover-green large">2021-02</a>
+    <div id="archive-list"></div>
 </sidebar>
 
 
 <div class="main content padding" style="max-width:1200px;">
 
     <!-- First Photo Grid-->
-    <div class="row-padding padding-16 center" id="img_list">
-    </div>
-    <div class=" margin" id="month_list">
+    <div class="portfolio-grid" id="img_list">
     </div>
 </div>
 
@@ -80,21 +85,95 @@
 <script>
     // Script to open and close sidebar
     function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("mySidebar").classList.add("open");
+        document.getElementById("overlay").classList.add("open");
     }
 
     function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("mySidebar").classList.remove("open");
+        document.getElementById("overlay").classList.remove("open");
     }
     // 监听滚动事件
     window.addEventListener('scroll', function () {
         var wenjuan = document.getElementById('wenjuan');
-        if (window.scrollY > 400) { // 如果向下滚动超过100px
+        if (wenjuan && window.scrollY > 400) { // 如果向下滚动超过100px
             wenjuan.style.display = 'block'; // 显示该div
-        } else {
+        } else if (wenjuan) {
             wenjuan.style.display = 'none'; // 否则隐藏
         }
     });
+</script>
+<div class="floating-toolbar">
+  <a href="/zh-cn" class="toolbar-btn">CN</a>
+  <a href="/zh-tw" class="toolbar-btn">TW</a>
+  <a href="/zh-hk" class="toolbar-btn">HK</a>
+</div>
+<script src="https://jsdelivr.wdbyte.com/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+    function addDarkmodeWidget() {
+        const options = {
+            label: '🌓'
+        }
+        new Darkmode(options).showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+
+    fetch('/assets/data/months.json')
+        .then(response => response.json())
+        .then(months => {
+            const archiveList = document.getElementById('archive-list');
+            const groupedMonths = months.reduce((acc, month) => {
+                const year = month.split('-')[0];
+                if (!acc[year]) {
+                    acc[year] = [];
+                }
+                acc[year].push(month);
+                return acc;
+            }, {});
+
+            for (const year in groupedMonths) {
+                const yearButton = document.createElement('button');
+                yearButton.className = 'accordion';
+                yearButton.textContent = year;
+                archiveList.appendChild(yearButton);
+
+                const panel = document.createElement('div');
+                panel.className = 'panel';
+                archiveList.appendChild(panel);
+
+                groupedMonths[year].forEach(month => {
+                    const monthLink = document.createElement('a');
+                    monthLink.href = `${month}.html`;
+                    monthLink.className = 'bar-item button hover-green large';
+                    monthLink.textContent = month;
+                    monthLink.onclick = w3_close;
+                    panel.appendChild(monthLink);
+                });
+            }
+
+            var acc = document.getElementsByClassName("accordion");
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+
+    function openLightbox(imgSrc, caption) {
+        document.getElementById('lightbox-img').src = imgSrc;
+        document.getElementById('lightbox-caption').innerHTML = caption;
+        document.getElementById('lightbox').style.display = 'block';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
 </script>
 </body>
 </html>
