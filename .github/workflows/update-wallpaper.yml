@@ -1,4 +1,4 @@
-name: Update Bing Wallpaper
+name: Update Wallpaper
 
 on:
   schedule:
