@@ -5,7 +5,7 @@ import { getHttpContent } from '../utils/httpUtils';
 import { log } from '../utils/logUtils';
 
 const BING_API_TEMPLATE = "https://global.bing.com/HPImageArchive.aspx?format=js&idx=0&n=9&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160&setmkt=%s&setlang=en";
-const BING_URL = "https://cn.bing.com";
+const BING_URL = "https://bing.com";
 
 const DATA_PATH = path.resolve('worker/assets/data');
 const README_PATH = path.resolve('README.md');
@@ -21,7 +21,7 @@ export async function generateSite(region: string) {
   const images: BingImage[] = jsonObject.images.map((image: any) => ({
     desc: image.copyright,
     date: new Date(image.enddate.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3')).toISOString().split('T')[0],
-    url: BING_URL + image.url,
+    url: (BING_URL + image.url).split('&')[0],
   }));
 
   // Group images by month (e.g., "2025-10")
