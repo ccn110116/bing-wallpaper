@@ -53,8 +53,8 @@ export default {
       const baseUrl = img.url;
       return `
       <div class="w3-third" style="position: relative; height: 249px;">
-        <a href="${baseUrl}&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">
-          <img class="bigImg w3-hover-shadow" src="${baseUrl}&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="this.classList.add('loaded')">
+        <a href="${baseUrl}" target="_blank">
+          <img class="bigImg w3-hover-shadow" src="${baseUrl}&w=384&h=216" style="width:95%" onload="this.classList.add('loaded')">
         </a>
       </div>
     `}).join('');
@@ -63,13 +63,13 @@ export default {
       .on('.bgimg-header', {
         element(element) {
           const baseUrl = latestImage.url;
-          element.setAttribute('style', `background-image: url('${baseUrl}&pid=hp&w=2000');`);
+          element.setAttribute('style', `background-image: url('${baseUrl}&w=2000');`);
         },
       })
       .on('.smallImg-header', {
         element(element) {
           const baseUrl = latestImage.url;
-          element.setAttribute('style', `background-image: url('${baseUrl}&pid=hp&w=384&h=216&rs=1&c=4');`);
+          element.setAttribute('style', `background-image: url('${baseUrl}&w=384&h=216');`);
         },
       })
       .on('.w3-display-middle p', {
