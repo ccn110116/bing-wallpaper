@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "types": ["@cloudflare/workers-types"]
+  },
+  "include": ["**/*.ts", "**/*.json"],
+  "exclude": ["node_modules"]
+}
