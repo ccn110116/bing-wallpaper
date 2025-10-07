@@ -42,6 +42,10 @@
             left: 0;
             opacity: 0;
             border-radius: 10px;
+            transition: opacity 1s ease-in-out;
+        }
+        .bigImg.loaded {
+            opacity: 1;
         }
         .smallImg{
             filter: blur(15px);
@@ -95,17 +99,6 @@
         };
     }
     window.onload = headerImgloading; // 页面加载时执行
-    function imgloading(oImg) {
-        var n = 0;
-        var timer = setInterval(function () {
-            n++;
-            oImg.style.opacity = n * n / 50;
-            if (n * n >= 50) {
-                clearInterval(timer);
-            }
-            ;
-        }, 50);
-    };
 </script>
 <body>
 <div class="smallImg-header"></div> <!-- 模糊的小图 -->
