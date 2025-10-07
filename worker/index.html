@@ -20,23 +20,27 @@
         // 小图逐渐变透明
         smallImg.style.opacity = 0.3;
         img.onload = function() {
-            // 当大图加载完成时，首先显示大图
-            bgImg.style.display = "block";
-            smallImg.style.opacity = 0;
+            setTimeout(function() {
+                // 当大图加载完成时，首先显示大图
+                bgImg.style.display = "block";
+                smallImg.style.opacity = 0;
+            }, 300);
         };
     }
     window.onload = headerImgloading; // 页面加载时执行
 </script>
 <body>
-<div class="smallImg-header"></div> <!-- 模糊的小图 -->
-<div class="bgimg-header">
-    <div class="display-middle padding-large wide text-light-grey center">
-        <h1 class="hide-medium hide-small xxxlarge">Bing Wallpaper</h1>
+<div style="position: relative; height: 100vh;">
+    <div class="smallImg-header"></div> <!-- 模糊的小图 -->
+    <div class="bgimg-header">
+        <div class="display-middle padding-large wide text-light-grey center">
+            <h1 class="hide-medium hide-small xxxlarge">Bing Wallpaper</h1>
         <div class=" padding-large text-light-grey" style="max-width: 800px">
             <p></p>
         </div>
         <h5 class="hide-large" style="white-space:nowrap">Bing Wallpaper</h5>
     </div>
+</div>
 </div>
 <menu class="display-container content center" style="max-width:100%; height: 10px">
     <div class="bar light-grey round display-bottommiddle card  round-xlarge">
@@ -91,16 +95,6 @@
             wenjuan.style.display = 'none'; // 否则隐藏
         }
     });
-</script>
-<script src="https://jsdelivr.wdbyte.com/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-<script>
-    function addDarkmodeWidget() {
-        const options = {
-            label: '🌓'
-        }
-        new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
 </script>
 </body>
 </html>

@@ -476,3 +476,48 @@ h5 {
     filter: blur(15px);
     -webkit-filter: blur(15px);
 }
+
+.img-btn {
+    background: rgba(255, 255, 255, 0.43);
+    border: none;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    border-radius: 8px;
+}
+
+.img-btn:hover {
+    color: #fff!important;
+    background-color: #4CAF50!important;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.darkmode--activated .third p {
+    color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: white;
+  }
+  .light-grey {
+    background-color: #333 !important;
+    color: white !important;
+  }
+  .card {
+    background-color: #1e1e1e;
+  }
+  .button:hover {
+    background-color: #555 !important;
+  }
+  .hover-green:hover {
+    background-color: #4caf50 !important;
+    color: #fff !important;
+  }
+  .text-light-grey {
+      color: #ccc !important;
+  }
+}
