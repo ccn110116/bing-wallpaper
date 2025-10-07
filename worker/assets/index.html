@@ -19,7 +19,6 @@
             margin: 0;
         }
         .bgimg-header {
-            background-image: url("https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg&pid=hp&w=2000");
             height: 103%;
             position: relative;
             background-position: center;
@@ -28,7 +27,6 @@
             display: none; /* 最初隐藏大图 */
         }
         .smallImg-header {
-            background-image: url("https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg&pid=hp&w=480"); /* 使用小图 */
             filter: blur(15px);
             -webkit-filter: blur(15px);
             position: relative;
@@ -87,7 +85,7 @@
         var smallImg = document.querySelector('.smallImg-header');
         // 创建一个新的图片对象以监控加载状态
         var img = new Image();
-        img.src = 'https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg&pid=hp&w=2000'; // 从背景图中提取URL
+        img.src = bgImg.style.backgroundImage.slice(4, -1).replace(/"/g, "");
         // 小图逐渐变透明
         smallImg.style.opacity = 0.3;
         img.onload = function() {
@@ -115,7 +113,7 @@
     <div class="w3-display-middle w3-padding-large w3-wide w3-text-light-grey w3-center">
         <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">Bing Wallpaper</h1>
         <div class=" w3-padding-large w3-text-light-grey" style="max-width: 800px">
-            <p>Anshun Bridge illuminated for the Mid-Autumn Festival, Chengdu, China (© Philippe LEJEANVRE/Getty Images)</p>
+            <p></p>
         </div>
         <h5 class="w3-hide-large" style="white-space:nowrap">Bing Wallpaper</h5>
     </div>
@@ -143,97 +141,6 @@
 
     <!-- First Photo Grid-->
     <div class="w3-row-padding w3-padding-16 w3-center" id="img_list">
-        <div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/07.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-07 <a href="https://cn.bing.com/th?id=OHR.AnshunBridge_EN-US0059795497_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-07')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.TeacherOwl_EN-US9991815804_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/06.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.TeacherOwl_EN-US9991815804_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-06 <a href="https://cn.bing.com/th?id=OHR.TeacherOwl_EN-US9991815804_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-06')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.DragonEndeavour_EN-US9321246369_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/05.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.DragonEndeavour_EN-US9321246369_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-05 <a href="https://cn.bing.com/th?id=OHR.DragonEndeavour_EN-US9321246369_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-05')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.SkyeHeather_EN-US9221942108_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/04.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.SkyeHeather_EN-US9221942108_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-04 <a href="https://cn.bing.com/th?id=OHR.SkyeHeather_EN-US9221942108_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-04')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.OxbowBend_EN-US8471628790_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/03.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.OxbowBend_EN-US8471628790_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-03 <a href="https://cn.bing.com/th?id=OHR.OxbowBend_EN-US8471628790_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-03')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.YosemiteClark_EN-US8503376225_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/02.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.YosemiteClark_EN-US8503376225_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-02 <a href="https://cn.bing.com/th?id=OHR.YosemiteClark_EN-US8503376225_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-02')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.EucalyptusKoala_EN-US8743417111_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202510/01.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.EucalyptusKoala_EN-US8743417111_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-10-01 <a href="https://cn.bing.com/th?id=OHR.EucalyptusKoala_EN-US8743417111_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-10-01')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.HoutenHouses_EN-US8966537355_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/30.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.HoutenHouses_EN-US8966537355_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-30 <a href="https://cn.bing.com/th?id=OHR.HoutenHouses_EN-US8966537355_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-30')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.PienzaItaly_EN-US8831227247_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/29.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.PienzaItaly_EN-US8831227247_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-29 <a href="https://cn.bing.com/th?id=OHR.PienzaItaly_EN-US8831227247_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-29')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.TankLakes_EN-US9278332978_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/28.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.TankLakes_EN-US9278332978_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-28 <a href="https://cn.bing.com/th?id=OHR.TankLakes_EN-US9278332978_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-28')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.AutumnChipmunk_EN-US9248365602_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/27.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.AutumnChipmunk_EN-US9248365602_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-27 <a href="https://cn.bing.com/th?id=OHR.AutumnChipmunk_EN-US9248365602_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-27')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.FortChittorgarh_EN-US9184486139_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/26.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.FortChittorgarh_EN-US9184486139_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-26 <a href="https://cn.bing.com/th?id=OHR.FortChittorgarh_EN-US9184486139_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-26')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.BearLodge_EN-US9061134971_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/25.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.BearLodge_EN-US9061134971_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-25 <a href="https://cn.bing.com/th?id=OHR.BearLodge_EN-US9061134971_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-25')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.ToucanForest_EN-US8319635845_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/24.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.ToucanForest_EN-US8319635845_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-24 <a href="https://cn.bing.com/th?id=OHR.ToucanForest_EN-US8319635845_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-24')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.AspenEquinox_EN-US8237887036_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/23.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.AspenEquinox_EN-US8237887036_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-23 <a href="https://cn.bing.com/th?id=OHR.AspenEquinox_EN-US8237887036_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-23')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.IceOtters_EN-US7982442590_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/22.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.IceOtters_EN-US7982442590_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-22 <a href="https://cn.bing.com/th?id=OHR.IceOtters_EN-US7982442590_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-22')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.OktoberfestSwing_EN-US7916182497_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/21.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.OktoberfestSwing_EN-US7916182497_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-21 <a href="https://cn.bing.com/th?id=OHR.OktoberfestSwing_EN-US7916182497_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-21')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.ThousandIslands_EN-US7884567746_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/20.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.ThousandIslands_EN-US7884567746_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-20 <a href="https://cn.bing.com/th?id=OHR.ThousandIslands_EN-US7884567746_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-20')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.DunquinIreland_EN-US9846056364_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/19.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.DunquinIreland_EN-US9846056364_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-19 <a href="https://cn.bing.com/th?id=OHR.DunquinIreland_EN-US9846056364_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-19')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.YoungMoose_EN-US2991221135_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/18.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.YoungMoose_EN-US2991221135_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-18 <a href="https://cn.bing.com/th?id=OHR.YoungMoose_EN-US2991221135_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-18')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.OzoneEarth_EN-US9728527733_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/17.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.OzoneEarth_EN-US9728527733_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-17 <a href="https://cn.bing.com/th?id=OHR.OzoneEarth_EN-US9728527733_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-17')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.DallasLegorreta_EN-US9050675226_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/16.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.DallasLegorreta_EN-US9050675226_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-16 <a href="https://cn.bing.com/th?id=OHR.DallasLegorreta_EN-US9050675226_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-16')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.HohWaterfall_EN-US9003533736_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/15.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.HohWaterfall_EN-US9003533736_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-15 <a href="https://cn.bing.com/th?id=OHR.HohWaterfall_EN-US9003533736_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-15')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.PointReyesSeashore_EN-US8949381326_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/14.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.PointReyesSeashore_EN-US8949381326_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-14 <a href="https://cn.bing.com/th?id=OHR.PointReyesSeashore_EN-US8949381326_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-14')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.SpinnerDolphins_EN-US8860882818_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/13.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.SpinnerDolphins_EN-US8860882818_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-13 <a href="https://cn.bing.com/th?id=OHR.SpinnerDolphins_EN-US8860882818_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-13')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.LibertyManhattan_EN-US8781721086_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/12.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.LibertyManhattan_EN-US8781721086_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-12 <a href="https://cn.bing.com/th?id=OHR.LibertyManhattan_EN-US8781721086_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-12')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.YorkshireHay_EN-US8523120193_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/11.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.YorkshireHay_EN-US8523120193_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-11 <a href="https://cn.bing.com/th?id=OHR.YorkshireHay_EN-US8523120193_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-11')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.SwissSquirrel_EN-US8185093853_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/10.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.SwissSquirrel_EN-US8185093853_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-10 <a href="https://cn.bing.com/th?id=OHR.SwissSquirrel_EN-US8185093853_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-10')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.OrchardLibrary_EN-US8095609746_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/09.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.OrchardLibrary_EN-US8095609746_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-09 <a href="https://cn.bing.com/th?id=OHR.OrchardLibrary_EN-US8095609746_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-09')">喜欢</button></p>
-</div><div class="w3-third " style="position: relative;height:249px">
-  <img class="smallImg" src="https://cn.bing.com/th?id=OHR.BlueGdansk_EN-US8032283831_UHD.jpg&pid=hp&w=50"  style="width:95%;" /><a href="day/202509/08.html"  target="_blank"> <img class="bigImg w3-hover-shadow" src="https://cn.bing.com/th?id=OHR.BlueGdansk_EN-US8032283831_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%" onload="imgloading(this)"></a>
- <p>2025-09-08 <a href="https://cn.bing.com/th?id=OHR.BlueGdansk_EN-US8032283831_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">Download 4k</a> <button class="like-button img-btn" onclick="updateLove('en-us','2025-09-08')">喜欢</button></p>
-</div>
     </div>
     <div class=" w3-margin">
         <div class="w3-container">

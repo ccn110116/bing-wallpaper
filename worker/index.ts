@@ -25,7 +25,8 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    if (pathname.startsWith('/assets/')) {
+    // Serve static assets
+    if (pathname.startsWith('/w3.css') || pathname.startsWith('/w3.js') || pathname.startsWith('/download.html')) {
       return env.ASSETS.fetch(request);
     }
 
