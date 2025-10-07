@@ -25,8 +25,8 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    // Serve static assets
-    if (pathname.startsWith('/w3.css') || pathname.startsWith('/w3.js') || pathname.startsWith('/download.html')) {
+    // Serve static assets if the path has a file extension
+    if (pathname.match(/\.[a-zA-Z]+$/)) {
       return env.ASSETS.fetch(request);
     }
 
@@ -44,6 +44,7 @@ export default {
       return new Response(`No image data found for the current month in region: ${region}.`, { status: 404 });
     }
     console.log(`Successfully fetched ${imageData.length} images.`);
+    console.log('imageData:', JSON.stringify(imageData, null, 2));
 
     const latestImage = imageData[0];
 
