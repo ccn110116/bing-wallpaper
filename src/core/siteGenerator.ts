@@ -39,6 +39,8 @@ export async function generateSite(region: string) {
     await updateMonthlyJson(monthImages, region, monthStr);
   }
 
+  await cleanupOldJsonFiles(region);
+
   // Update README only with the latest images from the primary region
   if (region === 'en-US') {
     await updateReadme(images);
@@ -89,4 +91,33 @@ ${images.map(img => `| ${img.date} | [${img.desc}](${img.url}) |`).join('\n')}
 
   await fs.writeFile(README_PATH, readmeContent);
   log('Updated README.md');
+}
+
+async function cleanupOldJsonFiles(region: string) {
+  const regionPath = path.resolve(DATA_PATH, region);
+  try {
+    const files = await fs.readdir(regionPath);
+    const monthsToKeep = new Set<string>();
+    const now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    for (let i = 0; i < 48; i++) {
+      monthsToKeep.add(`${year}-${month.toString().padStart(2, '0')}.json`);
+      month--;
+      if (month === 0) {
+        month = 12;
+        year--;
+      }
+    }
+
+    for (const file of files) {
+      if (file.endsWith('.json') && !monthsToKeep.has(file)) {
+        const filePath = path.resolve(regionPath, file);
+        await fs.unlink(filePath);
+        log(`Removed old file: ${filePath}`);
+      }
+    }
+  } catch (error) {
+    // region directory might not exist
+  }
 }

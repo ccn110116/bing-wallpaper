@@ -81,6 +81,32 @@ export default {
         element(element) {
           element.setInnerContent(imageGridHTML, { html: true });
         },
+      })
+      .on('#month_list', {
+        element(element) {
+          let monthHTML = `
+            <div class="w3-container">
+                <h4>按月份查看</h4>
+            </div>
+            <div class="w3-container w3-white">
+                <p>`;
+          const now = new Date();
+          let year = now.getFullYear();
+          let month = now.getMonth() + 1;
+          for (let i = 0; i < 48; i++) {
+            const monthStr = `${year}-${month.toString().padStart(2, '0')}`;
+            monthHTML += `<a class="w3-tag w3-button w3-hover-green w3-light-grey w3-margin-bottom" href="${monthStr}.html">${monthStr}</a> `;
+            month--;
+            if (month === 0) {
+              month = 12;
+              year--;
+            }
+          }
+          monthHTML += `
+                </p>
+            </div>`;
+          element.setInnerContent(monthHTML, { html: true });
+        },
       });
 
     const response = new Response(indexPage, {
