@@ -12,3 +12,9 @@ declare module '*.js' {
   const content: string;
   export default content;
 }
+
+interface Env {
+  ASSETS: {
+    fetch: (request: Request) => Promise<Response>;
+  };
+}

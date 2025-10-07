@@ -2,5 +2,6 @@ name = "bing-wallpaper"
 main = "index.ts"
 compatibility_date = "2023-10-30"
 
-[site]
-bucket = "./assets"
+[assets]
+directory = "./assets"
+binding = "ASSETS"

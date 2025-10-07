@@ -1,8 +1,3 @@
-import indexPage from './assets/index.html';
-import downloadPage from './assets/download.html';
-import w3Css from './assets/w3.css';
-import w3Js from './assets/w3.js';
-
 interface BingImage {
   desc: string;
   date: string;
@@ -26,19 +21,12 @@ async function getImageData(region: string): Promise<BingImage[] | null> {
 }
 
 export default {
-  async fetch(request: Request): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    // --- Static Asset Routing ---
-    if (pathname.endsWith('/download.html')) {
-      return new Response(downloadPage, { headers: { 'Content-Type': 'text/html;charset=UTF-8' } });
-    }
-    if (pathname.endsWith('/w3.css')) {
-      return new Response(w3Css, { headers: { 'Content-Type': 'text/css;charset=UTF-8' } });
-    }
-    if (pathname.endsWith('/w3.js')) {
-      return new Response(w3Js, { headers: { 'Content-Type': 'application/javascript;charset=UTF-8' } });
+    if (pathname.startsWith('/assets/')) {
+      return env.ASSETS.fetch(request);
     }
 
     // --- Dynamic Page Rendering ---
@@ -81,10 +69,9 @@ export default {
         },
       });
 
-    const response = new Response(indexPage, {
-      headers: { 'Content-Type': 'text/html;charset=UTF-8' },
-    });
+    const indexRequest = new Request(new URL('/index.html', request.url), request);
+    const indexResponse = await env.ASSETS.fetch(indexRequest);
 
-    return rewriter.transform(response);
+    return rewriter.transform(indexResponse);
   },
 };
