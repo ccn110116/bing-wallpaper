@@ -1,3 +1,5 @@
+import indexPage from './index.html';
+
 interface BingImage {
   desc: string;
   date: string;
@@ -57,9 +59,14 @@ export default {
     `).join('');
 
     const rewriter = new HTMLRewriter()
-      .on('head', {
+      .on('.bgimg-header', {
         element(element) {
-          element.append(`<style>.bgimg-header { background-image: url('${latestImage.url}&pid=hp&w=2000'); }</style>`, { html: true });
+          element.setAttribute('style', `background-image: url('${latestImage.url}&pid=hp&w=2000');`);
+        },
+      })
+      .on('.smallImg-header', {
+        element(element) {
+          element.setAttribute('style', `background-image: url('${latestImage.url}&pid=hp&w=480');`);
         },
       })
       .on('.w3-display-middle p', {
@@ -73,9 +80,12 @@ export default {
         },
       });
 
-    const indexRequest = new Request(new URL('/index.html', request.url), request);
-    const indexResponse = await env.ASSETS.fetch(indexRequest);
+    const response = new Response(indexPage, {
+      headers: {
+        'Content-Type': 'text/html;charset=UTF-8',
+      },
+    });
 
-    return rewriter.transform(indexResponse);
+    return rewriter.transform(response);
   },
 };
