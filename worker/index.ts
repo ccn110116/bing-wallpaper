@@ -49,24 +49,28 @@ export default {
 
     const latestImage = imageData[0];
 
-    const imageGridHTML = imageData.map(img => `
+    const imageGridHTML = imageData.map(img => {
+      const baseUrl = img.url.split('&')[0];
+      return `
       <div class="w3-third" style="position: relative; height: 249px;">
-        <a href="${img.url}" target="_blank">
-          <img class="bigImg w3-hover-shadow" src="${img.url}&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%">
+        <a href="${baseUrl}&pid=hp&w=3840&h=2160&rs=1&c=4" target="_blank">
+          <img class="bigImg w3-hover-shadow" src="${baseUrl}&pid=hp&w=384&h=216&rs=1&c=4" style="width:95%">
         </a>
         <p>${img.date} | ${img.desc}</p>
       </div>
-    `).join('');
+    `}).join('');
 
     const rewriter = new HTMLRewriter()
       .on('.bgimg-header', {
         element(element) {
-          element.setAttribute('style', `background-image: url('${latestImage.url}&pid=hp&w=2000');`);
+          const baseUrl = latestImage.url.split('&')[0];
+          element.setAttribute('style', `background-image: url('${baseUrl}&pid=hp&w=2000');`);
         },
       })
       .on('.smallImg-header', {
         element(element) {
-          element.setAttribute('style', `background-image: url('${latestImage.url}&pid=hp&w=480');`);
+          const baseUrl = latestImage.url.split('&')[0];
+          element.setAttribute('style', `background-image: url('${baseUrl}&pid=hp&w=480');`);
         },
       })
       .on('.w3-display-middle p', {
