@@ -58,9 +58,9 @@ export default {
     const imageGridHTML = imageData.map(img => {
       const baseUrl = img.url;
       return `
-      <div class="w3-third" style="position: relative; height: 249px;">
+      <div class="third" style="position: relative; height: 249px;">
         <a href="${baseUrl}" target="_blank">
-          <img class="bigImg w3-hover-shadow" src="${baseUrl}&w=384&h=216" style="width:95%" onload="this.classList.add('loaded')">
+          <img class="bigImg hover-shadow" src="${baseUrl}&w=384&h=216" style="width:95%" onload="this.classList.add('loaded')">
         </a>
       </div>
     `}).join('');
@@ -78,7 +78,7 @@ export default {
           element.setAttribute('style', `background-image: url('${baseUrl}&w=384&h=216');`);
         },
       })
-      .on('.w3-display-middle p', {
+      .on('.display-middle p', {
         element(element) {
           element.setInnerContent(latestImage.desc);
         },
@@ -91,17 +91,17 @@ export default {
       .on('#month_list', {
         element(element) {
           let monthHTML = `
-            <div class="w3-container">
+            <div class="container">
                 <h4>按月份查看</h4>
             </div>
-            <div class="w3-container w3-white">
+            <div class="container white">
                 <p>`;
           const now = new Date();
           let year = now.getFullYear();
           let month = now.getMonth() + 1;
           for (let i = 0; i < 48; i++) {
             const monthStr = `${year}-${month.toString().padStart(2, '0')}`;
-            monthHTML += `<a class="w3-tag w3-button w3-hover-green w3-light-grey w3-margin-bottom" href="${monthStr}.html">${monthStr}</a> `;
+            monthHTML += `<a class="tag button hover-green light-grey margin-bottom" href="${monthStr}.html">${monthStr}</a> `;
             month--;
             if (month === 0) {
               month = 12;
