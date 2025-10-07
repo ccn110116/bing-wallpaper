@@ -1,20 +1,28 @@
+/* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
 html {
-    box-sizing: border-box
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    height: 100%;
 }
 
 *,
 :after,
 :before {
     box-sizing: inherit
-}
-
-html {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
-}
-
-body {
-    margin: 0
 }
 
 footer,
@@ -27,7 +35,8 @@ menu {
 }
 
 a {
-    background-color: transparent
+    background-color: transparent;
+    color: inherit;
 }
 
 a:active,
@@ -36,23 +45,13 @@ a:hover {
 }
 
 img {
-    border-style: none
+    border-style: none;
+    vertical-align: middle;
 }
 
 ::-webkit-file-upload-button {
     -webkit-appearance: button;
     font: inherit
-}
-
-body,
-html {
-    font-family: Verdana, sans-serif;
-    font-size: 15px;
-    line-height: 1.5
-}
-
-html {
-    overflow-x: hidden
 }
 
 h1 {
@@ -79,14 +78,6 @@ h5 {
     letter-spacing: 4px
 }
 
-img {
-    vertical-align: middle
-}
-
-a {
-    color: inherit
-}
-
 .button {
     border: none;
     display: inline-block;
@@ -98,16 +89,13 @@ a {
     background-color: inherit;
     text-align: center;
     cursor: pointer;
-    white-space: nowrap
-}
-
-.button {
+    white-space: nowrap;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
+    user-select: none;
 }
 
 .button:disabled {
@@ -125,7 +113,8 @@ a {
     display: inline-block;
     padding-left: 8px;
     padding-right: 8px;
-    text-align: center
+    text-align: center;
+    border-radius: 8px;
 }
 
 .display-container {
@@ -207,11 +196,8 @@ a {
 
 .content {
     margin-left: auto;
-    margin-right: auto
-}
-
-.content {
-    max-width: 980px
+    margin-right: auto;
+    max-width: 980px;
 }
 
 @media (max-width:600px) {
@@ -242,11 +228,8 @@ a {
 .top {
     position: fixed;
     width: 100%;
-    z-index: 1
-}
-
-.top {
-    top: 0
+    z-index: 1;
+    top: 0;
 }
 
 .display-middle {
@@ -451,4 +434,45 @@ a {
 
 .text-light-grey {
     color: #f1f1f1 !important
+}
+
+.bgimg-header {
+    height: 103%;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+.smallImg-header {
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 103%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 5s;
+}
+
+.bigImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border-radius: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+.bigImg.loaded {
+    opacity: 1;
+}
+
+.smallImg {
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
 }

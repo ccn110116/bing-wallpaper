@@ -9,68 +9,6 @@
     <meta name="keywords" content="bing wallpaper, 必应壁纸, 必应4k壁纸, 必应超清壁纸, 壁纸">
     <link rel="icon" href="/img/fav.jpg">
     <link rel="stylesheet" href="/w3.css">
-
-    <style>
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-        }
-        .bgimg-header {
-            height: 103%;
-            position: relative;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: none; /* 最初隐藏大图 */
-        }
-        .smallImg-header {
-            filter: blur(15px);
-            -webkit-filter: blur(15px);
-            position: relative;
-            height: 103%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: opacity 5s; /* 平滑过渡效果 */
-        }
-        .bigImg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            border-radius: 10px;
-            transition: opacity 1s ease-in-out;
-        }
-        .bigImg.loaded {
-            opacity: 1;
-        }
-        .smallImg{
-            filter: blur(15px);
-            -webkit-filter: blur(15px);
-        }
-        .tag{
-            border-radius: 8px;
-        }
-        .img-btn{
-            background: rgba(255, 255, 255, 0.43);
-            border: none;
-            cursor: pointer;
-            display: none;
-            position: absolute;
-            right: 30px;
-            top: 10px;
-            border-radius: 8px;
-        }
-        .img-btn:hover{
-            color:#fff!important;background-color:#4CAF50!important;
-            box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
-        }
-        .darkmode--activated .third p {
-            color:white;
-        }
-    </style>
-
 </head>
 <script>
     function headerImgloading() {
