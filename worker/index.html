@@ -8,7 +8,6 @@
     <meta name="description" content="每日必应超清壁纸（4K）">
     <meta name="keywords" content="bing wallpaper, 必应壁纸, 必应4k壁纸, 必应超清壁纸, 壁纸">
     <link rel="icon" href="/img/fav.jpg">
-    <script src="/w3.js" async></script>
     <link rel="stylesheet" href="/w3.css">
 
     <style>
@@ -86,9 +85,6 @@
             // 当大图加载完成时，首先显示大图
             bgImg.style.display = "block";
             smallImg.style.opacity = 0;
-            setTimeout(function() {
-                smallImg.style.display = "none";
-            }, 2000); // 2s transition
         };
     }
     window.onload = headerImgloading; // 页面加载时执行

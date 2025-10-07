@@ -27,7 +27,13 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    const region = pathname.split('/')[1] || 'en-US';
+    let region = pathname.split('/')[1] || 'en-US';
+    const regionMap: { [key: string]: string } = {
+      'zh-cn': 'zh-CN',
+      'zh-hk': 'zh-HK',
+      'zh-tw': 'zh-TW',
+    };
+    region = regionMap[region.toLowerCase()] || region;
     const supportedRegions = ['en-US', 'zh-CN', 'zh-HK', 'zh-TW'];
 
     // If the path is not the root and not a supported region, treat it as a static asset
