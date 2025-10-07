@@ -71,7 +71,7 @@ export default {
     const imageGridHTML = imageData.map(img => {
       const baseUrl = img.url;
       return `
-      <div class="portfolio-item" onclick="openLightbox('${baseUrl}&w=2000', '${img.desc}')">
+      <div class="portfolio-item" onclick="openLightbox('${baseUrl}', '${img.desc}')">
         <img src="${baseUrl}&w=384&h=216" alt="${img.desc}">
         <div class="description">
           <p>${img.desc}</p>
