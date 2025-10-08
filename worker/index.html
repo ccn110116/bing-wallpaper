@@ -10,6 +10,29 @@
     <link rel="icon" href="/img/fav.jpg">
     <link rel="stylesheet" href="/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+    <style>
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-item .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #fff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden by default */
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
 </head>
 <script>
     function headerImgloading() {
@@ -38,6 +61,20 @@
     <div id="lightbox-caption" class="lightbox-caption"></div>
 </div>
 <div style="position: relative; height: 100vh;">
+    <nav class="sticky-nav" style="position: absolute; top: 0; width: 100%; z-index: 10;">
+        <div class="bar transparent round" style="max-width: 800px; margin: 20px auto; display: flex; justify-content: center; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 25px; padding: 5px 0;">
+            <a href="/" class="bar-item button hover-green" style="color: white;">首页</a>
+            <a href="#portfolio" class="bar-item button hover-green" onclick="w3_open()" style="color: white;">归档</a>
+            <a href="/zh-cn" class="bar-item button hover-green" style="color: white;">中国</a>
+            <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hover-green hide-small" style="color: white;">GitHub</a>
+            <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hover-green hide-small" style="color: white;">关于</a>
+            <div class="language-selector">
+                <a href="/zh-cn" class="bar-item button" style="color: white;">CN</a>
+                <a href="/zh-tw" class="bar-item button" style="color: white;">TW</a>
+                <a href="/zh-hk" class="bar-item button" style="color: white;">HK</a>
+            </div>
+        </div>
+    </nav>
     <div class="smallImg-header"></div> <!-- 模糊的小图 -->
     <div class="bgimg-header">
         <div class="display-middle padding-large wide text-light-grey center">
@@ -49,20 +86,6 @@
     </div>
 </div>
 </div>
-<nav class="sticky-nav">
-    <div class="bar light-grey round card round-xlarge" style="max-width: 800px; margin: auto; display: flex; justify-content: center;">
-        <a href="/" class="bar-item button hover-green">首页</a>
-        <a href="#portfolio" class="bar-item button hover-green" onclick="w3_open()">归档</a>
-        <a href="/zh-cn" class="bar-item button hover-green">中国</a>
-        <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hover-green hide-small">GitHub</a>
-        <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hover-green hide-small">关于</a>
-        <div class="language-selector">
-            <a href="/zh-cn" class="bar-item button">CN</a>
-            <a href="/zh-tw" class="bar-item button">TW</a>
-            <a href="/zh-hk" class="bar-item button">HK</a>
-        </div>
-    </div>
-</nav>
 
 <!-- Sidebar (hidden by default) -->
 <sidebar class="sidebar bar-block card top xlarge animate-left" style="display:none;z-index:2;max-width:200px;min-width:100px" id="mySidebar">
@@ -79,7 +102,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="center light-grey padding-48 large">
+<footer class="center light-grey padding-68 large">
     <p>本站所有图片均来源于必应搜索
         <br/>
         Powered by <a href="https://github.com/niumoo/bing-wallpaper" title="W3.CSS" target="_blank" class="hover-text-green">Github.com/niumoo</a>
@@ -173,6 +196,24 @@
 
     function closeLightbox() {
         document.getElementById('lightbox').style.display = 'none';
+    }
+
+    function handleImageMouseover(element, fullResUrl) {
+        const spinner = element.querySelector('.loading-spinner');
+        const img = element.querySelector('img');
+        spinner.style.display = 'block';
+
+        const highResImg = new Image();
+        highResImg.src = fullResUrl;
+        highResImg.onload = () => {
+            img.src = fullResUrl;
+            spinner.style.display = 'none';
+        };
+    }
+
+    function handleImageMouseout(element, lowResUrl) {
+        const img = element.querySelector('img');
+        img.src = lowResUrl;
     }
 </script>
 </body>

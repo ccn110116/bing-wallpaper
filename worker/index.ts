@@ -69,10 +69,15 @@ export default {
     const latestImage = imageData[0];
 
     const imageGridHTML = imageData.map(img => {
-      const baseUrl = img.url;
+      const lowResUrl = `${img.url}&w=384&h=216`;
+      const highResUrl = `${img.url}&w=2000`;
       return `
-      <div class="portfolio-item" onclick="openLightbox('${baseUrl}', '${img.desc}')">
-        <img src="${baseUrl}&w=384&h=216" alt="${img.desc}">
+      <div class="portfolio-item" 
+           onmouseover="handleImageMouseover(this, '${highResUrl}')" 
+           onmouseout="handleImageMouseout(this, '${lowResUrl}')"
+           onclick="openLightbox('${highResUrl}', '${img.desc}')">
+        <img src="${lowResUrl}" alt="${img.desc}">
+        <div class="loading-spinner"></div>
         <div class="description">
           <p>${img.desc}</p>
         </div>
