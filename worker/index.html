@@ -15,23 +15,6 @@
             position: relative;
             overflow: hidden;
         }
-        .portfolio-item .loading-spinner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid #fff;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            display: none; /* Hidden by default */
-        }
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
         .lightbox .loading-spinner {
             position: absolute;
             top: 50%;
@@ -224,22 +207,19 @@
 
     function closeLightbox() {
         document.getElementById('lightbox').style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 
+    let preloadTimer;
     function handleImageMouseover(element, fullResUrl) {
-        const spinner = element.querySelector('.loading-spinner');
-        const img = element.querySelector('img');
-        spinner.style.display = 'block';
-
-        const highResImg = new Image();
-        highResImg.src = fullResUrl;
-        highResImg.onload = () => {
-            img.src = fullResUrl;
-            spinner.style.display = 'none';
-        };
+        preloadTimer = setTimeout(() => {
+            const highResImg = new Image();
+            highResImg.src = fullResUrl;
+        }, 400);
     }
 
     function handleImageMouseout(element, lowResUrl) {
+        clearTimeout(preloadTimer);
         const img = element.querySelector('img');
         img.src = lowResUrl;
     }

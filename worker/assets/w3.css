@@ -523,8 +523,8 @@ h5 {
 .lightbox-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1600px;
 }
 
 .lightbox-caption {
