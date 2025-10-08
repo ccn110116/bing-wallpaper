@@ -50,12 +50,17 @@
 </div>
 </div>
 <nav class="sticky-nav">
-    <div class="bar light-grey round card round-xlarge" style="max-width: 800px; margin: auto;">
+    <div class="bar light-grey round card round-xlarge" style="max-width: 800px; margin: auto; display: flex; justify-content: center;">
         <a href="/" class="bar-item button hover-green">首页</a>
         <a href="#portfolio" class="bar-item button hover-green" onclick="w3_open()">归档</a>
         <a href="/zh-cn" class="bar-item button hover-green">中国</a>
         <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hover-green hide-small">GitHub</a>
         <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hover-green hide-small">关于</a>
+        <div class="language-selector">
+            <a href="/zh-cn" class="bar-item button">CN</a>
+            <a href="/zh-tw" class="bar-item button">TW</a>
+            <a href="/zh-hk" class="bar-item button">HK</a>
+        </div>
     </div>
 </nav>
 
@@ -103,11 +108,6 @@
         }
     });
 </script>
-<div class="floating-toolbar">
-  <a href="/zh-cn" class="toolbar-btn">CN</a>
-  <a href="/zh-tw" class="toolbar-btn">TW</a>
-  <a href="/zh-hk" class="toolbar-btn">HK</a>
-</div>
 <script src="https://jsdelivr.wdbyte.com/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script>
     function addDarkmodeWidget() {
