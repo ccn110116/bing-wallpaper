@@ -70,10 +70,10 @@ export default {
 
     const imageGridHTML = imageData.map(img => {
       const lowResUrl = `${img.url}&w=384&h=216`;
-      const highResUrl = `${img.url}&w=2000`;
+      const highResUrl = `${img.url}`;
       return `
       <div class="portfolio-item" 
-           onmouseover="handleImageMouseover(this, '${highResUrl}')" 
+           onmouseover="handleImageMouseover(this, '${highResUrl}&w=2000')" 
            onmouseout="handleImageMouseout(this, '${lowResUrl}')"
            onclick="openLightbox('${highResUrl}', '${img.desc}')">
         <img src="${lowResUrl}" alt="${img.desc}">
