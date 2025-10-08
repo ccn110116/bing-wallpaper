@@ -70,7 +70,7 @@ export default {
 
     const imageGridHTML = imageData.map(img => {
       const lowResUrl = `${img.url}&w=384&h=216`;
-      const highResUrl = `${img.url.split('&')[0]}_UHD.jpg`;
+      let highResUrl = img.url.split('&')[0];
       return `
       <div class="portfolio-item" 
            onmouseover="handleImageMouseover(this, '${highResUrl}')" 

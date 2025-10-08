@@ -71,6 +71,7 @@
                 <a href="/zh-hk" class="bar-item button" style="color: white;">HK</a>
                 <a href="/" class="bar-item button" style="color: white;">US</a>
             </div>
+            <button id="dark-mode-toggle" class="bar-item button" style="color: white; background-color: rgba(0, 0, 0, 0.3); border-radius: 20px; margin-left: 10px;">🌓</button>
         </div>
     </nav>
     <div class="smallImg-header"></div> <!-- 模糊的小图 -->
@@ -95,12 +96,12 @@
 <div class="main content padding" style="max-width:1200px;">
 
     <!-- First Photo Grid-->
-    <div class="portfolio-grid" id="img_list" style="padding: 20px;">
+    <div class="portfolio-grid" id="img_list" style="padding: 80px;">
     </div>
 </div>
 
 <!-- Footer -->
-<footer class="center light-grey padding-large large">
+<footer class="center light-grey large" style="padding: 120px;">
     <p>本站所有图片均来源于必应搜索
         <br/>
         Powered by <a href="https://github.com/niumoo/bing-wallpaper" title="W3.CSS" target="_blank" class="hover-text-green">Github.com/niumoo</a>
@@ -129,15 +130,10 @@
         }
     });
 </script>
-<script src="https://jsdelivr.wdbyte.com/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script>
-    function addDarkmodeWidget() {
-        const options = {
-            label: '🌓'
-        }
-        new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
+    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
 
     fetch('/assets/data/months.json')
         .then(response => response.json())
@@ -215,7 +211,7 @@
         preloadTimer = setTimeout(() => {
             const highResImg = new Image();
             highResImg.src = fullResUrl;
-        }, 400);
+        }, 200);
     }
 
     function handleImageMouseout(element, lowResUrl) {

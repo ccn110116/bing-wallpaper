@@ -17,6 +17,14 @@ body {
     font-size: 15px;
     line-height: 1.5;
     height: 100%;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
 }
 
 *,
@@ -110,7 +118,11 @@ h5 {
     z-index: 3;
     overflow: auto;
     transform: translateX(-250px);
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, background-color 0.3s;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e;
 }
 
 .sidebar.open {
@@ -234,6 +246,10 @@ h5 {
 
 .card {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
+}
+
+body.dark-mode .card {
+    box-shadow: 0 2px 5px 0 rgba(255, 255, 255, .16), 0 2px 10px 0 rgba(255, 255, 255, .12)
 }
 
 @keyframes spin {
@@ -366,6 +382,11 @@ h5 {
     background-color: #ccc !important
 }
 
+body.dark-mode .button:hover {
+    color: #fff !important;
+    background-color: #555 !important
+}
+
 .hover-green:hover {
     color: #fff !important;
     background-color: #4caf50 !important
@@ -379,6 +400,11 @@ h5 {
 .light-grey {
     color: #000 !important;
     background-color: #f1f1f1 !important
+}
+
+body.dark-mode .light-grey {
+    color: #fff !important;
+    background-color: #333 !important
 }
 
 .hover-text-green:hover {
@@ -430,8 +456,17 @@ h5 {
     transition: 0.4s;
 }
 
+body.dark-mode .accordion {
+    background-color: #444;
+    color: #fff;
+}
+
 .active, .accordion:hover {
     background-color: #ccc;
+}
+
+body.dark-mode .active, body.dark-mode .accordion:hover {
+    background-color: #555;
 }
 
 .panel {
@@ -440,6 +475,10 @@ h5 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+body.dark-mode .panel {
+    background-color: #333;
 }
 
 .language-selector {
@@ -467,9 +506,17 @@ h5 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+body.dark-mode .portfolio-item {
+    box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+}
+
 .portfolio-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .portfolio-item:hover {
+    box-shadow: 0 8px 16px rgba(255,255,255,0.2);
 }
 
 .portfolio-item img {
@@ -505,6 +552,11 @@ h5 {
     z-index: 10;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .sticky-nav {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 4px rgba(255,255,255,0.1);
 }
 
 .lightbox {
