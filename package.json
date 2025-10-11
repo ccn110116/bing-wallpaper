@@ -1,7 +1,8 @@
 {
   "name": "bing-wallpaper-ts",
   "scripts": {
-    "build": "tsc index.ts",
+    "build": "tsc src/main.ts --outDir dist",
+    "generate": "node dist/main.js",
     "optcss": "purgecss --css worker/assets/w3.css --content worker/index.html worker/index.ts --output worker/assets/w3-new.css"
   },
   "dependencies": {
