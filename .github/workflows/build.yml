@@ -39,6 +39,7 @@ jobs:
       - name: Copy built files to worker branch
         run: |
           mkdir -p worker/dist
+          rm -rf worker/dist/*
           cp -r dist/* worker/dist/
 
       - name: Commit and push changes to worker branch

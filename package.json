@@ -1,7 +1,7 @@
 {
   "name": "bing-wallpaper-ts",
   "scripts": {
-    "build": "esbuild src/main.ts --bundle --platform=node --outfile=dist/main.js",
+    "build": "esbuild src/main.ts --bundle --platform=node --outfile=dist/main.js --minify",
     "optcss": "purgecss --css worker/assets/w3.css --content worker/index.html worker/index.ts --output worker/assets/w3-new.css"
   },
   "dependencies": {
