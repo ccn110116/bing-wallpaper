@@ -1,8 +1,8 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { BingImage } from '../interfaces/Image';
-import { getHttpContent } from '../utils/httpUtils';
-import { log } from '../utils/logUtils';
+import { BingImage } from './interfaces';
+import { getHttpContent } from './httpUtils';
+import { log } from './logUtils';
 
 const BING_API_TEMPLATE = "https://global.bing.com/HPImageArchive.aspx?format=js&idx=0&n=9&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160&setmkt=%s&setlang=en";
 const BING_URL = "https://bing.com";
@@ -93,27 +93,6 @@ ${images.map(img => `| ${img.date} | [${img.desc}](${img.url}) |`).join('\n')}
   log('Updated README.md');
 }
 
-export async function generateMonthsJson() {
-  const allMonths = new Set<string>();
-  const regionDirs = await fs.readdir(DATA_PATH);
-
-  for (const regionDir of regionDirs) {
-    const regionPath = path.resolve(DATA_PATH, regionDir);
-    const stats = await fs.stat(regionPath);
-    if (stats.isDirectory()) {
-      const files = await fs.readdir(regionPath);
-      files
-        .filter(file => file.endsWith('.json'))
-        .forEach(file => allMonths.add(file.replace('.json', '')));
-    }
-  }
-
-  const sortedMonths = Array.from(allMonths).sort().reverse();
-  const filePath = path.resolve(DATA_PATH, 'months.json');
-  await fs.writeFile(filePath, JSON.stringify(sortedMonths, null, 2));
-  log(`Generated ${filePath}`);
-}
-
 async function cleanupOldJsonFiles(region: string) {
   const regionPath = path.resolve(DATA_PATH, region);
   try {
@@ -132,7 +111,7 @@ async function cleanupOldJsonFiles(region: string) {
     }
 
     for (const file of files) {
-      if (file.endsWith('.json') && !monthsToKeep.has(file)) {
+      if (file.endsWith('.json') && !monthsToKeep.has(file) && file !== 'months.json') {
         const filePath = path.resolve(regionPath, file);
         await fs.unlink(filePath);
         log(`Removed old file: ${filePath}`);

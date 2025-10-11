@@ -1,13 +1,18 @@
-import { generateSite, generateMonthsJson } from './core/siteGenerator';
-import { log } from './utils/logUtils';
+import { generateSite } from './siteGenerator';
+import { generateMonthsJson } from './monthsGenerator';
+import { log } from './logUtils';
 
 async function main() {
   log('Starting Bing Wallpaper fetch...');
-  await generateSite('en-US');
-  await generateSite('zh-CN');
-  await generateSite('zh-HK');
-  await generateSite('zh-TW');
-  await generateMonthsJson();
+  const regions = ['en-US', 'zh-CN', 'zh-HK'];
+
+  const promises = regions.map(async (region) => {
+    await generateSite(region);
+    await generateMonthsJson(region);
+  });
+
+  await Promise.all(promises);
+
   log('Bing Wallpaper fetch finished.');
 }
 
