@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout worker branch
+      - name: Checkout main branch
         uses: actions/checkout@v3
         with:
-          ref: worker
+          ref: main
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -23,13 +23,27 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build worker
+      - name: Build
         run: npm run build
 
-      - name: Commit and push changes
+      - name: Checkout worker branch
+        uses: actions/checkout@v3
+        with:
+          ref: worker
+          path: worker
+
+      - name: Copy built files to worker branch
         run: |
+          cp -r dist/* worker/
+
+      - name: Remove dist directory
+        run: rm -rf dist
+
+      - name: Commit and push changes to worker branch
+        run: |
+          cd worker
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add dist/
-          git commit -m "Build worker" || exit 0
-          git push origin main
+          git add .
+          git commit -m "Build and deploy worker" || exit 0
+          git push origin worker
