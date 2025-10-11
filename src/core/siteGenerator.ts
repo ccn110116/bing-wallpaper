@@ -7,8 +7,8 @@ import { log } from '../utils/logUtils';
 const BING_API_TEMPLATE = "https://global.bing.com/HPImageArchive.aspx?format=js&idx=0&n=9&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160&setmkt=%s&setlang=en";
 const BING_URL = "https://bing.com";
 
-const DATA_PATH = path.resolve('worker/assets/data');
-const README_PATH = path.resolve('README.md');
+const DATA_PATH = path.resolve('assets/data');
+const README_PATH = path.resolve('dist/README.md');
 
 export async function generateSite(region: string) {
   const bingApi = BING_API_TEMPLATE.replace('%s', region);
