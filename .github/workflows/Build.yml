@@ -37,7 +37,8 @@ jobs:
 
       - name: Copy built files to worker branch
         run: |
-          cp -r dist/* worker/dist
+          mkdir -p worker/dist
+          cp -r dist/* worker/dist/
 
       - name: Remove dist directory
         run: rm -rf dist
