@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
 
       - name: Copy built files to worker branch
         run: |
-          cp -r dist/* worker/
+          cp -r dist/* worker/dist
 
       - name: Remove dist directory
         run: rm -rf dist
