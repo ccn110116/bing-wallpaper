@@ -45,7 +45,7 @@ async function main() {
   // Minify and copy HTML
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
   const minifiedHtml = await esbuild.transform(htmlContent, {
-    loader: 'html',
+    loader: 'text',
     minify: true,
   });
   await fs.writeFile(`${DIST_PATH}/index.html`, minifiedHtml.code);
