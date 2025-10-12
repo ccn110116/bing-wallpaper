@@ -30,6 +30,8 @@ async function main() {
     ...buildOptions,
     entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
     outfile: `${DIST_PATH}/worker.js`,
+    external: ['../assets/data/*'],
+    loader: { '.html': 'text' },
   });
   console.log('Built worker/index.ts');
 
