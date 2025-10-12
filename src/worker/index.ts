@@ -6,26 +6,36 @@ interface BingImage {
   url: string;
 }
 
-// This function dynamically imports the correct JSON for the current month and region
-async function getImageData(region: string): Promise<BingImage[] | null> {
+// This function fetches the correct JSON for the current month and region from the ASSETS binding
+async function getImageData(region: string, env: Env): Promise<BingImage[] | null> {
   const date = new Date();
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const monthStr = `${year}-${month}`;
+  const dataPath = `/assets/data/${region}/${monthStr}.json`;
 
   try {
-    const data = await import(`../assets/data/${region}/${monthStr}.json`);
-    return data.default;
+    const response = await env.ASSETS.fetch(new Request(new URL(dataPath, 'https://example.com')));
+    if (!response.ok) {
+      console.error(`Failed to fetch image data: ${response.status} ${response.statusText}`);
+      return null;
+    }
+    return await response.json();
   } catch (e) {
     console.error(`Could not load data for region ${region} and month ${monthStr}`, e);
     return null;
   }
 }
 
-async function getMonthsData(region: string): Promise<string[] | null> {
+async function getMonthsData(region: string, env: Env): Promise<string[] | null> {
+  const dataPath = `/assets/data/${region}/months.json`;
   try {
-    const data = await import(`../assets/data/${region}/months.json`);
-    return data.default;
+    const response = await env.ASSETS.fetch(new Request(new URL(dataPath, 'https://example.com')));
+    if (!response.ok) {
+      console.error(`Failed to fetch months data: ${response.status} ${response.statusText}`);
+      return null;
+    }
+    return await response.json();
   } catch (e) {
     console.error(`Could not load months data for region ${region}`, e);
     return null;
@@ -57,8 +67,8 @@ export default {
     }
 
     const [imageData, monthsData] = await Promise.all([
-      getImageData(activeRegion),
-      getMonthsData(activeRegion)
+      getImageData(activeRegion, env),
+      getMonthsData(activeRegion, env)
     ]);
 
     if (!imageData || imageData.length === 0) {

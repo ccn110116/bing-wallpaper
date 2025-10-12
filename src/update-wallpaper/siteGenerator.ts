@@ -73,7 +73,7 @@ async function updateMonthlyJson(images: BingImage[], region: string, monthStr: 
   const allImages = Array.from(imageMap.values());
   allImages.sort((a, b) => b.date.localeCompare(a.date));
 
-  await fs.writeFile(filePath, JSON.stringify(allImages, null, 2));
+  await fs.writeFile(filePath, JSON.stringify(allImages));
   log(`Updated ${filePath}`);
 }
 
@@ -137,6 +137,6 @@ async function updateMonthsJsonFile(region: string) {
 
   const sortedMonths = Array.from(allMonths).sort().reverse();
   const filePath = path.resolve(regionPath, 'months.json');
-  await fs.writeFile(filePath, JSON.stringify(sortedMonths, null, 2));
+  await fs.writeFile(filePath, JSON.stringify(sortedMonths));
   log(`Generated ${filePath}`);
 }

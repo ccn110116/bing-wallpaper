@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
@@ -38,9 +39,9 @@ jobs:
 
       - name: Copy built files to worker branch
         run: |
-          mkdir -p worker/dist
+          mkdir -p worker/assets/data
           rm -f worker/dist/main.js worker/dist/worker.js worker/dist/app.js worker/dist/index.html worker/dist/style.css
-          cp dist/main.js dist/worker.js dist/app.js dist/index.html dist/style.css worker/dist/
+          cp -a dist/. worker/dist/
 
       - name: Commit and push changes to worker branch
         run: |
