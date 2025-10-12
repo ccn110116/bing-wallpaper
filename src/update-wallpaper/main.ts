@@ -9,9 +9,9 @@ async function main() {
     await Promise.all(promises);
     log('Bing Wallpaper fetch finished.');
   } catch (error) {
-  await Promise.all(promises);
-
-  log('Bing Wallpaper fetch finished.');
+    console.error('An error occurred during Bing Wallpaper fetch:', error);
+    process.exit(1);
+  }
 }
 
 main();
