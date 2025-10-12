@@ -6,17 +6,19 @@ const DIST_PATH = 'dist';
 const WORKER_SRC_PATH = 'src/worker';
 
 async function main() {
-  // Clean the dist directory
+  // Clean and create the dist directory and subdirectories
   await fs.rm(DIST_PATH, { recursive: true, force: true });
-  await fs.mkdir(DIST_PATH, { recursive: true });
+  await fs.mkdir(`${DIST_PATH}/src`, { recursive: true });
+  await fs.mkdir(`${DIST_PATH}/assets`, { recursive: true });
 
-  // Common esbuild options
+  // Common esbuild options for minification
   const buildOptions: esbuild.BuildOptions = {
     bundle: true,
     minify: true,
+    charset: 'utf8', // Ensures proper character encoding
   };
 
-  // Build the main wallpaper update script
+  // Build the main wallpaper update script (not part of the worker deployment)
   await esbuild.build({
     ...buildOptions,
     platform: 'node',
@@ -30,39 +32,39 @@ async function main() {
     ...buildOptions,
     platform: 'browser',
     entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
-    outfile: `${DIST_PATH}/worker.js`,
+    outfile: `${DIST_PATH}/src/worker.js`,
     loader: { '.html': 'text' },
   });
-  console.log('Built worker/index.ts');
+  console.log('Built worker.js to dist/src/');
 
-  // Minify and copy app.js
+  // Minify and write app.js
   await esbuild.build({
     ...buildOptions,
     entryPoints: [`${WORKER_SRC_PATH}/assets/app.js`],
-    outfile: `${DIST_PATH}/app.js`,
+    outfile: `${DIST_PATH}/assets/app.js`,
   });
-  console.log('Minified app.js');
+  console.log('Minified app.js to dist/assets/');
 
-  // Minify and copy index.html
+  // Minify and write index.html
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
   const minifiedHtml = await esbuild.transform(htmlContent, {
     loader: 'text',
     minify: true,
   });
-  await fs.writeFile(`${DIST_PATH}/index.html`, minifiedHtml.code);
-  console.log('Minified and copied index.html');
+  await fs.writeFile(`${DIST_PATH}/src/index.html`, minifiedHtml.code);
+  console.log('Minified index.html to dist/src/');
 
-  // Copy style.css to be purged
-  await fs.copyFile(`${WORKER_SRC_PATH}/assets/style.css`, `${DIST_PATH}/style.css`);
-  console.log('Copied style.css for purging');
-
-  // Purge unused CSS
+  // Purge and minify style.css
   const purgeCSSResults = await new PurgeCSS().purge({
-    content: [`${DIST_PATH}/index.html`, `${DIST_PATH}/worker.js`],
-    css: [`${DIST_PATH}/style.css`],
+    content: [`${WORKER_SRC_PATH}/index.html`, `${WORKER_SRC_PATH}/assets/app.js`],
+    css: [`${WORKER_SRC_PATH}/assets/style.css`],
   });
-  await fs.writeFile(`${DIST_PATH}/style.css`, purgeCSSResults[0].css);
-  console.log('Purged unused CSS from style.css');
+  const minifiedCss = await esbuild.transform(purgeCSSResults[0].css, {
+    loader: 'css',
+    minify: true,
+  });
+  await fs.writeFile(`${DIST_PATH}/assets/style.css`, minifiedCss.code);
+  console.log('Purged and minified style.css to dist/assets/');
 
   console.log('Build complete.');
 }

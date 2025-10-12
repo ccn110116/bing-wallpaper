@@ -2,12 +2,11 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["esnext"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
     "resolveJsonModule": true,
     "types": ["@cloudflare/workers-types"]
   },
-  "include": ["index.ts"]
+  "include": ["index.ts", "declarations.d.ts"]
 }

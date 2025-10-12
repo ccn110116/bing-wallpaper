@@ -39,15 +39,23 @@ jobs:
 
       - name: Copy built files to worker branch
         run: |
-          mkdir -p worker/assets/data
-          rm -f worker/dist/main.js worker/dist/worker.js worker/dist/app.js worker/dist/index.html worker/dist/style.css
-          cp -a dist/. worker/dist/
+          # Remove old structures and files safely
+          rm -rf worker/dist
+          rm -rf worker/src
+          rm -f worker/assets/app.js
+          rm -f worker/assets/style.css
+          # Create new directories
+          mkdir -p worker/src
+          mkdir -p worker/assets
+          # Copy the new build output
+          cp -a dist/src/. worker/src/
+          cp -a dist/assets/. worker/assets/
 
       - name: Commit and push changes to worker branch
         run: |
           cd worker
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add dist/
+          git add src/ assets/
           git commit -m "Build and deploy worker" || echo "No changes to commit"
           git push origin worker
