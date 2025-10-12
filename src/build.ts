@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 import * as esbuild from 'esbuild';
 import * as fs from 'fs/promises';
 import { PurgeCSS } from 'purgecss';
@@ -6,45 +8,53 @@ const DIST_PATH = 'dist';
 const WORKER_SRC_PATH = 'src/worker';
 
 async function main() {
-  // Clean and create the dist directory and subdirectories
+  // 1. Clean and create directories
   await fs.rm(DIST_PATH, { recursive: true, force: true });
-  await fs.mkdir(`${DIST_PATH}/src`, { recursive: true });
-  await fs.mkdir(`${DIST_PATH}/assets`, { recursive: true });
+  await fs.mkdir(`${DIST_PATH}/dist`, { recursive: true }); // For main.js
+  await fs.mkdir(`${DIST_PATH}/src`, { recursive: true });  // For worker.js
 
-  // Common esbuild options for minification
-  const buildOptions: esbuild.BuildOptions = {
+  // 2. Prepare all assets as minified strings
+  // --- Minify HTML ---
+  const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
+  const minifiedHtml = await esbuild.transform(htmlContent, { loader: 'text', minify: true });
+
+  // --- Minify JS ---
+  const jsContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/app.js`, 'utf-8');
+  const minifiedJs = await esbuild.transform(jsContent, { loader: 'js', minify: true });
+
+  // --- Purge and Minify CSS ---
+  const purgeCSSResults = await new PurgeCSS().purge({
+    content: [{ raw: htmlContent, extension: 'html' }, { raw: jsContent, extension: 'js' }],
+    css: [`${WORKER_SRC_PATH}/assets/style.css`],
+  });
+  const minifiedCss = await esbuild.transform(purgeCSSResults[0].css, { loader: 'css', minify: true });
+
+  // 3. Build the worker, injecting the minified assets as strings
+  await esbuild.build({
     bundle: true,
     minify: true,
-    minifyWhitespace: true,
-    charset: 'utf8', // Ensures proper character encoding
-  };
+    platform: 'browser',
+    charset: 'utf8',
+    entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
+    outfile: `${DIST_PATH}/src/worker.js`,
+    define: {
+      // JSON.stringify is used to escape the strings correctly for injection
+      __HTML__: JSON.stringify(minifiedHtml.code),
+      __JS__: JSON.stringify(minifiedJs.code),
+      __CSS__: JSON.stringify(minifiedCss.code),
+    },
+  });
+  console.log('Built worker.js with inlined assets');
 
-  // Build the main wallpaper update script (not part of the worker deployment)
+  // 4. Build the separate main.js script
   await esbuild.build({
-    ...buildOptions,
+    bundle: true,
+    minify: true,
     platform: 'node',
     entryPoints: ['src/update-wallpaper/main.ts'],
     outfile: `${DIST_PATH}/main.js`,
   });
-  console.log('Built main.ts');
-
-  // Build the Cloudflare Worker script
-  await esbuild.build({
-    ...buildOptions,
-    platform: 'browser',
-    entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
-    outfile: `${DIST_PATH}/src/worker.js`,
-    loader: { '.html': 'text' },
-  });
-  console.log('Built worker.js to dist/src/');
-
-  // Purge and minify style.css before bundling
-  const purgeCSSResults = await new PurgeCSS().purge({
-    content: [`${WORKER_SRC_PATH}/index.html`, `${WORKER_SRC_PATH}/assets/app.js`],
-    css: [`${WORKER_SRC_PATH}/assets/style.css`],
-  });
-  // No need to write the file, we will bundle it directly in the next step
-  console.log('Purged unused CSS');
+  console.log('Built main.js');
 
   console.log('Build complete.');
 }

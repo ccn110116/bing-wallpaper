@@ -1,6 +1,7 @@
-import indexPage from './index.html';
-import appJs from './assets/app.js';
-import styleCss from './assets/style.css';
+// These variables will be replaced by the build script with the minified file contents.
+declare const __HTML__: string;
+declare const __JS__: string;
+declare const __CSS__: string;
 
 interface BingImage {
   desc: string;
@@ -51,12 +52,12 @@ export default {
 
     // Handle asset requests
     if (pathname === '/app.js') {
-      return new Response(appJs, {
+      return new Response(__JS__, {
         headers: { 'Content-Type': 'application/javascript;charset=UTF-8' },
       });
     }
     if (pathname === '/style.css') {
-      return new Response(styleCss, {
+      return new Response(__CSS__, {
         headers: { 'Content-Type': 'text/css;charset=UTF-8' },
       });
     }
@@ -130,7 +131,7 @@ export default {
         },
       });
 
-    const response = new Response(indexPage, {
+    const response = new Response(__HTML__, {
       headers: {
         'Content-Type': 'text/html;charset=UTF-8',
       },
