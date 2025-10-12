@@ -1,7 +1,7 @@
 {
   "name": "bing-wallpaper-ts",
   "scripts": {
-    "build": "esbuild src/build.ts --bundle --platform=node --outfile=dist/build.js && node dist/build.js",
+    "build": "tsc --project tsconfig.json && node dist/build.js",
     "postbuild": "purgecss --css dist/style.css --content dist/index.html dist/worker.js --output dist/style.css"
   },
   "dependencies": {

@@ -15,7 +15,6 @@ async function main() {
     bundle: true,
     minify: true,
     platform: 'node',
-    external: ['esbuild'], // Mark esbuild as external
   };
 
   // Build the main wallpaper update script
