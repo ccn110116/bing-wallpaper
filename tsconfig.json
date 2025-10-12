@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "downlevelIteration": true,
     "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "moduleResolution": "node"
   },
   "include": [
-    "src/*"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules"

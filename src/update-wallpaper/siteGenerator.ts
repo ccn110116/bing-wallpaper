@@ -1,8 +1,12 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { BingImage } from './interfaces';
-import { getHttpContent } from './httpUtils';
-import { log } from './logUtils';
+import { getHttpContent, log } from './utils';
+
+interface BingImage {
+  desc: string;
+  date: string;
+  url: string;
+}
 
 const BING_API_TEMPLATE = "https://global.bing.com/HPImageArchive.aspx?format=js&idx=0&n=9&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160&setmkt=%s&setlang=en";
 const BING_URL = "https://bing.com";
@@ -35,11 +39,13 @@ export async function generateSite(region: string) {
   }
 
   // Update JSON files for each month
-  for (const [monthStr, monthImages] of imagesByMonth.entries()) {
-    await updateMonthlyJson(monthImages, region, monthStr);
-  }
+  const updatePromises = Array.from(imagesByMonth.entries()).map(([monthStr, monthImages]) =>
+    updateMonthlyJson(monthImages, region, monthStr)
+  );
+  await Promise.all(updatePromises);
 
   await cleanupOldJsonFiles(region);
+  await updateMonthsJsonFile(region);
 
   // Update README only with the latest images from the primary region
   if (region === 'en-US') {
@@ -97,27 +103,40 @@ async function cleanupOldJsonFiles(region: string) {
   const regionPath = path.resolve(DATA_PATH, region);
   try {
     const files = await fs.readdir(regionPath);
-    const monthsToKeep = new Set<string>();
     const now = new Date();
-    let year = now.getFullYear();
-    let month = now.getMonth() + 1;
-    for (let i = 0; i < 48; i++) {
-      monthsToKeep.add(`${year}-${month.toString().padStart(2, '0')}.json`);
-      month--;
-      if (month === 0) {
-        month = 12;
-        year--;
-      }
-    }
+    // Go back 48 months from the current month
+    const cutoffDate = new Date(now.getFullYear(), now.getMonth() - 48, 1);
 
     for (const file of files) {
-      if (file.endsWith('.json') && !monthsToKeep.has(file) && file !== 'months.json') {
-        const filePath = path.resolve(regionPath, file);
-        await fs.unlink(filePath);
-        log(`Removed old file: ${filePath}`);
+      if (/\d{4}-\d{2}\.json/.test(file)) {
+        const fileDate = new Date(file.substring(0, 7)); // YYYY-MM
+        if (fileDate < cutoffDate) {
+          const filePath = path.resolve(regionPath, file);
+          await fs.unlink(filePath);
+          log(`Removed old file: ${filePath}`);
+        }
       }
     }
   } catch (error) {
     // region directory might not exist
   }
+}
+
+async function updateMonthsJsonFile(region: string) {
+  const regionPath = path.resolve(DATA_PATH, region);
+  const allMonths = new Set<string>();
+  try {
+    const files = await fs.readdir(regionPath);
+    files
+      .filter((file: string) => /\d{4}-\d{2}\.json/.test(file))
+      .forEach((file: string) => allMonths.add(file.replace('.json', '')));
+  } catch (error) {
+    // region directory might not exist
+    return;
+  }
+
+  const sortedMonths = Array.from(allMonths).sort().reverse();
+  const filePath = path.resolve(regionPath, 'months.json');
+  await fs.writeFile(filePath, JSON.stringify(sortedMonths, null, 2));
+  log(`Generated ${filePath}`);
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>必应壁纸 | Bing Wallpaper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="每日必应超清壁纸（4K）">
+    <meta name="keywords" content="bing wallpaper, 必应壁纸, 必应4k壁纸, 必应超清壁纸, 壁纸">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&display=swap">
+    <script src="/app.js"></script>
+</head>
+<body>
+<div id="overlay" class="overlay" onclick="w3_close()"></div>
+<div id="lightbox" class="lightbox">
+    <div class="loading-spinner"></div>
+    <span class="close-lightbox" onclick="closeLightbox()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#F3F3F3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+    </span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
+<div style="position: relative; height: 100vh;">
+    <nav class="sticky-nav" style="position: absolute; top: 0; width: 100%; z-index: 10;">
+        <div class="bar transparent round">
+            <div class="nav-links">
+                <a href="/" class="bar-item button">首页</a>
+                <a href="#portfolio" class="bar-item button" onclick="w3_open()">归档</a>
+                <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hide-small">GitHub</a>
+                <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hide-small">关于</a>
+            </div>
+            <div class="language-selector">
+                <a href="/zh-cn" class="bar-item button">CN</a>
+                <a href="/zh-hk" class="bar-item button">HK</a>
+                <a href="/" class="bar-item button">US</a>
+            </div>
+            <button id="dark-mode-toggle" class="bar-item button">🌓</button>
+        </div>
+    </nav>
+    <div class="smallImg-header"></div> <!-- 模糊的小图 -->
+    <div class="bgimg-header" style="padding: 20px;">
+        <div class="display-middle center">
+            <h1>Bing Wallpaper</h1>
+            <p></p>
+        </div>
+</div>
+
+<!-- Sidebar (hidden by default) -->
+<sidebar class="sidebar bar-block card top xlarge animate-left" style="display:none;z-index:2;max-width:200px;min-width:100px" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="bar-item button">收起</a>
+    <div id="archive-list"></div>
+</sidebar>
+
+
+<div class="main content padding" style="max-width:1200px;">
+
+    <!-- First Photo Grid-->
+    <div class="portfolio-grid" id="img_list" style="padding: 80px;">
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="center light-grey large" style="padding: 120px;">
+    <p>本站所有图片均来源于必应搜索
+        <br/>
+        Powered by <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="hover-text-green">Github.com/niumoo</a>
+        <br/>
+        本网站已经开源，采用 Apache License 2.0 许可协议，复制请注明来自 <a href="https://github.com/niumoo/bing-wallpaper">bing-wallpaper</a>！
+    </p>
+</footer>
+</body>
+</html>
