@@ -15,6 +15,7 @@ async function main() {
   const buildOptions: esbuild.BuildOptions = {
     bundle: true,
     minify: true,
+    minifyWhitespace: true,
     charset: 'utf8', // Ensures proper character encoding
   };
 
@@ -37,34 +38,13 @@ async function main() {
   });
   console.log('Built worker.js to dist/src/');
 
-  // Minify and write app.js
-  await esbuild.build({
-    ...buildOptions,
-    entryPoints: [`${WORKER_SRC_PATH}/assets/app.js`],
-    outfile: `${DIST_PATH}/assets/app.js`,
-  });
-  console.log('Minified app.js to dist/assets/');
-
-  // Minify and write index.html
-  const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
-  const minifiedHtml = await esbuild.transform(htmlContent, {
-    loader: 'text',
-    minify: true,
-  });
-  await fs.writeFile(`${DIST_PATH}/src/index.html`, minifiedHtml.code);
-  console.log('Minified index.html to dist/src/');
-
-  // Purge and minify style.css
+  // Purge and minify style.css before bundling
   const purgeCSSResults = await new PurgeCSS().purge({
     content: [`${WORKER_SRC_PATH}/index.html`, `${WORKER_SRC_PATH}/assets/app.js`],
     css: [`${WORKER_SRC_PATH}/assets/style.css`],
   });
-  const minifiedCss = await esbuild.transform(purgeCSSResults[0].css, {
-    loader: 'css',
-    minify: true,
-  });
-  await fs.writeFile(`${DIST_PATH}/assets/style.css`, minifiedCss.code);
-  console.log('Purged and minified style.css to dist/assets/');
+  // No need to write the file, we will bundle it directly in the next step
+  console.log('Purged unused CSS');
 
   console.log('Build complete.');
 }

@@ -1,4 +1,6 @@
 import indexPage from './index.html';
+import appJs from './assets/app.js';
+import styleCss from './assets/style.css';
 
 interface BingImage {
   desc: string;
@@ -46,6 +48,18 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // Handle asset requests
+    if (pathname === '/app.js') {
+      return new Response(appJs, {
+        headers: { 'Content-Type': 'application/javascript;charset=UTF-8' },
+      });
+    }
+    if (pathname === '/style.css') {
+      return new Response(styleCss, {
+        headers: { 'Content-Type': 'text/css;charset=UTF-8' },
+      });
+    }
 
     let region = pathname.split('/')[1] || 'en-US';
     const regionMap: { [key: string]: string } = {
