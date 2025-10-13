@@ -15,7 +15,7 @@ async function getImageData(region: string, env: Env): Promise<BingImage[] | nul
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const monthStr = `${year}-${month}`;
-  const dataPath = `/assets/data/${region}/${monthStr}.json`;
+  const dataPath = `/data/${region}/${monthStr}.json`;
 
   try {
     const response = await env.ASSETS.fetch(new Request(new URL(dataPath, 'https://example.com')));
