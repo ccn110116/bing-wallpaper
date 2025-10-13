@@ -7,13 +7,16 @@ import { PurgeCSS } from 'purgecss';
 const DIST_PATH = 'dist';
 const WORKER_SRC_PATH = 'src/worker';
 
+// Helper function to guarantee a single-line string
+const toSingleLine = (text: string) => text.replace(/(\r\n|\n|\r)/gm, "");
+
 async function main() {
   // 1. Clean and create directories
   await fs.rm(DIST_PATH, { recursive: true, force: true });
-  await fs.mkdir(`${DIST_PATH}/dist`, { recursive: true }); // For main.js
-  await fs.mkdir(`${DIST_PATH}/src`, { recursive: true });  // For worker.js
+  await fs.mkdir(`${DIST_PATH}/dist`, { recursive: true });
+  await fs.mkdir(`${DIST_PATH}/src`, { recursive: true });
 
-  // 2. Prepare all assets as minified strings
+  // 2. Prepare all assets as minified, single-line strings
   // --- Minify HTML ---
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
   const minifiedHtml = await esbuild.transform(htmlContent, { loader: 'text', minify: true });
@@ -29,22 +32,22 @@ async function main() {
   });
   const minifiedCss = await esbuild.transform(purgeCSSResults[0].css, { loader: 'css', minify: true });
 
-  // 3. Build the worker, injecting the minified assets as strings
+  // 3. Build the worker, injecting the assets
   await esbuild.build({
     bundle: true,
     minify: true,
+    format: 'esm', // <--- CRITICAL: Preserve the export default structure
     platform: 'browser',
     charset: 'utf8',
     entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
     outfile: `${DIST_PATH}/src/worker.js`,
     define: {
-      // JSON.stringify is used to escape the strings correctly for injection
-      __HTML__: JSON.stringify(minifiedHtml.code),
-      __JS__: JSON.stringify(minifiedJs.code),
-      __CSS__: JSON.stringify(minifiedCss.code),
+      __HTML__: JSON.stringify(toSingleLine(minifiedHtml.code)),
+      __JS__: JSON.stringify(toSingleLine(minifiedJs.code)),
+      __CSS__: JSON.stringify(toSingleLine(minifiedCss.code)),
     },
   });
-  console.log('Built worker.js with inlined assets');
+  console.log('Built worker.js with single-line inlined assets');
 
   // 4. Build the separate main.js script
   await esbuild.build({
