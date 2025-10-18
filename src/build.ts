@@ -5,8 +5,15 @@ import { PurgeCSS } from 'purgecss';
 const DIST_PATH = 'dist';
 const WORKER_SRC_PATH = 'src/worker';
 
-// Helper function to guarantee a single-line string
-const toSingleLine = (text: string) => text.replace(/(\r\n|\n|\r)/gm, "");
+// Helper function to aggressively minify and clean a string
+function cleanAndMinify(text: string): string {
+  return text
+    .replace(/<!--[\s\S]*?-->/g, '') // Remove comments
+    .replace(/\s+/g, ' ')             // Collapse whitespace
+    .replace(/> </g, '><')            // Remove space between tags
+    .replace(/(\r\n|\n|\r)/gm, "")    // Remove newlines
+    .trim();
+}
 
 async function main() {
   // 1. Clean and create directories
@@ -17,12 +24,7 @@ async function main() {
   // 2. Prepare all assets as minified, single-line strings
   // --- Manually Minify HTML ---
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
-  const minifiedHtml = htmlContent
-    .replace(/<!--[\s\S]*?-->/g, '') // Remove comments
-    .replace(/\s+/g, ' ')             // Collapse whitespace
-    .replace(/> </g, '><')            // Remove space between tags
-    .replace(/(\r\n|\n|\r)/gm, "")    // Remove newlines
-    .trim();
+  const minifiedHtml = cleanAndMinify(htmlContent);
 
   // --- Minify JS ---
   const jsContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/app.js`, 'utf-8');
@@ -46,8 +48,8 @@ async function main() {
     outfile: `${DIST_PATH}/src/worker.js`,
     define: {
       __HTML__: JSON.stringify(minifiedHtml),
-      __JS__: JSON.stringify(toSingleLine(minifiedJs.code)),
-      __CSS__: JSON.stringify(toSingleLine(minifiedCss.code)),
+      __JS__: JSON.stringify(cleanAndMinify(minifiedJs.code)),
+      __CSS__: JSON.stringify(cleanAndMinify(minifiedCss.code)),
     },
   });
   console.log('Built worker.js with single-line inlined assets');

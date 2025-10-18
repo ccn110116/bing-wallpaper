@@ -1,25 +1,16 @@
 function headerImgloading() {
-    var bgImg = document.querySelector('.bgimg-header');
-    var smallImg = document.querySelector('.smallImg-header');
-    // 创建一个新的图片对象以监控加载状态
-    var img = new Image();
-    if (bgImg && bgImg.style.backgroundImage) {
-        img.src = bgImg.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-    }
-    // 小图逐渐变透明
-    if (smallImg) {
-        smallImg.style.opacity = 0.3;
-    }
+    const headerContainer = document.getElementById('header-container');
+    const bgImg = document.querySelector('.bgimg-header');
+    if (!headerContainer || !bgImg) return;
+
+    const highResUrl = bgImg.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+    if (!highResUrl) return;
+
+    const img = new Image();
+    img.src = highResUrl;
+
     img.onload = function() {
-        setTimeout(function() {
-            // 当大图加载完成时，首先显示大图
-            if (bgImg) {
-                bgImg.style.display = "block";
-            }
-            if (smallImg) {
-                smallImg.style.opacity = 0;
-            }
-        }, 300);
+        headerContainer.classList.add('loaded');
     };
 }
 window.addEventListener('load', headerImgloading);
@@ -36,15 +27,18 @@ function w3_close() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 监听滚动事件
-    window.addEventListener('scroll', function () {
-        var wenjuan = document.getElementById('wenjuan');
-        if (wenjuan && window.scrollY > 400) { // 如果向下滚动超过100px
-            wenjuan.style.display = 'block'; // 显示该div
-        } else if (wenjuan) {
-            wenjuan.style.display = 'none'; // 否则隐藏
-        }
-    });
+    // Sticky Nav Logic
+    const nav = document.querySelector('.sticky-nav');
+    if (nav) {
+        const navTop = nav.offsetTop;
+        window.addEventListener('scroll', function() {
+            if (window.scrollY >= navTop) {
+                nav.classList.add('fixed');
+            } else {
+                nav.classList.remove('fixed');
+            }
+        });
+    }
 
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     if (darkModeToggle) {
@@ -53,7 +47,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    fetch('/data/months.json')
+    const pathname = window.location.pathname;
+    const pathSegments = pathname.split('/').filter(Boolean);
+    let region = 'en-US';
+    const supportedRegions = ['zh-cn', 'zh-hk'];
+
+    if (pathSegments.length > 0 && supportedRegions.includes(pathSegments[0])) {
+        region = pathSegments[0];
+    }
+
+    fetch(`/data/${region}/months.json`)
         .then(response => response.json())
         .then(months => {
             const archiveList = document.getElementById('archive-list');

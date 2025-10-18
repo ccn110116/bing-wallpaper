@@ -29,12 +29,36 @@ body.dark-mode {
 
 /* Navigation Bar */
 .sticky-nav {
-    position: fixed;
-    top: 0;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.3s;
+    transition: all 0.4s ease-in-out;
+    padding: 10px 0;
 }
+
+.sticky-nav.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 0;
+}
+
+.sticky-nav.fixed .bar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.1); /* Keep the glass effect */
+}
+
+.sticky-nav.fixed .bar-item.button {
+    color: var(--font-color);
+}
+
+.sticky-nav.fixed #dark-mode-toggle {
+    color: var(--font-color);
+}
+
 
 .bar {
     display: flex;
@@ -103,7 +127,10 @@ body.dark-mode {
 
 /* Header */
 .bgimg-header {
-    position: relative;
+    position: absolute; /* Changed from relative */
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -114,6 +141,8 @@ body.dark-mode {
     text-align: center;
     color: white;
     overflow: hidden;
+    opacity: 0; /* Initially hidden for fade-in */
+    transition: opacity 1s ease-in-out;
 }
 
 .smallImg-header {
@@ -127,7 +156,17 @@ body.dark-mode {
     background-size: cover;
     filter: blur(20px);
     transform: scale(1.1);
-    z-index: -1;
+    z-index: 1; /* Above the main header initially */
+    transition: opacity 1s ease-in-out;
+}
+
+#header-container.loaded .smallImg-header {
+    opacity: 0;
+    z-index: -1; /* Move behind after fade out */
+}
+
+#header-container.loaded .bgimg-header {
+    opacity: 1;
 }
 
 .bgimg-header {
@@ -255,10 +294,11 @@ body.dark-mode {
 }
 
 .lightbox-content {
-    max-width: 95vw;
-    max-height: 90vh;
+    max-width: 90vw;
+    max-height: 85vh;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    object-fit: contain; /* Ensure image fits without being cropped */
 }
 
 .close-lightbox {
