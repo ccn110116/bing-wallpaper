@@ -15,6 +15,7 @@ body, html {
     background-color: var(--background-color);
     color: var(--font-color);
     transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 /* Dark Mode */
@@ -127,10 +128,7 @@ body.dark-mode {
 
 /* Header */
 .bgimg-header {
-    position: absolute; /* Changed from relative */
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: relative;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -141,8 +139,6 @@ body.dark-mode {
     text-align: center;
     color: white;
     overflow: hidden;
-    opacity: 0; /* Initially hidden for fade-in */
-    transition: opacity 1s ease-in-out;
 }
 
 .smallImg-header {
@@ -156,17 +152,7 @@ body.dark-mode {
     background-size: cover;
     filter: blur(20px);
     transform: scale(1.1);
-    z-index: 1; /* Above the main header initially */
-    transition: opacity 1s ease-in-out;
-}
-
-#header-container.loaded .smallImg-header {
-    opacity: 0;
-    z-index: -1; /* Move behind after fade out */
-}
-
-#header-container.loaded .bgimg-header {
-    opacity: 1;
+    z-index: -1;
 }
 
 .bgimg-header {
@@ -200,6 +186,9 @@ body.dark-mode {
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative; /* Ensure proper stacking context */
+    z-index: 5;
+    background-color: var(--background-color); /* Prevent transparency issues */
 }
 
 .portfolio-grid {

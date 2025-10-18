@@ -96,15 +96,7 @@ export default {
       const lowResUrl = `${img.url}&w=384&h=216`;
       let highResUrl = img.url.split('&')[0];
       return `
-      <div class="portfolio-item" 
-           onmouseover="handleImageMouseover(this, '${highResUrl}')" 
-           onmouseout="handleImageMouseout(this, '${lowResUrl}')"
-           onclick="openLightbox('${highResUrl}', '${img.desc}')">
-        <img src="${lowResUrl}" alt="${img.desc}">
-        <div class="description">
-          <p>${img.desc}</p>
-        </div>
-      </div>
+      <div class="portfolio-item" onmouseover="handleImageMouseover(this, '${highResUrl}')" onmouseout="handleImageMouseout(this, '${lowResUrl}')"onclick="openLightbox('${highResUrl}', '${img.desc}')"><img src="${lowResUrl}" alt="${img.desc}"><div class="description"><p>${img.desc}</p></div></div>
     `}).join('');
 
     const rewriter = new HTMLRewriter()

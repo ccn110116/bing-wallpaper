@@ -1,16 +1,25 @@
 function headerImgloading() {
-    const headerContainer = document.getElementById('header-container');
-    const bgImg = document.querySelector('.bgimg-header');
-    if (!headerContainer || !bgImg) return;
-
-    const highResUrl = bgImg.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-    if (!highResUrl) return;
-
-    const img = new Image();
-    img.src = highResUrl;
-
+    var bgImg = document.querySelector('.bgimg-header');
+    var smallImg = document.querySelector('.smallImg-header');
+    // 创建一个新的图片对象以监控加载状态
+    var img = new Image();
+    if (bgImg && bgImg.style.backgroundImage) {
+        img.src = bgImg.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+    }
+    // 小图逐渐变透明
+    if (smallImg) {
+        smallImg.style.opacity = 0.3;
+    }
     img.onload = function() {
-        headerContainer.classList.add('loaded');
+        setTimeout(function() {
+            // 当大图加载完成时，首先显示大图
+            if (bgImg) {
+                bgImg.style.display = "block";
+            }
+            if (smallImg) {
+                smallImg.style.opacity = 0;
+            }
+        }, 300);
     };
 }
 window.addEventListener('load', headerImgloading);
