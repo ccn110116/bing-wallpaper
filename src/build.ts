@@ -41,11 +41,6 @@ async function main() {
     charset: 'utf8',
     entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
     outfile: `${DIST_PATH}/src/worker.js`,
-    loader: {
-      '.html': 'text',
-      '.js': 'text',
-      '.css': 'text'
-    },
     define: {
       __HTML__: JSON.stringify(toSingleLine(minifiedHtml.code)),
       __JS__: JSON.stringify(toSingleLine(minifiedJs.code)),

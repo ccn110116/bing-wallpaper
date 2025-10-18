@@ -31,7 +31,7 @@ async function getImageData(region: string, env: Env): Promise<BingImage[] | nul
 }
 
 async function getMonthsData(region: string, env: Env): Promise<string[] | null> {
-  const dataPath = `/assets/data/${region}/months.json`;
+  const dataPath = `/data/${region}/months.json`;
   try {
     const response = await env.ASSETS.fetch(new Request(new URL(dataPath, 'https://example.com')));
     if (!response.ok) {
