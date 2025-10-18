@@ -19,7 +19,7 @@ async function main() {
   // 2. Prepare all assets as minified, single-line strings
   // --- Minify HTML ---
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
-  const minifiedHtml = await esbuild.transform(htmlContent, { loader: 'text', minify: true });
+  const minifiedHtml = await esbuild.transform(htmlContent, { loader: 'text'});
 
   // --- Minify JS ---
   const jsContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/app.js`, 'utf-8');
