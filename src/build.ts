@@ -1,5 +1,3 @@
-/// <reference types="node" />
-
 import * as esbuild from 'esbuild';
 import * as fs from 'fs/promises';
 import { PurgeCSS } from 'purgecss';
@@ -17,9 +15,14 @@ async function main() {
   await fs.mkdir(`${DIST_PATH}/src`, { recursive: true });
 
   // 2. Prepare all assets as minified, single-line strings
-  // --- Minify HTML ---
+  // --- Manually Minify HTML ---
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
-  const minifiedHtml = await esbuild.transform(htmlContent, { loader: 'text'});
+  const minifiedHtml = htmlContent
+    .replace(/<!--[\s\S]*?-->/g, '') // Remove comments
+    .replace(/\s+/g, ' ')             // Collapse whitespace
+    .replace(/> </g, '><')            // Remove space between tags
+    .replace(/(\r\n|\n|\r)/gm, "")    // Remove newlines
+    .trim();
 
   // --- Minify JS ---
   const jsContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/app.js`, 'utf-8');
@@ -42,7 +45,7 @@ async function main() {
     entryPoints: [`${WORKER_SRC_PATH}/index.ts`],
     outfile: `${DIST_PATH}/src/worker.js`,
     define: {
-      __HTML__: JSON.stringify(toSingleLine(minifiedHtml.code)),
+      __HTML__: JSON.stringify(minifiedHtml),
       __JS__: JSON.stringify(toSingleLine(minifiedJs.code)),
       __CSS__: JSON.stringify(toSingleLine(minifiedCss.code)),
     },
