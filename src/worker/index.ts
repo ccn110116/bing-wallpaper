@@ -62,7 +62,7 @@ async function handleImageProxy(request: Request): Promise<Response> {
   // Default is full UHD resolution
 
   const cache = (caches as any).default;
-  const cacheKey = new Request(bingUrl, request);
+  const cacheKey = new Request(bingUrl);
   let response = await cache.match(cacheKey);
 
   if (!response) {
