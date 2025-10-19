@@ -45,7 +45,7 @@ async function getMonthsData(region: string, env: Env): Promise<string[] | null>
   }
 }
 
-async function handleImageProxy(request: Request): Promise<Response> {
+async function handleImageProxy(request: Request, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const imageId = url.pathname.replace('/image/', '');
   if (!imageId) {
@@ -87,7 +87,7 @@ async function handleImageProxy(request: Request): Promise<Response> {
         headers: newHeaders
       });
 
-      (caches as any).default.put(cacheKey, finalCacheResponse);
+      ctx.waitUntil((caches as any).default.put(cacheKey, finalCacheResponse));
     }
   } else {
     console.log(`Cache hit for ${bingUrl}.`);
@@ -97,13 +97,13 @@ async function handleImageProxy(request: Request): Promise<Response> {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
 
     // Image proxy route
     if (pathname.startsWith('/image/')) {
-      return handleImageProxy(request);
+      return handleImageProxy(request, ctx);
     }
 
     // Handle asset requests
