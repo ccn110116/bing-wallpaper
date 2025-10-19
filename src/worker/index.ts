@@ -47,31 +47,41 @@ async function getMonthsData(region: string, env: Env): Promise<string[] | null>
 
 async function handleImageProxy(request: Request): Promise<Response> {
   const url = new URL(request.url);
-  const imageUrl = url.searchParams.get('url');
-  if (!imageUrl) {
-    return new Response('Missing image URL', { status: 400 });
+  const imageId = url.pathname.replace('/image/', '');
+  if (!imageId) {
+    return new Response('Missing image ID', { status: 400 });
   }
 
+  // Determine image size from query params
+  let bingUrl = `https://bing.com/th?id=${imageId}`;
+  if (url.searchParams.has('small')) {
+    bingUrl += '&w=384&h=216';
+  } else if (url.searchParams.has('preview')) {
+    bingUrl += '&w=2000';
+  }
+  // Default is full UHD resolution
+
   const cache = (caches as any).default;
-  const cacheKey = new Request(imageUrl, request);
+  const cacheKey = new Request(bingUrl, request);
   let response = await cache.match(cacheKey);
 
   if (!response) {
-    console.log(`Cache miss for ${imageUrl}. Fetching from origin.`);
-    response = await fetch(imageUrl, {
+    console.log(`Cache miss for ${bingUrl}. Fetching from origin.`);
+    response = await fetch(bingUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
       }
     });
 
     if (response.ok) {
-      const cacheResponse = response.clone();
+      // Create a new response with mutable headers
+      const cacheResponse = new Response(response.body, response);
       // Cache for 1 day
       cacheResponse.headers.set('Cache-Control', 'public, max-age=86400');
       (caches as any).default.put(cacheKey, cacheResponse);
     }
   } else {
-    console.log(`Cache hit for ${imageUrl}.`);
+    console.log(`Cache hit for ${bingUrl}.`);
   }
 
   return response;
@@ -130,16 +140,19 @@ export default {
     const latestImage = imageData[0];
 
     const imageGridHTML = imageData.map(img => {
-      // All image URLs will now go through our proxy
-      const proxiedLowResUrl = `/image/?url=${encodeURIComponent(img.url + '&w=384&h=216')}`;
-      const proxiedHighResUrl = `/image/?url=${encodeURIComponent(img.url.split('&')[0])}`;
+      const imageId = new URL(img.url).searchParams.get('id');
+      if (!imageId) return ''; // Should not happen
+
+      const lowResUrl = `/image/${imageId}?small`;
+      const highResUrl = `/image/${imageId}`; // Full res for lightbox
       const placeholderSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+      
       return `
       <div class="portfolio-item" 
-           onmouseover="handleImageMouseover(this, '${proxiedHighResUrl}')" 
-           onmouseout="handleImageMouseout(this, '${proxiedLowResUrl}')"
-           onclick="openLightbox('${proxiedHighResUrl}', '${img.desc}')">
-        <img data-src="${proxiedLowResUrl}" src="${placeholderSrc}" alt="${img.desc}" class="lazy">
+           onmouseover="handleImageMouseover(this, '${highResUrl}')" 
+           onmouseout="handleImageMouseout(this, '${lowResUrl}')"
+           onclick="openLightbox('${highResUrl}', '${img.desc}')">
+        <img data-src="${lowResUrl}" src="${placeholderSrc}" alt="${img.desc}" class="lazy">
         <div class="description">
           <p>${img.desc}</p>
         </div>
@@ -149,13 +162,15 @@ export default {
     const rewriter = new HTMLRewriter()
       .on('.bgimg-header', {
         element(element) {
-          const proxiedUrl = `/image/?url=${encodeURIComponent(latestImage.url + '&w=2000')}`;
+          const imageId = new URL(latestImage.url).searchParams.get('id');
+          const proxiedUrl = `/image/${imageId}?preview`;
           element.setAttribute('style', `background-image: url('${proxiedUrl}');`);
         },
       })
       .on('.smallImg-header', {
         element(element) {
-          const proxiedUrl = `/image/?url=${encodeURIComponent(latestImage.url + '&w=384&h=216')}`;
+          const imageId = new URL(latestImage.url).searchParams.get('id');
+          const proxiedUrl = `/image/${imageId}?small`;
           element.setAttribute('style', `background-image: url('${proxiedUrl}');`);
         },
       })
