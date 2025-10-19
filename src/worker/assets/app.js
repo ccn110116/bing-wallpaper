@@ -36,6 +36,25 @@ function w3_close() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Lazy Loading Images
+    const lazyImages = document.querySelectorAll('img.lazy');
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const lazyImage = entry.target;
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.classList.remove('lazy');
+                observer.unobserve(lazyImage);
+            }
+        });
+    }, {
+        rootMargin: "0px 0px 200px 0px" // Start loading when image is 200px away from viewport
+    });
+
+    lazyImages.forEach((lazyImage) => {
+        lazyImageObserver.observe(lazyImage);
+    });
+
     // Sticky Nav Logic
     const nav = document.querySelector('.sticky-nav');
     if (nav) {
@@ -163,6 +182,6 @@ function handleImageMouseover(element, fullResUrl) {
 
 function handleImageMouseout(element, lowResUrl) {
     clearTimeout(preloadTimer);
-    const img = element.querySelector('img');
-    if (img) img.src = lowResUrl;
+    // No longer resetting the src to lowResUrl to prevent unnecessary re-fetches.
+    // The browser will keep the high-res image if it was loaded.
 }

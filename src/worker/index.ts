@@ -45,10 +45,47 @@ async function getMonthsData(region: string, env: Env): Promise<string[] | null>
   }
 }
 
+async function handleImageProxy(request: Request): Promise<Response> {
+  const url = new URL(request.url);
+  const imageUrl = url.searchParams.get('url');
+  if (!imageUrl) {
+    return new Response('Missing image URL', { status: 400 });
+  }
+
+  const cache = (caches as any).default;
+  const cacheKey = new Request(imageUrl, request);
+  let response = await cache.match(cacheKey);
+
+  if (!response) {
+    console.log(`Cache miss for ${imageUrl}. Fetching from origin.`);
+    response = await fetch(imageUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
+      }
+    });
+
+    if (response.ok) {
+      const cacheResponse = response.clone();
+      // Cache for 1 day
+      cacheResponse.headers.set('Cache-Control', 'public, max-age=86400');
+      (caches as any).default.put(cacheKey, cacheResponse);
+    }
+  } else {
+    console.log(`Cache hit for ${imageUrl}.`);
+  }
+
+  return response;
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // Image proxy route
+    if (pathname.startsWith('/image/')) {
+      return handleImageProxy(request);
+    }
 
     // Handle asset requests
     if (pathname === '/app.js') {
@@ -93,23 +130,33 @@ export default {
     const latestImage = imageData[0];
 
     const imageGridHTML = imageData.map(img => {
-      const lowResUrl = `${img.url}&w=384&h=216`;
-      let highResUrl = img.url.split('&')[0];
+      // All image URLs will now go through our proxy
+      const proxiedLowResUrl = `/image/?url=${encodeURIComponent(img.url + '&w=384&h=216')}`;
+      const proxiedHighResUrl = `/image/?url=${encodeURIComponent(img.url.split('&')[0])}`;
+      const placeholderSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
       return `
-      <div class="portfolio-item" onmouseover="handleImageMouseover(this, '${highResUrl}')" onmouseout="handleImageMouseout(this, '${lowResUrl}')"onclick="openLightbox('${highResUrl}', '${img.desc}')"><img src="${lowResUrl}" alt="${img.desc}"><div class="description"><p>${img.desc}</p></div></div>
+      <div class="portfolio-item" 
+           onmouseover="handleImageMouseover(this, '${proxiedHighResUrl}')" 
+           onmouseout="handleImageMouseout(this, '${proxiedLowResUrl}')"
+           onclick="openLightbox('${proxiedHighResUrl}', '${img.desc}')">
+        <img data-src="${proxiedLowResUrl}" src="${placeholderSrc}" alt="${img.desc}" class="lazy">
+        <div class="description">
+          <p>${img.desc}</p>
+        </div>
+      </div>
     `}).join('');
 
     const rewriter = new HTMLRewriter()
       .on('.bgimg-header', {
         element(element) {
-          const baseUrl = latestImage.url;
-          element.setAttribute('style', `background-image: url('${baseUrl}&w=2000');`);
+          const proxiedUrl = `/image/?url=${encodeURIComponent(latestImage.url + '&w=2000')}`;
+          element.setAttribute('style', `background-image: url('${proxiedUrl}');`);
         },
       })
       .on('.smallImg-header', {
         element(element) {
-          const baseUrl = latestImage.url;
-          element.setAttribute('style', `background-image: url('${baseUrl}&w=384&h=216');`);
+          const proxiedUrl = `/image/?url=${encodeURIComponent(latestImage.url + '&w=384&h=216')}`;
+          element.setAttribute('style', `background-image: url('${proxiedUrl}');`);
         },
       })
       .on('.display-middle p', {
