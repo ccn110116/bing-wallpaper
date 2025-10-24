@@ -1,7 +1,8 @@
 {
   "name": "bing-wallpaper-ts",
   "scripts": {
-    "build": "tsc --project tsconfig.json && node dist/build.js"
+    "build": "tsc --project tsconfig.json && node dist/build.js",
+    "optcss": "purgecss --css src/worker/assets/style.css --content src/worker/index.html src/worker/index.ts --output src/worker/assets/new.css"
   },
   "devDependencies": {
     "@types/node": "^14.18.63",
