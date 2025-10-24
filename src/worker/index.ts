@@ -74,20 +74,9 @@ async function handleImageProxy(request: Request, ctx: ExecutionContext): Promis
     });
 
     if (response.ok) {
-      // We need to clone the response to be able to read it twice (once for cache, once for user)
-      const cacheResponse = response.clone();
-      
-      // Create a new response for the cache with mutable headers
-      const newHeaders = new Headers(cacheResponse.headers);
-      newHeaders.set('Cache-Control', 'public, max-age=86400');
-      
-      const finalCacheResponse = new Response(cacheResponse.body, {
-        status: cacheResponse.status,
-        statusText: cacheResponse.statusText,
-        headers: newHeaders
-      });
-
-      ctx.waitUntil((caches as any).default.put(cacheKey, finalCacheResponse));
+      response = new Response(response.body, response);
+      response.headers.set('Cache-Control', 'public, max-age=86400');
+      ctx.waitUntil(cache.put(cacheKey, response.clone()));
     }
   } else {
     console.log(`Cache hit for ${bingUrl}.`);
