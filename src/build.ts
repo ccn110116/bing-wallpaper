@@ -25,6 +25,8 @@ async function main() {
   // --- Manually Minify HTML ---
   const htmlContent = await fs.readFile(`${WORKER_SRC_PATH}/index.html`, 'utf-8');
   const minifiedHtml = cleanAndMinify(htmlContent);
+  const errorHtmlContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/error.html`, 'utf-8');
+  const minifiedErrorHtml = cleanAndMinify(errorHtmlContent);
 
   // --- Minify JS ---
   const jsContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/app.js`, 'utf-8');
@@ -48,6 +50,7 @@ async function main() {
     outfile: `${DIST_PATH}/src/worker.js`,
     define: {
       __HTML__: JSON.stringify(minifiedHtml),
+      __ERROR_HTML__: JSON.stringify(minifiedErrorHtml),
       __JS__: JSON.stringify(cleanAndMinify(minifiedJs.code)),
       __CSS__: JSON.stringify(cleanAndMinify(minifiedCss.code)),
     },

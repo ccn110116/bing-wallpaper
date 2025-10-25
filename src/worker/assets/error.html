@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error | Bing Wallpaper</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+        .bgimg-header {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('/image/latestImage') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+        .bgimg-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        .display-middle {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="bgimg-header">
+        <div class="display-middle">
+            <h1>Oops! Something went wrong.</h1>
+            <p>We couldn't find the page you were looking for. It might have been moved or doesn't exist.</p>
+            <a href="/" class="bar-item button" style="color: white; background-color: rgba(0,0,0,0.2); margin-top: 20px;">Return to Homepage</a>
+        </div>
+    </div>
+</body>
+</html>
