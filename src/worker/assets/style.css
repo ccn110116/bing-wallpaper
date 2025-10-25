@@ -160,8 +160,13 @@ body.dark-mode {
 }
 
 .display-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 .display-middle h1 {
@@ -169,7 +174,7 @@ body.dark-mode {
     font-size: 5em;
     font-weight: 700;
     margin-bottom: 0.25em;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
 }
 
 .display-middle p {
@@ -202,6 +207,7 @@ body.dark-mode {
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    transform: translateZ(0);
 }
 
 .portfolio-item:hover {
