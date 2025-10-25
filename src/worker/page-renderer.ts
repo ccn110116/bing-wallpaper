@@ -56,8 +56,7 @@ export async function handleMainPage(request: Request, env: Env, errorResponse: 
     const imageId = new URL(img.url).searchParams.get('id');
     if (!imageId) return '';
     return `
-    <div class="portfolio-item" onclick="openLightbox('/image/${imageId}', '${img.desc.replace(/'/g, "\\'")}')">
-      <img data-src="/image/${imageId}?small" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="${img.desc}" class="lazy">
+    <div class="portfolio-item" onclick="openLightbox('/image/${imageId}', '${img.desc.replace(/'/g, "\\'")}')" data-bg="/image/${imageId}?small">
       <div class="description"><p>${img.desc}</p></div>
     </div>`;
   }).join('');

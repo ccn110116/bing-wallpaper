@@ -36,31 +36,30 @@ function closeSidebar() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Lazy Loading Images
-    const lazyImages = document.querySelectorAll('img.lazy');
-    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+    // Lazy Loading Background Images
+    const lazyBackgrounds = document.querySelectorAll('.portfolio-item[data-bg]');
+    const lazyBackgroundObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                const lazyImage = entry.target;
-                lazyImage.src = lazyImage.dataset.src;
-                lazyImage.classList.remove('lazy');
-                observer.unobserve(lazyImage);
+                const lazyBackground = entry.target;
+                lazyBackground.style.backgroundImage = `url(${lazyBackground.dataset.bg})`;
+                observer.unobserve(lazyBackground);
             }
         });
     }, {
         rootMargin: "0px 0px 200px 0px" // Start loading when image is 200px away from viewport
     });
 
-    lazyImages.forEach((lazyImage) => {
-        lazyImageObserver.observe(lazyImage);
+    lazyBackgrounds.forEach((lazyBackground) => {
+        lazyBackgroundObserver.observe(lazyBackground);
     });
 
     // Sticky Nav Logic
     const nav = document.querySelector('.sticky-nav');
     if (nav) {
-        const navTop = nav.offsetTop;
+        const headerHeight = document.querySelector('.bgimg-header').offsetHeight;
         window.addEventListener('scroll', function() {
-            if (window.scrollY >= navTop) {
+            if (window.scrollY > headerHeight) {
                 nav.classList.add('fixed');
             } else {
                 nav.classList.remove('fixed');
@@ -170,18 +169,4 @@ function closeLightbox() {
     if (overlay) {
         overlay.classList.remove('show');
     }
-}
-
-let preloadTimer;
-function handleImageMouseover(element, fullResUrl) {
-    preloadTimer = setTimeout(() => {
-        const highResImg = new Image();
-        highResImg.src = fullResUrl;
-    }, 200);
-}
-
-function handleImageMouseout(element, lowResUrl) {
-    clearTimeout(preloadTimer);
-    // No longer resetting the src to lowResUrl to prevent unnecessary re-fetches.
-    // The browser will keep the high-res image if it was loaded.
 }
