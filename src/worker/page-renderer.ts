@@ -71,7 +71,7 @@ export async function handleMainPage(request: Request, env: Env, errorResponse: 
     .on('.bgimg-header', {
       element(element: Element) {
         const imageId = new URL(latestImage.url).searchParams.get('id');
-        element.setAttribute('style', `background-image: url('/image/${imageId}?preview');`);
+        element.setAttribute('style', `background-image: url('/image/${imageId}?2k');`);
       },
     })
     .on('.smallImg-header', {

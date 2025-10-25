@@ -165,10 +165,10 @@ function openLightbox(imgSrc, caption) {
     downloadDoneIcon.style.display = 'none';
 
     if (captionDiv) captionDiv.innerHTML = caption;
-    if (bingLink) bingLink.href = `https://www.bing.com/images/search?view=detailv2&id=${imageId}`;
+    if (bingLink) bingLink.href = `https://bing.com/th?id=${imageId}`;
     
     function updateDownloadLink() {
-        const quality = selectedRes === '4k' ? '' : '?w=1920';
+        const quality = selectedRes === '4k' ? '' : '?2k';
         downloadLink.href = `/image/${imageId}${quality}`;
     }
     updateDownloadLink();

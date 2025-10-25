@@ -25,7 +25,7 @@ async function handleImageProxy(request: Request, ctx: ExecutionContext): Promis
 
   let bingUrl = `https://bing.com/th?id=${imageId}`;
   if (url.searchParams.has('small')) bingUrl += '&w=384&h=216';
-  else if (url.searchParams.has('preview')) bingUrl += '&w=2000';
+  else if (url.searchParams.has('2k')) bingUrl += '&w=1920';
 
   const cache = (caches as any).default;
   const cacheKey = new Request(bingUrl);
@@ -59,7 +59,7 @@ export default {
       
       const latestImage = imageData[0];
       const imageId = new URL(latestImage.url).searchParams.get('id');
-      const imageUrl = new URL(`/image/${imageId}?preview`, request.url).toString();
+      const imageUrl = new URL(`/image/${imageId}?2k`, request.url).toString();
       return Response.redirect(imageUrl, 302);
     }
     if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);

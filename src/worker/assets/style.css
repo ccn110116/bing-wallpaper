@@ -47,7 +47,7 @@ body.dark-mode {
     top: 0;
     left: 0;
     right: 0;
-    background-color: var(--background-color);
+    background-color: transparent;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     padding: 0;
     opacity: 1;
@@ -178,10 +178,6 @@ body.dark-mode {
     font-size: 3em;
     font-weight: 400;
     margin-bottom: 0.25em;
-    text-shadow: 
-        0 2px 2px rgba(0,0,0,0.5), 
-        0 5px 15px rgba(0,0,0,0.4), 
-        0 0 1px rgba(255,255,255,0.5);
 }
 
 .display-middle p {
@@ -193,7 +189,7 @@ body.dark-mode {
 /* Image Gallery */
 .main.content {
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative; /* Ensure proper stacking context */
     z-index: 5;
@@ -206,12 +202,14 @@ body.dark-mode {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     padding: 30px 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .portfolio-item {
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.5s;
@@ -357,6 +355,7 @@ body.dark-mode {
     border-radius: 50%;
     width: 32px;
     height: 32px;
+    transition: background-color 0.3s;
 }
 
 .res-button.active {
