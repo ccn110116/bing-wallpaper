@@ -60,11 +60,11 @@ body.dark-mode {
 }
 
 .sticky-nav.fixed .bar-item.button {
-    color: var(--font-color);
+    color: white;
 }
 
 .sticky-nav.fixed #dark-mode-toggle {
-    color: var(--font-color);
+    color: white;
 }
 
 
