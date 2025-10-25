@@ -128,8 +128,12 @@ body.dark-mode {
 
 /* Header */
 .bgimg-header {
-    position: relative;
+    position: fixed;
     height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2; /* Ensure it's behind everything */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -178,11 +182,12 @@ body.dark-mode {
 /* Image Gallery */
 .main.content {
     padding: 20px;
-    max-width: 1200px;
+    max-width: 80px;
     margin: 0 auto;
-    position: relative; /* Ensure proper stacking context */
-    z-index: 5;
-    background-color: var(--background-color); /* Prevent transparency issues */
+    position: relative;
+    z-index: 1; /* Sits above the fixed header */
+    background-color: var(--background-color);
+    margin-top: 100vh; /* Push content below the folded header */
 }
 
 .portfolio-grid {
@@ -196,6 +201,7 @@ body.dark-mode {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
+    transform: translateZ(0); /* Force browser to respect overflow and border-radius */
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;

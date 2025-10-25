@@ -27,12 +27,12 @@ window.addEventListener('load', headerImgloading);
 // Script to open and close sidebar
 function openSidebar() {
     document.getElementById("sidebar").classList.add("open");
-    document.getElementById("overlay").classList.add("open");
+    document.getElementById("overlay").classList.add("show");
 }
 
 function closeSidebar() {
     document.getElementById("sidebar").classList.remove("open");
-    document.getElementById("overlay").classList.remove("open");
+    document.getElementById("overlay").classList.remove("show");
 }
 
 document.addEventListener('DOMContentLoaded', function() {
