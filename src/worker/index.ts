@@ -170,27 +170,36 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
+    // --- Asset Routes ---
+    if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
+    if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
+
+    // --- Image Proxy Routes ---
     if (pathname === '/image/latestImage') {
       const monthStr = new Date().toISOString().slice(0, 7);
       const imageData = await getImageData('en-US', monthStr, env);
-      if (!imageData || imageData.length === 0) {
-        return new Response('No latest image found', { status: 404 });
-      }
+      if (!imageData || imageData.length === 0) return getErrorResponse();
+      
       const latestImage = imageData[0];
       const imageId = new URL(latestImage.url).searchParams.get('id');
       const imageUrl = new URL(`/image/${imageId}`, request.url).toString();
       return Response.redirect(imageUrl, 302);
     }
-
     if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
-    if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
-    if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
 
+    // --- Dynamic Page Routes (with strict validation) ---
+    const validPathRegex = /^\/(zh-cn|zh-hk)?(\/\d{4}-\d{2})?$/;
+    if (validPathRegex.test(pathname)) {
+      return handleMainPage(request, env);
+    }
+
+    // --- Static Assets ---
     const staticAssetResponse = await env.ASSETS.fetch(request);
     if (staticAssetResponse.status < 400) {
         return staticAssetResponse;
     }
 
-    return handleMainPage(request, env);
+    // --- Fallback to Error Page for any other path ---
+    return getErrorResponse();
   },
 };
