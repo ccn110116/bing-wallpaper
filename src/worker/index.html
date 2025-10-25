@@ -11,7 +11,7 @@
     <script src="/app.js"></script>
 </head>
 <body>
-<div id="overlay" class="overlay" onclick="w3_close()"></div>
+<div id="overlay" class="overlay" onclick="closeSidebar()"></div>
 <div id="lightbox" class="lightbox">
     <div class="loading-spinner"></div>
     <span class="close-lightbox" onclick="closeLightbox()">
@@ -22,7 +22,7 @@
 </div>
 <div id="header-container" style="position: relative; height: 100vh;">
     <div class="smallImg-header"></div> <!-- 模糊的小图 -->
-    <div class="bgimg-header" style="padding: 20px;">
+    <div class="bgimg-header">
         <div class="display-middle">
             <h1>Bing Wallpaper</h1>
             <p></p>
@@ -31,7 +31,7 @@
 
 <!-- Sidebar (hidden by default) -->
 <sidebar class="sidebar bar-block card top xlarge animate-left" style="display:none;z-index:2;max-width:200px;min-width:100px" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="bar-item button">收起</a>
+    <a href="javascript:void(0)" onclick="closeSidebar()" class="bar-item button">收起</a>
     <div id="archive-list"></div>
 </sidebar>
 
@@ -39,7 +39,7 @@
     <div class="bar transparent round">
         <div class="nav-links">
             <a href="/" class="bar-item button">首页</a>
-            <a href="#portfolio" class="bar-item button" onclick="w3_open()">归档</a>
+            <a class="bar-item button" onclick="openSidebar()">归档</a>
             <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hide-small">GitHub</a>
             <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hide-small">关于</a>
         </div>

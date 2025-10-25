@@ -156,13 +156,6 @@ body.dark-mode {
     z-index: -1;
 }
 
-.bgimg-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .display-middle {
     text-align: center;
     padding: 20px;
@@ -184,7 +177,7 @@ body.dark-mode {
 
 /* Image Gallery */
 .main.content {
-    padding: 60px 20px;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative; /* Ensure proper stacking context */

@@ -25,12 +25,12 @@ function headerImgloading() {
 window.addEventListener('load', headerImgloading);
 
 // Script to open and close sidebar
-function w3_open() {
+function openSidebar() {
     document.getElementById("mySidebar").classList.add("open");
     document.getElementById("overlay").classList.add("open");
 }
 
-function w3_close() {
+function closeSidebar() {
     document.getElementById("mySidebar").classList.remove("open");
     document.getElementById("overlay").classList.remove("open");
 }
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     monthLink.href = `/${month}.html`;
                     monthLink.className = 'bar-item button hover-green large';
                     monthLink.textContent = month;
-                    monthLink.onclick = w3_close;
+                    monthLink.onclick = closeSidebar;
                     panel.appendChild(monthLink);
                 });
             }

@@ -1,13 +1,18 @@
 {
-  "name": "bing-wallpaper-ts",
+  "name": "bing-wallpaper",
   "scripts": {
     "build": "tsc --project tsconfig.json && node dist/build.js",
-    "optcss": "purgecss --css src/worker/assets/style.css --content src/worker/index.html src/worker/index.ts --output src/worker/assets/new.css"
+    "optcss": "purgecss --css src/worker/assets/style.css --content src/worker/index.html src/worker/index.ts  src/worker/assets/app.js --output src/worker/assets/new.css"
+  },
+  "dependencies": {
+    "@types/node": "^14.18.63",
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@types/node": "^14.18.63",
     "esbuild": "^0.25.11",
-    "purgecss": "^7.0.2",
-    "typescript": "^4.2.2"
+    "purgecss": "^7.0.2"
+  },
+  "optionalDependencies": {
+    "@cloudflare/workers-types": "^4.20251014.0"
   }
 }
