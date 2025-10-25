@@ -36,35 +36,48 @@ function closeSidebar() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Lazy Loading Background Images
-    const lazyBackgrounds = document.querySelectorAll('.portfolio-item[data-bg]');
-    const lazyBackgroundObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
+    // Lazy Loading & Preloading Logic
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    let preloadTimer;
+
+    const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const lazyBackground = entry.target;
-                lazyBackground.style.backgroundImage = `url(${lazyBackground.dataset.bg})`;
-                observer.unobserve(lazyBackground);
+                const item = entry.target;
+                item.style.backgroundImage = `url(${item.dataset.bg})`;
+                observer.unobserve(item);
+
+                // Add hover listeners after the image is loaded
+                item.addEventListener('mouseover', () => {
+                    preloadTimer = setTimeout(() => {
+                        const fullResUrl = item.dataset.bg.replace('?small', '');
+                        const img = new Image();
+                        img.src = fullResUrl;
+                    }, 400);
+                });
+
+                item.addEventListener('mouseout', () => {
+                    clearTimeout(preloadTimer);
+                });
             }
         });
-    }, {
-        rootMargin: "0px 0px 200px 0px" // Start loading when image is 200px away from viewport
+    }, { rootMargin: "0px 0px 200px 0px" });
+
+    portfolioItems.forEach(item => {
+        lazyLoadObserver.observe(item);
     });
 
-    lazyBackgrounds.forEach((lazyBackground) => {
-        lazyBackgroundObserver.observe(lazyBackground);
-    });
-
-    // Sticky Nav Logic
+    // Sticky Nav Logic using Intersection Observer
     const nav = document.querySelector('.sticky-nav');
-    if (nav) {
-        const headerHeight = document.querySelector('.bgimg-header').offsetHeight;
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > headerHeight) {
-                nav.classList.add('fixed');
-            } else {
-                nav.classList.remove('fixed');
-            }
-        });
+    const header = document.querySelector('.bgimg-header');
+
+    if (nav && header) {
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                nav.classList.toggle('fixed', !entry.isIntersecting);
+            });
+        }, { threshold: 0.1 });
+        navObserver.observe(header);
     }
 
     const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -137,19 +150,50 @@ function openLightbox(imgSrc, caption) {
     const lightboxImg = document.getElementById('lightbox-img');
     const spinner = lightbox.querySelector('.loading-spinner');
     const overlay = document.getElementById('overlay');
+    const captionDiv = document.getElementById('lightbox-caption');
+    const downloadLink = document.getElementById('download-link');
+    const bingLink = document.getElementById('bing-link');
+    const resButtons = document.querySelectorAll('.res-button');
+    const downloadIcon = downloadLink.querySelector('.download-icon');
+    const downloadDoneIcon = downloadLink.querySelector('.download-done-icon');
+
+    const imageId = imgSrc.split('/').pop();
+    let selectedRes = '4k';
+
+    // Reset icons
+    downloadIcon.style.display = 'inline-block';
+    downloadDoneIcon.style.display = 'none';
+
+    if (captionDiv) captionDiv.innerHTML = caption;
+    if (bingLink) bingLink.href = `https://www.bing.com/images/search?view=detailv2&id=${imageId}`;
+    
+    function updateDownloadLink() {
+        const quality = selectedRes === '4k' ? '' : '?w=1920';
+        downloadLink.href = `/image/${imageId}${quality}`;
+    }
+    updateDownloadLink();
+
+    resButtons.forEach(button => {
+        button.onclick = () => {
+            resButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedRes = button.dataset.res;
+            updateDownloadLink();
+        };
+    });
+
+    downloadLink.onclick = () => {
+        setTimeout(() => {
+            downloadIcon.style.display = 'none';
+            downloadDoneIcon.style.display = 'inline-block';
+        }, 1000);
+    };
 
     if (spinner) spinner.style.display = 'block';
     if (lightboxImg) lightboxImg.style.display = 'none';
-    const captionDiv = document.getElementById('lightbox-caption');
-    if (captionDiv) captionDiv.innerHTML = caption;
     
-    if (lightbox) {
-        lightbox.classList.add('show');
-    }
-    if (overlay) {
-        overlay.classList.add('show');
-    }
-
+    if (lightbox) lightbox.classList.add('show');
+    if (overlay) overlay.classList.add('show');
 
     const highResImg = new Image();
     highResImg.src = imgSrc;
