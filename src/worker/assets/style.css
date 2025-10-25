@@ -48,7 +48,7 @@ body.dark-mode {
     left: 0;
     right: 0;
     background-color: transparent;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: none;
     padding: 0;
     opacity: 1;
     visibility: visible;
@@ -57,7 +57,6 @@ body.dark-mode {
 .sticky-nav.fixed .bar {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.1); /* Keep the glass effect */
 }
 
 .sticky-nav.fixed .bar-item.button {
@@ -178,12 +177,22 @@ body.dark-mode {
     font-size: 3em;
     font-weight: 400;
     margin-bottom: 0.25em;
+    text-shadow: none;
 }
 
 .display-middle p {
     font-family: "Noto Sans Mono", monospace;
     font-size: 1.2em;
     font-weight: 300;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Image Gallery */
