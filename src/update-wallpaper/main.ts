@@ -1,4 +1,4 @@
-import { generateSite } from './siteGenerator';
+import { generateSite } from './wallpaper-updater';
 import { log } from './utils';
 
 async function main() {
