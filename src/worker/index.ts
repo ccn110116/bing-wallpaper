@@ -18,39 +18,6 @@ function getErrorResponse(): Response {
   });
 }
 
-// --- Region and Path Parsing Logic (extracted to function) ---
-function parsePathAndRegion(pathname: string) {
-  const pathSegments = pathname.split('/').filter(Boolean);
-  const supportedRegions: { [key: string]: string } = {
-    'en-us': 'en-US',
-    'zh-cn': 'zh-CN',
-    'zh-hk': 'zh-HK',
-  };
-
-  let activeRegion = 'en-US';
-  let monthStr = new Date().toISOString().slice(0, 7);
-  let potentialMonth: string | undefined;
-
-  // Check for a region anywhere in the path
-  const regionSegment = pathSegments.find(p => supportedRegions[p.toLowerCase()]);
-  if (regionSegment) {
-    activeRegion = supportedRegions[regionSegment.toLowerCase()];
-    // The segment after the region might be the month
-    const regionIndex = pathSegments.indexOf(regionSegment);
-    potentialMonth = pathSegments[regionIndex + 1];
-  } else {
-    // If no region is found, the first segment might be the month
-    potentialMonth = pathSegments[0];
-  }
-
-  // Validate if the potential month is in the correct format (YYYY-MM)
-  if (potentialMonth && /^\d{4}-\d{2}$/.test(potentialMonth)) {
-    monthStr = potentialMonth;
-  }
-
-  return { pathSegments, regionSegment, activeRegion, monthStr };
-}
-
 async function handleImageProxy(request: Request, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const imageId = url.pathname.replace('/image/', '');
@@ -93,31 +60,63 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    // Handle image proxy and latest image first
+    // --- Image Proxy & Redirects ---
     if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
     if (pathname === '/image/latestImage') return handleLatestImage(request, env);
-    
-    // Serve static assets
+
+    // --- Static Assets ---
     if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
     if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
-    
-    // Region and Path Parsing
-    const { pathSegments, regionSegment, activeRegion, monthStr } = parsePathAndRegion(pathname);
 
-    // After parsing, check if it's a valid main page request
-    const isMainPageRequest = pathname === '/' || !!regionSegment || (pathSegments.length === 1 && /^\d{4}-\d{2}$/.test(pathSegments[0]));
+    // --- Data Assets ---
+    if (pathname.startsWith('/data/')) {
+      return env.ASSETS.fetch(request);
+    }
 
-    if (isMainPageRequest) {
+    // --- Main Page Rendering Logic ---
+    const supportedRegions: { [key: string]: string } = {
+      'en-us': 'en-US',
+      'zh-cn': 'zh-CN',
+      'zh-hk': 'zh-HK',
+    };
+    const monthRegex = /^\d{4}-\d{2}$/;
+
+    const pathSegments = pathname.split('/').filter(Boolean);
+
+    let activeRegion = 'en-US';
+    let monthStr = new Date().toISOString().slice(0, 7);
+
+    // Pattern 1: /
+    if (pathSegments.length === 0) {
       return handleMainPage(request, env, activeRegion, monthStr);
     }
 
-    // Fallback for other static assets
-    const staticAssetResponse = await env.ASSETS.fetch(request);
-    if (staticAssetResponse.status < 400) {
-        return staticAssetResponse;
+    // Pattern 2: /{region} or /{month}
+    if (pathSegments.length === 1) {
+      const segment = pathSegments[0];
+      const lowerSegment = segment.toLowerCase();
+      if (supportedRegions[lowerSegment]) {
+        activeRegion = supportedRegions[lowerSegment];
+        return handleMainPage(request, env, activeRegion, monthStr);
+      }
+      if (monthRegex.test(segment)) {
+        monthStr = segment;
+        return handleMainPage(request, env, activeRegion, monthStr);
+      }
     }
 
-    // If nothing matches, return 404
+    // Pattern 3: /{region}/{month}
+    if (pathSegments.length === 2) {
+      const regionSegment = pathSegments[0].toLowerCase();
+      const monthSegment = pathSegments[1];
+      if (supportedRegions[regionSegment] && monthRegex.test(monthSegment)) {
+        activeRegion = supportedRegions[regionSegment];
+        monthStr = monthSegment;
+        return handleMainPage(request, env, activeRegion, monthStr);
+      }
+    }
+
+    // --- Fallback to 404 for any other path ---
     return getErrorResponse();
   },
 };
