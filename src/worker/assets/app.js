@@ -143,6 +143,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }
+        })
+        .catch(error => {
+            console.error('Failed to load archive data for region:', region, error);
+            const archiveList = document.getElementById('archive-list');
+            if (archiveList) {
+                archiveList.innerHTML = '<p style="padding: 10px 15px;">Could not load archive.</p>';
+            }
         });
 });
 
