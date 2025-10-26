@@ -154,6 +154,7 @@ function openLightbox(imgSrc, caption) {
     const bingLink = document.getElementById('bing-link');
     const resButtons = document.querySelectorAll('.res-button');
     const downloadIcon = downloadLink.querySelector('.download-icon');
+    const downloadLoadingIcon = downloadLink.querySelector('.download-loading-icon');
     const downloadDoneIcon = downloadLink.querySelector('.download-done-icon');
 
     const imageId = imgSrc.split('/').pop();
@@ -161,15 +162,17 @@ function openLightbox(imgSrc, caption) {
 
     // Reset icons
     downloadIcon.style.display = 'inline-block';
+    downloadLoadingIcon.style.display = 'none';
     downloadDoneIcon.style.display = 'none';
 
     if (captionDiv) captionDiv.innerHTML = caption;
 
     const updateDownloadLink = () => {
-        const quality = selectedRes === '4k' ? '' : '&w=1920';
-        const link = `https://bing.com/th?id=${imageId}${quality}`;
-        if (downloadLink) downloadLink.href = link;
-        if (bingLink) bingLink.href = link;
+        const bingLinkUrl = `https://bing.com/th?id=${imageId}${selectedRes === '4k' ? '' : '&w=1920'}`;
+        const workerLinkUrl = `/image/${imageId}${selectedRes === '4k' ? '' : '?2k'}`;
+        
+        if (downloadLink) downloadLink.href = workerLinkUrl;
+        if (bingLink) bingLink.href = bingLinkUrl;
     };
     updateDownloadLink();
 
@@ -185,9 +188,11 @@ function openLightbox(imgSrc, caption) {
     downloadLink.onclick = (event) => {
         event.preventDefault();
         const url = downloadLink.href;
-        const filename = new URL(url).searchParams.get('id') || 'wallpaper.jpg';
+        const filename = imageId || 'wallpaper.jpg';
 
         downloadIcon.style.display = 'none';
+        downloadLoadingIcon.style.display = 'inline-block';
+        downloadDoneIcon.style.display = 'none';
 
         fetch(url)
             .then(response => {
@@ -211,11 +216,12 @@ function openLightbox(imgSrc, caption) {
             })
             .catch(e => {
                 console.error('Download failed:', e);
-                // Restore the original icon on failure
                 downloadIcon.style.display = 'inline-block';
-                downloadDoneIcon.style.display = 'none';
                 // Optionally, open the link in a new tab as a fallback
-                window.open(url, '_blank');
+                window.open(bingLink.href, '_blank');
+            })
+            .finally(() => {
+                downloadLoadingIcon.style.display = 'none';
             });
     };
 
