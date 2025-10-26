@@ -54,7 +54,8 @@ export async function handleMainPage(request: Request, env: Env, errorResponse: 
   const imageGridHTML = imageData.map(img => {
     const imageId = new URL(img.url).searchParams.get('id');
     if (!imageId) return '';
-    return `<div class="portfolio-item" onclick="openLightbox('/image/${imageId}', '${img.desc.replace(/'/g, "\\'")}')" data-bg="/image/${imageId}?small"><div class="description"><p>${img.desc}</p></div></div>`;
+    const caption = img.desc.replace(/'/g, "\\'");
+    return `<div class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="/image/${imageId}?small"><div class="description"><p>${img.desc}</p></div></div>`;
   }).join('');
 
   const rewriter = new HTMLRewriter()

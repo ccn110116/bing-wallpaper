@@ -39,6 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     let preloadTimer;
 
+    // Add click listener to portfolio items to open lightbox
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const imageId = item.dataset.imageId;
+            const caption = item.dataset.caption;
+            if (imageId) {
+                openLightbox(`/image/${imageId}`, caption);
+            }
+        });
+    });
+
     const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -89,10 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const pathname = window.location.pathname;
     const pathSegments = pathname.split('/').filter(Boolean);
     let region = 'en-US';
-    const supportedRegions = ['zh-cn', 'zh-hk'];
+    const supportedRegions = ['en-us', 'zh-cn', 'zh-hk'];
 
-    if (pathSegments.length > 0 && supportedRegions.includes(pathSegments[0])) {
-        region = pathSegments[0];
+    if (pathSegments.length > 0 && supportedRegions.includes(pathSegments[0].toLowerCase())) {
+        region = pathSegments[0].toLowerCase();
     }
 
     fetch(`/data/${region}/months.json`)
