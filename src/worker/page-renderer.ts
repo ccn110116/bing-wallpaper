@@ -45,7 +45,7 @@ export async function handleMainPage(request: Request, env: Env, activeRegion: s
     const imageId = new URL(img.url).searchParams.get('id');
     if (!imageId) return '';
     const caption = img.desc.replace(/'/g, "\\'");
-    return `<div class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="/image/${imageId}?small"><div class="description"><p>${img.desc}</p></div></div>`;
+    return `<a class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="/image/${imageId}?small"><div class="description"><p>${img.desc}</p></div></a>`;
   }).join('');
 
   const rewriter = new HTMLRewriter()
