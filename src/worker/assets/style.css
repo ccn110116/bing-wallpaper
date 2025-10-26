@@ -57,7 +57,6 @@ body.dark-mode {
 .sticky-nav.fixed .bar {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .sticky-nav.fixed .bar-item.button {
@@ -76,10 +75,10 @@ body.dark-mode {
     padding: 10px 20px;
     margin: 20px auto;
     max-width: 900px;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: background-color 0.4s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-links {
@@ -190,7 +189,6 @@ body.dark-mode {
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 20px 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -292,8 +290,8 @@ body.dark-mode {
 }
 
 .lightbox-content {
-    max-width: 90vw;
-    max-height: 85vh;
+    max-width: 70vw;
+    max-height: 72vh;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     object-fit: contain; /* Ensure image fits without being cropped */
@@ -327,15 +325,15 @@ body.dark-mode {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    padding: 5px 0;
+    gap: 20px;
+    padding: 10px 0;
 }
 
 .control-button {
     background: rgba(0,0,0,0.2);
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -350,10 +348,10 @@ body.dark-mode {
 
 .resolution-selector {
     display: flex;
-    gap: 4px;
+    gap: 5px;
     background: rgba(0,0,0,0.2);
     border-radius: 30px;
-    padding: 3px;
+    padding: 4px;
     border: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -361,13 +359,9 @@ body.dark-mode {
     background: transparent;
     border: none;
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.res-button:active {
-    transform: scale(0.9);
+    width: 32px;
+    height: 32px;
+    transition: background-color 0.3s;
 }
 
 .res-button.active {

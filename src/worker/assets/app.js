@@ -24,16 +24,15 @@ function headerImgloading() {
 }
 window.addEventListener('load', headerImgloading);
 
-// Script to open and close sidebar
-function openSidebar() {
-    document.getElementById("sidebar").classList.add("open");
-    document.getElementById("overlay").classList.add("open");
+function setSidebar(open = true) {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    if (!sidebar && !overlay) return;
+    [sidebar, overlay].forEach(el => el?.classList.toggle('open', !!open));
 }
 
-function closeSidebar() {
-    document.getElementById("sidebar").classList.remove("open");
-    document.getElementById("overlay").classList.remove("open");
-}
+function openSidebar() { setSidebar(true); }
+function closeSidebar() { setSidebar(false); }
 
 document.addEventListener('DOMContentLoaded', function() {
     // Lazy Loading & Preloading Logic
@@ -165,13 +164,12 @@ function openLightbox(imgSrc, caption) {
     downloadDoneIcon.style.display = 'none';
 
     if (captionDiv) captionDiv.innerHTML = caption;
-    if (bingLink) bingLink.href = `https://bing.com/th?id=${imageId}`;
-    
-    function updateDownloadLink() {
-        const quality = selectedRes === '4k' ? '' : '?w=1920';
-        downloadLink.href = `/image/${imageId}${quality}`;
+
+    const updateDownloadLink = () => {
+        const quality = selectedRes === '4k' ? '' : '&w=1920';
+        if (downloadLink) downloadLink.href = `/image/${imageId}${quality}`;
         if (bingLink) bingLink.href = `https://bing.com/th?id=${imageId}${quality}`;
-    }
+    };
     updateDownloadLink();
 
     resButtons.forEach(button => {
