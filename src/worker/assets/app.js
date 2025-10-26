@@ -167,8 +167,9 @@ function openLightbox(imgSrc, caption) {
 
     const updateDownloadLink = () => {
         const quality = selectedRes === '4k' ? '' : '&w=1920';
-        if (downloadLink) downloadLink.href = `/image/${imageId}${quality}`;
-        if (bingLink) bingLink.href = `https://bing.com/th?id=${imageId}${quality}`;
+        const link = `https://bing.com/th?id=${imageId}${quality}`;
+        if (downloadLink) downloadLink.href = link;
+        if (bingLink) bingLink.href = link;
     };
     updateDownloadLink();
 

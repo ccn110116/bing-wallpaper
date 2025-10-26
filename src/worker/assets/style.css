@@ -36,10 +36,12 @@ body.dark-mode {
     right: 0;
     width: 100%;
     z-index: 1000;
-    transition: all 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
     padding: 10px 0;
     opacity: 0;
     visibility: hidden;
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 .sticky-nav.fixed {
@@ -75,10 +77,11 @@ body.dark-mode {
     padding: 10px 20px;
     margin: 20px auto;
     max-width: 900px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
 }
 
 .nav-links {
@@ -189,7 +192,6 @@ body.dark-mode {
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 20px 40px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Image Gallery */
@@ -292,7 +294,7 @@ body.dark-mode {
 .lightbox-content {
     max-width: 70vw;
     max-height: 72vh;
-    border-radius: 10px;
+    border-radius: 18px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     object-fit: contain; /* Ensure image fits without being cropped */
 }
