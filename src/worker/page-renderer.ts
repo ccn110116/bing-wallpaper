@@ -25,16 +25,15 @@ export async function handleMainPage(request: Request, env: Env, errorResponse: 
   const url = new URL(request.url);
   const pathSegments = url.pathname.split('/').filter(Boolean);
 
-  const regionMap: { [key: string]: string } = { 'en-us': 'en-US', 'zh-cn': 'zh-CN', 'zh-hk': 'zh-HK' };
   const supportedRegions = ['en-US', 'zh-CN', 'zh-HK'];
   
   let activeRegion = 'en-US';
   let monthStr = new Date().toISOString().slice(0, 7);
 
   if (pathSegments.length > 0) {
-    const regionSegment = pathSegments[0].toLowerCase();
-    if (regionMap[regionSegment]) {
-      activeRegion = regionMap[regionSegment];
+    const regionSegment = pathSegments[0];
+    if (supportedRegions.includes(regionSegment)) {
+      activeRegion = regionSegment;
       if (pathSegments.length > 1) monthStr = pathSegments[1];
     } else if (/^\d{4}-\d{2}$/.test(regionSegment)) {
       monthStr = regionSegment;

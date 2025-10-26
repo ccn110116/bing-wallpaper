@@ -49,6 +49,23 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
+    const rewriteMatch = pathname.match(/^\/(data\/)?([a-z]{2}-[a-z]{2})(.*)$/i);
+    if (rewriteMatch) {
+      const hasDataPrefix = rewriteMatch[1];
+      const locale = rewriteMatch[2];
+      const restOfPath = rewriteMatch[3];
+      
+      const [lang, country] = locale.split('-');
+      const canonicalLocale = `${lang.toLowerCase()}-${country.toUpperCase()}`;
+      
+      if (hasDataPrefix || locale !== canonicalLocale) {
+        const newPath = `/${canonicalLocale}${restOfPath}`;
+        const newUrl = new URL(url);
+        newUrl.pathname = newPath;
+        return Response.redirect(newUrl.toString(), 301);
+      }
+    }
+
     if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
     if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
 
@@ -64,7 +81,7 @@ export default {
     }
     if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
 
-    const validPathRegex = /^\/((en-us|zh-cn|zh-hk)(\/\d{4}-\d{2})?|\d{4}-\d{2})?$/i;
+    const validPathRegex = /^\/((en-US|zh-CN|zh-HK)(\/\d{4}-\d{2})?|\d{4}-\d{2})?$/;
     if (validPathRegex.test(pathname)) {
       return handleMainPage(request, env, getErrorResponse());
     }
