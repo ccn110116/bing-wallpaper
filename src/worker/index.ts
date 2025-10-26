@@ -12,10 +12,43 @@ function getAssetResponse(content: string, contentType: string): Response {
 }
 
 function getErrorResponse(): Response {
-    return new Response(__ERROR_HTML__, {
-        status: 404,
-        headers: { 'Content-Type': 'text/html;charset=UTF-8' },
-    });
+  return new Response(__ERROR_HTML__, {
+    status: 404,
+    headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+  });
+}
+
+// --- Region and Path Parsing Logic (extracted to function) ---
+function parsePathAndRegion(pathname: string) {
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const supportedRegions: { [key: string]: string } = {
+    'en-us': 'en-US',
+    'zh-cn': 'zh-CN',
+    'zh-hk': 'zh-HK',
+  };
+
+  let activeRegion = 'en-US';
+  let monthStr = new Date().toISOString().slice(0, 7);
+  let potentialMonth: string | undefined;
+
+  // Check for a region anywhere in the path
+  const regionSegment = pathSegments.find(p => supportedRegions[p.toLowerCase()]);
+  if (regionSegment) {
+    activeRegion = supportedRegions[regionSegment.toLowerCase()];
+    // The segment after the region might be the month
+    const regionIndex = pathSegments.indexOf(regionSegment);
+    potentialMonth = pathSegments[regionIndex + 1];
+  } else {
+    // If no region is found, the first segment might be the month
+    potentialMonth = pathSegments[0];
+  }
+
+  // Validate if the potential month is in the correct format (YYYY-MM)
+  if (potentialMonth && /^\d{4}-\d{2}$/.test(potentialMonth)) {
+    monthStr = potentialMonth;
+  }
+
+  return { pathSegments, regionSegment, activeRegion, monthStr };
 }
 
 async function handleImageProxy(request: Request, ctx: ExecutionContext): Promise<Response> {
@@ -44,53 +77,47 @@ async function handleImageProxy(request: Request, ctx: ExecutionContext): Promis
   return response;
 }
 
+async function handleLatestImage(request: Request, env: Env): Promise<Response> {
+  const monthStr = new Date().toISOString().slice(0, 7);
+  const imageData = await getImageData('en-US', monthStr, env);
+  if (!imageData || imageData.length === 0) return getErrorResponse();
+
+  const latestImage = imageData[0];
+  const imageId = new URL(latestImage.url).searchParams.get('id');
+  const imageUrl = new URL(`/image/${imageId}?2k`, request.url).toString();
+  return Response.redirect(imageUrl, 302);
+}
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
 
-    const rewriteMatch = pathname.match(/^\/(data\/)?([a-z]{2}-[a-z]{2})(.*)$/i);
-    if (rewriteMatch) {
-      const hasDataPrefix = rewriteMatch[1];
-      const locale = rewriteMatch[2];
-      const restOfPath = rewriteMatch[3];
-      
-      const [lang, country] = locale.split('-');
-      const canonicalLocale = `${lang.toLowerCase()}-${country.toUpperCase()}`;
-      
-      if (hasDataPrefix || locale !== canonicalLocale) {
-        const newPath = `/${canonicalLocale}${restOfPath}`;
-        const newUrl = new URL(url);
-        newUrl.pathname = newPath;
-        return Response.redirect(newUrl.toString(), 301);
-      }
-    }
-
+    // Handle image proxy and latest image first
+    if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
+    if (pathname === '/image/latestImage') return handleLatestImage(request, env);
+    
+    // Serve static assets
     if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
     if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
+    
+    // Region and Path Parsing
+    const { pathSegments, regionSegment, activeRegion, monthStr } = parsePathAndRegion(pathname);
 
-    if (pathname === '/image/latestImage') {
-      const monthStr = new Date().toISOString().slice(0, 7);
-      const imageData = await getImageData('en-US', monthStr, env);
-      if (!imageData || imageData.length === 0) return getErrorResponse();
-      
-      const latestImage = imageData[0];
-      const imageId = new URL(latestImage.url).searchParams.get('id');
-      const imageUrl = new URL(`/image/${imageId}?2k`, request.url).toString();
-      return Response.redirect(imageUrl, 302);
-    }
-    if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
+    // After parsing, check if it's a valid main page request
+    const isMainPageRequest = pathname === '/' || !!regionSegment || (pathSegments.length === 1 && /^\d{4}-\d{2}$/.test(pathSegments[0]));
 
-    const validPathRegex = /^\/((en-US|zh-CN|zh-HK)(\/\d{4}-\d{2})?|\d{4}-\d{2})?$/;
-    if (validPathRegex.test(pathname)) {
-      return handleMainPage(request, env, getErrorResponse());
+    if (isMainPageRequest) {
+      return handleMainPage(request, env, activeRegion, monthStr);
     }
 
+    // Fallback for other static assets
     const staticAssetResponse = await env.ASSETS.fetch(request);
     if (staticAssetResponse.status < 400) {
         return staticAssetResponse;
     }
 
+    // If nothing matches, return 404
     return getErrorResponse();
   },
 };

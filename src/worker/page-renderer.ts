@@ -1,6 +1,14 @@
 import { BingImage, Env } from './types';
 
 declare const __HTML__: string;
+declare const __ERROR_HTML__: string;
+
+function getErrorResponse(): Response {
+  return new Response(__ERROR_HTML__, {
+    status: 404,
+    headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+  });
+}
 
 async function fetchJson<T>(path: string, env: Env): Promise<T | null> {
   try {
@@ -21,32 +29,14 @@ function getMonthsData(region: string, env: Env): Promise<string[] | null> {
   return fetchJson<string[]>(`/data/${region}/months.json`, env);
 }
 
-export async function handleMainPage(request: Request, env: Env, errorResponse: Response): Promise<Response> {
-  const url = new URL(request.url);
-  const pathSegments = url.pathname.split('/').filter(Boolean);
-
-  const supportedRegions = ['en-US', 'zh-CN', 'zh-HK'];
-  
-  let activeRegion = 'en-US';
-  let monthStr = new Date().toISOString().slice(0, 7);
-
-  if (pathSegments.length > 0) {
-    const regionSegment = pathSegments[0];
-    if (supportedRegions.includes(regionSegment)) {
-      activeRegion = regionSegment;
-      if (pathSegments.length > 1) monthStr = pathSegments[1];
-    } else if (/^\d{4}-\d{2}$/.test(regionSegment)) {
-      monthStr = regionSegment;
-    }
-  }
-
+export async function handleMainPage(request: Request, env: Env, activeRegion: string, monthStr: string): Promise<Response> {
   const [imageData, monthsData] = await Promise.all([
     getImageData(activeRegion, monthStr, env),
     getMonthsData(activeRegion, env)
   ]);
 
   if (!imageData || imageData.length === 0) {
-    return errorResponse;
+    return getErrorResponse();
   }
 
   const latestImage = imageData[0];

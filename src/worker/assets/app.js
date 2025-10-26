@@ -35,20 +35,24 @@ function openSidebar() { setSidebar(true); }
 function closeSidebar() { setSidebar(false); }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Event Delegation for portfolio item clicks
+    const imgList = document.getElementById('img_list');
+    if (imgList) {
+        imgList.addEventListener('click', function(event) {
+            const item = event.target.closest('.portfolio-item');
+            if (item) {
+                const imageId = item.dataset.imageId;
+                const caption = item.dataset.caption;
+                if (imageId) {
+                    openLightbox(`/image/${imageId}`, caption);
+                }
+            }
+        });
+    }
+
     // Lazy Loading & Preloading Logic
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     let preloadTimer;
-
-    // Add click listener to portfolio items to open lightbox
-    portfolioItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const imageId = item.dataset.imageId;
-            const caption = item.dataset.caption;
-            if (imageId) {
-                openLightbox(`/image/${imageId}`, caption);
-            }
-        });
-    });
 
     const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
