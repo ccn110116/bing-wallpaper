@@ -154,20 +154,15 @@ function openLightbox(imgSrc, caption) {
     const downloadLink = document.getElementById('download-link');
     const bingLink = document.getElementById('bing-link');
     const resButtons = document.querySelectorAll('.res-button');
-    const resolutionSelector = document.querySelector('.resolution-selector');
     const downloadIcon = downloadLink.querySelector('.download-icon');
     const downloadDoneIcon = downloadLink.querySelector('.download-done-icon');
 
     const imageId = imgSrc.split('/').pop();
     let selectedRes = '4k';
 
-    // Reset icons and slider state
+    // Reset icons
     downloadIcon.style.display = 'inline-block';
     downloadDoneIcon.style.display = 'none';
-    if (resolutionSelector) {
-        resolutionSelector.classList.remove('res-2k-active');
-    }
-
 
     if (captionDiv) captionDiv.innerHTML = caption;
     if (bingLink) bingLink.href = `https://bing.com/th?id=${imageId}`;
@@ -184,13 +179,6 @@ function openLightbox(imgSrc, caption) {
             resButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             selectedRes = button.dataset.res;
-            if (resolutionSelector) {
-                if (selectedRes === '2k') {
-                    resolutionSelector.classList.add('res-2k-active');
-                } else {
-                    resolutionSelector.classList.remove('res-2k-active');
-                }
-            }
             updateDownloadLink();
         };
     });
