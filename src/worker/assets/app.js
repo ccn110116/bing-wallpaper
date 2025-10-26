@@ -182,11 +182,41 @@ function openLightbox(imgSrc, caption) {
         };
     });
 
-    downloadLink.onclick = () => {
-        setTimeout(() => {
-            downloadIcon.style.display = 'none';
-            downloadDoneIcon.style.display = 'inline-block';
-        }, 1000);
+    downloadLink.onclick = (event) => {
+        event.preventDefault();
+        const url = downloadLink.href;
+        const filename = new URL(url).searchParams.get('id') || 'wallpaper.jpg';
+
+        downloadIcon.style.display = 'none';
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(blobUrl);
+                a.remove();
+                
+                downloadDoneIcon.style.display = 'inline-block';
+            })
+            .catch(e => {
+                console.error('Download failed:', e);
+                // Restore the original icon on failure
+                downloadIcon.style.display = 'inline-block';
+                downloadDoneIcon.style.display = 'none';
+                // Optionally, open the link in a new tab as a fallback
+                window.open(url, '_blank');
+            });
     };
 
     if (spinner) spinner.style.display = 'block';
