@@ -61,8 +61,8 @@ export default {
     const { pathname } = url;
 
     // --- Image Proxy & Redirects ---
-    if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
     if (pathname === '/image/latestImage') return handleLatestImage(request, env);
+    if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
 
     // --- Static Assets ---
     if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
