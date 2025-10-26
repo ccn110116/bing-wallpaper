@@ -81,7 +81,7 @@ body.dark-mode {
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
 }
 
 .nav-links {
@@ -96,6 +96,7 @@ body.dark-mode {
     margin: 0 5px;
     border-radius: 20px;
     transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 }
 
 .bar-item.button:hover {

@@ -121,7 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 groupedMonths[year].forEach(month => {
                     const monthLink = document.createElement('a');
-                    monthLink.href = `/${month}.html`;
+                    // Use region in URL for non-default regions
+                    const href = region === 'en-US' ? `/${month}` : `/${region}/${month}`;
+                    monthLink.href = href;
                     monthLink.className = 'bar-item button hover-green large';
                     monthLink.textContent = month;
                     monthLink.onclick = closeSidebar;
@@ -182,13 +184,19 @@ function openLightbox(imgSrc, caption) {
             button.classList.add('active');
             selectedRes = button.dataset.res;
             updateDownloadLink();
+
+            // Pre-fetch the 2K image when selected
+            if (selectedRes === '2k') {
+                const img = new Image();
+                img.src = downloadLink.href;
+            }
         };
     });
 
     downloadLink.onclick = (event) => {
         event.preventDefault();
         const url = downloadLink.href;
-        const filename = imageId || 'wallpaper.jpg';
+        const filename = `${imageId} ${selectedRes}.jpg` || 'wallpaper.jpg';
 
         downloadIcon.style.display = 'none';
         downloadLoadingIcon.style.display = 'inline-block';

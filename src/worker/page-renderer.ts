@@ -55,17 +55,8 @@ export async function handleMainPage(request: Request, env: Env, errorResponse: 
   const imageGridHTML = imageData.map(img => {
     const imageId = new URL(img.url).searchParams.get('id');
     if (!imageId) return '';
-    return `
-    <div class="portfolio-item" onclick="openLightbox('/image/${imageId}', '${img.desc.replace(/'/g, "\\'")}')" data-bg="/image/${imageId}?small">
-      <div class="description"><p>${img.desc}</p></div>
-    </div>`;
+    return `<div class="portfolio-item" onclick="openLightbox('/image/${imageId}', '${img.desc.replace(/'/g, "\\'")}')" data-bg="/image/${imageId}?small"><div class="description"><p>${img.desc}</p></div></div>`;
   }).join('');
-
-  const urlRegionCasing: { [key: string]: string } = { 'en-US': 'en-Us', 'zh-CN': 'zh-Cn', 'zh-HK': 'zh-Hk' };
-  const regionSegmentForUrl = urlRegionCasing[activeRegion] || activeRegion;
-  const archiveHTML = monthsData?.map(month => 
-    `<a href="/${regionSegmentForUrl}/${month}" class="bar-item button">${month}</a>`
-  ).join('') || '';
 
   const rewriter = new HTMLRewriter()
     .on('.bgimg-header', {
@@ -88,11 +79,6 @@ export async function handleMainPage(request: Request, env: Env, errorResponse: 
     .on('#img_list', {
       element(element: Element) {
         element.setInnerContent(imageGridHTML, { html: true });
-      },
-    })
-    .on('#archive-list', {
-      element(element: Element) {
-        element.setInnerContent(archiveHTML, { html: true });
       },
     });
 
