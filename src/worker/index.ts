@@ -16,9 +16,13 @@ function getCanonicalRegion(region: string): string | undefined {
 }
 
 function getAssetResponse(content: string, contentType: string): Response {
-  return new Response(content, {
-    headers: { 'Content-Type': `${contentType};charset=UTF-8` },
+  const response = new Response(content, {
+    headers: {
+      'Content-Type': `${contentType};charset=UTF-8`,
+      'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+    },
   });
+  return response;
 }
 
 function getErrorResponse(): Response {
@@ -41,16 +45,23 @@ async function handleImageProxy(request: Request, ctx: ExecutionContext): Promis
   const cacheKey = new Request(bingUrl);
   let response = await cache.match(cacheKey);
 
-  if (!response) {
-    response = await fetch(bingUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36' }
-    });
-    if (response.ok) {
-      response = new Response(response.body, response);
-      response.headers.set('Cache-Control', 'public, max-age=86400');
-      ctx.waitUntil(cache.put(cacheKey, response.clone()));
-    }
+  if (response) {
+    console.log(`CACHE_HIT: ${bingUrl}`);
+    return response;
   }
+  
+  console.log(`CACHE_MISS: ${bingUrl}`);
+  response = await fetch(bingUrl, {
+    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36' }
+  });
+
+  if (response.ok) {
+    const cacheableResponse = new Response(response.body, response);
+    cacheableResponse.headers.set('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
+    ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
+    return cacheableResponse;
+  }
+  
   return response;
 }
 
@@ -65,72 +76,94 @@ async function handleLatestImage(request: Request, env: Env): Promise<Response> 
   return Response.redirect(imageUrl, 302);
 }
 
-export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const url = new URL(request.url);
-    const { pathname } = url;
+async function handleRequest(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  const url = new URL(request.url);
+  const { pathname } = url;
 
-    // --- Image Proxy & Redirects ---
-    if (pathname === '/image/latestImage') return handleLatestImage(request, env);
-    if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
+  // --- Image Proxy & Redirects ---
+  if (pathname === '/image/latestImage') return handleLatestImage(request, env);
+  if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
 
-    // --- Static Assets ---
-    if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
-    if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
+  // --- Static Assets ---
+  if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
+  if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
 
-    // --- Data Assets ---
-    if (pathname.startsWith('/data/')) {
-      const parts = pathname.split('/');
-      if (parts.length > 2) {
-        const region = parts[2];
-        const correctedRegion = getCanonicalRegion(region);
-        if (correctedRegion && correctedRegion !== region) {
-          const correctedPathname = pathname.replace(region, correctedRegion);
-          const newUrl = new URL(correctedPathname, url.origin);
-          return env.ASSETS.fetch(new Request(newUrl.toString(), request));
-        }
+  // --- Data Assets ---
+  if (pathname.startsWith('/data/')) {
+    const parts = pathname.split('/');
+    if (parts.length > 2) {
+      const region = parts[2];
+      const correctedRegion = getCanonicalRegion(region);
+      if (correctedRegion && correctedRegion !== region) {
+        const correctedPathname = pathname.replace(region, correctedRegion);
+        const newUrl = new URL(correctedPathname, url.origin);
+        return env.ASSETS.fetch(new Request(newUrl.toString(), request));
       }
-      return env.ASSETS.fetch(request);
     }
+    return env.ASSETS.fetch(request);
+  }
 
-    // --- Main Page Rendering Logic ---
-    const monthRegex = /^\d{4}-\d{2}$/;
-    const pathSegments = pathname.split('/').filter(Boolean);
+  // --- Main Page Rendering Logic ---
+  const monthRegex = /^\d{4}-\d{2}$/;
+  const pathSegments = pathname.split('/').filter(Boolean);
 
-    let activeRegion = 'en-US';
-    let monthStr = new Date().toISOString().slice(0, 7);
+  let activeRegion = 'en-US';
+  let monthStr = new Date().toISOString().slice(0, 7);
 
-    // Pattern 1: /
-    if (pathSegments.length === 0) {
+  // Pattern 1: /
+  if (pathSegments.length === 0) {
+    return handleMainPage(request, env, activeRegion, monthStr);
+  }
+
+  // Pattern 2: /{region} or /{month}
+  if (pathSegments.length === 1) {
+    const segment = pathSegments[0];
+    const canonicalRegion = getCanonicalRegion(segment);
+    if (canonicalRegion) {
+      activeRegion = canonicalRegion;
       return handleMainPage(request, env, activeRegion, monthStr);
     }
+    if (monthRegex.test(segment)) {
+      monthStr = segment;
+      return handleMainPage(request, env, activeRegion, monthStr);
+    }
+  }
 
-    // Pattern 2: /{region} or /{month}
-    if (pathSegments.length === 1) {
-      const segment = pathSegments[0];
-      const canonicalRegion = getCanonicalRegion(segment);
-      if (canonicalRegion) {
-        activeRegion = canonicalRegion;
-        return handleMainPage(request, env, activeRegion, monthStr);
-      }
-      if (monthRegex.test(segment)) {
-        monthStr = segment;
-        return handleMainPage(request, env, activeRegion, monthStr);
-      }
+  // Pattern 3: /{region}/{month}
+  if (pathSegments.length === 2) {
+    const [regionSegment, monthSegment] = pathSegments;
+    const canonicalRegion = getCanonicalRegion(regionSegment);
+    if (canonicalRegion && monthRegex.test(monthSegment)) {
+      activeRegion = canonicalRegion;
+      monthStr = monthSegment;
+      return handleMainPage(request, env, activeRegion, monthStr);
+    }
+  }
+
+  // --- Fallback to 404 for any other path ---
+  return getErrorResponse();
+}
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const cache = (caches as any).default;
+    const cacheKey = new Request(request.url, request);
+    let response = await cache.match(cacheKey);
+
+    if (response) {
+      console.log(`CACHE_HIT: ${request.url}`);
+      return response;
     }
 
-    // Pattern 3: /{region}/{month}
-    if (pathSegments.length === 2) {
-      const [regionSegment, monthSegment] = pathSegments;
-      const canonicalRegion = getCanonicalRegion(regionSegment);
-      if (canonicalRegion && monthRegex.test(monthSegment)) {
-        activeRegion = canonicalRegion;
-        monthStr = monthSegment;
-        return handleMainPage(request, env, activeRegion, monthStr);
-      }
+    console.log(`CACHE_MISS: ${request.url}`);
+    response = await handleRequest(request, env, ctx);
+
+    if (response.status === 200) {
+      // Cache successful responses for 1 hour
+      response.headers.set('Cache-Control', 'public, max-age=3600');
+      ctx.waitUntil(cache.put(cacheKey, response.clone()));
     }
 
-    // --- Fallback to 404 for any other path ---
-    return getErrorResponse();
+    return response;
   },
 };

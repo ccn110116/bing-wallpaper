@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(months => {
             const archiveList = document.getElementById('archive-list');
             if (!archiveList) return;
+
             const groupedMonths = months.reduce((acc, month) => {
                 const year = month.split('-')[0];
                 if (!acc[year]) {
@@ -129,7 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return acc;
             }, {});
 
-            for (const year in groupedMonths) {
+            const sortedYears = Object.keys(groupedMonths).sort((a, b) => b - a);
+
+            sortedYears.forEach(year => {
                 const yearButton = document.createElement('button');
                 yearButton.className = 'accordion';
                 yearButton.textContent = year;
@@ -141,15 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 groupedMonths[year].forEach(month => {
                     const monthLink = document.createElement('a');
-                    // Use region in URL for non-default regions
+                    const [year, monthNum] = month.split('-');
+                    const monthName = new Date(year, monthNum - 1).toLocaleString('default', { month: 'long' });
+                    
                     const href = region === 'en-US' ? `/${month}` : `/${region}/${month}`;
                     monthLink.href = href;
                     monthLink.className = 'bar-item button hover-green large';
-                    monthLink.textContent = month;
+                    monthLink.textContent = `${year} ${monthName}`;
                     monthLink.onclick = closeSidebar;
                     panel.appendChild(monthLink);
                 });
-            }
+            });
 
             var acc = document.getElementsByClassName("accordion");
             for (var i = 0; i < acc.length; i++) {
