@@ -105,10 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const pathname = window.location.pathname;
     const pathSegments = pathname.split('/').filter(Boolean);
     let region = 'en-US';
-    const supportedRegions = ['en-us', 'zh-cn', 'zh-hk'];
+    const supportedRegions = {
+        'en-us': 'en-US',
+        'zh-cn': 'zh-CN',
+        'zh-hk': 'zh-HK',
+    };
 
-    if (pathSegments.length > 0 && supportedRegions.includes(pathSegments[0].toLowerCase())) {
-        region = pathSegments[0].toLowerCase();
+    if (pathSegments.length > 0 && supportedRegions[pathSegments[0].toLowerCase()]) {
+        region = supportedRegions[pathSegments[0].toLowerCase()];
     }
 
     fetch(`/data/${region}/months.json`)
