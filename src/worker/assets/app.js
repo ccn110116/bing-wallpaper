@@ -39,10 +39,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const imgList = document.getElementById('img_list');
     if (imgList) {
         imgList.addEventListener('click', function(event) {
+            console.log("Click event detected on the image list.");
             const item = event.target.closest('.portfolio-item');
             if (item) {
+                event.preventDefault(); // Prevent default link behavior
+                console.log("Portfolio item clicked:", item);
                 const imageId = item.dataset.imageId;
                 const caption = item.dataset.caption;
+                console.log("Image ID:", imageId);
+                console.log("Caption:", caption);
                 if (imageId) {
                     openLightbox(`/image/${imageId}`, caption);
                 }
