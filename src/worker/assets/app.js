@@ -39,15 +39,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const imgList = document.getElementById('img_list');
     if (imgList) {
         imgList.addEventListener('click', function(event) {
-            console.log("Click event detected on the image list.");
             const item = event.target.closest('.portfolio-item');
             if (item) {
                 event.preventDefault(); // Prevent default link behavior
-                console.log("Portfolio item clicked:", item);
                 const imageId = item.dataset.imageId;
                 const caption = item.dataset.caption;
-                console.log("Image ID:", imageId);
-                console.log("Caption:", caption);
                 if (imageId) {
                     openLightbox(`/image/${imageId}`, caption);
                 }
@@ -182,9 +178,9 @@ function openLightbox(imgSrc, caption) {
     const downloadLink = document.getElementById('download-link');
     const bingLink = document.getElementById('bing-link');
     const resButtons = document.querySelectorAll('.res-button');
-    const downloadIcon = downloadLink.querySelector('.download-icon');
-    const downloadLoadingIcon = downloadLink.querySelector('.download-loading-icon');
-    const downloadDoneIcon = downloadLink.querySelector('.download-done-icon');
+    const downloadIcon = downloadLink.querySelector('.icon-download');
+    const downloadLoadingIcon = downloadLink.querySelector('.icon-download-loading');
+    const downloadDoneIcon = downloadLink.querySelector('.icon-download-done');
 
     const imageId = imgSrc.split('/').pop();
     let selectedRes = '4k';
