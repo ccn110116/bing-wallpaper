@@ -5,6 +5,16 @@ declare const __ERROR_HTML__: string;
 declare const __JS__: string;
 declare const __CSS__: string;
 
+const supportedRegions: { [key: string]: string } = {
+  'en-us': 'en-US',
+  'zh-cn': 'zh-CN',
+  'zh-hk': 'zh-HK',
+};
+
+function getCanonicalRegion(region: string): string | undefined {
+  return supportedRegions[region.toLowerCase()];
+}
+
 function getAssetResponse(content: string, contentType: string): Response {
   return new Response(content, {
     headers: { 'Content-Type': `${contentType};charset=UTF-8` },
@@ -70,17 +80,21 @@ export default {
 
     // --- Data Assets ---
     if (pathname.startsWith('/data/')) {
+      const parts = pathname.split('/');
+      if (parts.length > 2) {
+        const region = parts[2];
+        const correctedRegion = getCanonicalRegion(region);
+        if (correctedRegion && correctedRegion !== region) {
+          const correctedPathname = pathname.replace(region, correctedRegion);
+          const newUrl = new URL(correctedPathname, url.origin);
+          return env.ASSETS.fetch(new Request(newUrl.toString(), request));
+        }
+      }
       return env.ASSETS.fetch(request);
     }
 
     // --- Main Page Rendering Logic ---
-    const supportedRegions: { [key: string]: string } = {
-      'en-us': 'en-US',
-      'zh-cn': 'zh-CN',
-      'zh-hk': 'zh-HK',
-    };
     const monthRegex = /^\d{4}-\d{2}$/;
-
     const pathSegments = pathname.split('/').filter(Boolean);
 
     let activeRegion = 'en-US';
@@ -94,9 +108,9 @@ export default {
     // Pattern 2: /{region} or /{month}
     if (pathSegments.length === 1) {
       const segment = pathSegments[0];
-      const lowerSegment = segment.toLowerCase();
-      if (supportedRegions[lowerSegment]) {
-        activeRegion = supportedRegions[lowerSegment];
+      const canonicalRegion = getCanonicalRegion(segment);
+      if (canonicalRegion) {
+        activeRegion = canonicalRegion;
         return handleMainPage(request, env, activeRegion, monthStr);
       }
       if (monthRegex.test(segment)) {
@@ -107,10 +121,10 @@ export default {
 
     // Pattern 3: /{region}/{month}
     if (pathSegments.length === 2) {
-      const regionSegment = pathSegments[0].toLowerCase();
-      const monthSegment = pathSegments[1];
-      if (supportedRegions[regionSegment] && monthRegex.test(monthSegment)) {
-        activeRegion = supportedRegions[regionSegment];
+      const [regionSegment, monthSegment] = pathSegments;
+      const canonicalRegion = getCanonicalRegion(regionSegment);
+      if (canonicalRegion && monthRegex.test(monthSegment)) {
+        activeRegion = canonicalRegion;
         monthStr = monthSegment;
         return handleMainPage(request, env, activeRegion, monthStr);
       }
