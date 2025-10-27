@@ -107,8 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let region = 'en-US';
     const supportedRegions = {
         'en-us': 'en-US',
-        'zh-cn': 'zh-CN',
-        'zh-hk': 'zh-HK',
+        'zh-cn': 'zh-CN'
     };
 
     if (pathSegments.length > 0 && supportedRegions[pathSegments[0].toLowerCase()]) {

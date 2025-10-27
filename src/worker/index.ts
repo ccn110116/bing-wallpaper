@@ -7,8 +7,7 @@ declare const __CSS__: string;
 
 const supportedRegions: { [key: string]: string } = {
   'en-us': 'en-US',
-  'zh-cn': 'zh-CN',
-  'zh-hk': 'zh-HK',
+  'zh-cn': 'zh-CN'
 };
 
 function getCanonicalRegion(region: string): string | undefined {
