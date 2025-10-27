@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Noto Sans Display';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/noto-sans-display.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/noto-sans-mono.woff2) format('woff2');
+}
+
 /* Base Styling & Layout */
 :root {
     --primary-color: #ffffff;

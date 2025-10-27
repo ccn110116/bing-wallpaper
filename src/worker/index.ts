@@ -19,7 +19,7 @@ function getAssetResponse(content: string, contentType: string): Response {
   const response = new Response(content, {
     headers: {
       'Content-Type': `${contentType};charset=UTF-8`,
-      'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+      'Cache-Control': 'public, max-age=2,592,000', // Cache for 30 days
     },
   });
   return response;
@@ -57,7 +57,7 @@ async function handleImageProxy(request: Request, ctx: ExecutionContext): Promis
 
   if (response.ok) {
     const cacheableResponse = new Response(response.body, response);
-    cacheableResponse.headers.set('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
+    cacheableResponse.headers.set('Cache-Control', 'public, max-age=2,592,000'); // Cache for 30 days
     ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
     return cacheableResponse;
   }
@@ -90,17 +90,13 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
 
   // --- Data Assets ---
   if (pathname.startsWith('/data/')) {
-    const parts = pathname.split('/');
-    if (parts.length > 2) {
-      const region = parts[2];
-      const correctedRegion = getCanonicalRegion(region);
-      if (correctedRegion && correctedRegion !== region) {
-        const correctedPathname = pathname.replace(region, correctedRegion);
-        const newUrl = new URL(correctedPathname, url.origin);
-        return env.ASSETS.fetch(new Request(newUrl.toString(), request));
-      }
+    const response = await env.ASSETS.fetch(request);
+    if (pathname.endsWith('months.json')) {
+      const cacheableResponse = new Response(response.body, response);
+      cacheableResponse.headers.set('Cache-Control', 'public, max-age=2,592,000'); // Cache for 30 day
+      return cacheableResponse;
     }
-    return env.ASSETS.fetch(request);
+    return response;
   }
 
   // --- Main Page Rendering Logic ---
@@ -161,7 +157,7 @@ export default {
     if (response.status === 200) {
       // Create a mutable copy to avoid the error
       const cacheableResponse = new Response(response.body, response);
-      cacheableResponse.headers.set('Cache-Control', 'public, max-age=3600');
+      cacheableResponse.headers.set('Cache-Control', 'public, max-age=2,592,000'); // Cache for 30 days
       ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
       return cacheableResponse;
     }
