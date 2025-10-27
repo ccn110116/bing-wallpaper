@@ -159,11 +159,12 @@ export default {
     response = await handleRequest(request, env, ctx);
 
     if (response.status === 200) {
-      // Cache successful responses for 1 hour
-      response.headers.set('Cache-Control', 'public, max-age=3600');
-      ctx.waitUntil(cache.put(cacheKey, response.clone()));
+      // Create a mutable copy to avoid the error
+      const cacheableResponse = new Response(response.body, response);
+      cacheableResponse.headers.set('Cache-Control', 'public, max-age=3600');
+      ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
+      return cacheableResponse;
     }
-
-    return response;
+return response;
   },
 };
