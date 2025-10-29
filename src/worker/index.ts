@@ -7,6 +7,8 @@ declare const __CSS__: string;
 declare const __NOTO_SANS_DISPLAY_FONT__: string;
 declare const __NOTO_SANS_MONO_FONT__: string;
 
+const CACHE_TTL = 2592000; // 30 days in seconds
+
 const supportedRegions: { [key: string]: string } = {
   'en-us': 'en-US',
   'zh-cn': 'zh-CN'
@@ -20,7 +22,7 @@ function getAssetResponse(content: string, contentType: string): Response {
   const response = new Response(content, {
     headers: {
       'Content-Type': `${contentType};charset=UTF-8`,
-      'Cache-Control': 'public, max-age=2,592,000', // Cache for 30 days
+      'Cache-Control': `public, max-age=${CACHE_TTL}`,
     },
   });
   return response;
@@ -35,7 +37,7 @@ function getFontResponse(base64Font: string): Response {
   return new Response(fontArray, {
     headers: {
       'Content-Type': 'font/woff2',
-      'Cache-Control': 'public, max-age=2,592,000', // Cache for 30 days
+      'Cache-Control': `public, max-age=${CACHE_TTL}`,
     },
   });
 }
@@ -72,7 +74,7 @@ async function handleImageProxy(request: Request, ctx: ExecutionContext): Promis
 
   if (response.ok) {
     const cacheableResponse = new Response(response.body, response);
-    cacheableResponse.headers.set('Cache-Control', 'public, max-age=2,592,000'); // Cache for 30 days
+    cacheableResponse.headers.set('Cache-Control', `public, max-age=${CACHE_TTL}`);
     ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
     return cacheableResponse;
   }
@@ -110,7 +112,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     const response = await env.ASSETS.fetch(request);
     if (pathname.endsWith('months.json')) {
       const cacheableResponse = new Response(response.body, response);
-      cacheableResponse.headers.set('Cache-Control', 'public, max-age=2,592,000'); // Cache for 30 day
+      cacheableResponse.headers.set('Cache-Control', `public, max-age=${CACHE_TTL}`);
       return cacheableResponse;
     }
     return response;
@@ -174,7 +176,7 @@ export default {
     if (response.status === 200) {
       // Create a mutable copy to avoid the error
       const cacheableResponse = new Response(response.body, response);
-      cacheableResponse.headers.set('Cache-Control', 'public, max-age=2,592,000'); // Cache for 30 days
+      cacheableResponse.headers.set('Cache-Control', `public, max-age=${CACHE_TTL}`);
       ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
       return cacheableResponse;
     }

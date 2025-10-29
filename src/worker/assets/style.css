@@ -198,9 +198,14 @@ body.dark-mode {
     font-size: 1.2em;
     cursor: pointer;
     margin-left: 10px;
-    padding: 8px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #dark-mode-toggle:hover {
