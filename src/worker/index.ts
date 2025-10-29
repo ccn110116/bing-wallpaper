@@ -4,8 +4,6 @@ import { Env } from './types';
 declare const __ERROR_HTML__: string;
 declare const __JS__: string;
 declare const __CSS__: string;
-declare const __NOTO_SANS_DISPLAY_FONT__: string;
-declare const __NOTO_SANS_MONO_FONT__: string;
 
 const CACHE_TTL = 2592000; // 30 days in seconds
 
@@ -18,34 +16,10 @@ function getCanonicalRegion(region: string): string | undefined {
   return supportedRegions.get(region.toLowerCase());
 }
 
-// Optimized: Pre-compute base64 decoding for fonts during initialization
-const decodedFonts = {
-  notoSansDisplay: null as Uint8Array | null,
-  notoSansMono: null as Uint8Array | null
-};
-
-function decodeFont(base64Font: string): Uint8Array {
-  const fontData = atob(base64Font);
-  const fontArray = new Uint8Array(fontData.length);
-  for (let i = 0; i < fontData.length; i++) {
-    fontArray[i] = fontData.charCodeAt(i);
-  }
-  return fontArray;
-}
-
 function getAssetResponse(content: string, contentType: string): Response {
   return new Response(content, {
     headers: {
       'Content-Type': `${contentType};charset=UTF-8`,
-      'Cache-Control': `public, max-age=${CACHE_TTL}`,
-    },
-  });
-}
-
-function getFontResponse(fontArray: Uint8Array): Response {
-  return new Response(fontArray.buffer as ArrayBuffer, {
-    headers: {
-      'Content-Type': 'font/woff2',
       'Cache-Control': `public, max-age=${CACHE_TTL}`,
     },
   });
@@ -117,21 +91,9 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   if (pathname === '/image/latestImage') return handleLatestImage(request, env);
   if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
 
-  // --- Static Assets (lazy font decoding) ---
+  // --- Static Assets ---
   if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
   if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
-  if (pathname === '/NotoSansDisplay.woff2') {
-    if (!decodedFonts.notoSansDisplay) {
-      decodedFonts.notoSansDisplay = decodeFont(__NOTO_SANS_DISPLAY_FONT__);
-    }
-    return getFontResponse(decodedFonts.notoSansDisplay);
-  }
-  if (pathname === '/NotoSansMono.woff2') {
-    if (!decodedFonts.notoSansMono) {
-      decodedFonts.notoSansMono = decodeFont(__NOTO_SANS_MONO_FONT__);
-    }
-    return getFontResponse(decodedFonts.notoSansMono);
-  }
 
   // --- Data Assets ---
   if (pathname.startsWith('/data/')) {

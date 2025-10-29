@@ -34,7 +34,39 @@ function headerImgloading() {
         img.src = url;
     }
 }
-window.addEventListener('load', headerImgloading);
+window.addEventListener('load', () => {
+    headerImgloading();
+    loadCustomFonts();
+});
+
+// Function to check for font availability and load from Google Fonts if needed
+function loadCustomFonts() {
+    const fonts = [
+        { family: 'Noto Sans Display', url: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100..900&display=swap' },
+        { family: 'Noto Sans Mono', url: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap' }
+    ];
+
+    // Use a flag to ensure the CSS is added only once
+    let cssLoaded = false;
+
+    const loadFont = (font) => {
+        // Check if the font is already available
+        if (!document.fonts || !('check' in document.fonts) || document.fonts.check(`1em "${font.family}"`)) {
+            return;
+        }
+
+        // If not, and the CSS hasn't been loaded yet, load it
+        if (!cssLoaded) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = fonts.map(f => f.url.split('=').pop()).join('&family=');
+            document.head.appendChild(link);
+            cssLoaded = true;
+        }
+    };
+
+    fonts.forEach(loadFont);
+}
 
 function setSidebar(open = true) {
     const sidebar = document.getElementById('sidebar');
