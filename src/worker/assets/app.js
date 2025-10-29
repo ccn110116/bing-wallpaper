@@ -99,6 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const lightIcon = document.getElementById('light-mode-icon');
+            const darkIcon = document.getElementById('dark-mode-icon');
+            if (lightIcon && darkIcon) {
+                lightIcon.style.display = isDarkMode ? 'inline-block' : 'none';
+                darkIcon.style.display = isDarkMode ? 'none' : 'inline-block';
+            }
         });
     }
 
