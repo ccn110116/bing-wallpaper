@@ -1,26 +1,38 @@
 function headerImgloading() {
-    var bgImg = document.querySelector('.bgimg-header');
-    var smallImg = document.querySelector('.smallImg-header');
-    // 创建一个新的图片对象以监控加载状态
-    var img = new Image();
-    if (bgImg && bgImg.style.backgroundImage) {
-        img.src = bgImg.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-    }
-    // 小图逐渐变透明
-    if (smallImg) {
-        smallImg.style.opacity = 0.3;
-    }
-    img.onload = function() {
-        setTimeout(function() {
-            // 当大图加载完成时，首先显示大图
-            if (bgImg) {
-                bgImg.style.display = "block";
-            }
-            if (smallImg) {
-                smallImg.style.opacity = 0;
-            }
-        }, 300);
+    const bgImg = document.querySelector('.bgimg-header');
+    const smallImg = document.querySelector('.smallImg-header');
+
+    if (!bgImg) return;
+
+    // Try inline style first, then computed style
+    const bgValue = bgImg.style.backgroundImage || getComputedStyle(bgImg).backgroundImage;
+    const match = bgValue && bgValue.match(/url\(["']?(.*?)["']?\)/);
+    const url = match ? match[1] : null;
+    if (!url) return;
+
+    const img = new Image();
+
+    // Fade small image a bit while loading
+    if (smallImg) smallImg.style.opacity = '0.3';
+
+    const reveal = () => {
+        // Delay small fade-out a bit for smoother transition
+        setTimeout(() => {
+            bgImg.style.display = 'block';
+            if (smallImg) smallImg.style.opacity = '0';
+        }, 200);
     };
+
+    if ('decode' in img) {
+        img.src = url;
+        img.decode().then(reveal).catch(() => {
+            // Fallback to onload if decode fails
+            img.onload = reveal;
+        });
+    } else {
+        img.onload = reveal;
+        img.src = url;
+    }
 }
 window.addEventListener('load', headerImgloading);
 
@@ -35,57 +47,86 @@ function openSidebar() { setSidebar(true); }
 function closeSidebar() { setSidebar(false); }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Global overlay: close lightbox and/or sidebar
+    const overlay = document.getElementById('overlay');
+    overlay?.addEventListener('click', () => {
+        const lightboxShown = document.getElementById('lightbox')?.classList.contains('show');
+        const sidebarOpen = document.getElementById('sidebar')?.classList.contains('open');
+        if (lightboxShown) closeLightbox();
+        if (sidebarOpen) closeSidebar();
+    });
+
+    // ESC to close lightbox or sidebar
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+            closeSidebar();
+        }
+    });
+
     // Event Delegation for portfolio item clicks
     const imgList = document.getElementById('img_list');
     if (imgList) {
         imgList.addEventListener('click', function(event) {
             const item = event.target.closest('.portfolio-item');
             if (item) {
-                event.preventDefault(); // Prevent default link behavior
+                event.preventDefault();
                 const imageId = item.dataset.imageId;
-                const caption = item.dataset.caption;
-                if (imageId) {
-                    openLightbox(`/image/${imageId}`, caption);
-                }
+                const caption = item.dataset.caption || '';
+                if (imageId) openLightbox(`/image/${imageId}`, caption);
             }
         });
     }
 
     // Lazy Loading & Preloading Logic
     const portfolioItems = document.querySelectorAll('.portfolio-item');
-    let preloadTimer;
+    const timers = new WeakMap();
+    const saveData = navigator.connection && navigator.connection.saveData;
 
     const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const item = entry.target;
-                item.style.backgroundImage = `url(${item.dataset.bg})`;
-                observer.unobserve(item);
+            if (!entry.isIntersecting) return;
 
-                // Add hover listeners after the image is loaded
-                item.addEventListener('mouseover', () => {
-                    preloadTimer = setTimeout(() => {
-                        const fullResUrl = item.dataset.bg.replace('?small', '');
-                        const img = new Image();
-                        img.src = fullResUrl;
-                    }, 400);
-                });
+            const item = entry.target;
+            const bgUrl = item.dataset.bg;
+            if (bgUrl) {
+                // Swap background only after the image is loaded to avoid flashes
+                const img = new Image();
+                img.onload = () => {
+                    item.style.backgroundImage = `url("${bgUrl}")`;
+                };
+                img.src = bgUrl;
+            }
 
-                item.addEventListener('mouseout', () => {
-                    clearTimeout(preloadTimer);
-                });
+            observer.unobserve(item);
+
+            // Hover-based prefetch of full-res (skip when Save-Data is on or no hover support)
+            const canPrefetch = !saveData && matchMedia('(hover: hover)').matches;
+            if (canPrefetch) {
+                const onEnter = () => {
+                    const id = setTimeout(() => {
+                        const fullResUrl = bgUrl ? bgUrl.replace('?small', '') : null;
+                        if (!fullResUrl) return;
+                        const pre = new Image();
+                        pre.src = fullResUrl;
+                    }, 300);
+                    timers.set(item, id);
+                };
+                const onLeave = () => {
+                    const id = timers.get(item);
+                    if (id) clearTimeout(id);
+                };
+                item.addEventListener('pointerenter', onEnter, { passive: true });
+                item.addEventListener('pointerleave', onLeave, { passive: true });
             }
         });
-    }, { rootMargin: "0px 0px 200px 0px" });
+    }, { rootMargin: '0px 0px 200px 0px' });
 
-    portfolioItems.forEach(item => {
-        lazyLoadObserver.observe(item);
-    });
+    portfolioItems.forEach(item => lazyLoadObserver.observe(item));
 
     // Sticky Nav Logic using Intersection Observer
     const nav = document.querySelector('.sticky-nav');
     const header = document.querySelector('.bgimg-header');
-
     if (nav && header) {
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -95,20 +136,31 @@ document.addEventListener('DOMContentLoaded', function() {
         navObserver.observe(header);
     }
 
+    // Dark mode with persistence
     const darkModeToggle = document.getElementById('dark-mode-toggle');
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
+    const applyDarkMode = (on) => {
+        document.body.classList.toggle('dark-mode', on);
+        if (darkModeToggle) {
+            darkModeToggle.setAttribute('aria-pressed', String(on));
             const lightIcon = darkModeToggle.querySelector('.icon-light-mode');
             const darkIcon = darkModeToggle.querySelector('.icon-dark-mode');
             if (lightIcon && darkIcon) {
-                lightIcon.style.display = isDarkMode ? 'inline-block' : 'none';
-                darkIcon.style.display = isDarkMode ? 'none' : 'inline-block';
+                lightIcon.style.display = on ? 'inline-block' : 'none';
+                darkIcon.style.display = on ? 'none' : 'inline-block';
             }
+        }
+    };
+    // Initialize from localStorage
+    applyDarkMode(localStorage.getItem('dark-mode') === '1');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            const on = !document.body.classList.contains('dark-mode');
+            applyDarkMode(on);
+            localStorage.setItem('dark-mode', on ? '1' : '0');
         });
     }
 
+    // Region and locale
     const pathname = window.location.pathname;
     const pathSegments = pathname.split('/').filter(Boolean);
     let region = 'en-US';
@@ -116,61 +168,69 @@ document.addEventListener('DOMContentLoaded', function() {
         'en-us': 'en-US',
         'zh-cn': 'zh-CN'
     };
-
-    if (pathSegments.length > 0 && supportedRegions[pathSegments[0].toLowerCase()]) {
+    if (pathSegments.length > 0 && supportedRegions[pathSegments[0]?.toLowerCase()]) {
         region = supportedRegions[pathSegments[0].toLowerCase()];
     }
 
+    // Better month names using the region
+    const monthFormatter = new Intl.DateTimeFormat(region, { month: 'long' });
+
+    // Build archive with minimal reflows
     fetch(`/data/${region}/months.json`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        })
         .then(months => {
             const archiveList = document.getElementById('archive-list');
-            if (!archiveList) return;
+            if (!archiveList || !Array.isArray(months)) return;
 
-            const groupedMonths = months.reduce((acc, month) => {
-                const year = month.split('-')[0];
-                if (!acc[year]) {
-                    acc[year] = [];
-                }
-                acc[year].push(month);
+            const groupedMonths = months.reduce((acc, ym) => {
+                const y = ym.split('-')[0];
+                (acc[y] ||= []).push(ym);
                 return acc;
             }, {});
 
-            const sortedYears = Object.keys(groupedMonths).sort((a, b) => b - a);
+            const sortedYears = Object.keys(groupedMonths).sort((a, b) => Number(b) - Number(a));
+            const frag = document.createDocumentFragment();
 
-            sortedYears.forEach(year => {
-                const yearButton = document.createElement('button');
-                yearButton.className = 'accordion';
-                yearButton.textContent = year;
-                archiveList.appendChild(yearButton);
+            sortedYears.forEach(y => {
+                const yearBtn = document.createElement('button');
+                yearBtn.className = 'accordion';
+                yearBtn.textContent = y;
+                frag.appendChild(yearBtn);
 
                 const panel = document.createElement('div');
                 panel.className = 'panel';
-                archiveList.appendChild(panel);
+                frag.appendChild(panel);
 
-                groupedMonths[year].forEach(month => {
-                    const monthLink = document.createElement('a');
-                    const [year, monthNum] = month.split('-');
-                    const monthName = new Date(year, monthNum - 1).toLocaleString('default', { month: 'long' });
-                    
-                    const href = region === 'en-US' ? `/${month}` : `/${region}/${month}`;
-                    monthLink.href = href;
-                    monthLink.className = 'bar-item button hover-green large';
-                    monthLink.textContent = `${year} ${monthName}`;
-                    monthLink.onclick = closeSidebar;
-                    panel.appendChild(monthLink);
+                groupedMonths[y].forEach(ym => {
+                    const [yy, mm] = ym.split('-');
+                    const monthName = monthFormatter.format(new Date(Number(yy), Number(mm) - 1, 1));
+
+                    const href = region === 'en-US' ? `/${ym}` : `/${region}/${ym}`;
+                    const a = document.createElement('a');
+                    a.href = href;
+                    a.className = 'bar-item button hover-green large';
+                    a.textContent = `${yy} ${monthName}`;
+                    a.onclick = closeSidebar;
+                    panel.appendChild(a);
                 });
             });
 
-            var acc = document.getElementsByClassName("accordion");
-            for (var i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
+            archiveList.textContent = '';
+            archiveList.appendChild(frag);
+
+            const acc = archiveList.getElementsByClassName('accordion');
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const panel = this.nextElementSibling;
+                    if (!panel) return;
                     if (panel.style.maxHeight) {
                         panel.style.maxHeight = null;
                     } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
                     }
                 });
             }
@@ -187,112 +247,134 @@ document.addEventListener('DOMContentLoaded', function() {
 function openLightbox(imgSrc, caption) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const spinner = lightbox.querySelector('.loading-spinner');
     const overlay = document.getElementById('overlay');
     const captionDiv = document.getElementById('lightbox-caption');
     const downloadLink = document.getElementById('download-link');
     const bingLink = document.getElementById('bing-link');
     const resButtons = document.querySelectorAll('.res-button');
-    const downloadIcon = downloadLink.querySelector('.icon-download');
-    const downloadLoadingIcon = downloadLink.querySelector('.icon-download-loading');
-    const downloadDoneIcon = downloadLink.querySelector('.icon-download-done');
+    const spinner = lightbox?.querySelector('.loading-spinner');
 
-    const imageId = imgSrc.split('/').pop();
+    if (!lightbox || !overlay) return;
+
+    const imageId = (imgSrc.split('/').pop() || '').split('?')[0];
     let selectedRes = '4k';
 
-    // Reset icons
-    downloadIcon.style.display = 'inline-block';
-    downloadLoadingIcon.style.display = 'none';
-    downloadDoneIcon.style.display = 'none';
+    const icons = {
+        icon: downloadLink ? downloadLink.querySelector('.icon-download') : null,
+        loading: downloadLink ? downloadLink.querySelector('.icon-download-loading') : null,
+        done: downloadLink ? downloadLink.querySelector('.icon-download-done') : null
+    };
+    const setIconState = (state) => {
+        if (!icons.icon || !icons.loading || !icons.done) return;
+        icons.icon.style.display = state === 'idle' ? 'inline-block' : 'none';
+        icons.loading.style.display = state === 'loading' ? 'inline-block' : 'none';
+        icons.done.style.display = state === 'done' ? 'inline-block' : 'none';
+    };
 
-    if (captionDiv) captionDiv.innerHTML = caption;
+    // Caption
+    if (captionDiv) captionDiv.innerHTML = caption || '';
 
-    const updateDownloadLink = () => {
+    const updateDownloadLinks = () => {
         const bingLinkUrl = `https://bing.com/th?id=${imageId}${selectedRes === '4k' ? '' : '&w=1920'}`;
         const workerLinkUrl = `/image/${imageId}${selectedRes === '4k' ? '' : '?2k'}`;
-        
         if (downloadLink) downloadLink.href = workerLinkUrl;
         if (bingLink) bingLink.href = bingLinkUrl;
     };
-    updateDownloadLink();
+    updateDownloadLinks();
 
+    // Resolution switch
     resButtons.forEach(button => {
-        button.onclick = () => {
+        button.addEventListener('click', () => {
             resButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            selectedRes = button.dataset.res;
-            updateDownloadLink();
+            selectedRes = button.dataset.res || '4k';
+            updateDownloadLinks();
 
             // Pre-fetch the 2K image when selected
-            if (selectedRes === '2k') {
-                const img = new Image();
-                img.src = downloadLink.href;
+            if (selectedRes === '2k' && downloadLink?.href) {
+                const pre = new Image();
+                pre.src = downloadLink.href;
             }
-        };
+        });
     });
 
-    downloadLink.onclick = (event) => {
-        event.preventDefault();
-        const url = downloadLink.href;
-        const filename = `${imageId} ${selectedRes}.jpg` || 'wallpaper.jpg';
+    // Download handler
+    if (downloadLink) {
+        downloadLink.addEventListener('click', async (event) => {
+            event.preventDefault();
+            if (!downloadLink.href) return;
 
-        downloadIcon.style.display = 'none';
-        downloadLoadingIcon.style.display = 'inline-block';
-        downloadDoneIcon.style.display = 'none';
+            const filename = `${imageId} ${selectedRes}.jpg`;
+            setIconState('loading');
 
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.blob();
-            })
-            .then(blob => {
-                const blobUrl = window.URL.createObjectURL(blob);
+            try {
+                const response = await fetch(downloadLink.href);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = blobUrl;
                 a.download = filename;
                 document.body.appendChild(a);
                 a.click();
-                window.URL.revokeObjectURL(blobUrl);
+                URL.revokeObjectURL(blobUrl);
                 a.remove();
-                
-                downloadDoneIcon.style.display = 'inline-block';
-            })
-            .catch(e => {
+                setIconState('done');
+            } catch (e) {
                 console.error('Download failed:', e);
-                downloadIcon.style.display = 'inline-block';
-                // Optionally, open the link in a new tab as a fallback
-                window.open(bingLink.href, '_blank');
-            })
-            .finally(() => {
-                downloadLoadingIcon.style.display = 'none';
-            });
-    };
+                setIconState('idle');
+                if (bingLink?.href) window.open(bingLink.href, '_blank');
+            }
+        }, { once: true });
+        setIconState('idle');
+    }
 
+    // Show lightbox
     if (spinner) spinner.style.display = 'block';
-    if (lightboxImg) lightboxImg.style.display = 'none';
-    
-    if (lightbox) lightbox.classList.add('show');
-    if (overlay) overlay.classList.add('show');
+    if (lightboxImg) {
+        lightboxImg.style.display = 'none';
+        lightboxImg.removeAttribute('src');
+    }
+    lightbox.classList.add('show');
+    overlay.classList.add('show');
 
+    // Load the large image
     const highResImg = new Image();
-    highResImg.src = imgSrc;
-    highResImg.onload = () => {
-        if (lightboxImg) lightboxImg.src = imgSrc;
-        if (spinner) spinner.style.display = 'none';
-        if (lightboxImg) lightboxImg.style.display = 'block';
+    const showImage = () => {
+        if (lightboxImg) {
+            lightboxImg.src = imgSrc;
+            if (spinner) spinner.style.display = 'none';
+            lightboxImg.style.display = 'block';
+        }
     };
+    if ('decode' in highResImg) {
+        highResImg.src = imgSrc;
+        highResImg.decode().then(showImage).catch(() => {
+            // Fallback to onload
+            highResImg.onload = showImage;
+        });
+    } else {
+        highResImg.onload = showImage;
+        highResImg.src = imgSrc;
+    }
 }
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     const overlay = document.getElementById('overlay');
-    if (lightbox) {
+    const spinner = lightbox?.querySelector('.loading-spinner');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    if (lightbox?.classList.contains('show')) {
         lightbox.classList.remove('show');
     }
-    if (overlay) {
+    if (overlay?.classList.contains('show')) {
         overlay.classList.remove('show');
+    }
+    if (spinner) spinner.style.display = 'none';
+    if (lightboxImg) {
+        lightboxImg.style.display = 'none';
+        lightboxImg.removeAttribute('src');
     }
 }

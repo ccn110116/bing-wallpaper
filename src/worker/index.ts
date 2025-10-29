@@ -9,32 +9,41 @@ declare const __NOTO_SANS_MONO_FONT__: string;
 
 const CACHE_TTL = 2592000; // 30 days in seconds
 
-const supportedRegions: { [key: string]: string } = {
-  'en-us': 'en-US',
-  'zh-cn': 'zh-CN'
-};
+const supportedRegions: ReadonlyMap<string, string> = new Map([
+  ['en-us', 'en-US'],
+  ['zh-cn', 'zh-CN']
+]);
 
 function getCanonicalRegion(region: string): string | undefined {
-  return supportedRegions[region.toLowerCase()];
+  return supportedRegions.get(region.toLowerCase());
 }
 
-function getAssetResponse(content: string, contentType: string): Response {
-  const response = new Response(content, {
-    headers: {
-      'Content-Type': `${contentType};charset=UTF-8`,
-      'Cache-Control': `public, max-age=${CACHE_TTL}`,
-    },
-  });
-  return response;
-}
+// Optimized: Pre-compute base64 decoding for fonts during initialization
+const decodedFonts = {
+  notoSansDisplay: null as Uint8Array | null,
+  notoSansMono: null as Uint8Array | null
+};
 
-function getFontResponse(base64Font: string): Response {
+function decodeFont(base64Font: string): Uint8Array {
   const fontData = atob(base64Font);
   const fontArray = new Uint8Array(fontData.length);
   for (let i = 0; i < fontData.length; i++) {
     fontArray[i] = fontData.charCodeAt(i);
   }
-  return new Response(fontArray, {
+  return fontArray;
+}
+
+function getAssetResponse(content: string, contentType: string): Response {
+  return new Response(content, {
+    headers: {
+      'Content-Type': `${contentType};charset=UTF-8`,
+      'Cache-Control': `public, max-age=${CACHE_TTL}`,
+    },
+  });
+}
+
+function getFontResponse(fontArray: Uint8Array): Response {
+  return new Response(fontArray.buffer as ArrayBuffer, {
     headers: {
       'Content-Type': 'font/woff2',
       'Cache-Control': `public, max-age=${CACHE_TTL}`,
@@ -51,12 +60,17 @@ function getErrorResponse(): Response {
 
 async function handleImageProxy(request: Request, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
-  const imageId = url.pathname.replace('/image/', '');
+  const imageId = url.pathname.slice(7); // More efficient than replace
   if (!imageId) return new Response('Missing image ID', { status: 400 });
 
+  const params = url.searchParams;
+  const hasSmall = params.has('small');
+  const has2k = params.has('2k');
+  
+  // Build URL more efficiently
   let bingUrl = `https://bing.com/th?id=${imageId}`;
-  if (url.searchParams.has('small')) bingUrl += '&w=384&h=216';
-  else if (url.searchParams.has('2k')) bingUrl += '&w=1920';
+  if (hasSmall) bingUrl += '&w=384&h=216';
+  else if (has2k) bingUrl += '&w=1920';
 
   const cache = (caches as any).default;
   const cacheKey = new Request(bingUrl);
@@ -89,9 +103,11 @@ async function handleLatestImage(request: Request, env: Env): Promise<Response> 
 
   const latestImage = imageData[0];
   const imageId = new URL(latestImage.url).searchParams.get('id');
-  const imageUrl = new URL(`/image/${imageId}?2k`, request.url).toString();
-  return Response.redirect(imageUrl, 302);
+  return Response.redirect(`${new URL(request.url).origin}/image/${imageId}?2k`, 302);
 }
+
+// Pre-compile regex
+const MONTH_REGEX = /^\d{4}-\d{2}$/;
 
 async function handleRequest(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
@@ -101,11 +117,21 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   if (pathname === '/image/latestImage') return handleLatestImage(request, env);
   if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
 
-  // --- Static Assets ---
+  // --- Static Assets (lazy font decoding) ---
   if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
   if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
-  if (pathname === '/NotoSansDisplay.woff2') return getFontResponse(__NOTO_SANS_DISPLAY_FONT__);
-  if (pathname === '/NotoSansMono.woff2') return getFontResponse(__NOTO_SANS_MONO_FONT__);
+  if (pathname === '/NotoSansDisplay.woff2') {
+    if (!decodedFonts.notoSansDisplay) {
+      decodedFonts.notoSansDisplay = decodeFont(__NOTO_SANS_DISPLAY_FONT__);
+    }
+    return getFontResponse(decodedFonts.notoSansDisplay);
+  }
+  if (pathname === '/NotoSansMono.woff2') {
+    if (!decodedFonts.notoSansMono) {
+      decodedFonts.notoSansMono = decodeFont(__NOTO_SANS_MONO_FONT__);
+    }
+    return getFontResponse(decodedFonts.notoSansMono);
+  }
 
   // --- Data Assets ---
   if (pathname.startsWith('/data/')) {
@@ -119,39 +145,35 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   }
 
   // --- Main Page Rendering Logic ---
-  const monthRegex = /^\d{4}-\d{2}$/;
   const pathSegments = pathname.split('/').filter(Boolean);
+  const segmentCount = pathSegments.length;
 
   let activeRegion = 'en-US';
   let monthStr = new Date().toISOString().slice(0, 7);
 
   // Pattern 1: /
-  if (pathSegments.length === 0) {
+  if (segmentCount === 0) {
     return handleMainPage(request, env, activeRegion, monthStr);
   }
 
   // Pattern 2: /{region} or /{month}
-  if (pathSegments.length === 1) {
+  if (segmentCount === 1) {
     const segment = pathSegments[0];
     const canonicalRegion = getCanonicalRegion(segment);
     if (canonicalRegion) {
-      activeRegion = canonicalRegion;
-      return handleMainPage(request, env, activeRegion, monthStr);
+      return handleMainPage(request, env, canonicalRegion, monthStr);
     }
-    if (monthRegex.test(segment)) {
-      monthStr = segment;
-      return handleMainPage(request, env, activeRegion, monthStr);
+    if (MONTH_REGEX.test(segment)) {
+      return handleMainPage(request, env, activeRegion, segment);
     }
   }
 
   // Pattern 3: /{region}/{month}
-  if (pathSegments.length === 2) {
+  if (segmentCount === 2) {
     const [regionSegment, monthSegment] = pathSegments;
     const canonicalRegion = getCanonicalRegion(regionSegment);
-    if (canonicalRegion && monthRegex.test(monthSegment)) {
-      activeRegion = canonicalRegion;
-      monthStr = monthSegment;
-      return handleMainPage(request, env, activeRegion, monthStr);
+    if (canonicalRegion && MONTH_REGEX.test(monthSegment)) {
+      return handleMainPage(request, env, canonicalRegion, monthSegment);
     }
   }
 
@@ -161,6 +183,11 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    // Only cache GET requests
+    if (request.method !== 'GET') {
+      return handleRequest(request, env, ctx);
+    }
+
     const cache = (caches as any).default;
     const cacheKey = new Request(request.url, request);
     let response = await cache.match(cacheKey);
@@ -174,12 +201,12 @@ export default {
     response = await handleRequest(request, env, ctx);
 
     if (response.status === 200) {
-      // Create a mutable copy to avoid the error
       const cacheableResponse = new Response(response.body, response);
       cacheableResponse.headers.set('Cache-Control', `public, max-age=${CACHE_TTL}`);
       ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
       return cacheableResponse;
     }
-return response;
+
+    return response;
   },
 };

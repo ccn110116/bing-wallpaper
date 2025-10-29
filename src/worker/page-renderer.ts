@@ -3,6 +3,9 @@ import { BingImage, Env } from './types';
 declare const __HTML__: string;
 declare const __ERROR_HTML__: string;
 
+// Cache compiled regex
+const URL_PARSER = /[?&]id=([^&]+)/;
+
 function getErrorResponse(): Response {
   return new Response(__ERROR_HTML__, {
     status: 404,
@@ -29,6 +32,17 @@ function getMonthsData(region: string, env: Env): Promise<string[] | null> {
   return fetchJson<string[]>(`/data/${region}/months.json`, env);
 }
 
+// Extract image ID more efficiently
+function extractImageId(url: string): string | null {
+  const match = url.match(URL_PARSER);
+  return match ? match[1] : null;
+}
+
+// Escape HTML more efficiently
+function escapeHtml(text: string): string {
+  return text.replace(/'/g, "\\'");
+}
+
 export async function handleMainPage(request: Request, env: Env, activeRegion: string, monthStr: string): Promise<Response> {
   const [imageData, monthsData] = await Promise.all([
     getImageData(activeRegion, monthStr, env),
@@ -40,26 +54,31 @@ export async function handleMainPage(request: Request, env: Env, activeRegion: s
   }
 
   const latestImage = imageData[0];
+  const latestImageId = extractImageId(latestImage.url);
 
-  const imageGridHTML = imageData.map(img => {
-    const imageId = new URL(img.url).searchParams.get('id');
-    if (!imageId) return '';
-    const caption = img.desc.replace(/'/g, "\\'");
+  // Build HTML more efficiently using array join
+  const imageGridItems: string[] = [];
+  for (const img of imageData) {
+    const imageId = extractImageId(img.url);
+    if (!imageId) continue;
+    
+    const caption = escapeHtml(img.desc);
     const description = `${img.date}: ${img.desc}`;
-    return `<a href="#" class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="/image/${imageId}?small"><div class="description"><p>${description}</p></div></a>`;
-  }).join('');
+    imageGridItems.push(
+      `<a href="#" class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="/image/${imageId}?small"><div class="description"><p>${description}</p></div></a>`
+    );
+  }
+  const imageGridHTML = imageGridItems.join('');
 
   const rewriter = new HTMLRewriter()
     .on('.bgimg-header', {
       element(element: Element) {
-        const imageId = new URL(latestImage.url).searchParams.get('id');
-        element.setAttribute('style', `background-image: url('/image/${imageId}?2k');`);
+        element.setAttribute('style', `background-image: url('/image/${latestImageId}?2k');`);
       },
     })
     .on('.smallImg-header', {
       element(element: Element) {
-        const imageId = new URL(latestImage.url).searchParams.get('id');
-        element.setAttribute('style', `background-image: url('/image/${imageId}?small');`);
+        element.setAttribute('style', `background-image: url('/image/${latestImageId}?small');`);
       },
     })
     .on('.display-middle p', {
