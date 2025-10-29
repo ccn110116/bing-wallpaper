@@ -4,6 +4,8 @@ import { Env } from './types';
 declare const __ERROR_HTML__: string;
 declare const __JS__: string;
 declare const __CSS__: string;
+declare const __NOTO_SANS_DISPLAY_FONT__: string;
+declare const __NOTO_SANS_MONO_FONT__: string;
 
 const supportedRegions: { [key: string]: string } = {
   'en-us': 'en-US',
@@ -22,6 +24,20 @@ function getAssetResponse(content: string, contentType: string): Response {
     },
   });
   return response;
+}
+
+function getFontResponse(base64Font: string): Response {
+  const fontData = atob(base64Font);
+  const fontArray = new Uint8Array(fontData.length);
+  for (let i = 0; i < fontData.length; i++) {
+    fontArray[i] = fontData.charCodeAt(i);
+  }
+  return new Response(fontArray, {
+    headers: {
+      'Content-Type': 'font/woff2',
+      'Cache-Control': 'public, max-age=2,592,000', // Cache for 30 days
+    },
+  });
 }
 
 function getErrorResponse(): Response {
@@ -86,6 +102,8 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   // --- Static Assets ---
   if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
   if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
+  if (pathname === '/NotoSansDisplay.woff2') return getFontResponse(__NOTO_SANS_DISPLAY_FONT__);
+  if (pathname === '/NotoSansMono.woff2') return getFontResponse(__NOTO_SANS_MONO_FONT__);
 
   // --- Data Assets ---
   if (pathname.startsWith('/data/')) {

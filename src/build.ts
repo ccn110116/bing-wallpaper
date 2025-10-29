@@ -39,6 +39,12 @@ async function main() {
   });
   const minifiedCss = await esbuild.transform(purgeCSSResults[0].css, { loader: 'css', minify: true });
 
+  // --- Read and encode fonts ---
+  const notoSansDisplayFont = await fs.readFile(`${WORKER_SRC_PATH}/assets/NotoSansDisplay.woff2`);
+  const notoSansMonoFont = await fs.readFile(`${WORKER_SRC_PATH}/assets/NotoSansMono.woff2`);
+  const base64NotoSansDisplay = notoSansDisplayFont.toString('base64');
+  const base64NotoSansMono = notoSansMonoFont.toString('base64');
+
   // 3. Build the worker, injecting the assets
   await esbuild.build({
     bundle: true,
@@ -53,6 +59,8 @@ async function main() {
       __ERROR_HTML__: JSON.stringify(minifiedErrorHtml),
       __JS__: JSON.stringify(cleanAndMinify(minifiedJs.code)),
       __CSS__: JSON.stringify(cleanAndMinify(minifiedCss.code)),
+      __NOTO_SANS_DISPLAY_FONT__: JSON.stringify(base64NotoSansDisplay),
+      __NOTO_SANS_MONO_FONT__: JSON.stringify(base64NotoSansMono),
     },
   });
   console.log('Built worker.js with single-line inlined assets');
