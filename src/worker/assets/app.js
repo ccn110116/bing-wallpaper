@@ -37,7 +37,72 @@ function headerImgloading() {
 window.addEventListener('load', () => {
     headerImgloading();
     loadCustomFonts();
+    handleOfflineStatus();
+    applyTranslations();
 });
+
+// i18n
+const translations = window.locales || {};
+const author = '<a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="hover-text-green">Github.com/niumoo</a>';
+const projectName = '<a href="https://github.com/niumoo/bing-wallpaper">bing-wallpaper</a>';
+
+function getBestLanguage() {
+    const supportedLangs = Object.keys(translations);
+    const htmlLang = document.documentElement.lang;
+    if (supportedLangs.includes(htmlLang)) {
+        return htmlLang;
+    }
+
+    for (const lang of navigator.languages) {
+        if (supportedLangs.includes(lang)) {
+            return lang;
+        }
+        const langPrefix = lang.split('-')[0];
+        const matchingLang = supportedLangs.find(l => l.startsWith(langPrefix));
+        if (matchingLang) {
+            return matchingLang;
+        }
+    }
+
+    return 'en-US';
+}
+
+const currentLang = getBestLanguage();
+function getTranslation(key) {
+    const langDict = translations[currentLang] || translations['en-US'];
+    let translated = langDict[key] || key;
+    translated = translated.replace(/{{author}}/g, author);
+    translated = translated.replace(/{{projectName}}/g, projectName);
+    return translated;
+};
+
+function applyTranslations() {
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.dataset.key;
+        element.innerHTML = getTranslation(key);
+    });
+}
+
+// Offline detection
+function handleOfflineStatus() {
+    const offlineBanner = document.getElementById('offline-banner');
+    if (!offlineBanner) return;
+
+    const showOfflineBanner = () => {
+        offlineBanner.style.display = 'block';
+    };
+
+    const hideOfflineBanner = () => {
+        offlineBanner.style.display = 'none';
+    };
+
+    window.addEventListener('offline', showOfflineBanner);
+    window.addEventListener('online', hideOfflineBanner);
+
+    if (!navigator.onLine) {
+        showOfflineBanner();
+    }
+}
 
 // Function to check for font availability and load from Google Fonts if needed
 function loadCustomFonts() {
@@ -72,7 +137,7 @@ function setSidebar(open = true) {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     if (!sidebar && !overlay) return;
-    [sidebar, overlay].forEach(el => el?.classList.toggle('open', !!open));
+    [sidebar, overlay].forEach(element => element?.classList.toggle('open', !!open));
 }
 
 function openSidebar() { setSidebar(true); }
@@ -285,6 +350,7 @@ function openLightbox(imgSrc, caption) {
     const bingLink = document.getElementById('bing-link');
     const resButtons = document.querySelectorAll('.res-button');
     const spinner = lightbox?.querySelector('.loading-spinner');
+    const errorMessage = lightbox?.querySelector('.error-message');
 
     if (!lightbox || !overlay) return;
 
@@ -364,6 +430,7 @@ function openLightbox(imgSrc, caption) {
 
     // Show lightbox
     if (spinner) spinner.style.display = 'block';
+    if (errorMessage) errorMessage.style.display = 'none';
     if (lightboxImg) {
         lightboxImg.style.display = 'none';
         lightboxImg.removeAttribute('src');
@@ -380,16 +447,18 @@ function openLightbox(imgSrc, caption) {
             lightboxImg.style.display = 'block';
         }
     };
-    if ('decode' in highResImg) {
-        highResImg.src = imgSrc;
-        highResImg.decode().then(showImage).catch(() => {
-            // Fallback to onload
-            highResImg.onload = showImage;
-        });
-    } else {
-        highResImg.onload = showImage;
-        highResImg.src = imgSrc;
-    }
+
+    const showError = () => {
+        if (spinner) spinner.style.display = 'none';
+        if (errorMessage) {
+            errorMessage.textContent = getTranslation('error');
+            errorMessage.style.display = 'block';
+        }
+    };
+
+    highResImg.onload = showImage;
+    highResImg.onerror = showError;
+    highResImg.src = imgSrc;
 }
 
 function closeLightbox() {

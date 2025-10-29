@@ -32,6 +32,10 @@ async function main() {
   const jsContent = await fs.readFile(`${WORKER_SRC_PATH}/assets/app.js`, 'utf-8');
   const minifiedJs = await esbuild.transform(jsContent, { loader: 'js', minify: true });
 
+  // --- Load Locales ---
+  const localesContent = await fs.readFile(`${WORKER_SRC_PATH}/locales.json`, 'utf-8');
+  const localesJson = JSON.stringify(JSON.parse(localesContent));
+
   // --- Purge and Minify CSS ---
   const purgeCSSResults = await new PurgeCSS().purge({
     content: [{ raw: htmlContent, extension: 'html' }, { raw: jsContent, extension: 'js' }],
@@ -53,6 +57,7 @@ async function main() {
       __ERROR_HTML__: JSON.stringify(minifiedErrorHtml),
       __JS__: JSON.stringify(cleanAndMinify(minifiedJs.code)),
       __CSS__: JSON.stringify(cleanAndMinify(minifiedCss.code)),
+      __LOCALES__: localesJson,
     },
   });
   console.log('Built worker.js with single-line inlined assets');

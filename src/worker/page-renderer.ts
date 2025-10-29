@@ -2,6 +2,7 @@ import { BingImage, Env } from './types';
 
 declare const __HTML__: string;
 declare const __ERROR_HTML__: string;
+declare const __LOCALES__: any;
 
 // Cache compiled regex
 const URL_PARSER = /[?&]id=([^&]+)/;
@@ -43,7 +44,7 @@ function escapeHtml(text: string): string {
   return text.replace(/'/g, "\\'");
 }
 
-export async function handleMainPage(request: Request, env: Env, activeRegion: string, monthStr: string): Promise<Response> {
+export async function handleMainPage(request: Request, env: Env, activeRegion: string, monthStr: string, lang: string): Promise<Response> {
   const [imageData, monthsData] = await Promise.all([
     getImageData(activeRegion, monthStr, env),
     getMonthsData(activeRegion, env)
@@ -71,6 +72,16 @@ export async function handleMainPage(request: Request, env: Env, activeRegion: s
   const imageGridHTML = imageGridItems.join('');
 
   const rewriter = new HTMLRewriter()
+    .on('html', {
+      element(element: Element) {
+        element.setAttribute('lang', lang);
+      },
+    })
+    .on('head', {
+        element(element: Element) {
+            element.append(`<script>window.locales = ${JSON.stringify(__LOCALES__)}</script>`, { html: true });
+        },
+    })
     .on('.bgimg-header', {
       element(element: Element) {
         element.setAttribute('style', `background-image: url('/image/${latestImageId}?2k');`);

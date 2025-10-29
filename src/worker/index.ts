@@ -4,6 +4,7 @@ import { Env } from './types';
 declare const __ERROR_HTML__: string;
 declare const __JS__: string;
 declare const __CSS__: string;
+declare const __LOCALES__: any;
 
 const CACHE_TTL = 2592000; // 30 days in seconds
 
@@ -14,6 +15,25 @@ const supportedRegions: ReadonlyMap<string, string> = new Map([
 
 function getCanonicalRegion(region: string): string | undefined {
   return supportedRegions.get(region.toLowerCase());
+}
+
+function getBestLanguage(request: Request): string {
+    const supportedLangs = Object.keys(__LOCALES__);
+    const acceptLanguage = request.headers.get('Accept-Language');
+    if (acceptLanguage) {
+        const langs = acceptLanguage.split(',').map(lang => lang.split(';')[0]);
+        for (const lang of langs) {
+            if (supportedLangs.includes(lang)) {
+                return lang;
+            }
+            const langPrefix = lang.split('-')[0];
+            const matchingLang = supportedLangs.find(l => l.startsWith(langPrefix));
+            if (matchingLang) {
+                return matchingLang;
+            }
+        }
+    }
+    return 'en-US';
 }
 
 function getAssetResponse(content: string, contentType: string): Response {
@@ -112,10 +132,11 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
 
   let activeRegion = 'en-US';
   let monthStr = new Date().toISOString().slice(0, 7);
+  const lang = getBestLanguage(request);
 
   // Pattern 1: /
   if (segmentCount === 0) {
-    return handleMainPage(request, env, activeRegion, monthStr);
+    return handleMainPage(request, env, activeRegion, monthStr, lang);
   }
 
   // Pattern 2: /{region} or /{month}
@@ -123,10 +144,10 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     const segment = pathSegments[0];
     const canonicalRegion = getCanonicalRegion(segment);
     if (canonicalRegion) {
-      return handleMainPage(request, env, canonicalRegion, monthStr);
+      return handleMainPage(request, env, canonicalRegion, monthStr, lang);
     }
     if (MONTH_REGEX.test(segment)) {
-      return handleMainPage(request, env, activeRegion, segment);
+      return handleMainPage(request, env, activeRegion, segment, lang);
     }
   }
 
@@ -135,7 +156,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     const [regionSegment, monthSegment] = pathSegments;
     const canonicalRegion = getCanonicalRegion(regionSegment);
     if (canonicalRegion && MONTH_REGEX.test(monthSegment)) {
-      return handleMainPage(request, env, canonicalRegion, monthSegment);
+      return handleMainPage(request, env, canonicalRegion, monthSegment, lang);
     }
   }
 

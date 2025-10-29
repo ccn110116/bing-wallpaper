@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-    <title>必应壁纸 | Bing Wallpaper</title>
+    <title data-key="htmlTitle">Bing Wallpaper</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="每日必应超清壁纸（4K）">
@@ -10,11 +10,15 @@
     <script src="/app.js"></script>
 </head>
 <body>
+<div id="offline-banner" style="display: none;">You are currently offline.</div>
 <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
 <div id="lightbox" class="lightbox">
-    <div class="loading-spinner"></div>
+    <div class="lightbox-image-wrapper">
+        <div class="loading-spinner"></div>
+        <div class="error-message" style="display: none;"></div>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
     <span class="close-lightbox icon icon-close" onclick="closeLightbox()"></span>
-    <img class="lightbox-content" id="lightbox-img">
     <div id="lightbox-caption" class="lightbox-caption"></div>
     <div class="lightbox-controls">
         <a id="bing-link" href="#" target="_blank" class="control-button" title="View on Bing">
@@ -38,9 +42,9 @@
 <div id="header-container" style="position: relative; height: 100vh;">
     <div class="smallImg-header"></div> <!-- 模糊的小图 -->
     <div class="bgimg-header">
-        <div class="display-middle">
+<div class="display-middle">
             <div class="glass-panel">
-                <h1>Bing Wallpaper</h1>
+                <h1 data-key="h1Title">Bing Wallpaper</h1>
                 <p></p>
             </div>
         </div>
@@ -56,14 +60,14 @@
 <nav class="sticky-nav">
     <div class="bar transparent round">
         <div class="nav-links">
-            <a href="/" class="bar-item button">首页</a>
-            <a class="bar-item button" onclick="openSidebar()">归档</a>
-            <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hide-small">GitHub</a>
-            <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hide-small">关于</a>
+            <a href="/" class="bar-item button" data-key="home">Home</a>
+            <a class="bar-item button" onclick="openSidebar()" data-key="archive">Archive</a>
+            <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hide-small" data-key="github">GitHub</a>
+            <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hide-small" data-key="about">About</a>
         </div>
         <div class="language-selector">
-            <a href="/en-us" class="bar-item button">US</a>
-            <a href="/zh-cn" class="bar-item button">CN</a>
+            <a href="/en-us" class="bar-item button" data-key="us">US</a>
+            <a href="/zh-cn" class="bar-item button" data-key="cn">CN</a>
         </div>
         <button id="dark-mode-toggle" class="bar-item button">
             <i class="icon icon-dark-mode"></i>
@@ -81,11 +85,10 @@
 
 <!-- Footer -->
 <footer class="center light-grey" style="padding: 60px;">
-    <p>本站所有图片均来源于必应搜索
-        <br/>
-        Powered by <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="hover-text-green">Github.com/niumoo</a>
-        <br/>
-        本网站已经开源，采用 Apache License 2.0 许可协议，复制请注明来自 <a href="https://github.com/niumoo/bing-wallpaper">bing-wallpaper</a>！
+    <p>
+        <span data-key="footerLine1"></span><br/>
+        <span data-key="footerLine2"></span><br/>
+        <span data-key="footerLine3"></span>
     </p>
 </footer>
 </body>
