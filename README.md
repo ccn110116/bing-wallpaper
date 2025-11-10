@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![Interstellar clouds in the Lagoon Nebula, captured by the Hubble Space Telescope (© ESA/NASA)](https://bing.com/th?id=OHR.LagoonNebula_EN-US7186308623_UHD.jpg&w=1000)
-*Today: [Interstellar clouds in the Lagoon Nebula, captured by the Hubble Space Telescope (© ESA/NASA)](https://bing.com/th?id=OHR.LagoonNebula_EN-US7186308623_UHD.jpg)*
+![Black-tailed prairie dogs at Roberts Prairie Dog Town, Badlands National Park, South Dakota (© Greg Vaughn/Getty Images)](https://bing.com/th?id=OHR.PrairieDogTown_EN-US6854295076_UHD.jpg&w=1000)
+*Today: [Black-tailed prairie dogs at Roberts Prairie Dog Town, Badlands National Park, South Dakota (© Greg Vaughn/Getty Images)](https://bing.com/th?id=OHR.PrairieDogTown_EN-US6854295076_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2025-11-11 | [Black-tailed prairie dogs at Roberts Prairie Dog Town, Badlands National Park, South Dakota (© Greg Vaughn/Getty Images)](https://bing.com/th?id=OHR.PrairieDogTown_EN-US6854295076_UHD.jpg) |
 | 2025-11-10 | [Interstellar clouds in the Lagoon Nebula, captured by the Hubble Space Telescope (© ESA/NASA)](https://bing.com/th?id=OHR.LagoonNebula_EN-US7186308623_UHD.jpg) |
 | 2025-11-09 | [Sea stacks of Bandon Beach in Bandon, Oregon (© Grant Ordelheide/TANDEM Stills + Motion)](https://bing.com/th?id=OHR.BandonBeach_EN-US7099626478_UHD.jpg) |
 | 2025-11-08 | [Polar bear in Churchill, Manitoba, Canada (© karen crewe/Getty Images)](https://bing.com/th?id=OHR.WillowBear_EN-US6995170630_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2025-11-06 | [Peña Roya beech forest, Moncayo Natural Park, Zaragoza, Aragon, Spain (© David Santiago Garcia/DEEPOL by plainpicture)](https://bing.com/th?id=OHR.MoncayoAutumn_EN-US1753631441_UHD.jpg) |
 | 2025-11-05 | [Tower Bridge, London, England (© Nick Brundle Photography/Getty Images)](https://bing.com/th?id=OHR.TowerBridgeUK_EN-US6871236865_UHD.jpg) |
 | 2025-11-04 | [Jellyfish swimming in the Pacific, Guerrero, Mexico (© Christian Vizl/TANDEM Stills + Motion)](https://bing.com/th?id=OHR.MexicoJelly_EN-US6803524310_UHD.jpg) |
-| 2025-11-03 | [Colorful maple leaves and bamboo forest in Arashiyama, Kyoto, Japan (© DoctorEgg/Getty Images)](https://bing.com/th?id=OHR.KyotoMaple_EN-US6732403492_UHD.jpg) |
