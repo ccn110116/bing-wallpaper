@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![Marine Corps War Memorial, Arlington, Virginia (© f11photo/Shutterstock)](https://bing.com/th?id=OHR.MarineMemorial_EN-US6899836690_UHD.jpg&w=1000)
-*Today: [Marine Corps War Memorial, Arlington, Virginia (© f11photo/Shutterstock)](https://bing.com/th?id=OHR.MarineMemorial_EN-US6899836690_UHD.jpg)*
+![Aerial view of the Colosseum, Rome, Italy (© Nico De Pasquale Photography/Getty Images)](https://bing.com/th?id=OHR.ColosseumRome_EN-US6932882124_UHD.jpg&w=1000)
+*Today: [Aerial view of the Colosseum, Rome, Italy (© Nico De Pasquale Photography/Getty Images)](https://bing.com/th?id=OHR.ColosseumRome_EN-US6932882124_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2025-11-13 | [Aerial view of the Colosseum, Rome, Italy (© Nico De Pasquale Photography/Getty Images)](https://bing.com/th?id=OHR.ColosseumRome_EN-US6932882124_UHD.jpg) |
 | 2025-11-12 | [Marine Corps War Memorial, Arlington, Virginia (© f11photo/Shutterstock)](https://bing.com/th?id=OHR.MarineMemorial_EN-US6899836690_UHD.jpg) |
 | 2025-11-11 | [Black-tailed prairie dogs at Roberts Prairie Dog Town, Badlands National Park, South Dakota (© Greg Vaughn/Getty Images)](https://bing.com/th?id=OHR.PrairieDogTown_EN-US6854295076_UHD.jpg) |
 | 2025-11-10 | [Interstellar clouds in the Lagoon Nebula, captured by the Hubble Space Telescope (© ESA/NASA)](https://bing.com/th?id=OHR.LagoonNebula_EN-US7186308623_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2025-11-08 | [Polar bear in Churchill, Manitoba, Canada (© karen crewe/Getty Images)](https://bing.com/th?id=OHR.WillowBear_EN-US6995170630_UHD.jpg) |
 | 2025-11-07 | [Colorful lanterns at the temple of Wat Phra That Hariphunchai, Lamphun, Thailand (© MR. ANUJAK JAIMOOK/Getty Images)](https://bing.com/th?id=OHR.LanternsThailand_EN-US6955074347_UHD.jpg) |
 | 2025-11-06 | [Peña Roya beech forest, Moncayo Natural Park, Zaragoza, Aragon, Spain (© David Santiago Garcia/DEEPOL by plainpicture)](https://bing.com/th?id=OHR.MoncayoAutumn_EN-US1753631441_UHD.jpg) |
-| 2025-11-05 | [Tower Bridge, London, England (© Nick Brundle Photography/Getty Images)](https://bing.com/th?id=OHR.TowerBridgeUK_EN-US6871236865_UHD.jpg) |
