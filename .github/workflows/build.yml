@@ -47,7 +47,7 @@ jobs:
           mkdir -p worker/src
           # Copy the new build outputs
           cp dist/main.js worker/dist/
-          cp dist/src/worker.js worker/src/
+          cp dist/worker.js worker/src/
 
       - name: Get current commit message from main
         id: get_message
