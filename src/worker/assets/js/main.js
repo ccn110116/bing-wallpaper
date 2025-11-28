@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateText('archive');
     updateText('about');
     updateText('github');
+    updateText('us');
+    updateText('cn');
     updateText('footerLine1');
     updateText('footerLine2', { author: '<a href="https://www.wdbyte.com" target="_blank">Wdbyte.com</a>' });
     updateText('footerLine3', { projectName: '<a href="https://github.com/niumoo/bing-wallpaper" target="_blank">Bing Wallpaper</a>' });

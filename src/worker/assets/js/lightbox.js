@@ -18,14 +18,22 @@ export function initializeLightbox() {
 
 export function openLightbox(item) {
     currentItem = item;
+    document.body.classList.add('lightbox-open');
     lightbox.style.display = 'block';
+    setTimeout(() => {
+        lightbox.classList.add('visible');
+    }, 10);
     lightboxCaption.innerHTML = item.dataset.caption;
     bingLink.href = item.dataset.url4k;
     updateLightboxImage();
 }
 
 export function closeLightbox() {
-    lightbox.style.display = 'none';
+    lightbox.classList.remove('visible');
+    setTimeout(() => {
+        lightbox.style.display = 'none';
+        document.body.classList.remove('lightbox-open');
+    }, 300);
 }
 
 export function setResolution(res) {
@@ -40,6 +48,8 @@ function updateLightboxImage() {
     const imageUrl = currentItem.dataset[`url${currentResolution}`];
     lightboxImg.src = imageUrl;
     downloadLink.href = imageUrl;
+    // Always have bingLink point to the 4k version for "View on Bing"
+    bingLink.href = currentItem.dataset.url4k;
 }
 
 export function downloadImage() {
