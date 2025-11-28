@@ -1,121 +1,132 @@
-import { handleMainPage, getImageData } from './page-renderer';
-import { Env } from './types';
+import type { BingImage, Env } from '../shared/types';
+import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL, escapeHtml } from '../shared/utils';
 
-declare const __ERROR_HTML__: string;
-declare const __JS__: string;
-declare const __CSS__: string;
-declare const __LOCALES__: any;
+// --- Helper Functions ---
 
-const CACHE_TTL = 2592000; // 30 days in seconds
-
-const supportedRegions: ReadonlyMap<string, string> = new Map([
-  ['en-us', 'en-US'],
-  ['zh-cn', 'zh-CN']
-]);
-
-function getCanonicalRegion(region: string): string | undefined {
-  return supportedRegions.get(region.toLowerCase());
+function getErrorResponse(request: Request, env: Env): Promise<Response> {
+  return env.ASSETS.fetch(new Request(new URL('/error.html', request.url)));
 }
 
-function getBestLanguage(request: Request): string {
-    const supportedLangs = Object.keys(__LOCALES__);
-    const acceptLanguage = request.headers.get('Accept-Language');
-    if (acceptLanguage) {
-        const langs = acceptLanguage.split(',').map(lang => lang.split(';')[0]);
-        for (const lang of langs) {
-            if (supportedLangs.includes(lang)) {
-                return lang;
-            }
-            const langPrefix = lang.split('-')[0];
-            const matchingLang = supportedLangs.find(l => l.startsWith(langPrefix));
-            if (matchingLang) {
-                return matchingLang;
-            }
-        }
-    }
-    return 'en-US';
-}
-
-function getAssetResponse(content: string, contentType: string): Response {
-  return new Response(content, {
-    headers: {
-      'Content-Type': `${contentType};charset=UTF-8`,
-      'Cache-Control': `public, max-age=${CACHE_TTL}`,
-    },
-  });
-}
-
-function getErrorResponse(): Response {
-  return new Response(__ERROR_HTML__, {
-    status: 404,
-    headers: { 'Content-Type': 'text/html;charset=UTF-8' },
-  });
-}
-
-async function handleImageProxy(request: Request, ctx: ExecutionContext): Promise<Response> {
-  const url = new URL(request.url);
-  const imageId = url.pathname.slice(7); // More efficient than replace
-  if (!imageId) return new Response('Missing image ID', { status: 400 });
-
-  const params = url.searchParams;
-  const hasSmall = params.has('small');
-  const has2k = params.has('2k');
-  
-  // Build URL more efficiently
-  let bingUrl = `https://bing.com/th?id=${imageId}`;
-  if (hasSmall) bingUrl += '&w=384&h=216';
-  else if (has2k) bingUrl += '&w=1920';
-
-  const cache = (caches as any).default;
-  const cacheKey = new Request(bingUrl);
-  let response = await cache.match(cacheKey);
-
-  if (response) {
-    console.log(`CACHE_HIT: ${bingUrl}`);
-    return response;
+async function fetchJson<T>(path: string, env: Env, requestUrl: string): Promise<T | null> {
+  try {
+    const response = await env.ASSETS.fetch(new Request(new URL(path, requestUrl)));
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (e) {
+    console.error(`Could not load JSON from ${path}`, e);
+    return null;
   }
-  
-  console.log(`CACHE_MISS: ${bingUrl}`);
-  response = await fetch(bingUrl, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36' }
-  });
-
-  if (response.ok) {
-    const cacheableResponse = new Response(response.body, response);
-    cacheableResponse.headers.set('Cache-Control', `public, max-age=${CACHE_TTL}`);
-    ctx.waitUntil(cache.put(cacheKey, cacheableResponse.clone()));
-    return cacheableResponse;
-  }
-  
-  return response;
 }
 
-async function handleLatestImage(request: Request, env: Env): Promise<Response> {
-  const monthStr = new Date().toISOString().slice(0, 7);
-  const imageData = await getImageData('en-US', monthStr, env);
-  if (!imageData || imageData.length === 0) return getErrorResponse();
+function getImageData(region: string, monthStr: string, env: Env, requestUrl: string): Promise<BingImage[] | null> {
+  return fetchJson<BingImage[]>(`/data/${region}/${monthStr}.json`, env, requestUrl);
+}
+
+function getMonthsData(region: string, env: Env, requestUrl: string): Promise<string[] | null> {
+  return fetchJson<string[]>(`/data/${region}/months.json`, env, requestUrl);
+}
+
+async function getBestLanguage(request: Request, env: Env): Promise<string> {
+  const localesResponse = await env.ASSETS.fetch(new Request(new URL('/locales.json', request.url)));
+  const locales = await localesResponse.json() as Record<string, any>;
+  const supportedLangs = Object.keys(locales);
+
+  const acceptLanguage = request.headers.get('Accept-Language');
+  if (acceptLanguage) {
+      const langs = acceptLanguage.split(',').map(lang => lang.split(';')[0]);
+      for (const lang of langs) {
+          if (supportedLangs.includes(lang)) {
+              return lang;
+          }
+          const langPrefix = lang.split('-')[0];
+          const matchingLang = supportedLangs.find(l => l.startsWith(langPrefix));
+          if (matchingLang) {
+              return matchingLang;
+          }
+      }
+  }
+  return 'en-US';
+}
+
+// --- Page Rendering ---
+
+async function handleMainPage(request: Request, env: Env, activeRegion: string, monthStr: string, lang: string): Promise<Response> {
+  const [imageData, monthsData, locales] = await Promise.all([
+    getImageData(activeRegion, monthStr, env, request.url),
+    getMonthsData(activeRegion, env, request.url),
+    fetchJson<Record<string, any>>('/locales.json', env, request.url)
+  ]);
+
+  if (!imageData || imageData.length === 0 || !locales) {
+    return getErrorResponse(request, env);
+  }
 
   const latestImage = imageData[0];
-  const imageId = new URL(latestImage.url).searchParams.get('id');
-  return Response.redirect(`${new URL(request.url).origin}/image/${imageId}?2k`, 302);
+  const latestImageId = extractImageId(latestImage.url);
+
+  if (!latestImageId) {
+    return getErrorResponse(request, env);
+  }
+
+  const imageGridItems: string[] = [];
+  for (const img of imageData) {
+    const imageId = extractImageId(img.url);
+    if (!imageId) continue;
+
+    const caption = escapeHtml(img.desc);
+    const description = `${img.date}: ${img.desc}`;
+    imageGridItems.push(
+      `<a href="#" class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="${getImageUrl(imageId, 'small')}" data-url-2k="${getImageUrl(imageId, '2k')}" data-url-4k="${getImageUrl(imageId, '4k')}"><div class="description"><p>${description}</p></div></a>`
+    );
+  }
+  const imageGridHTML = imageGridItems.join('');
+
+  const rewriter = new HTMLRewriter()
+    .on('html', {
+      element(element: Element) {
+        element.setAttribute('lang', lang);
+      },
+    })
+    .on('head', {
+        element(element: Element) {
+            element.append(`<script>window.locales = ${JSON.stringify(locales)}</script>`, { html: true });
+        },
+    })
+    .on('.bgimg-header', {
+      element(element: Element) {
+        element.setAttribute('style', `background-image: url('${getImageUrl(latestImageId, '2k')}');`);
+      },
+    })
+    .on('.smallImg-header', {
+      element(element: Element) {
+        element.setAttribute('style', `background-image: url('${getImageUrl(latestImageId, 'small')}');`);
+      },
+    })
+    .on('.display-middle p', {
+      element(element: Element) {
+        element.setInnerContent(latestImage.desc);
+      },
+    })
+    .on('#img_list', {
+      element(element: Element) {
+        element.setInnerContent(imageGridHTML, { html: true });
+      },
+    });
+
+  const htmlResponse = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url)));
+  return rewriter.transform(htmlResponse);
 }
 
-// Pre-compile regex
-const MONTH_REGEX = /^\d{4}-\d{2}$/;
+// --- Request Handling ---
 
 async function handleRequest(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const { pathname } = url;
 
-  // --- Image Proxy & Redirects ---
-  if (pathname === '/image/latestImage') return handleLatestImage(request, env);
-  if (pathname.startsWith('/image/')) return handleImageProxy(request, ctx);
+  if (pathname === '/app.js' || pathname === '/style.css' || pathname === '/locales.json') {
+    return env.ASSETS.fetch(request);
+  }
 
-  // --- Static Assets ---
-  if (pathname === '/app.js') return getAssetResponse(__JS__, 'application/javascript');
-  if (pathname === '/style.css') return getAssetResponse(__CSS__, 'text/css');
-
-  // --- Data Assets ---
   if (pathname.startsWith('/data/')) {
     const response = await env.ASSETS.fetch(request);
     if (pathname.endsWith('months.json')) {
@@ -126,20 +137,17 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     return response;
   }
 
-  // --- Main Page Rendering Logic ---
   const pathSegments = pathname.split('/').filter(Boolean);
   const segmentCount = pathSegments.length;
 
   let activeRegion = 'en-US';
   let monthStr = new Date().toISOString().slice(0, 7);
-  const lang = getBestLanguage(request);
+  const lang = await getBestLanguage(request, env);
 
-  // Pattern 1: /
   if (segmentCount === 0) {
     return handleMainPage(request, env, activeRegion, monthStr, lang);
   }
 
-  // Pattern 2: /{region} or /{month}
   if (segmentCount === 1) {
     const segment = pathSegments[0];
     const canonicalRegion = getCanonicalRegion(segment);
@@ -151,7 +159,6 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     }
   }
 
-  // Pattern 3: /{region}/{month}
   if (segmentCount === 2) {
     const [regionSegment, monthSegment] = pathSegments;
     const canonicalRegion = getCanonicalRegion(regionSegment);
@@ -160,13 +167,11 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     }
   }
 
-  // --- Fallback to 404 for any other path ---
-  return getErrorResponse();
+  return getErrorResponse(request, env);
 }
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    // Only cache GET requests
     if (request.method !== 'GET') {
       return handleRequest(request, env, ctx);
     }
