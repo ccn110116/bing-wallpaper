@@ -1,18 +1,18 @@
 
 # Bing Wallpaper
 
-![Ancient til trees in Fanal Forest, island of Madeira, Portugal (© Lukas Jonaitis/Shutterstock)](https://bing.com/th?id=OHR.FanalForest_EN-US4405104404_UHD.jpg&w=1000)
-*Today: [Ancient til trees in Fanal Forest, island of Madeira, Portugal (© Lukas Jonaitis/Shutterstock)](https://bing.com/th?id=OHR.FanalForest_EN-US4405104404_UHD.jpg)*
+![Male wild turkey plumage, Aransas Natural Wildlife Refuge, Texas (© George McCarthy/Minden Pictures)](https://bing.com/th?id=OHR.TurkeyDetail_EN-US7401521602_UHD.jpg&w=1000)
+*Today: [Male wild turkey plumage, Aransas Natural Wildlife Refuge, Texas (© George McCarthy/Minden Pictures)](https://bing.com/th?id=OHR.TurkeyDetail_EN-US7401521602_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
-| 2025-10-30 | [Ancient til trees in Fanal Forest, island of Madeira, Portugal (© Lukas Jonaitis/Shutterstock)](https://bing.com/th?id=OHR.FanalForest_EN-US4405104404_UHD.jpg) |
-| 2025-10-29 | [The Gothic Gate in the Adršpach-Teplice Rocks, Czechia (© Kseniya_Milner/Getty Images)](https://bing.com/th?id=OHR.TepliceRocks_EN-US4098225022_UHD.jpg) |
-| 2025-10-28 | [Thick-billed raven, Simien Mountains, Ethiopia (© Ignacio Yufera/FLPA/Minden Pictures)](https://bing.com/th?id=OHR.AfricanRaven_EN-US4057369898_UHD.jpg) |
-| 2025-10-27 | [Pumpkin farm in North Carolina (© Matthew H Irvin/Getty Images)](https://bing.com/th?id=OHR.PumpkinFarm_EN-US3773448576_UHD.jpg) |
-| 2025-10-26 | [Aerial view of peatland in Martimoaapa Mire Reserve, Finland (© romikatarina/Shutterstock)](https://bing.com/th?id=OHR.MartimoaapaFinland_EN-US3685817058_UHD.jpg) |
-| 2025-10-25 | [Night view of the RMS Queen Mary, Long Beach, California (© Kit Leong/Shutterstock)](https://bing.com/th?id=OHR.QueenMary_EN-US3331250680_UHD.jpg) |
-| 2025-10-24 | [Snow leopard with her cubs, Spiti Valley, Cold Desert Biosphere Reserve, India (© Oriol Alamany/naturepl.com)](https://bing.com/th?id=OHR.SnowLeopard_EN-US3294064537_UHD.jpg) |
-| 2025-10-23 | [Belogradchik Rocks, Bulgaria (© EvaL Miko/Shutterstock)](https://bing.com/th?id=OHR.BulgariaRocks_EN-US3184562282_UHD.jpg) |
+| 2025-11-28 | [Male wild turkey plumage, Aransas Natural Wildlife Refuge, Texas (© George McCarthy/Minden Pictures)](https://bing.com/th?id=OHR.TurkeyDetail_EN-US7401521602_UHD.jpg) |
+| 2025-11-27 | [Olive orchard in the Serra de Tramuntana, Mallorca, Balearic Islands, Spain (© cinoby/Getty Images)](https://bing.com/th?id=OHR.OliveGrove_EN-US7076835672_UHD.jpg) |
+| 2025-11-26 | [The Trevi Fountain in Rome, Italy (© Nico De Pasquale Photography/Getty Images)](https://bing.com/th?id=OHR.TreviFountain_EN-US6800145474_UHD.jpg) |
+| 2025-11-25 | [Gwalior Fort, Madhya Pradesh, India (© ImagesofIndia/Shutterstock)](https://bing.com/th?id=OHR.GwailorFort_EN-US6671653416_UHD.jpg) |
+| 2025-11-24 | [Ammonite fossil from Madagascar (© ThomasLENNE/Shutterstock)](https://bing.com/th?id=OHR.MadgascarAmmonite_EN-US6525238032_UHD.jpg) |
+| 2025-11-23 | [Leshan Giant Buddha, Sichuan, China (© www.anotherdayattheoffice.org/Getty Images)](https://bing.com/th?id=OHR.LeshanBuddha_EN-US6412307232_UHD.jpg) |
+| 2025-11-22 | [Harbor seals at Robert Moses State Park, Long Island, New York (© Vicki Jauron, Babylon and Beyond Photography/Getty Images)](https://bing.com/th?id=OHR.SealWaving_EN-US6277930581_UHD.jpg) |
+| 2025-11-21 | [Artist Saype poses with his land art painting at UN Headquarters, Geneva, Switzerland (© Valentin Flauraud/EPA-EFE/Shutterstock)](https://bing.com/th?id=OHR.SaypeGeneva_EN-US6121087903_UHD.jpg) |
