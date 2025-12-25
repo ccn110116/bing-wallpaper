@@ -27,8 +27,12 @@ function getMonthsData(region: string, env: Env, requestUrl: string): Promise<st
 }
 
 async function getBestLanguage(request: Request, env: Env): Promise<string> {
-  const localesResponse = await env.ASSETS.fetch(new Request(new URL('/locales.json', request.url)));
-  const locales = await localesResponse.json() as Record<string, any>;
+  const locales = await fetchJson<Record<string, any>>('/locales.json', env, request.url);
+  
+  if (!locales) {
+    return 'en-US';
+  }
+  
   const supportedLangs = Object.keys(locales);
 
   const acceptLanguage = request.headers.get('Accept-Language');
