@@ -5,10 +5,15 @@ import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL
 
 async function getErrorResponse(request: Request, env: Env): Promise<Response> {
   const response = await env.ASSETS.fetch(new Request(new URL('/error.html', request.url)));
+  const headers = new Headers();
+  const contentType = response.headers.get('content-type');
+  if (contentType) {
+    headers.set('content-type', contentType);
+  }
   return new Response(response.body, {
     status: 404,
     statusText: 'Not Found',
-    headers: response.headers
+    headers: headers
   });
 }
 
