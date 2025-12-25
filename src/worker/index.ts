@@ -27,25 +27,33 @@ function getMonthsData(region: string, env: Env, requestUrl: string): Promise<st
 }
 
 async function getBestLanguage(request: Request, env: Env): Promise<string> {
-  const localesResponse = await env.ASSETS.fetch(new Request(new URL('/locales.json', request.url)));
-  const locales = await localesResponse.json() as Record<string, any>;
-  const supportedLangs = Object.keys(locales);
+  try {
+    const localesResponse = await env.ASSETS.fetch(new Request(new URL('/locales.json', request.url)));
+    if (!localesResponse.ok) {
+      return 'en-US';
+    }
+    const locales = await localesResponse.json() as Record<string, any>;
+    const supportedLangs = Object.keys(locales);
 
-  const acceptLanguage = request.headers.get('Accept-Language');
-  if (acceptLanguage) {
-      const langs = acceptLanguage.split(',').map(lang => lang.split(';')[0]);
-      for (const lang of langs) {
-          if (supportedLangs.includes(lang)) {
-              return lang;
-          }
-          const langPrefix = lang.split('-')[0];
-          const matchingLang = supportedLangs.find(l => l.startsWith(langPrefix));
-          if (matchingLang) {
-              return matchingLang;
-          }
-      }
+    const acceptLanguage = request.headers.get('Accept-Language');
+    if (acceptLanguage) {
+        const langs = acceptLanguage.split(',').map(lang => lang.split(';')[0]);
+        for (const lang of langs) {
+            if (supportedLangs.includes(lang)) {
+                return lang;
+            }
+            const langPrefix = lang.split('-')[0];
+            const matchingLang = supportedLangs.find(l => l.startsWith(langPrefix));
+            if (matchingLang) {
+                return matchingLang;
+            }
+        }
+    }
+    return 'en-US';
+  } catch (e) {
+    console.error('Error fetching locales:', e);
+    return 'en-US';
   }
-  return 'en-US';
 }
 
 // --- Page Rendering ---
