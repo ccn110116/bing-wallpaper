@@ -14,7 +14,7 @@ async function main() {
   await fs.mkdir(path.join(DIST_PATH, 'js'), { recursive: true });
 
   // 2. Build and minify assets in parallel
-  const [htmlContent, jsContent] = await Promise.all([
+  const [htmlContent, jsContent, errorHtmlContent] = await Promise.all([
     fs.readFile(path.join(CONTENTS_PATH, 'index.html'), 'utf-8'),
     esbuild.build({
       entryPoints: [path.join(ASSETS_PATH, 'js', 'main.js')],
@@ -22,9 +22,16 @@ async function main() {
       minify: true,
       format: 'esm',
       outfile: path.join(DIST_PATH, 'js', 'main.js'),
-      write: false, // Don't write to file yet, just get the content
+      write: false,
     }).then(result => result.outputFiles[0].text),
+    fs.readFile(path.join(ASSETS_PATH, 'error.html'), 'utf-8'),
   ]);
+
+  // 3. Create a constants file with embedded assets
+  await fs.writeFile(
+    path.join(DIST_PATH, 'assets.ts'),
+    `export const ERROR_HTML = ${JSON.stringify(errorHtmlContent)};\n`
+  );
 
   await Promise.all([
     // --- Purge and Minify CSS ---
@@ -41,13 +48,12 @@ async function main() {
 
     // --- Copy other assets ---
     fs.copyFile(path.join(CONTENTS_PATH, 'index.html'), path.join(DIST_PATH, 'index.html')),
-    fs.copyFile(path.join(ASSETS_PATH, 'error.html'), path.join(DIST_PATH, 'error.html')),
     fs.copyFile(path.join(CONTENTS_PATH, 'locales.json'), path.join(DIST_PATH, 'locales.json')),
   ]);
   
   console.log('Processed and copied static assets to dist/');
 
-  // 3. Build worker and updater in parallel
+  // 4. Build worker and updater in parallel
   await Promise.all([
     esbuild.build({
       bundle: true,

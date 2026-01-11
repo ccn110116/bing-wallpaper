@@ -1,17 +1,13 @@
 import type { BingImage, Env } from '../shared/types';
 import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL, escapeHtml } from '../shared/utils';
+import { ERROR_HTML } from './assets';
 
 // --- Helper Functions ---
 
-async function getErrorResponse(request: Request, env: Env): Promise<Response> {
-  const response = await env.ASSETS.fetch(new Request(new URL('/error.html', request.url)));
-  const contentType = response.headers.get('content-type') || 'text/html; charset=utf-8';
-  const text = await response.text();
-  const headers = new Headers({ 'content-type': contentType });
-  return new Response(text, {
+function getErrorResponse() {
+  return new Response(ERROR_HTML, {
     status: 404,
-    statusText: 'Not Found',
-    headers: headers
+    headers: { 'content-type': 'text/html; charset=utf-8' },
   });
 }
 
