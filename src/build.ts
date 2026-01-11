@@ -29,7 +29,7 @@ async function main() {
 
   // 3. Create a constants file with embedded assets
   await fs.writeFile(
-    path.join(DIST_PATH, 'assets.ts'),
+    path.join(WORKER_SRC_PATH, 'assets.ts'),
     `export const ERROR_HTML = ${JSON.stringify(errorHtmlContent)};\n`
   );
 
