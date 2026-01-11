@@ -135,6 +135,22 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     return env.ASSETS.fetch(request);
   }
 
+  // Handle image API endpoints
+  if (pathname === '/image/latestImage') {
+    const activeRegion = 'en-US';
+    const monthStr = new Date().toISOString().slice(0, 7);
+    const imageData = await getImageData(activeRegion, monthStr, env, request.url);
+    if (imageData && imageData.length > 0) {
+      return new Response(JSON.stringify(imageData[0]), {
+        headers: { 'content-type': 'application/json' },
+      });
+    }
+    return new Response(JSON.stringify({ error: 'No image found' }), {
+      status: 404,
+      headers: { 'content-type': 'application/json' },
+    });
+  }
+
   if (pathname.startsWith('/data/')) {
     const response = await env.ASSETS.fetch(request);
     if (pathname.endsWith('months.json')) {
