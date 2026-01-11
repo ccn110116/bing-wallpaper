@@ -4,7 +4,7 @@ import { ERROR_HTML } from './assets';
 
 // --- Helper Functions ---
 
-function getErrorResponse() {
+function getErrorResponse(request?: Request, env?: Env) {
   return new Response(ERROR_HTML, {
     status: 404,
     headers: { 'content-type': 'text/html; charset=utf-8' },
@@ -131,7 +131,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   const url = new URL(request.url);
   const { pathname } = url;
 
-  if (pathname === '/app.js' || pathname === '/style.css' || pathname === '/locales.json') {
+  if (pathname === '/js/main.js' || pathname === '/style.css' || pathname === '/locales.json') {
     return env.ASSETS.fetch(request);
   }
 
