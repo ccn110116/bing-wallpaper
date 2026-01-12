@@ -4,7 +4,7 @@ import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL
 // --- Helper Functions ---
 
 async function getErrorResponse(request?: Request, env?: Env) {
-  if (!env?.ASSETS) {
+  if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
     return new Response('Error', {
       status: 404,
       headers: { 'content-type': 'text/html; charset=utf-8' },
@@ -31,6 +31,11 @@ async function getErrorResponse(request?: Request, env?: Env) {
 }
 
 async function fetchJson<T>(path: string, env: Env, requestUrl: string): Promise<T | null> {
+  if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
+    console.error(`ASSETS binding not available for ${path}`);
+    return null;
+  }
+  
   try {
     const response = await env.ASSETS.fetch(new Request(new URL(path, requestUrl)));
     if (!response.ok) return null;
@@ -140,6 +145,10 @@ async function handleMainPage(request: Request, env: Env, activeRegion: string, 
       },
     });
 
+  if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
+    return new Response('Assets not available', { status: 500 });
+  }
+
   const htmlResponse = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url)));
   return rewriter.transform(htmlResponse);
 }
@@ -151,6 +160,9 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   const { pathname } = url;
 
   if (pathname === '/js/main.js' || pathname === '/style.css' || pathname === '/locales.json') {
+    if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
+      return new Response('Assets not available', { status: 500 });
+    }
     return env.ASSETS.fetch(request);
   }
 
@@ -171,6 +183,9 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   }
 
   if (pathname.startsWith('/data/')) {
+    if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
+      return new Response('Assets not available', { status: 500 });
+    }
     const response = await env.ASSETS.fetch(request);
     if (pathname.endsWith('months.json')) {
       const cacheableResponse = new Response(response.body, response);

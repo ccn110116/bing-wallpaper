@@ -5,7 +5,8 @@ export interface BingImage {
 }
 
 export interface Env {
-  ASSETS: {
+  ASSETS?: {
     fetch: (request: Request) => Promise<Response>;
   };
+  __STATIC_CONTENT?: ReadableStream<Uint8Array>;
 }
