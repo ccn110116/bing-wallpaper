@@ -4,37 +4,24 @@ import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL
 // --- Helper Functions ---
 
 async function getErrorResponse(request?: Request, env?: Env) {
-  if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
-    return new Response('Error', {
-      status: 404,
-      headers: { 'content-type': 'text/html; charset=utf-8' },
-    });
-  }
-  
-  try {
-    const errorHtml = await env.ASSETS.fetch(new Request(new URL('/error.html', request?.url || 'https://example.com')));
-    
-    if (errorHtml.ok) {
-      return new Response(await errorHtml.text(), {
-        status: 404,
-        headers: { 'content-type': 'text/html; charset=utf-8' },
-      });
+  if (env?.ASSETS) {
+    try {
+       const errorUrl = new URL('/error.html', request?.url || 'https://example.com');
+       const response = await env.ASSETS.fetch(new Request(errorUrl));
+       if (response.ok) return response;
+    } catch (e) {
+      console.error('Failed to fetch error.html from assets', e);
     }
-  } catch (e) {
-    console.error('Failed to fetch error.html', e);
   }
-  
-  return new Response('Error', {
+
+  return new Response('404 Not Found', {
     status: 404,
-    headers: { 'content-type': 'text/html; charset=utf-8' },
+    headers: { 'content-type': 'text/plain' },
   });
 }
 
 async function fetchJson<T>(path: string, env: Env, requestUrl: string): Promise<T | null> {
-  if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
-    console.error(`ASSETS binding not available for ${path}`);
-    return null;
-  }
+  if (!env?.ASSETS) return null;
   
   try {
     const response = await env.ASSETS.fetch(new Request(new URL(path, requestUrl)));
@@ -160,10 +147,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   const { pathname } = url;
 
   if (pathname === '/js/main.js' || pathname === '/style.css' || pathname === '/locales.json') {
-    if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
-      return new Response('Assets not available', { status: 500 });
-    }
-    return env.ASSETS.fetch(request);
+    return env.ASSETS ? env.ASSETS.fetch(request) : new Response('Not Found', { status: 404 });
   }
 
   // Handle image API endpoints
@@ -183,9 +167,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   }
 
   if (pathname.startsWith('/data/')) {
-    if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
-      return new Response('Assets not available', { status: 500 });
-    }
+    if (!env?.ASSETS) return new Response('Not Found', { status: 404 });
     const response = await env.ASSETS.fetch(request);
     if (pathname.endsWith('months.json')) {
       const cacheableResponse = new Response(response.body, response);
