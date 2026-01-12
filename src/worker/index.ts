@@ -1,14 +1,15 @@
 import type { BingImage, Env } from '../shared/types';
 import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL, escapeHtml } from '../shared/utils';
-import { ERROR_HTML } from './assets';
 
 // --- Helper Functions ---
 
-function getErrorResponse(request?: Request, env?: Env) {
-  return new Response(ERROR_HTML, {
-    status: 404,
-    headers: { 'content-type': 'text/html; charset=utf-8' },
-  });
+async function getErrorResponse(request?: Request, env?: Env) {
+  const errorHtml = await env.ASSETS.fetch(new Request(new URL('/error.html', request?.url)));
+  
+    return new Response(await errorHtml.text(), {
+      status: 404,
+      headers: { 'content-type': 'text/html; charset=utf-8' },
+    });
 }
 
 async function fetchJson<T>(path: string, env: Env, requestUrl: string): Promise<T | null> {
@@ -66,14 +67,14 @@ async function handleMainPage(request: Request, env: Env, activeRegion: string, 
   ]);
 
   if (!imageData || imageData.length === 0 || !locales) {
-    return getErrorResponse(request, env);
+    return await getErrorResponse(request, env);
   }
 
   const latestImage = imageData[0];
   const latestImageId = extractImageId(latestImage.url);
 
   if (!latestImageId) {
-    return getErrorResponse(request, env);
+    return await getErrorResponse(request, env);
   }
 
   const imageGridItems: string[] = [];
