@@ -80,76 +80,13 @@ async function getBestLanguage(request: Request, env: Env): Promise<string> {
 
 // --- Page Rendering ---
 
-async function handleMainPage(request: Request, env: Env, activeRegion: string, monthStr: string, lang: string): Promise<Response> {
-  const [imageData, monthsData, locales] = await Promise.all([
-    getImageData(activeRegion, monthStr, env, request.url),
-    getMonthsData(activeRegion, env, request.url),
-    fetchJson<Record<string, any>>('/locales.json', env, request.url)
-  ]);
-
-  if (!imageData || imageData.length === 0 || !locales) {
-    console.error(`Failed to load data for main page: Region=${activeRegion}, Month=${monthStr}, ImageData=${!!imageData}, Locales=${!!locales}`);
-    return await getErrorResponse(request, env);
-  }
-
-  const latestImage = imageData[0];
-  const latestImageId = extractImageId(latestImage.url);
-
-  if (!latestImageId) {
-    return await getErrorResponse(request, env);
-  }
-
-  const imageGridItems: string[] = [];
-  for (const img of imageData) {
-    const imageId = extractImageId(img.url);
-    if (!imageId) continue;
-
-    const caption = escapeHtml(img.desc);
-    const description = `${img.date}: ${img.desc}`;
-    imageGridItems.push(
-      `<a href="#" class="portfolio-item" data-image-id="${imageId}" data-caption="${caption}" data-bg="${getImageUrl(imageId, 'small')}" data-url-2k="${getImageUrl(imageId, '2k')}" data-url-4k="${getImageUrl(imageId, '4k')}"><div class="description"><p>${description}</p></div></a>`
-    );
-  }
-  const imageGridHTML = imageGridItems.join('');
-
-  const rewriter = new HTMLRewriter()
-    .on('html', {
-      element(element: Element) {
-        element.setAttribute('lang', lang);
-      },
-    })
-    .on('head', {
-        element(element: Element) {
-            element.append(`<script>window.locales = ${JSON.stringify(locales)}</script>`, { html: true });
-        },
-    })
-    .on('.bgimg-header', {
-      element(element: Element) {
-        element.setAttribute('style', `background-image: url('${getImageUrl(latestImageId, '2k')}');`);
-      },
-    })
-    .on('.smallImg-header', {
-      element(element: Element) {
-        element.setAttribute('style', `background-image: url('${getImageUrl(latestImageId, 'small')}');`);
-      },
-    })
-    .on('.display-middle p', {
-      element(element: Element) {
-        element.setInnerContent(latestImage.desc);
-      },
-    })
-    .on('#img_list', {
-      element(element: Element) {
-        element.setInnerContent(imageGridHTML, { html: true });
-      },
-    });
-
-  if (!env?.ASSETS || typeof env.ASSETS.fetch !== 'function') {
+async function handleMainPage(request: Request, env: Env): Promise<Response> {
+  // Client-side rendering: just serve the index.html template
+  // The client JS will fetch data and populate the page
+  if (!env?.ASSETS) {
     return new Response('Assets not available', { status: 500 });
   }
-
-  const htmlResponse = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url)));
-  return rewriter.transform(htmlResponse);
+  return env.ASSETS.fetch(new Request(new URL('/index.html', request.url)));
 }
 
 // --- Request Handling ---
@@ -197,22 +134,18 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   const pathSegments = pathname.split('/').filter(Boolean);
   const segmentCount = pathSegments.length;
 
-  let activeRegion = 'en-US';
-  let monthStr = new Date().toISOString().slice(0, 7);
-  const lang = await getBestLanguage(request, env);
-
   if (segmentCount === 0) {
-    return handleMainPage(request, env, activeRegion, monthStr, lang);
+    return handleMainPage(request, env);
   }
 
   if (segmentCount === 1) {
     const segment = pathSegments[0];
     const canonicalRegion = getCanonicalRegion(segment);
     if (canonicalRegion) {
-      return handleMainPage(request, env, canonicalRegion, monthStr, lang);
+      return handleMainPage(request, env);
     }
     if (MONTH_REGEX.test(segment)) {
-      return handleMainPage(request, env, activeRegion, segment, lang);
+      return handleMainPage(request, env);
     }
   }
 
@@ -220,7 +153,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     const [regionSegment, monthSegment] = pathSegments;
     const canonicalRegion = getCanonicalRegion(regionSegment);
     if (canonicalRegion && MONTH_REGEX.test(monthSegment)) {
-      return handleMainPage(request, env, canonicalRegion, monthSegment, lang);
+      return handleMainPage(request, env);
     }
   }
 
