@@ -12,6 +12,7 @@ export const CACHE_TTL = 2592000; // 30 days in seconds
 
 // --- File Paths & Directories ---
 export const DATA_PATH = 'src/worker/assets/data';
+export const README_PATH = 'README.md';
 
 // --- Supported Regions & Languages ---
 export const supportedRegions = {
