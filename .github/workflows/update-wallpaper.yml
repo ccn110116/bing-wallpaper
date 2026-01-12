@@ -1,4 +1,4 @@
-name: Update Wallpaper
+name: Update Wallpaper Data
 
 on:
   schedule:
@@ -15,44 +15,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Checkout main branch
-        uses: actions/checkout@v3
-        with:
-          ref: main
+      - name: Install dependencies
+        run: npm install
 
-      - name: Checkout worker branch
-        uses: actions/checkout@v3
-        with:
-          ref: worker
-          path: worker
+      - name: Compile TypeScript
+        run: npx tsc
+
+      - name: Generate wallpaper data
+        run: node dist/update-wallpaper/index.js
 
       - name: Set Git user
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Generate wallpaper files
-        run: node dist/main.js
-        working-directory: worker
-
-      - name: Commit and push changes to worker branch
+      - name: Commit and push wallpaper data
         run: |
-          cd worker
-          git add assets/data/
-          git commit -m "Update Bing Wallpaper" || echo "No changes to commit"
+          git add --force src/worker/assets/data/
+          git commit -m "Update Bing Wallpaper data" || echo "No changes to commit"
           git push
 
-      - name: Copy README.md to main branch
+      - name: Commit and push README
         run: |
-          cp worker/dist/README.md README.md
-
-      - name: Commit and push README.md to main branch
-        run: |
-          git add README.md
-          git commit -m "Update Bing Wallpaper README" || echo "No changes to commit"
+          git add --force README.md
+          git commit -m "Update README with latest wallpaper" || echo "No changes to commit"
           git push
+

@@ -1,32 +1,67 @@
+/**
+ * Event listeners setup
+ */
+
 import { openSidebar, closeSidebar, toggleDarkMode } from './ui.js';
 import { openLightbox, closeLightbox, setResolution, downloadImage } from './lightbox.js';
 
+/**
+ * Set up all event listeners for user interactions
+ */
 export function setupEventListeners() {
-    // Sidebar listeners
-    document.querySelector('[data-key="archive"]').addEventListener('click', openSidebar);
-    document.querySelector('.sidebar .bar-item.button').addEventListener('click', closeSidebar);
-    document.getElementById('overlay').addEventListener('click', closeSidebar);
+  // Sidebar listeners
+  const archiveLink = document.querySelector('[data-key="archive"]');
+  const closeButton = document.querySelector('.sidebar .bar-item.button');
+  const overlay = document.getElementById('overlay');
 
-    // Dark mode listener
-    document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+  if (archiveLink) {
+    archiveLink.addEventListener('click', openSidebar);
+  }
+  if (closeButton) {
+    closeButton.addEventListener('click', closeSidebar);
+  }
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
 
-    // Lightbox listeners
-    document.getElementById('img_list').addEventListener('click', (event) => {
-        const item = event.target.closest('.portfolio-item');
-        if (item) {
-            event.preventDefault();
-            openLightbox(item);
-        }
-    });
+  // Dark mode listener
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+  }
 
-    document.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
-
-    document.querySelectorAll('.res-button').forEach(button => {
-        button.addEventListener('click', () => setResolution(button.dataset.res));
-    });
-
-    document.getElementById('download-link').addEventListener('click', (event) => {
+  // Lightbox listeners
+  const imgList = document.getElementById('img_list');
+  if (imgList) {
+    imgList.addEventListener('click', (event) => {
+      const target = event.target;
+      const item = target.closest('.portfolio-item');
+      if (item) {
         event.preventDefault();
-        downloadImage();
+        openLightbox(item);
+      }
     });
+  }
+
+  const closeLightboxBtn = document.querySelector('.close-lightbox');
+  if (closeLightboxBtn) {
+    closeLightboxBtn.addEventListener('click', closeLightbox);
+  }
+
+  // Resolution buttons
+  document.querySelectorAll('.res-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      setResolution(button.dataset.res);
+    });
+  });
+
+  // Download button
+  const downloadBtn = document.getElementById('download-link');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      downloadImage();
+    });
+  }
+}
 }

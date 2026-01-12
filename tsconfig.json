@@ -6,12 +6,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "outDir": "./dist",
     "moduleResolution": "node",
     "types": ["node"]
   },
   "include": [
-    "src/**/*.ts"
+    "src/shared/**/*.ts",
+    "src/update-wallpaper/**/*.ts"
   ],
   "exclude": [
     "node_modules",
