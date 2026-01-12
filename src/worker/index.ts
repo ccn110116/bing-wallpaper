@@ -8,7 +8,12 @@ async function getErrorResponse(request?: Request, env?: Env) {
     try {
        const errorUrl = new URL('/error.html', request?.url || 'https://example.com');
        const response = await env.ASSETS.fetch(new Request(errorUrl));
-       if (response.ok) return response;
+       if (response.ok) {
+         return new Response(response.body, {
+           status: 404,
+           headers: response.headers,
+         });
+       }
     } catch (e) {
       console.error('Failed to fetch error.html from assets', e);
     }
@@ -24,8 +29,13 @@ async function fetchJson<T>(path: string, env: Env, requestUrl: string): Promise
   if (!env?.ASSETS) return null;
   
   try {
-    const response = await env.ASSETS.fetch(new Request(new URL(path, requestUrl)));
-    if (!response.ok) return null;
+    const assetUrl = new URL(path, requestUrl);
+
+    const response = await env.ASSETS.fetch(new Request(assetUrl));
+    if (!response.ok) {
+        console.error(`Failed to fetch JSON: ${path} (Status: ${response.status})`);
+        return null;
+    }
     return await response.json();
   } catch (e) {
     console.error(`Could not load JSON from ${path}`, e);
@@ -45,11 +55,12 @@ async function getBestLanguage(request: Request, env: Env): Promise<string> {
   const locales = await fetchJson<Record<string, any>>('/locales.json', env, request.url);
   
   if (!locales) {
+    console.warn('Failed to load locales.json, defaulting to en-US'); // Add debugging
     return 'en-US';
   }
   
+  // ... rest of function
   const supportedLangs = Object.keys(locales);
-
   const acceptLanguage = request.headers.get('Accept-Language');
   if (acceptLanguage) {
       const langs = acceptLanguage.split(',').map(lang => lang.split(';')[0]);
@@ -77,6 +88,7 @@ async function handleMainPage(request: Request, env: Env, activeRegion: string, 
   ]);
 
   if (!imageData || imageData.length === 0 || !locales) {
+    console.error(`Failed to load data for main page: Region=${activeRegion}, Month=${monthStr}, ImageData=${!!imageData}, Locales=${!!locales}`);
     return await getErrorResponse(request, env);
   }
 
@@ -154,12 +166,17 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   if (pathname === '/image/latestImage') {
     const activeRegion = 'en-US';
     const monthStr = new Date().toISOString().slice(0, 7);
-    const imageData = await getImageData(activeRegion, monthStr, env, request.url);
-    if (imageData && imageData.length > 0) {
-      return new Response(JSON.stringify(imageData[0]), {
-        headers: { 'content-type': 'application/json' },
-      });
+    try {
+        const imageData = await getImageData(activeRegion, monthStr, env, request.url);
+        if (imageData && imageData.length > 0) {
+            return new Response(JSON.stringify(imageData[0]), {
+                headers: { 'content-type': 'application/json' },
+            });
+        }
+    } catch (e) {
+        console.error('Error fetching latest image', e);
     }
+    
     return new Response(JSON.stringify({ error: 'No image found' }), {
       status: 404,
       headers: { 'content-type': 'application/json' },
