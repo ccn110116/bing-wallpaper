@@ -4,12 +4,30 @@ import { getCanonicalRegion, extractImageId, getImageUrl, MONTH_REGEX, CACHE_TTL
 // --- Helper Functions ---
 
 async function getErrorResponse(request?: Request, env?: Env) {
-  const errorHtml = await env.ASSETS.fetch(new Request(new URL('/error.html', request?.url)));
-  
-    return new Response(await errorHtml.text(), {
+  if (!env?.ASSETS) {
+    return new Response('Error', {
       status: 404,
       headers: { 'content-type': 'text/html; charset=utf-8' },
     });
+  }
+  
+  try {
+    const errorHtml = await env.ASSETS.fetch(new Request(new URL('/error.html', request?.url || 'https://example.com')));
+    
+    if (errorHtml.ok) {
+      return new Response(await errorHtml.text(), {
+        status: 404,
+        headers: { 'content-type': 'text/html; charset=utf-8' },
+      });
+    }
+  } catch (e) {
+    console.error('Failed to fetch error.html', e);
+  }
+  
+  return new Response('Error', {
+    status: 404,
+    headers: { 'content-type': 'text/html; charset=utf-8' },
+  });
 }
 
 async function fetchJson<T>(path: string, env: Env, requestUrl: string): Promise<T | null> {
