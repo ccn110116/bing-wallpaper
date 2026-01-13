@@ -148,7 +148,7 @@ async function generateSite(region: string) {
   await cleanupOldJsonFiles(region);
   await updateMonthsJsonFile(region);
 
-  if (region === 'en-US') {
+  if (region === 'en-us') {
     await updateReadme(images);
   }
 }
@@ -157,7 +157,7 @@ async function generateSite(region: string) {
 async function main() {
   log('Starting Bing Wallpaper fetch...');
   try {
-    const regions = ['en-US', 'zh-CN'];
+    const regions = ['en-us', 'zh-cn'];
     const promises = regions.map(region => generateSite(region));
     await Promise.all(promises);
     log('Bing Wallpaper fetch finished.');

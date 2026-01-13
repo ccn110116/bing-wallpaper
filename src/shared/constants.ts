@@ -16,12 +16,12 @@ export const README_PATH = 'README.md';
 
 // --- Supported Regions & Languages ---
 export const supportedRegions = {
-  'en-us': 'en-US',
-  'zh-cn': 'zh-CN',
+  'en-us': 'en-us',
+  'zh-cn': 'zh-cn',
 } as const;
 
-export const DEFAULT_REGION = 'en-US';
-export const DEFAULT_LANGUAGE = 'en-US';
+export const DEFAULT_REGION = 'en-us';
+export const DEFAULT_LANGUAGE = 'en-us';
 
 // --- Regular Expressions ---
 export const MONTH_REGEX = /^\d{4}-\d{2}$/; // Pre-compiled regex for YYYY-MM format
