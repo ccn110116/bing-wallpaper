@@ -38,15 +38,10 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Commit and push wallpaper data
+      - name: Commit and push wallpaper data and README
         run: |
           git add --force src/worker/assets/data/
-          git commit -m "Update Bing Wallpaper data" || echo "No changes to commit"
-          git push
-
-      - name: Commit and push README
-        run: |
           git add --force README.md
-          git commit -m "Update README with latest wallpaper" || echo "No changes to commit"
+          git commit -m "Update Bing Wallpaper data and README" || echo "No changes to commit"
           git push
 
