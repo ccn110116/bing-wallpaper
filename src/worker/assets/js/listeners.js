@@ -29,4 +29,14 @@ export function setupEventListeners() {
         event.preventDefault();
         downloadImage();
     });
+
+    // Sticky Nav scroll listener
+    const nav = document.querySelector('.sticky-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            nav.classList.add('visible');
+        } else {
+            nav.classList.remove('visible');
+        }
+    });
 }

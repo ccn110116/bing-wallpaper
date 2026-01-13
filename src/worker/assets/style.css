@@ -93,7 +93,7 @@ body, html {
 
 /* Navigation Bar */
 .sticky-nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -105,6 +105,12 @@ body, html {
     visibility: hidden;
     will-change: opacity, transform;
     transform: translateZ(0) translateY(-100%);
+}
+
+.sticky-nav.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateZ(0) translateY(0);
 }
 
 
@@ -330,6 +336,11 @@ body, html {
     transition: opacity 0.3s, transform 0.3s;
     max-width: 90vw;
     max-height: 90vh;
+}
+
+.lightbox.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .lightbox-image-wrapper {
