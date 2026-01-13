@@ -9,3 +9,8 @@ run_worker_first = ["/"]
 
 [placement]
 mode = "smart"
+
+[observability]
+[observability.logs]
+enabled = true
+invocation_logs = true

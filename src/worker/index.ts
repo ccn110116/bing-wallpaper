@@ -28,14 +28,24 @@ async function renderPage(
   
   const url = new URL(request.url);
 
+  console.log(`[renderPage] Fetching index.html for ${url.pathname}`);
+  const templateReq = new Request(new URL('/index.html', url));
+  const templateRes = await env.ASSETS.fetch(templateReq);
+  
+  if (!templateRes.ok) {
+    console.error(`[renderPage] Failed to fetch index.html: ${templateRes.status}`);
+    return new Response('Template not found', { status: 500 });
+  }
+  
+  // Check if we got the actual index.html or a fallback (like error.html)
+  // This is a heuristic - checking for a known string in index.html
+  // But strictly, we assume ASSETS serves correct file on 200.
+  
   // 1. Fetch resources in parallel
-  const [templateRes, locales, months] = await Promise.all([
-    env.ASSETS.fetch(new Request(new URL('/index.html', url))),
+  const [locales, months] = await Promise.all([
     fetchJson<Record<string, Record<string, string>>>('/locales.json', env, url.toString()),
     fetchJson<string[]>(`/data/${region}/months.json`, env, url.toString()),
   ]);
-
-  if (!templateRes.ok) return new Response('Template not found', { status: 500 });
 
   let activeMonth = monthStr;
   if (!activeMonth) {
@@ -140,6 +150,29 @@ async function renderPage(
   });
 }
 
+async function handleLatestImage(env: Env, requestUrl: string): Promise<Response> {
+  const region = 'en-us';
+  const months = await fetchJson<string[]>(`/data/${region}/months.json`, env, requestUrl);
+  
+  if (!months || months.length === 0) {
+    return new Response('Data not found', { status: 404 });
+  }
+
+  const latestMonth = months[0];
+  const images = await fetchJson<BingImage[]>(`/data/${region}/${latestMonth}.json`, env, requestUrl);
+  
+  if (!images || images.length === 0) {
+    return new Response('Image not found', { status: 404 });
+  }
+
+  return new Response(JSON.stringify(images[0], null, 2), {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    }
+  });
+}
+
 // --- Request Handler ---
 
 async function handleRequest(request: Request, env: Env): Promise<Response> {
@@ -149,6 +182,10 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (pathname.includes('.')) {
       if (env.ASSETS) return env.ASSETS.fetch(request);
       return new Response('Not found', { status: 404 });
+  }
+
+  if (pathname === '/image/latestImage') {
+    return handleLatestImage(env, request.url);
   }
 
   if (pathname === '/') {
@@ -172,7 +209,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     }
   }
 
-  return renderPage('en-us', undefined, request, env);
+  return new Response('Not found', { status: 404 });
 }
 
 export default {
