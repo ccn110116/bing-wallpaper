@@ -24,11 +24,17 @@ export function initializeUI() {
 export function openSidebar() {
     sidebar.style.display = 'block';
     overlay.style.display = 'block';
+    // Force reflow
+    void overlay.offsetWidth;
+    overlay.style.opacity = '1';
 }
 
 export function closeSidebar() {
     sidebar.style.display = 'none';
-    overlay.style.display = 'none';
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 300);
 }
 
 export function toggleDarkMode() {

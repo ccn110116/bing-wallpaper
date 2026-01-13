@@ -19,6 +19,16 @@ export function initializeLightbox() {
 export function openLightbox(item) {
     currentItem = item;
     document.body.classList.add('lightbox-open');
+    
+    // Show overlay
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+        overlay.style.display = 'block';
+        // Force reflow
+        void overlay.offsetWidth;
+        overlay.style.opacity = '1';
+    }
+
     lightbox.style.display = 'block';
     setTimeout(() => {
         lightbox.classList.add('visible');
@@ -30,6 +40,16 @@ export function openLightbox(item) {
 
 export function closeLightbox() {
     lightbox.classList.remove('visible');
+    
+    // Hide overlay
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+           overlay.style.display = 'none';
+        }, 300);
+    }
+    
     setTimeout(() => {
         lightbox.style.display = 'none';
         document.body.classList.remove('lightbox-open');
@@ -67,7 +87,7 @@ export function downloadImage() {
             const a = document.createElement('a');
             a.style.display = 'none';
             a.href = url;
-            a.download = `${currentItem.dataset.imageId}.jpg`;
+            a.download = `${currentItem.dataset.imageId || 'bing-wallpaper'}.jpg`;
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
@@ -79,7 +99,7 @@ export function downloadImage() {
             }, 2000);
         })
         .catch(() => {
-            alert(getLocale('error'));
+            // alert(getLocale('error')); // Avoid alert if possible, or handle UI error
             downloadLoadingIcon.style.display = 'none';
             downloadIcon.style.display = 'block';
         });

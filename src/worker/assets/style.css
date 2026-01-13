@@ -325,6 +325,10 @@ body, html {
     transition: opacity 0.3s;
 }
 
+.overlay.visible {
+    opacity: 1;
+}
+
 .lightbox {
     position: fixed;
     top: 50%;
