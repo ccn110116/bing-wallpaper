@@ -66,7 +66,7 @@ async function renderPage(
   // 3. Inject Content
   
   // HTML Lang
-  html = html.replace('<html lang="en-US">', `<html lang="${region}">`);
+  html = html.replace('<html lang="en-us">', `<html lang="${region}">`);
   
   // Script Injection for Client-side Locals
   if (locales) {
@@ -150,6 +150,25 @@ async function renderPage(
   });
 }
 
+async function serveError(env: Env, request: Request): Promise<Response> {
+  if (env.ASSETS) {
+    try {
+      const url = new URL(request.url);
+      const errorUrl = new URL('/error.html', url);
+      const errorRes = await env.ASSETS.fetch(new Request(errorUrl));
+      if (errorRes.ok) {
+        return new Response(errorRes.body, {
+          status: 404,
+          headers: errorRes.headers
+        });
+      }
+    } catch (e) {
+      console.error("Failed to fetch error.html", e);
+    }
+  }
+  return new Response('Not found', { status: 404 });
+}
+
 async function handleLatestImage(env: Env, requestUrl: string): Promise<Response> {
   const region = 'en-us';
   const months = await fetchJson<string[]>(`/data/${region}/months.json`, env, requestUrl);
@@ -165,12 +184,19 @@ async function handleLatestImage(env: Env, requestUrl: string): Promise<Response
     return new Response('Image not found', { status: 404 });
   }
 
-  return new Response(JSON.stringify(images[0], null, 2), {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    }
-  });
+  const imageUrl = images[0].url;
+  try {
+      const imageRes = await fetch(imageUrl);
+      const headers = new Headers(imageRes.headers);
+      headers.set('Access-Control-Allow-Origin', '*');
+      headers.set('Cache-Control', 'public, max-age=3600'); 
+      return new Response(imageRes.body, {
+          status: imageRes.status,
+          headers: headers
+      });
+  } catch (e) {
+      return new Response('Failed to fetch image', { status: 502 });
+  }
 }
 
 // --- Request Handler ---
@@ -180,8 +206,8 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   const { pathname } = url;
 
   if (pathname.includes('.')) {
-      if (env.ASSETS) return env.ASSETS.fetch(request);
-      return new Response('Not found', { status: 404 });
+    if (env.ASSETS) return env.ASSETS.fetch(request);
+    return serveError(env, request);
   }
 
   if (pathname === '/image/latestImage') {
@@ -209,7 +235,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     }
   }
 
-  return new Response('Not found', { status: 404 });
+  return serveError(env, request);
 }
 
 export default {

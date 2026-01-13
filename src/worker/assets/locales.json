@@ -1,5 +1,5 @@
 {
-  "en-US": {
+  "en-us": {
     "htmlTitle": "Bing Wallpaper",
     "h1Title": "Bing Wallpaper",
     "home": "Home",
@@ -14,7 +14,7 @@
     "offline": "You are currently offline.",
     "error": "Failed to load image. Please try again later."
   },
-  "zh-CN": {
+  "zh-cn": {
     "htmlTitle": "必应壁纸 | Bing Wallpaper",
     "h1Title": "必应壁纸",
     "home": "首页",
