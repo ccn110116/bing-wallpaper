@@ -116,6 +116,8 @@ async function renderPage(
         <a href="#" class="portfolio-item" 
            style="background-image: url('${smallUrl}')"
            data-caption="${caption}"
+           data-date="${img.date}"
+           data-thumbnail="${smallUrl}"
            data-url4k="${uhdUrl}"
            data-url2k="${k2Url}">
            <div class="description">
