@@ -66,6 +66,17 @@ export function setResolution(res) {
 
 function updateLightboxImage() {
     const imageUrl = currentItem.dataset[`url${currentResolution}`];
+    
+    // Show spinner and hide image initially
+    const spinner = document.querySelector('.loading-spinner');
+    if (spinner) spinner.style.display = 'block';
+    lightboxImg.style.display = 'none';
+
+    lightboxImg.onload = () => {
+        if (spinner) spinner.style.display = 'none';
+        lightboxImg.style.display = 'block';
+    };
+
     lightboxImg.src = imageUrl;
     downloadLink.href = imageUrl;
     // Always have bingLink point to the 4k version for "View on Bing"

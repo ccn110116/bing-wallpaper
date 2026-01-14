@@ -46,6 +46,14 @@ body, html {
     mask-size: cover;
 }
 
+/* Fix for Inline SVG Icons: override base .icon mask styles */
+svg.icon {
+    background-color: transparent !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    fill: currentColor;
+}
+
 .icon-close {
     -webkit-mask-image: url("#icon-close");
     mask-image: url("#icon-close");
