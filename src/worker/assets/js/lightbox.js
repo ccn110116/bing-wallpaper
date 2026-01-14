@@ -73,45 +73,33 @@ function updateLightboxImage() {
     downloadLink.href = targetUrl;
 
     const spinner = document.querySelector('.loading-spinner');
-    if (spinner) spinner.style.display = 'block';
-
-    const thumbnail = currentItem.dataset.thumbnail;
     
-    // Preload target
+    // Reset image state
+    // We add 'loading' class which sets opacity to 0
+    // But we keep display block to maintain layout size (thanks to aspect-ratio CSS)
+    lightboxImg.classList.add('loading');
+    
+    // Delay spinner by 300ms
+    let spinnerTimeout = setTimeout(() => {
+        if (spinner) spinner.style.display = 'block';
+    }, 300);
+
     const tempImg = new Image();
     
     tempImg.onload = () => {
+        clearTimeout(spinnerTimeout);
         if (spinner) spinner.style.display = 'none';
+        
         lightboxImg.src = targetUrl;
-        lightboxImg.style.display = 'block';
-        lightboxImg.style.filter = 'none';
-        lightboxImg.dataset.loadedIdentity = currentIdentity; // Mark as loaded
+        lightboxImg.classList.remove('loading');
     };
 
     tempImg.onerror = () => {
+         clearTimeout(spinnerTimeout);
          if (spinner) spinner.style.display = 'none';
     };
-
-    // Logic: 
-    // If it's a DIFFERENT image than what's currently shown, swap to thumbnail immediately.
-    // If it's the SAME image (just switching res), keep it visible!
     
-    const lastLoadedIdentity = lightboxImg.dataset.loadedIdentity;
-
-    if (lastLoadedIdentity !== currentIdentity) {
-        // New image opening
-        if (thumbnail) {
-            lightboxImg.src = thumbnail;
-            lightboxImg.style.display = 'block';
-            lightboxImg.style.filter = 'blur(10px)';
-        } else {
-             // No thumbnail? Hide until loaded to avoid showing wrong previous image
-             lightboxImg.style.display = 'none';
-        }
-    }
-    // Else: We are switching resolution on the same image. 
-    // Keep current `lightboxImg.src` visible (don't touch it) until `tempImg.onload` swaps it.
-    
+    // Start loading high res
     tempImg.src = targetUrl;
 }
 

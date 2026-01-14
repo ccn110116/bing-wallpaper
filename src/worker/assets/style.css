@@ -110,14 +110,14 @@ svg.icon {
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     padding: 10px 0;
     opacity: 0;
-    visibility: hidden;
+    pointer-events: none; /* Replaces visibility: hidden for better transition handling */
     will-change: opacity, transform;
     transform: translateZ(0) translateY(-100%);
 }
 
 .sticky-nav.visible {
     opacity: 1;
-    visibility: visible;
+    pointer-events: auto;
     transform: translateZ(0) translateY(0);
 }
 
@@ -362,14 +362,8 @@ svg.icon {
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-height: 50vh; /* Ensure some height even without image */
     height: 100%;
-}
-
-.error-message {
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .lightbox-content {
@@ -377,7 +371,15 @@ svg.icon {
     max-height: 72vh;
     border-radius: 18px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    object-fit: contain; /* Ensure image fits without being cropped */
+    object-fit: contain;
+    background-color: rgba(0,0,0,0.2); /* Placeholder background */
+    aspect-ratio: 16/9; /* Reserve space for standard wallpaper ratio */
+    display: block; /* Always block, handle visibility via opacity */
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-content.loading {
+    opacity: 0; 
 }
 
 .close-lightbox {
