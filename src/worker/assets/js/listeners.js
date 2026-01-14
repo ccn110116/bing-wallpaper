@@ -30,20 +30,5 @@ export function setupEventListeners() {
         downloadImage();
     });
 
-    // Sticky Nav scroll listener
-    const nav = document.querySelector('.sticky-nav');
-    if (nav) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                nav.classList.add('visible');
-            } else {
-                nav.classList.remove('visible');
-            }
-        });
-        
-        // Check initial scroll position
-        if (window.scrollY > 100) {
-            nav.classList.add('visible');
-        }
-    }
+    // Sticky Nav is now always visible
 }

@@ -1,5 +1,6 @@
 import type { BingImage, Env } from '../shared/types';
 import { fetchJson } from './utils';
+import { IMAGE_RESOLUTIONS } from '../shared/constants';
 
 export async function handleLatestImage(env: Env, requestUrl: string): Promise<Response> {
   const region = 'en-us';
@@ -17,8 +18,12 @@ export async function handleLatestImage(env: Env, requestUrl: string): Promise<R
   }
 
   const imageUrl = images[0].url;
+  // Use lower resolution (small) for error page background to save bandwidth
+  const { width, height } = IMAGE_RESOLUTIONS.small;
+  const lowResUrl = `${imageUrl}&w=${width}&h=${height}`;
+  
   try {
-      const imageRes = await fetch(imageUrl);
+      const imageRes = await fetch(lowResUrl);
       const headers = new Headers(imageRes.headers);
       headers.set('Access-Control-Allow-Origin', '*');
       headers.set('Cache-Control', 'public, max-age=3600'); 
