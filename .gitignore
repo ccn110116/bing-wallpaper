@@ -1,3 +1,4 @@
 node_modules/
 src/worker/assets/data/
 README.md
+test/

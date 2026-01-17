@@ -1,5 +1,8 @@
 import type { BingImage, Env } from '../shared/types';
 import { fetchJson } from './utils';
+import localesData from './locales.json';
+
+const locales: Record<string, Record<string, string>> = localesData;
 
 export async function renderPage(
   region: string,
@@ -21,10 +24,7 @@ export async function renderPage(
   }
   
   // 1. Fetch resources in parallel
-  const [locales, months] = await Promise.all([
-    fetchJson<Record<string, Record<string, string>>>('/locales.json', env, url.toString()),
-    fetchJson<string[]>(`/data/${region}/months.json`, env, url.toString()),
-  ]);
+  const months = await fetchJson<string[]>(`/data/${region}/months.json`, env, url.toString());
 
   let activeMonth = monthStr;
   if (!activeMonth) {
@@ -39,7 +39,6 @@ export async function renderPage(
   
   // Helper for localization
   const getTrans = (key: string) => {
-    if (!locales) return key;
     // Handle case sensitivity (e.g. en-us vs en-US)
     const availableRegions = Object.keys(locales);
     const matchedRegion = availableRegions.find(r => r.toLowerCase() === region.toLowerCase());
@@ -55,11 +54,6 @@ export async function renderPage(
   // HTML Lang
   html = html.replace('<html lang="en-US">', `<html lang="${region}">`);
   
-  // Script Injection for Client-side Locals
-  if (locales) {
-      const script = `<script>window.locales = ${JSON.stringify(locales)};</script>`;
-      html = html.replace('</head>', `${script}</head>`);
-  }
   
   // Title & Metadata
   const pageTitle = getTrans('htmlTitle');
@@ -93,15 +87,24 @@ export async function renderPage(
 
   // Image Grid
   if (images.length > 0) {
-    const gridHtml = images.map(img => {
+    // Only load the very first few images initially (e.g. above the fold)
+    const initialLoadCount = 3;
+    const gridHtml = images.map((img, index) => {
       const smallUrl = `${img.url}&w=384&h=216`;
       const uhdUrl = `${img.url}&w=3840&h=2160`;
       const k2Url = `${img.url}&w=1920&h=1080`;
       const caption = img.desc.replace(/'/g, "&#39;");
       
+      // Determine if image should be lazy loaded
+      const isLazy = index >= initialLoadCount;
+      const styleAttr = isLazy ? '' : `style="background-image: url('${smallUrl}')"`;
+      const classAttr = isLazy ? 'portfolio-item lazy-bg' : 'portfolio-item';
+      const dataBg = isLazy ? `data-bg="${smallUrl}"` : '';
+
       return `
-        <a href="#" class="portfolio-item" 
-           style="background-image: url('${smallUrl}')"
+        <a href="#" class="${classAttr}" 
+           ${styleAttr}
+           ${dataBg}
            data-caption="${caption}"
            data-date="${img.date}"
            data-thumbnail="${smallUrl}"
@@ -121,12 +124,13 @@ export async function renderPage(
   }
 
   // Footer / Static Text keys
-  const textKeys = ['home', 'archive', 'about', 'github', 'footerLine1', 'footerLine2', 'footerLine3'];
+  const textKeys = ['home', 'archive', 'about', 'github', 'footerLine1', 'footerLine2', 'footerLine3', 'us', 'cn'];
   for (const key of textKeys) {
     const val = getTrans(key);
+    // Remove the data-key attribute to clean up the HTML for client
     const regex = new RegExp(`data-key="${key}"[^>]*>.*?<`, 'g');
     html = html.replace(regex, (match) => {
-      const tagStart = match.substring(0, match.indexOf('>') + 1);
+      const tagStart = match.substring(0, match.indexOf('>') + 1).replace(` data-key="${key}"`, '');
       return `${tagStart}${val}<`;
     });
   }

@@ -37,7 +37,7 @@ export const IMAGE_RESOLUTIONS = {
 export const DEFAULT_IMAGE_RESOLUTION = '4k' as const;
 
 // --- Routes & Endpoints ---
-export const STATIC_ROUTES = ['/js/main.js', '/style.css', '/locales.json'] as const;
+export const STATIC_ROUTES = ['/js/main.js', '/css/style.css', '/css/dark-mode.css', '/locales.json'] as const;
 export const API_ROUTES = {
   latestImage: '/image/latestImage',
   data: '/data/',

@@ -20,7 +20,10 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   }
 
   if (pathname === '/') {
-    return renderPage('en-us', undefined, request, env);
+    // Determine language from header
+    const acceptLanguage = request.headers.get('Accept-Language') || '';
+    const region = acceptLanguage.toLowerCase().includes('zh') ? 'zh-cn' : 'en-us';
+    return renderPage(region, undefined, request, env);
   }
 
   const pathSegments = pathname.split('/').filter(Boolean);
@@ -44,7 +47,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 }
 
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: any): Promise<Response> {
     const url = new URL(request.url);
     const cache = (caches as any).default;
     const cacheKey = new Request(url.toString(), request);

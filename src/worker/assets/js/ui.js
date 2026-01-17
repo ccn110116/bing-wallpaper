@@ -1,4 +1,4 @@
-import { getLang, getLocale } from './main.js';
+import { getLocale } from './main.js';
 
 let sidebar;
 let overlay;

@@ -1,5 +1,3 @@
-import { getLocale } from './main.js';
-
 let lightbox;
 let lightboxImg;
 let lightboxCaption;
