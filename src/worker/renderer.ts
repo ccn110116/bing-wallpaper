@@ -45,9 +45,14 @@ export async function renderPage(
     const matchedRegion = availableRegions.find(r => r.toLowerCase() === region.toLowerCase());
     const defaultRegion = availableRegions.find(r => r.toLowerCase() === 'en-us');
     
-    return (matchedRegion && locales[matchedRegion]?.[key]) || 
-           (defaultRegion && locales[defaultRegion]?.[key]) || 
-           key;
+    let text = (matchedRegion && locales[matchedRegion]?.[key]) || 
+               (defaultRegion && locales[defaultRegion]?.[key]) || 
+               key;
+    
+    // Replace placeholders
+    text = text.replace(/{{author}}/g, 'Niumoo');
+    text = text.replace(/{{projectName}}/g, 'Bing Wallpaper');
+    return text;
   };
 
   // 3. Inject Content
@@ -63,6 +68,21 @@ export async function renderPage(
   // Header
   const h1Title = getTrans('h1Title');
   html = html.replace(/<h1.*?>.*?<\/h1>/, `<h1>${h1Title}</h1>`);
+
+  // Replace other translations based on data-key
+  const keysToReplace = [
+    'home', 'archive', 'about', 'github', 'us', 'cn',
+    'footerLine1', 'footerLine2', 'footerLine3'
+  ];
+
+  keysToReplace.forEach(key => {
+    const value = getTrans(key);
+    // Regex to match element with data-key="key" and replace its content
+    // Matches: <tag ... data-key="key" ...>CONTENT</tag>
+    // Note: This matches the first closing tag, so it assumes no nested matching tags which is fine for these text elements.
+    const regex = new RegExp(`(<[^>]+data-key="${key}"[^>]*>).*?(<\/[^>]+>)`, 'g');
+    html = html.replace(regex, `$1${value}$2`);
+  });
 
   // First image for Header Background
   if (images.length > 0) {

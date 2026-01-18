@@ -1,5 +1,3 @@
-import { getLocale } from './main.js';
-
 let sidebar;
 let overlay;
 let darkModeToggle;
