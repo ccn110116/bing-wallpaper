@@ -69,6 +69,9 @@ export async function renderPage(
     const bgUrl = `${firstImg.url}&w=1920`; 
     const desc = firstImg.desc;
     
+    // Preload header image for immediate loading
+    html = html.replace('<link rel="preload" as="image" href="">', `<link rel="preload" as="image" href="${bgUrl}">`);
+    
     html = html.replace(
       '<div class="bgimg-header">', 
       `<div class="bgimg-header" style="background-image: url('${bgUrl}')">`
