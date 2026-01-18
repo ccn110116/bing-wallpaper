@@ -1,4 +1,5 @@
 import type { BingImage, Env } from '../shared/types';
+import { IMAGE_RESOLUTIONS } from '../shared/constants';
 import { fetchJson } from './utils';
 import localesData from './locales.json';
 
@@ -66,7 +67,7 @@ export async function renderPage(
   // First image for Header Background
   if (images.length > 0) {
     const firstImg = images[0];
-    const bgUrl = `${firstImg.url}&w=1920`; 
+    const bgUrl = `${firstImg.url}&w=${IMAGE_RESOLUTIONS['2k'].width}&h=${IMAGE_RESOLUTIONS['2k'].height}`; 
     const desc = firstImg.desc;
     
     // Preload header image for immediate loading
@@ -93,9 +94,9 @@ export async function renderPage(
     // Only load the very first few images initially (e.g. above the fold)
     const initialLoadCount = 3;
     const gridHtml = images.map((img, index) => {
-      const smallUrl = `${img.url}&w=384&h=216`;
-      const uhdUrl = `${img.url}&w=3840&h=2160`;
-      const k2Url = `${img.url}&w=1920&h=1080`;
+      const smallUrl = `${img.url}&w=${IMAGE_RESOLUTIONS.small.width}&h=${IMAGE_RESOLUTIONS.small.height}`;
+      const uhdUrl = `${img.url}&w=${IMAGE_RESOLUTIONS['4k'].width}&h=${IMAGE_RESOLUTIONS['4k'].height}`;
+      const k2Url = `${img.url}&w=${IMAGE_RESOLUTIONS['2k'].width}&h=${IMAGE_RESOLUTIONS['2k'].height}`;
       const caption = img.desc.replace(/'/g, "&#39;");
       
       // Determine if image should be lazy loaded

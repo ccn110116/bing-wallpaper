@@ -65,7 +65,7 @@ svg.icon {
     padding: 10px 0;
     opacity: 1;
     pointer-events: auto;
-    will-change: opacity, transform;
+    will-change: transform;
     transform: translateZ(0) translateY(0);
 }
 
