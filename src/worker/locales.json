@@ -25,7 +25,7 @@
     "cn": "CN",
     "footerLine1": "本站所有图片均来源于必应搜索",
     "footerLine2": "由 {{author}} 提供技术支持",
-    "footerLine3": "本网站已经开源，采用 Apache License 2.0 许可协议，复制请注明来自{{projectName}}！",
+    "footerLine3": "本网站已经开源，采用 Apache License 2.0 许可协议，复制请注明来自 {{projectName}} ！",
     "offline": "您当前处于离线状态。",
     "error": "图片加载失败，请稍后重试。"
   }

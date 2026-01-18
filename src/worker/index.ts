@@ -20,10 +20,8 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   }
 
   if (pathname === '/') {
-    // Determine language from header
-    const acceptLanguage = request.headers.get('Accept-Language') || '';
-    const region = acceptLanguage.toLowerCase().includes('zh') ? 'zh-cn' : 'en-us';
-    return renderPage(region, undefined, request, env);
+    // Default region en-us
+    return renderPage('en-us', undefined, request, env);
   }
 
   const pathSegments = pathname.split('/').filter(Boolean);

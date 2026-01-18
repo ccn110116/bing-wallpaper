@@ -20,7 +20,7 @@
         <div class="bar transparent round">
             <div class="nav-links">
                 <a href="/" class="bar-item button" data-key="home">Home</a>
-                <a class="bar-item button" onclick="openSidebar()" data-key="archive">Archive</a>
+                <a class="bar-item button" data-key="archive">Archive</a>
                 <a href="https://github.com/niumoo/bing-wallpaper" target="_blank" class="bar-item button hide-small" data-key="github">GitHub</a>
                 <a href="https://www.wdbyte.com/bing-wallpaper-400.html" target="_blank" class="bar-item button hide-small" data-key="about">About</a>
             </div>
@@ -29,8 +29,8 @@
                 <a href="/zh-cn" class="bar-item button" data-key="cn">CN</a>
             </div>
             <button id="dark-mode-toggle" class="bar-item button">
-                <svg class="icon icon-dark-mode" style="width: 24px; height: 24px;"><use href="#icon-dark-mode"></use></svg>
-                <svg class="icon icon-light-mode" style="display: none; width: 24px; height: 24px;"><use href="#icon-light-mode"></use></svg>
+                <span class="icon icon-dark-mode"></span>
+                <span class="icon icon-light-mode" style="display: none;"></span>
             </button>
         </div>
     </nav>
@@ -61,7 +61,7 @@
 
     <div id="offline-banner" style="display: none;">You are currently offline.</div>
 
-    <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+    <div id="overlay" class="overlay"></div>
 
     <div id="lightbox" class="lightbox">
         <div class="lightbox-image-wrapper">
@@ -69,33 +69,33 @@
             <div class="error-message" style="display: none;"></div>
             <img class="lightbox-content" id="lightbox-img">
         </div>
-        <span class="close-lightbox" onclick="closeLightbox()">
-            <svg class="icon"><use href="#icon-close"></use></svg>
+        <span class="close-lightbox">
+            <span class="icon icon-close"></span>
         </span>
         <div id="lightbox-caption" class="lightbox-caption"></div>
         <div class="lightbox-controls">
             <a id="bing-link" href="#" target="_blank" class="control-button" title="View on Bing">
-                <svg class="icon" style="width: 24px; height: 24px; color: #F3F3F3;"><use href="#icon-bing"></use></svg>
+                <span class="icon icon-bing"></span>
             </a>
             <div class="resolution-selector">
                 <button class="control-button res-button" data-res="2k">
-                    <svg class="icon" style="width: 24px; height: 24px; color: #F3F3F3;"><use href="#icon-2k"></use></svg>
+                    <span class="icon icon-2k"></span>
                 </button>
                 <button class="control-button res-button active" data-res="4k">
-                    <svg class="icon" style="width: 24px; height: 24px; color: #F3F3F3;"><use href="#icon-4k"></use></svg>
+                    <span class="icon icon-4k"></span>
                 </button>
             </div>
             <a id="download-link" href="#" download class="control-button" title="Download">
-                <svg class="icon icon-download" style="width: 24px; height: 24px; color: #F3F3F3;"><use href="#icon-download"></use></svg>
-                <svg class="icon icon-download-loading" style="display:none; width: 24px; height: 24px; color: #F3F3F3;"><use href="#icon-download-loading"></use></svg>
-                <svg class="icon icon-download-done" style="display:none; width: 24px; height: 24px; color: #F3F3F3;"><use href="#icon-download-done"></use></svg>
+                <span class="icon icon-download"></span>
+                <span class="icon icon-download-loading" style="display:none;"></span>
+                <span class="icon icon-download-done" style="display:none;"></span>
             </a>
         </div>
     </div>
 
     <sidebar class="sidebar bar-block card top xlarge animate-left" id="sidebar">
-        <a href="javascript:void(0)" onclick="closeSidebar()" class="bar-item button">
-            <svg class="icon" style="width: 24px; height: 24px;"><use href="#icon-close"></use></svg>
+        <a href="javascript:void(0)" class="bar-item button">
+            <span class="icon icon-close"></span>
         </a>
         <div id="archive-list"></div>
     </sidebar>

@@ -26,14 +26,18 @@ body, html {
    ========================================= */
 .icon {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 24px;
+    height: 24px;
     background-color: currentColor;
     -webkit-mask-size: cover;
     mask-size: cover;
+    color: #F3F3F3;
 }
 
 svg.icon {
+    background-color: transparent !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
     fill: currentColor;
 }
 

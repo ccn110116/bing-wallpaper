@@ -21,6 +21,9 @@ export function initializeUI() {
 
 export function openSidebar() {
     sidebar.style.display = 'block';
+    setTimeout(() => {
+        sidebar.style.left = '0';
+    }, 10);
     overlay.style.display = 'block';
     // Force reflow
     void overlay.offsetWidth;
@@ -28,9 +31,10 @@ export function openSidebar() {
 }
 
 export function closeSidebar() {
-    sidebar.style.display = 'none';
+    sidebar.style.left = '-250px';
     overlay.style.opacity = '0';
     setTimeout(() => {
+        sidebar.style.display = 'none';
         overlay.style.display = 'none';
     }, 300);
 }

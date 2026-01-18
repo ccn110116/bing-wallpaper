@@ -5,7 +5,15 @@ export function setupEventListeners() {
     // Sidebar listeners
     document.querySelector('[data-key="archive"]').addEventListener('click', openSidebar);
     document.querySelector('.sidebar .bar-item.button').addEventListener('click', closeSidebar);
-    document.getElementById('overlay').addEventListener('click', closeSidebar);
+    
+    // Handle overlay click (Close sidebar or Lightbox)
+    document.getElementById('overlay').addEventListener('click', () => {
+        if (document.body.classList.contains('lightbox-open')) {
+            closeLightbox();
+        } else {
+            closeSidebar();
+        }
+    });
 
     // Dark mode listener
     document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
