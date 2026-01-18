@@ -11,11 +11,43 @@ export function initializeUI() {
     lightModeIcon = document.querySelector('.icon-light-mode');
     darkModeIcon = document.querySelector('.icon-dark-mode');
 
-    const isDarkMode = localStorage.getItem('theme') === 'dark';
+    // Check localStorage first, then fall back to system preference
+    let isDarkMode = localStorage.getItem('theme') === 'dark';
+    if (localStorage.getItem('theme') === null) {
+        // No saved preference, use system preference
+        isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    
     if (isDarkMode) {
+        loadDarkModeCSS();
         document.body.classList.add('dark-mode');
         lightModeIcon.style.display = 'block';
         darkModeIcon.style.display = 'none';
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (localStorage.getItem('theme') === null) {
+            if (e.matches) {
+                loadDarkModeCSS();
+                document.body.classList.add('dark-mode');
+                lightModeIcon.style.display = 'block';
+                darkModeIcon.style.display = 'none';
+            } else {
+                document.body.classList.remove('dark-mode');
+                lightModeIcon.style.display = 'none';
+                darkModeIcon.style.display = 'block';
+            }
+        }
+    });
+}
+
+function loadDarkModeCSS() {
+    if (!document.querySelector('link[href="/css/dark-mode.css"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '/css/dark-mode.css';
+        document.head.appendChild(link);
     }
 }
 
@@ -40,8 +72,15 @@ export function closeSidebar() {
 }
 
 export function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const isDarkMode = document.body.classList.contains('dark-mode');
+    const isDarkMode = !document.body.classList.contains('dark-mode');
+    
+    if (isDarkMode) {
+        loadDarkModeCSS();
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+    
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     lightModeIcon.style.display = isDarkMode ? 'block' : 'none';
     darkModeIcon.style.display = isDarkMode ? 'none' : 'block';

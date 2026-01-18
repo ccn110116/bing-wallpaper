@@ -28,10 +28,14 @@ body, html {
     display: inline-block;
     width: 24px;
     height: 24px;
-    background-color: currentColor;
-    -webkit-mask-size: cover;
-    mask-size: cover;
-    color: #F3F3F3;
+    background-color: #F3F3F3;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    flex-shrink: 0;
 }
 
 svg.icon {
