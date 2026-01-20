@@ -5,6 +5,18 @@ let lightModeIcon;
 let darkModeIcon;
 
 export function initializeUI() {
+    // Show/hide sticky nav based on header scroll
+    const nav = document.querySelector('.sticky-nav');
+    const header = document.getElementById('header-container');
+    function updateNavVisibility() {
+        if (!nav) return;
+        const threshold = header ? Math.max(0, header.offsetHeight - 64) : 120;
+        if (window.scrollY > threshold) nav.classList.add('visible');
+        else nav.classList.remove('visible');
+    }
+    updateNavVisibility();
+    window.addEventListener('scroll', updateNavVisibility, { passive: true });
+
     sidebar = document.getElementById('sidebar');
     overlay = document.getElementById('overlay');
     darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -40,18 +52,6 @@ export function initializeUI() {
             }
         }
     });
-
-    // Show/hide sticky nav based on header scroll
-    const nav = document.querySelector('.sticky-nav');
-    const header = document.getElementById('header-container');
-    function updateNavVisibility() {
-        if (!nav) return;
-        const threshold = header ? Math.max(0, header.offsetHeight - 64) : 120;
-        if (window.scrollY > threshold) nav.classList.add('visible');
-        else nav.classList.remove('visible');
-    }
-    updateNavVisibility();
-    window.addEventListener('scroll', updateNavVisibility, { passive: true });
 }
 
 function loadDarkModeCSS() {
