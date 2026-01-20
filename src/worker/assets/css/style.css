@@ -43,18 +43,10 @@ svg.icon {
     -webkit-mask-image: none !important;
     mask-image: none !important;
     fill: currentColor;
+    width: 24px;
+    height: 24px;
+    color: #F3F3F3;
 }
-
-/* Icon Mappings - using external svg file */
-.icon-close { -webkit-mask-image: url("../icons.svg#icon-close"); mask-image: url("../icons.svg#icon-close"); }
-.icon-bing { -webkit-mask-image: url("../icons.svg#icon-bing"); mask-image: url("../icons.svg#icon-bing"); }
-.icon-2k { -webkit-mask-image: url("../icons.svg#icon-2k"); mask-image: url("../icons.svg#icon-2k"); }
-.icon-4k { -webkit-mask-image: url("../icons.svg#icon-4k"); mask-image: url("../icons.svg#icon-4k"); }
-.icon-download { -webkit-mask-image: url("../icons.svg#icon-download"); mask-image: url("../icons.svg#icon-download"); }
-.icon-download-loading { -webkit-mask-image: url("../icons.svg#icon-download-loading"); mask-image: url("../icons.svg#icon-download-loading"); }
-.icon-download-done { -webkit-mask-image: url("../icons.svg#icon-download-done"); mask-image: url("../icons.svg#icon-download-done"); }
-.icon-light-mode { -webkit-mask-image: url("../icons.svg#icon-light-mode"); mask-image: url("../icons.svg#icon-light-mode"); }
-.icon-dark-mode { -webkit-mask-image: url("../icons.svg#icon-dark-mode"); mask-image: url("../icons.svg#icon-dark-mode"); }
 
 /* =========================================
    NAVIGATION BAR
