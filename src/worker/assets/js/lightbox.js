@@ -64,19 +64,16 @@ export function setResolution(res) {
 
 function updateLightboxImage() {
     const targetUrl = currentItem.dataset[`url${currentResolution}`];
-    const currentIdentity = currentItem.dataset.date;
     
     // Update bing link to match resolution
     bingLink.href = targetUrl;
     downloadLink.href = targetUrl;
 
     const spinner = document.querySelector('.loading-spinner');
-    
-    // Reset image state
-    // We add 'loading' class which sets opacity to 0
-    // But we keep display block to maintain layout size (thanks to aspect-ratio CSS)
     lightboxImg.classList.add('loading');
-    
+    lightboxImg.src = '';
+    if (spinner) spinner.style.display = 'none';
+
     // Delay spinner by 300ms
     let spinnerTimeout = setTimeout(() => {
         if (spinner) spinner.style.display = 'block';
@@ -87,15 +84,16 @@ function updateLightboxImage() {
     tempImg.onload = () => {
         clearTimeout(spinnerTimeout);
         if (spinner) spinner.style.display = 'none';
-        
+
         lightboxImg.src = targetUrl;
         lightboxImg.classList.remove('loading');
     };
 
-    tempImg.onerror = () => {
-         clearTimeout(spinnerTimeout);
-         if (spinner) spinner.style.display = 'none';
-    };
+        tempImg.onerror = () => {
+            clearTimeout(spinnerTimeout);
+            if (spinner) spinner.style.display = 'none';
+            lightboxImg.classList.remove('loading');
+        };
     
     // Start loading high res
     tempImg.src = targetUrl;
