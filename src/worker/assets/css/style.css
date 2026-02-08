@@ -58,17 +58,17 @@ svg.icon {
     right: 0;
     width: 100%;
     z-index: 1000;
-    transition: transform 0.18s cubic-bezier(0.2,0,0,1);
+    transition: transform 0.24s cubic-bezier(0.2,0,0,1);
     padding: 10px 0;
     opacity: 1;
     pointer-events: none;
-    will-change: transform, backdrop-filter;
-    transform: translateZ(0) translateY(-72px);
+    will-change: transform;
+    transform: translate3d(0, -130%, 0);
 }
 
 .sticky-nav.visible {
     pointer-events: auto;
-    transform: translateZ(0) translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .bar {
