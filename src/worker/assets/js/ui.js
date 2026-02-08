@@ -5,17 +5,38 @@ let lightModeIcon;
 let darkModeIcon;
 
 export function initializeUI() {
-    // Show/hide sticky nav based on header scroll
+    // Show/hide sticky nav using IntersectionObserver for reliable toggling
     const nav = document.querySelector('.sticky-nav');
     const header = document.getElementById('header-container');
-    function updateNavVisibility() {
-        if (!nav) return;
-        const threshold = header ? Math.max(0, header.offsetHeight - 64) : 120;
-        if (window.scrollY > threshold) nav.classList.add('visible');
-        else nav.classList.remove('visible');
+
+    if (nav) {
+        const sentinel = document.createElement('div');
+        sentinel.id = 'nav-sentinel';
+        sentinel.style.height = '1px';
+        sentinel.style.width = '100%';
+        sentinel.style.pointerEvents = 'none';
+        if (header) header.insertAdjacentElement('afterend', sentinel);
+        else document.body.prepend(sentinel);
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                const entry = entries[0];
+                if (!entry) return;
+                if (entry.isIntersecting) nav.classList.remove('visible');
+                else nav.classList.add('visible');
+            }, { rootMargin: '-72px 0px 0px 0px', threshold: 0 });
+            observer.observe(sentinel);
+        } else {
+            // Fallback for older browsers
+            const fallback = () => {
+                const threshold = header ? Math.max(80, header.offsetHeight * 0.35) : 120;
+                if (window.scrollY > threshold) nav.classList.add('visible');
+                else nav.classList.remove('visible');
+            };
+            fallback();
+            window.addEventListener('scroll', fallback, { passive: true });
+        }
     }
-    updateNavVisibility();
-    window.addEventListener('scroll', updateNavVisibility, { passive: true });
 
     sidebar = document.getElementById('sidebar');
     overlay = document.getElementById('overlay');
