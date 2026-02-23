@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![The hill of Mam Tor, Derbyshire, England (© john finney photography/Getty Images)](https://bing.com/th?id=OHR.MamTorSunrise_EN-US2655534073_UHD.jpg&w=1000)
-*Today: [The hill of Mam Tor, Derbyshire, England (© john finney photography/Getty Images)](https://bing.com/th?id=OHR.MamTorSunrise_EN-US2655534073_UHD.jpg)*
+![Great white egret, Upper Bavaria, Germany (© Konrad Wothe/naturepl.com)](https://bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_UHD.jpg&w=1000)
+*Today: [Great white egret, Upper Bavaria, Germany (© Konrad Wothe/naturepl.com)](https://bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2026-02-24 | [Great white egret, Upper Bavaria, Germany (© Konrad Wothe/naturepl.com)](https://bing.com/th?id=OHR.BavariaEgret_EN-US2697995103_UHD.jpg) |
 | 2026-02-23 | [The hill of Mam Tor, Derbyshire, England (© john finney photography/Getty Images)](https://bing.com/th?id=OHR.MamTorSunrise_EN-US2655534073_UHD.jpg) |
 | 2026-02-22 | [Red fox standing in snowfall, Grand Teton National Park, Wyoming (© Radomir Jakubowski/naturepl.com)](https://bing.com/th?id=OHR.TetonFox_EN-US2616700325_UHD.jpg) |
 | 2026-02-21 | [Horsetail Fall in Yosemite National Park, California (© Jorge Villalba/Getty Images)](https://bing.com/th?id=OHR.AdamsFirefall_EN-US2580399078_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2026-02-19 | [Przewalski's horses (© Nemyrivskyi Viacheslav/Getty Images)](https://bing.com/th?id=OHR.PrzewalskisHorse_EN-US6767229079_UHD.jpg) |
 | 2026-02-18 | [Red lanterns celebrating Chinese New Year (© Gins Wang/Getty Images)](https://bing.com/th?id=OHR.NewYearLantern_EN-US6665128229_UHD.jpg) |
 | 2026-02-17 | [Lincoln Memorial, Washington, DC (© Westend61/Getty Images)](https://bing.com/th?id=OHR.PresidentsDay_EN-US6598155144_UHD.jpg) |
-| 2026-02-16 | [Humpback whales in Monterey Bay, California (© Kiliii Fish/Cavan Images)](https://bing.com/th?id=OHR.MontereyHumpbacks_EN-US6328970690_UHD.jpg) |
