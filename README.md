@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![Spectacled bear resting in tree, Ecuador (© Andy Rouse/Nature Picture Library)](https://bing.com/th?id=OHR.AndeanBear_EN-US2465945308_UHD.jpg&w=1000)
-*Today: [Spectacled bear resting in tree, Ecuador (© Andy Rouse/Nature Picture Library)](https://bing.com/th?id=OHR.AndeanBear_EN-US2465945308_UHD.jpg)*
+![Belém Tower on the bank of the Tagus River, Lisbon, Portugal (© f9photos/Getty Images)](https://bing.com/th?id=OHR.BelemTowerBank_EN-US2528466391_UHD.jpg&w=1000)
+*Today: [Belém Tower on the bank of the Tagus River, Lisbon, Portugal (© f9photos/Getty Images)](https://bing.com/th?id=OHR.BelemTowerBank_EN-US2528466391_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2026-04-30 | [Belém Tower on the bank of the Tagus River, Lisbon, Portugal (© f9photos/Getty Images)](https://bing.com/th?id=OHR.BelemTowerBank_EN-US2528466391_UHD.jpg) |
 | 2026-04-29 | [Spectacled bear resting in tree, Ecuador (© Andy Rouse/Nature Picture Library)](https://bing.com/th?id=OHR.AndeanBear_EN-US2465945308_UHD.jpg) |
 | 2026-04-28 | [The glass dome of Galleria Vittorio Emanuele II, Milan, Italy (© PhillipMinnis/Getty Images)](https://bing.com/th?id=OHR.MilanGalleria_EN-US2432086382_UHD.jpg) |
 | 2026-04-27 | [Pink apple blossoms, Avila Beach, California (© Mimi Ditchie Photography/Getty Images)](https://bing.com/th?id=OHR.AppleBlossoms_EN-US2396192691_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2026-04-25 | [Forest hammock of slash pine and saw palmetto, Everglades National Park, Florida (© Mary Liz Austin/Alamy)](https://bing.com/th?id=OHR.SlashPine_EN-US2059787604_UHD.jpg) |
 | 2026-04-24 | [Anne Hathaway's cottage and garden, Stratford-upon-Avon, England (© David Steele/Shutterstock)](https://bing.com/th?id=OHR.HathawayCottage_EN-US1795877015_UHD.jpg) |
 | 2026-04-23 | [Alam-Pedja Nature Reserve in Tartu County, Estonia (© Sven Zacek/Nature Picture Library)](https://bing.com/th?id=OHR.TartuEstonia_EN-US1627168155_UHD.jpg) |
-| 2026-04-22 | [European hedgehog, France (© Klein & Hubert/Nature Picture Library)](https://bing.com/th?id=OHR.SpringHedgehog_EN-US1312133826_UHD.jpg) |
