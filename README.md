@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![Belém Tower on the bank of the Tagus River, Lisbon, Portugal (© f9photos/Getty Images)](https://bing.com/th?id=OHR.BelemTowerBank_EN-US2528466391_UHD.jpg&w=1000)
-*Today: [Belém Tower on the bank of the Tagus River, Lisbon, Portugal (© f9photos/Getty Images)](https://bing.com/th?id=OHR.BelemTowerBank_EN-US2528466391_UHD.jpg)*
+![Grape hyacinths and tulips, Keukenhof Gardens, Lisse, Netherlands (© Martin Ruegner/Getty Images)](https://bing.com/th?id=OHR.DutchTulips_EN-US2575617067_UHD.jpg&w=1000)
+*Today: [Grape hyacinths and tulips, Keukenhof Gardens, Lisse, Netherlands (© Martin Ruegner/Getty Images)](https://bing.com/th?id=OHR.DutchTulips_EN-US2575617067_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2026-05-01 | [Grape hyacinths and tulips, Keukenhof Gardens, Lisse, Netherlands (© Martin Ruegner/Getty Images)](https://bing.com/th?id=OHR.DutchTulips_EN-US2575617067_UHD.jpg) |
 | 2026-04-30 | [Belém Tower on the bank of the Tagus River, Lisbon, Portugal (© f9photos/Getty Images)](https://bing.com/th?id=OHR.BelemTowerBank_EN-US2528466391_UHD.jpg) |
 | 2026-04-29 | [Spectacled bear resting in tree, Ecuador (© Andy Rouse/Nature Picture Library)](https://bing.com/th?id=OHR.AndeanBear_EN-US2465945308_UHD.jpg) |
 | 2026-04-28 | [The glass dome of Galleria Vittorio Emanuele II, Milan, Italy (© PhillipMinnis/Getty Images)](https://bing.com/th?id=OHR.MilanGalleria_EN-US2432086382_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2026-04-26 | [Galápagos penguins swimming, Galápagos Islands, Ecuador (© Henley Spiers/Nature Picture Library)](https://bing.com/th?id=OHR.GalapagosPenguins_EN-US2287809863_UHD.jpg) |
 | 2026-04-25 | [Forest hammock of slash pine and saw palmetto, Everglades National Park, Florida (© Mary Liz Austin/Alamy)](https://bing.com/th?id=OHR.SlashPine_EN-US2059787604_UHD.jpg) |
 | 2026-04-24 | [Anne Hathaway's cottage and garden, Stratford-upon-Avon, England (© David Steele/Shutterstock)](https://bing.com/th?id=OHR.HathawayCottage_EN-US1795877015_UHD.jpg) |
-| 2026-04-23 | [Alam-Pedja Nature Reserve in Tartu County, Estonia (© Sven Zacek/Nature Picture Library)](https://bing.com/th?id=OHR.TartuEstonia_EN-US1627168155_UHD.jpg) |
