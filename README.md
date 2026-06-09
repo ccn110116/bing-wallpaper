@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![Lion's mane jellyfish swimming in the ocean (© Alexander Semenov Images/Shutterstock)](https://bing.com/th?id=OHR.Cyanea_EN-US1146473249_UHD.jpg&w=1000)
-*Today: [Lion's mane jellyfish swimming in the ocean (© Alexander Semenov Images/Shutterstock)](https://bing.com/th?id=OHR.Cyanea_EN-US1146473249_UHD.jpg)*
+![Vernazza, Cinque Terre, Liguria, Italy (© Kelly Cheng/Getty Images)](https://bing.com/th?id=OHR.CTNPVernazza_EN-US1571456265_UHD.jpg&w=1000)
+*Today: [Vernazza, Cinque Terre, Liguria, Italy (© Kelly Cheng/Getty Images)](https://bing.com/th?id=OHR.CTNPVernazza_EN-US1571456265_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2026-06-10 | [Vernazza, Cinque Terre, Liguria, Italy (© Kelly Cheng/Getty Images)](https://bing.com/th?id=OHR.CTNPVernazza_EN-US1571456265_UHD.jpg) |
 | 2026-06-09 | [Lion's mane jellyfish swimming in the ocean (© Alexander Semenov Images/Shutterstock)](https://bing.com/th?id=OHR.Cyanea_EN-US1146473249_UHD.jpg) |
 | 2026-06-08 | [Atlanta Botanical Garden, Atlanta, Georgia (© Marcus E Jones/Shutterstock)](https://bing.com/th?id=OHR.GardenAtlanta_EN-US2319128074_UHD.jpg) |
 | 2026-06-07 | [Natchez Trace Parkway, Tupelo, Mississippi, USA (© The best photo is earned/Getty Images Plus)](https://bing.com/th?id=OHR.HikingNatchez_EN-US0663065299_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2026-06-05 | [Snowy egret preening, central Florida, USA (© Donald M. Jones/Minden Pictures)](https://bing.com/th?id=OHR.PreeningEgret_EN-US9350488148_UHD.jpg) |
 | 2026-06-04 | [Cyclist in Bardenas Reales Natural Park and Biosphere Reserve, Navarra, Spain (© Artur Debat/Getty Images)](https://bing.com/th?id=OHR.BardenasReales_EN-US9044910730_UHD.jpg) |
 | 2026-06-03 | [Highway through Xitai Jinaier Lake, Qinghai Province, China (© Kaicheng Xu/Getty Images)](https://bing.com/th?id=OHR.Qinghai_EN-US8807254633_UHD.jpg) |
-| 2026-06-02 | [Rainbow flags at Rockefeller Center on June 28, 2020, New York City (© Noam Galai/Getty Images)](https://bing.com/th?id=OHR.RockefellerPride_EN-US1087499810_UHD.jpg) |
