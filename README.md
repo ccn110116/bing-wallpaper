@@ -1,13 +1,14 @@
 
 # Bing Wallpaper
 
-![Praia das Catedrais, Galicia, Spain (© Tui De Roy/Amazing Aerial Agency/Abobe Stock)](https://bing.com/th?id=OHR.GaliciaBeach_EN-US1635715019_UHD.jpg&w=1000)
-*Today: [Praia das Catedrais, Galicia, Spain (© Tui De Roy/Amazing Aerial Agency/Abobe Stock)](https://bing.com/th?id=OHR.GaliciaBeach_EN-US1635715019_UHD.jpg)*
+![Sunrise on a red mangrove in the Pig Keys, Honduras (© Mac Stone/Tandem Stills + Motion)](https://bing.com/th?id=OHR.RedMangroveSunrise_EN-US2034025633_UHD.jpg&w=1000)
+*Today: [Sunrise on a red mangrove in the Pig Keys, Honduras (© Mac Stone/Tandem Stills + Motion)](https://bing.com/th?id=OHR.RedMangroveSunrise_EN-US2034025633_UHD.jpg)*
 
 ## Recent Wallpapers
 
 | Date       | Description |
 |------------|-------------|
+| 2026-07-27 | [Sunrise on a red mangrove in the Pig Keys, Honduras (© Mac Stone/Tandem Stills + Motion)](https://bing.com/th?id=OHR.RedMangroveSunrise_EN-US2034025633_UHD.jpg) |
 | 2026-07-26 | [Praia das Catedrais, Galicia, Spain (© Tui De Roy/Amazing Aerial Agency/Abobe Stock)](https://bing.com/th?id=OHR.GaliciaBeach_EN-US1635715019_UHD.jpg) |
 | 2026-07-25 | [Flock of American flamingos, Isabela Island, Galápagos Islands, Ecuador (© Tui De Roy/Nature Picture Library)](https://bing.com/th?id=OHR.GalapagosFlamingos_EN-US0364264116_UHD.jpg) |
 | 2026-07-24 | [Pink dahlia flower (© Harald Biebel/Getty Images)](https://bing.com/th?id=OHR.PinkDahlia_EN-US1957205704_UHD.jpg) |
@@ -15,4 +16,3 @@
 | 2026-07-22 | [Santa Catalina Arch, Antigua, Guatemala (© Filippo Maria Bianchi/Getty Images)](https://bing.com/th?id=OHR.SantaCatalina_EN-US1116829215_UHD.jpg) |
 | 2026-07-21 | [Moon and Earth captured by the Artemis II crew (© NASA)](https://bing.com/th?id=OHR.Artemis_EN-US0683925849_UHD.jpg) |
 | 2026-07-20 | [Barn swallows of different subspecies resting together (© Oscar Dominguez/Tandem Stills + Motion)](https://bing.com/th?id=OHR.HirundoRustica_EN-US3193611104_UHD.jpg) |
-| 2026-07-19 | [Devil's Bridge in Rhododendron Park Kromlau, Saxony, Germany (© Mike Mareen/Getty Images)](https://bing.com/th?id=OHR.DevilsBridge_EN-US3505962815_UHD.jpg) |
