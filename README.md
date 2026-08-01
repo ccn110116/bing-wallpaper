@@ -10,6 +10,8 @@
 
 # Bing Wallpaper
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ccn110116/bing-wallpaper/)
+
 A modern, high-performance, and lightweight Bing Wallpaper archiver and viewer built specifically for **Cloudflare Workers** and **TypeScript**.
 
 > 💡 **Acknowledgement & Inspiration**
