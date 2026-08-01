@@ -52,6 +52,7 @@ export async function renderPage(
     // Replace placeholders
     text = text.replace(/{{author}}/g, 'Niumoo');
     text = text.replace(/{{projectName}}/g, 'Bing Wallpaper');
+    text = text.replace(/{{repository}}/g, 'ccn110116/bing-wallpaper');
     return text;
   };
 
