@@ -63,19 +63,27 @@ async function updateMonthlyJson(images: BingImage[], region: string, monthStr: 
 async function updateReadme(images: BingImage[]) {
   if (images.length === 0) return;
   const latestImage = images[0];
-  const readmeContent = `
-# Bing Wallpaper
+  const startMarker = '-----BEGIN IMAGE-----';
+  const endMarker = '------END IMAGE------';
+  const replacementBlock = `${startMarker}\n\n![${latestImage.desc}](${latestImage.url}&w=1000)\n*[${latestImage.desc}](${latestImage.url})*\n\n${endMarker}`;
+  const blockPattern = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`);
 
-![${latestImage.desc}](${latestImage.url}&w=1000)
-*Today: [${latestImage.desc}](${latestImage.url})*
+  let readmeContent = '';
+  try {
+    readmeContent = await fs.readFile(README_PATH, 'utf-8');
+  } catch (error) {
+    log('Error reading README.md');
+    return;
+  }
 
-## Recent Wallpapers
+  const updatedReadmeContent = readmeContent.replace(blockPattern, replacementBlock);
 
-| Date       | Description |
-|------------|-------------|
-${images.map(img => `| ${img.date} | [${img.desc}](${img.url}) |`).join('\n')}
-`;
-  await fs.writeFile(README_PATH, readmeContent);
+  if (updatedReadmeContent === readmeContent) {
+    log('README markers not found; skipping README update.');
+    return;
+  }
+
+  await fs.writeFile(README_PATH, updatedReadmeContent);
   log('Updated README.md');
 }
 
