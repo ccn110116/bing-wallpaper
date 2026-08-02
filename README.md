@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![A series of lava flows spill into the ocean, Big Island, Hawaii (© Ken McCurdy/Getty Images)](https://bing.com/th?id=OHR.HawaiiLava_EN-US4126737972_UHD.jpg&w=1000)
-*[A series of lava flows spill into the ocean, Big Island, Hawaii (© Ken McCurdy/Getty Images)](https://bing.com/th?id=OHR.HawaiiLava_EN-US4126737972_UHD.jpg)*
+![Helsinki's shoreline during blue hour, Uusimaa, Finland (© Miemo Penttinen/Getty Images)](https://bing.com/th?id=OHR.HelsinkiBlue_EN-US4898215906_UHD.jpg&w=1000)
+*[Helsinki's shoreline during blue hour, Uusimaa, Finland (© Miemo Penttinen/Getty Images)](https://bing.com/th?id=OHR.HelsinkiBlue_EN-US4898215906_UHD.jpg)*
 
 ------END IMAGE------
 
