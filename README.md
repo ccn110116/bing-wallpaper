@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Helsinki's shoreline during blue hour, Uusimaa, Finland (© Miemo Penttinen/Getty Images)](https://bing.com/th?id=OHR.HelsinkiBlue_EN-US4898215906_UHD.jpg&w=1000)
-*[Helsinki's shoreline during blue hour, Uusimaa, Finland (© Miemo Penttinen/Getty Images)](https://bing.com/th?id=OHR.HelsinkiBlue_EN-US4898215906_UHD.jpg)*
+![Colorful boats in Marsaxlokk Harbor, Malta (© Klubovy/Getty Images)](https://bing.com/th?id=OHR.BoatsMalta_EN-US5373607495_UHD.jpg&w=1000)
+*[Colorful boats in Marsaxlokk Harbor, Malta (© Klubovy/Getty Images)](https://bing.com/th?id=OHR.BoatsMalta_EN-US5373607495_UHD.jpg)*
 
 ------END IMAGE------
 
