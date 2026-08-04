@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Colorful boats in Marsaxlokk Harbor, Malta (© Klubovy/Getty Images)](https://bing.com/th?id=OHR.BoatsMalta_EN-US5373607495_UHD.jpg&w=1000)
-*[Colorful boats in Marsaxlokk Harbor, Malta (© Klubovy/Getty Images)](https://bing.com/th?id=OHR.BoatsMalta_EN-US5373607495_UHD.jpg)*
+![Florida burrowing owlet, Cape Coral, Florida, USA (© mlorenzphotography/Getty Images)](https://bing.com/th?id=OHR.AdorableOwlet_EN-US7873975586_UHD.jpg&w=1000)
+*[Florida burrowing owlet, Cape Coral, Florida, USA (© mlorenzphotography/Getty Images)](https://bing.com/th?id=OHR.AdorableOwlet_EN-US7873975586_UHD.jpg)*
 
 ------END IMAGE------
 
