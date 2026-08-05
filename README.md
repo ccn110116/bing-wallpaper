@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Florida burrowing owlet, Cape Coral, Florida, USA (© mlorenzphotography/Getty Images)](https://bing.com/th?id=OHR.AdorableOwlet_EN-US7873975586_UHD.jpg&w=1000)
-*[Florida burrowing owlet, Cape Coral, Florida, USA (© mlorenzphotography/Getty Images)](https://bing.com/th?id=OHR.AdorableOwlet_EN-US7873975586_UHD.jpg)*
+![Decorated gate of the Royal Palace of Fez, Morocco (© cgst26/Shutterstock)](https://bing.com/th?id=OHR.FezMorocco_EN-US8380353742_UHD.jpg&w=1000)
+*[Decorated gate of the Royal Palace of Fez, Morocco (© cgst26/Shutterstock)](https://bing.com/th?id=OHR.FezMorocco_EN-US8380353742_UHD.jpg)*
 
 ------END IMAGE------
 
