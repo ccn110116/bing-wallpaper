@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Decorated gate of the Royal Palace of Fez, Morocco (© cgst26/Shutterstock)](https://bing.com/th?id=OHR.FezMorocco_EN-US8380353742_UHD.jpg&w=1000)
-*[Decorated gate of the Royal Palace of Fez, Morocco (© cgst26/Shutterstock)](https://bing.com/th?id=OHR.FezMorocco_EN-US8380353742_UHD.jpg)*
+![Migrating wildebeest crossing Mara River in Masai Mara, Kenya (© Manoj Shah/Getty Images)](https://bing.com/th?id=OHR.MaraCrossing_EN-US8682968377_UHD.jpg&w=1000)
+*[Migrating wildebeest crossing Mara River in Masai Mara, Kenya (© Manoj Shah/Getty Images)](https://bing.com/th?id=OHR.MaraCrossing_EN-US8682968377_UHD.jpg)*
 
 ------END IMAGE------
 
