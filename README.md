@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Migrating wildebeest crossing Mara River in Masai Mara, Kenya (© Manoj Shah/Getty Images)](https://bing.com/th?id=OHR.MaraCrossing_EN-US8682968377_UHD.jpg&w=1000)
-*[Migrating wildebeest crossing Mara River in Masai Mara, Kenya (© Manoj Shah/Getty Images)](https://bing.com/th?id=OHR.MaraCrossing_EN-US8682968377_UHD.jpg)*
+![Lime Kiln Lighthouse on San Juan Island, Washington State (© Edmund Lowe Photography/Shutterstock)](https://bing.com/th?id=OHR.LimeKiln_EN-US2748515593_UHD.jpg&w=1000)
+*[Lime Kiln Lighthouse on San Juan Island, Washington State (© Edmund Lowe Photography/Shutterstock)](https://bing.com/th?id=OHR.LimeKiln_EN-US2748515593_UHD.jpg)*
 
 ------END IMAGE------
 
