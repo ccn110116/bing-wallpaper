@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Lime Kiln Lighthouse on San Juan Island, Washington State (© Edmund Lowe Photography/Shutterstock)](https://bing.com/th?id=OHR.LimeKiln_EN-US2748515593_UHD.jpg&w=1000)
-*[Lime Kiln Lighthouse on San Juan Island, Washington State (© Edmund Lowe Photography/Shutterstock)](https://bing.com/th?id=OHR.LimeKiln_EN-US2748515593_UHD.jpg)*
+![Infinity Bridge in Stockton-on-Tees, England (© Bahadir Yeniceri/Shutterstock)](https://bing.com/th?id=OHR.StocktonInfinity_EN-US3006724421_UHD.jpg&w=1000)
+*[Infinity Bridge in Stockton-on-Tees, England (© Bahadir Yeniceri/Shutterstock)](https://bing.com/th?id=OHR.StocktonInfinity_EN-US3006724421_UHD.jpg)*
 
 ------END IMAGE------
 
