@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Jean-Marie Tjibaou Cultural Centre, New Caledonia (© Fabien Astre/Alamy)](https://bing.com/th?id=OHR.JMTjibaou_EN-US3454380257_UHD.jpg&w=1000)
-*[Jean-Marie Tjibaou Cultural Centre, New Caledonia (© Fabien Astre/Alamy)](https://bing.com/th?id=OHR.JMTjibaou_EN-US3454380257_UHD.jpg)*
+![Joshua Tree National Park, California (© JJ Landscapes/Getty Images)](https://bing.com/th?id=OHR.SandPath_EN-US3759872156_UHD.jpg&w=1000)
+*[Joshua Tree National Park, California (© JJ Landscapes/Getty Images)](https://bing.com/th?id=OHR.SandPath_EN-US3759872156_UHD.jpg)*
 
 ------END IMAGE------
 
