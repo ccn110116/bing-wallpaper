@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Joshua Tree National Park, California (© JJ Landscapes/Getty Images)](https://bing.com/th?id=OHR.SandPath_EN-US3759872156_UHD.jpg&w=1000)
-*[Joshua Tree National Park, California (© JJ Landscapes/Getty Images)](https://bing.com/th?id=OHR.SandPath_EN-US3759872156_UHD.jpg)*
+![Colorful homes line Nyhavn Canal, Copenhagen, Denmark (© emicristea/Getty Images)](https://bing.com/th?id=OHR.ColorfulCop_EN-US3993977654_UHD.jpg&w=1000)
+*[Colorful homes line Nyhavn Canal, Copenhagen, Denmark (© emicristea/Getty Images)](https://bing.com/th?id=OHR.ColorfulCop_EN-US3993977654_UHD.jpg)*
 
 ------END IMAGE------
 
