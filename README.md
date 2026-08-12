@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Colorful homes line Nyhavn Canal, Copenhagen, Denmark (© emicristea/Getty Images)](https://bing.com/th?id=OHR.ColorfulCop_EN-US3993977654_UHD.jpg&w=1000)
-*[Colorful homes line Nyhavn Canal, Copenhagen, Denmark (© emicristea/Getty Images)](https://bing.com/th?id=OHR.ColorfulCop_EN-US3993977654_UHD.jpg)*
+![A group of elephants, Amboseli National Park, Kenya (© Ibrahim Suha Derbent/Getty Images)](https://bing.com/th?id=OHR.ElephantDay_EN-US4280370948_UHD.jpg&w=1000)
+*[A group of elephants, Amboseli National Park, Kenya (© Ibrahim Suha Derbent/Getty Images)](https://bing.com/th?id=OHR.ElephantDay_EN-US4280370948_UHD.jpg)*
 
 ------END IMAGE------
 
