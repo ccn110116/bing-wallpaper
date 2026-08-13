@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![A group of elephants, Amboseli National Park, Kenya (© Ibrahim Suha Derbent/Getty Images)](https://bing.com/th?id=OHR.ElephantDay_EN-US4280370948_UHD.jpg&w=1000)
-*[A group of elephants, Amboseli National Park, Kenya (© Ibrahim Suha Derbent/Getty Images)](https://bing.com/th?id=OHR.ElephantDay_EN-US4280370948_UHD.jpg)*
+![Perseid meteors over Teide Observatory, Tenerife, Spain (© Westend61/Getty Images)](https://bing.com/th?id=OHR.PerseidasTenerife_EN-US4798593153_UHD.jpg&w=1000)
+*[Perseid meteors over Teide Observatory, Tenerife, Spain (© Westend61/Getty Images)](https://bing.com/th?id=OHR.PerseidasTenerife_EN-US4798593153_UHD.jpg)*
 
 ------END IMAGE------
 
