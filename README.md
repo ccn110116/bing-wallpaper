@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Perseid meteors over Teide Observatory, Tenerife, Spain (© Westend61/Getty Images)](https://bing.com/th?id=OHR.PerseidasTenerife_EN-US4798593153_UHD.jpg&w=1000)
-*[Perseid meteors over Teide Observatory, Tenerife, Spain (© Westend61/Getty Images)](https://bing.com/th?id=OHR.PerseidasTenerife_EN-US4798593153_UHD.jpg)*
+![Aerial view of a wildlife crossing near Zakrzów, Poland (© bbsferrari/Getty Images)](https://bing.com/th?id=OHR.WildlifeCrossingPoland_EN-US5004733603_UHD.jpg&w=1000)
+*[Aerial view of a wildlife crossing near Zakrzów, Poland (© bbsferrari/Getty Images)](https://bing.com/th?id=OHR.WildlifeCrossingPoland_EN-US5004733603_UHD.jpg)*
 
 ------END IMAGE------
 
