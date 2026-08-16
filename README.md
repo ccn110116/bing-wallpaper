@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Hoodoos in Ah Shi Sle Pah Wilderness in San Juan County, New Mexico (© Westend61/Getty Images)](https://bing.com/th?id=OHR.ValleyDreams_EN-US5250331985_UHD.jpg&w=1000)
-*[Hoodoos in Ah Shi Sle Pah Wilderness in San Juan County, New Mexico (© Westend61/Getty Images)](https://bing.com/th?id=OHR.ValleyDreams_EN-US5250331985_UHD.jpg)*
+![Ruins of Ross Errilly Friary, County Galway, Ireland (© Maria Janus/Shutterstock)](https://bing.com/th?id=OHR.RossErrillyRuins_EN-US5729358123_UHD.jpg&w=1000)
+*[Ruins of Ross Errilly Friary, County Galway, Ireland (© Maria Janus/Shutterstock)](https://bing.com/th?id=OHR.RossErrillyRuins_EN-US5729358123_UHD.jpg)*
 
 ------END IMAGE------
 
