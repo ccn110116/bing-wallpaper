@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Ruins of Ross Errilly Friary, County Galway, Ireland (© Maria Janus/Shutterstock)](https://bing.com/th?id=OHR.RossErrillyRuins_EN-US5729358123_UHD.jpg&w=1000)
-*[Ruins of Ross Errilly Friary, County Galway, Ireland (© Maria Janus/Shutterstock)](https://bing.com/th?id=OHR.RossErrillyRuins_EN-US5729358123_UHD.jpg)*
+![Three false clownfish in a sea anemone, Cabilao Island, Bohol, Philippines (© Franco Banfi/Nature Picture Library)](https://bing.com/th?id=OHR.CabilaoClowns_EN-US6302440247_UHD.jpg&w=1000)
+*[Three false clownfish in a sea anemone, Cabilao Island, Bohol, Philippines (© Franco Banfi/Nature Picture Library)](https://bing.com/th?id=OHR.CabilaoClowns_EN-US6302440247_UHD.jpg)*
 
 ------END IMAGE------
 
