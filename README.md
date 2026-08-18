@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Three false clownfish in a sea anemone, Cabilao Island, Bohol, Philippines (© Franco Banfi/Nature Picture Library)](https://bing.com/th?id=OHR.CabilaoClowns_EN-US6302440247_UHD.jpg&w=1000)
-*[Three false clownfish in a sea anemone, Cabilao Island, Bohol, Philippines (© Franco Banfi/Nature Picture Library)](https://bing.com/th?id=OHR.CabilaoClowns_EN-US6302440247_UHD.jpg)*
+![Aerial view of Palmanova, a fortress city in Friuli, Italy (© Riccardo Saponi/Getty Images)](https://bing.com/th?id=OHR.Palmanova_EN-US0340289339_UHD.jpg&w=1000)
+*[Aerial view of Palmanova, a fortress city in Friuli, Italy (© Riccardo Saponi/Getty Images)](https://bing.com/th?id=OHR.Palmanova_EN-US0340289339_UHD.jpg)*
 
 ------END IMAGE------
 
