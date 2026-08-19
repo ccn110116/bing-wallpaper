@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Aerial view of Palmanova, a fortress city in Friuli, Italy (© Riccardo Saponi/Getty Images)](https://bing.com/th?id=OHR.Palmanova_EN-US0340289339_UHD.jpg&w=1000)
-*[Aerial view of Palmanova, a fortress city in Friuli, Italy (© Riccardo Saponi/Getty Images)](https://bing.com/th?id=OHR.Palmanova_EN-US0340289339_UHD.jpg)*
+![NASA's Langley Research Center mounted the Navy's Brewster XF2A-1 Buffalo in the Full-Scale Tunnel, 1938, Hampton, Virginia (© NASA)](https://bing.com/th?id=OHR.BrewsterXF2A_EN-US0417477370_UHD.jpg&w=1000)
+*[NASA's Langley Research Center mounted the Navy's Brewster XF2A-1 Buffalo in the Full-Scale Tunnel, 1938, Hampton, Virginia (© NASA)](https://bing.com/th?id=OHR.BrewsterXF2A_EN-US0417477370_UHD.jpg)*
 
 ------END IMAGE------
 
