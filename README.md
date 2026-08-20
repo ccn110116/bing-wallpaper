@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![NASA's Langley Research Center mounted the Navy's Brewster XF2A-1 Buffalo in the Full-Scale Tunnel, 1938, Hampton, Virginia (© NASA)](https://bing.com/th?id=OHR.BrewsterXF2A_EN-US0417477370_UHD.jpg&w=1000)
-*[NASA's Langley Research Center mounted the Navy's Brewster XF2A-1 Buffalo in the Full-Scale Tunnel, 1938, Hampton, Virginia (© NASA)](https://bing.com/th?id=OHR.BrewsterXF2A_EN-US0417477370_UHD.jpg)*
+![An orca surfaces in Lynn Canal near the Chilkat Mountains, Alaska (© John Hyde/Alamy)](https://bing.com/th?id=OHR.LynnCanalOrca_EN-US0537229184_UHD.jpg&w=1000)
+*[An orca surfaces in Lynn Canal near the Chilkat Mountains, Alaska (© John Hyde/Alamy)](https://bing.com/th?id=OHR.LynnCanalOrca_EN-US0537229184_UHD.jpg)*
 
 ------END IMAGE------
 
