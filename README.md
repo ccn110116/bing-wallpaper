@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![An orca surfaces in Lynn Canal near the Chilkat Mountains, Alaska (© John Hyde/Alamy)](https://bing.com/th?id=OHR.LynnCanalOrca_EN-US0537229184_UHD.jpg&w=1000)
-*[An orca surfaces in Lynn Canal near the Chilkat Mountains, Alaska (© John Hyde/Alamy)](https://bing.com/th?id=OHR.LynnCanalOrca_EN-US0537229184_UHD.jpg)*
+![Winding road of Julier Pass, Switzerland (© Westend61/Getty Images)](https://bing.com/th?id=OHR.JulierPass_EN-US2643379571_UHD.jpg&w=1000)
+*[Winding road of Julier Pass, Switzerland (© Westend61/Getty Images)](https://bing.com/th?id=OHR.JulierPass_EN-US2643379571_UHD.jpg)*
 
 ------END IMAGE------
 
