@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Winding road of Julier Pass, Switzerland (© Westend61/Getty Images)](https://bing.com/th?id=OHR.JulierPass_EN-US2643379571_UHD.jpg&w=1000)
-*[Winding road of Julier Pass, Switzerland (© Westend61/Getty Images)](https://bing.com/th?id=OHR.JulierPass_EN-US2643379571_UHD.jpg)*
+![Common blue butterfly, Devon, England (© Ross Hoddinott/Nature Picture Library)](https://bing.com/th?id=OHR.CommonBlue_EN-US2760688799_UHD.jpg&w=1000)
+*[Common blue butterfly, Devon, England (© Ross Hoddinott/Nature Picture Library)](https://bing.com/th?id=OHR.CommonBlue_EN-US2760688799_UHD.jpg)*
 
 ------END IMAGE------
 
