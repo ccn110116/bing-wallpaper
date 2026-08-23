@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Common blue butterfly, Devon, England (© Ross Hoddinott/Nature Picture Library)](https://bing.com/th?id=OHR.CommonBlue_EN-US2760688799_UHD.jpg&w=1000)
-*[Common blue butterfly, Devon, England (© Ross Hoddinott/Nature Picture Library)](https://bing.com/th?id=OHR.CommonBlue_EN-US2760688799_UHD.jpg)*
+![Brown bear fishing in river, Katmai National Park, Alaska (© Pal Hermansen/Nature Picture Library)](https://bing.com/th?id=OHR.KatmaiBear_EN-US2844742219_UHD.jpg&w=1000)
+*[Brown bear fishing in river, Katmai National Park, Alaska (© Pal Hermansen/Nature Picture Library)](https://bing.com/th?id=OHR.KatmaiBear_EN-US2844742219_UHD.jpg)*
 
 ------END IMAGE------
 
