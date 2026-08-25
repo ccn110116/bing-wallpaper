@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Brooklyn Bridge, New York City (© shayes17/Getty Images)](https://bing.com/th?id=OHR.BKBridge_EN-US2923468858_UHD.jpg&w=1000)
-*[Brooklyn Bridge, New York City (© shayes17/Getty Images)](https://bing.com/th?id=OHR.BKBridge_EN-US2923468858_UHD.jpg)*
+![Sunrise in Redwood National and State Parks, California (© HadelProductions/Getty Images)](https://bing.com/th?id=OHR.RedwoodPark_EN-US3199427613_UHD.jpg&w=1000)
+*[Sunrise in Redwood National and State Parks, California (© HadelProductions/Getty Images)](https://bing.com/th?id=OHR.RedwoodPark_EN-US3199427613_UHD.jpg)*
 
 ------END IMAGE------
 
