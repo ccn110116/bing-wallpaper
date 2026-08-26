@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Sunrise in Redwood National and State Parks, California (© HadelProductions/Getty Images)](https://bing.com/th?id=OHR.RedwoodPark_EN-US3199427613_UHD.jpg&w=1000)
-*[Sunrise in Redwood National and State Parks, California (© HadelProductions/Getty Images)](https://bing.com/th?id=OHR.RedwoodPark_EN-US3199427613_UHD.jpg)*
+![Auroras over Kirkjufell, Iceland (© Cavan Images/Alamy)](https://bing.com/th?id=OHR.AurorasIceland_EN-US3293282785_UHD.jpg&w=1000)
+*[Auroras over Kirkjufell, Iceland (© Cavan Images/Alamy)](https://bing.com/th?id=OHR.AurorasIceland_EN-US3293282785_UHD.jpg)*
 
 ------END IMAGE------
 
