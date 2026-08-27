@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Auroras over Kirkjufell, Iceland (© Cavan Images/Alamy)](https://bing.com/th?id=OHR.AurorasIceland_EN-US3293282785_UHD.jpg&w=1000)
-*[Auroras over Kirkjufell, Iceland (© Cavan Images/Alamy)](https://bing.com/th?id=OHR.AurorasIceland_EN-US3293282785_UHD.jpg)*
+![Lesser flamingo flock at sunrise, Lake Magadi, Kenya (© Denis-Huot/Nature Picture Library)](https://bing.com/th?id=OHR.LakeMagadi_EN-US3401664434_UHD.jpg&w=1000)
+*[Lesser flamingo flock at sunrise, Lake Magadi, Kenya (© Denis-Huot/Nature Picture Library)](https://bing.com/th?id=OHR.LakeMagadi_EN-US3401664434_UHD.jpg)*
 
 ------END IMAGE------
 
