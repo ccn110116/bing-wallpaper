@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Lesser flamingo flock at sunrise, Lake Magadi, Kenya (© Denis-Huot/Nature Picture Library)](https://bing.com/th?id=OHR.LakeMagadi_EN-US3401664434_UHD.jpg&w=1000)
-*[Lesser flamingo flock at sunrise, Lake Magadi, Kenya (© Denis-Huot/Nature Picture Library)](https://bing.com/th?id=OHR.LakeMagadi_EN-US3401664434_UHD.jpg)*
+![Mont-Saint-Michel during high tide, Manche, Normandy, France (© Clement LEONARD/Getty Images)](https://bing.com/th?id=OHR.MichelSunset_EN-US3527235033_UHD.jpg&w=1000)
+*[Mont-Saint-Michel during high tide, Manche, Normandy, France (© Clement LEONARD/Getty Images)](https://bing.com/th?id=OHR.MichelSunset_EN-US3527235033_UHD.jpg)*
 
 ------END IMAGE------
 
