@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Mont-Saint-Michel during high tide, Manche, Normandy, France (© Clement LEONARD/Getty Images)](https://bing.com/th?id=OHR.MichelSunset_EN-US3527235033_UHD.jpg&w=1000)
-*[Mont-Saint-Michel during high tide, Manche, Normandy, France (© Clement LEONARD/Getty Images)](https://bing.com/th?id=OHR.MichelSunset_EN-US3527235033_UHD.jpg)*
+![Aerial view of surfers, Santa Catarina, Brazil (© Wonderful Nature/Shutterstock)](https://bing.com/th?id=OHR.SantaCatarina_EN-US3600536393_UHD.jpg&w=1000)
+*[Aerial view of surfers, Santa Catarina, Brazil (© Wonderful Nature/Shutterstock)](https://bing.com/th?id=OHR.SantaCatarina_EN-US3600536393_UHD.jpg)*
 
 ------END IMAGE------
 
