@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Whale shark and golden trevally, Cenderawasih Bay, West Papua, Indonesia (© Pete Oxford/Nature Picture Library)](https://bing.com/th?id=OHR.YellowShark_EN-US3678567058_UHD.jpg&w=1000)
-*[Whale shark and golden trevally, Cenderawasih Bay, West Papua, Indonesia (© Pete Oxford/Nature Picture Library)](https://bing.com/th?id=OHR.YellowShark_EN-US3678567058_UHD.jpg)*
+![Building detail of Registan Square, Samarkand, Uzbekistan (© Piero M. Bianchi/Getty Images)](https://bing.com/th?id=OHR.SamarkandCeiling_EN-US3761829748_UHD.jpg&w=1000)
+*[Building detail of Registan Square, Samarkand, Uzbekistan (© Piero M. Bianchi/Getty Images)](https://bing.com/th?id=OHR.SamarkandCeiling_EN-US3761829748_UHD.jpg)*
 
 ------END IMAGE------
 
