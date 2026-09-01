@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Building detail of Registan Square, Samarkand, Uzbekistan (© Piero M. Bianchi/Getty Images)](https://bing.com/th?id=OHR.SamarkandCeiling_EN-US3761829748_UHD.jpg&w=1000)
-*[Building detail of Registan Square, Samarkand, Uzbekistan (© Piero M. Bianchi/Getty Images)](https://bing.com/th?id=OHR.SamarkandCeiling_EN-US3761829748_UHD.jpg)*
+![Horsehair parachute fungus, Belarus (© Máté/Nature Picture Library)](https://bing.com/th?id=OHR.HorseHairShroom_EN-US3885857486_UHD.jpg&w=1000)
+*[Horsehair parachute fungus, Belarus (© Máté/Nature Picture Library)](https://bing.com/th?id=OHR.HorseHairShroom_EN-US3885857486_UHD.jpg)*
 
 ------END IMAGE------
 
