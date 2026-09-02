@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Horsehair parachute fungus, Belarus (© Máté/Nature Picture Library)](https://bing.com/th?id=OHR.HorseHairShroom_EN-US3885857486_UHD.jpg&w=1000)
-*[Horsehair parachute fungus, Belarus (© Máté/Nature Picture Library)](https://bing.com/th?id=OHR.HorseHairShroom_EN-US3885857486_UHD.jpg)*
+![Traditional beach huts, Southwold, Suffolk Heritage Coast, England (© stevendocwra/Getty Images)](https://bing.com/th?id=OHR.SuffolkHuts_EN-US3987062531_UHD.jpg&w=1000)
+*[Traditional beach huts, Southwold, Suffolk Heritage Coast, England (© stevendocwra/Getty Images)](https://bing.com/th?id=OHR.SuffolkHuts_EN-US3987062531_UHD.jpg)*
 
 ------END IMAGE------
 
