@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Westerheversand Lighthouse in Westerhever, Schleswig-Holstein, Germany (© bluejayphoto/Getty Images)](https://bing.com/th?id=OHR.Westerheversand_EN-US3028839945_UHD.jpg&w=1000)
-*[Westerheversand Lighthouse in Westerhever, Schleswig-Holstein, Germany (© bluejayphoto/Getty Images)](https://bing.com/th?id=OHR.Westerheversand_EN-US3028839945_UHD.jpg)*
+![Green-crowned brilliant hummingbirds feeding on lobster-claw flowers, Costa Rica (© Paul Hobson/Nature Picture Library)](https://bing.com/th?id=OHR.GreenCrowned_EN-US3119017947_UHD.jpg&w=1000)
+*[Green-crowned brilliant hummingbirds feeding on lobster-claw flowers, Costa Rica (© Paul Hobson/Nature Picture Library)](https://bing.com/th?id=OHR.GreenCrowned_EN-US3119017947_UHD.jpg)*
 
 ------END IMAGE------
 
