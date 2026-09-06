@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Green-crowned brilliant hummingbirds feeding on lobster-claw flowers, Costa Rica (© Paul Hobson/Nature Picture Library)](https://bing.com/th?id=OHR.GreenCrowned_EN-US3119017947_UHD.jpg&w=1000)
-*[Green-crowned brilliant hummingbirds feeding on lobster-claw flowers, Costa Rica (© Paul Hobson/Nature Picture Library)](https://bing.com/th?id=OHR.GreenCrowned_EN-US3119017947_UHD.jpg)*
+![Lake Fyans, Grampians National Park, Victoria, Australia (© tracielouise/Getty Images)](https://bing.com/th?id=OHR.LakeFyans_EN-US4295341714_UHD.jpg&w=1000)
+*[Lake Fyans, Grampians National Park, Victoria, Australia (© tracielouise/Getty Images)](https://bing.com/th?id=OHR.LakeFyans_EN-US4295341714_UHD.jpg)*
 
 ------END IMAGE------
 
