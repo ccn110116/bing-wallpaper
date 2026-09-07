@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Lake Fyans, Grampians National Park, Victoria, Australia (© tracielouise/Getty Images)](https://bing.com/th?id=OHR.LakeFyans_EN-US4295341714_UHD.jpg&w=1000)
-*[Lake Fyans, Grampians National Park, Victoria, Australia (© tracielouise/Getty Images)](https://bing.com/th?id=OHR.LakeFyans_EN-US4295341714_UHD.jpg)*
+!['Industries of California' mural by Ralph Stackpole at Coit Tower, San Francisco, California (© David R. Frazier Photolibrary, Inc./Alamy)](https://bing.com/th?id=OHR.RalphStackpole_EN-US4463800234_UHD.jpg&w=1000)
+*['Industries of California' mural by Ralph Stackpole at Coit Tower, San Francisco, California (© David R. Frazier Photolibrary, Inc./Alamy)](https://bing.com/th?id=OHR.RalphStackpole_EN-US4463800234_UHD.jpg)*
 
 ------END IMAGE------
 
