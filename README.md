@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-!['Industries of California' mural by Ralph Stackpole at Coit Tower, San Francisco, California (© David R. Frazier Photolibrary, Inc./Alamy)](https://bing.com/th?id=OHR.RalphStackpole_EN-US4463800234_UHD.jpg&w=1000)
-*['Industries of California' mural by Ralph Stackpole at Coit Tower, San Francisco, California (© David R. Frazier Photolibrary, Inc./Alamy)](https://bing.com/th?id=OHR.RalphStackpole_EN-US4463800234_UHD.jpg)*
+![Beech tree in a cereal field, East Meon, South Downs National Park, Hampshire, England (© Guy Edwardes/Minden Pictures)](https://bing.com/th?id=OHR.BeechEngland_EN-US4535769514_UHD.jpg&w=1000)
+*[Beech tree in a cereal field, East Meon, South Downs National Park, Hampshire, England (© Guy Edwardes/Minden Pictures)](https://bing.com/th?id=OHR.BeechEngland_EN-US4535769514_UHD.jpg)*
 
 ------END IMAGE------
 
