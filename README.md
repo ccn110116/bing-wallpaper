@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Beech tree in a cereal field, East Meon, South Downs National Park, Hampshire, England (© Guy Edwardes/Minden Pictures)](https://bing.com/th?id=OHR.BeechEngland_EN-US4535769514_UHD.jpg&w=1000)
-*[Beech tree in a cereal field, East Meon, South Downs National Park, Hampshire, England (© Guy Edwardes/Minden Pictures)](https://bing.com/th?id=OHR.BeechEngland_EN-US4535769514_UHD.jpg)*
+![Gabit Keni Beach near Ankola, Karnataka, India (© Amith Nag Photography/Getty Images)](https://bing.com/th?id=OHR.GabitKeni_EN-US4620523183_UHD.jpg&w=1000)
+*[Gabit Keni Beach near Ankola, Karnataka, India (© Amith Nag Photography/Getty Images)](https://bing.com/th?id=OHR.GabitKeni_EN-US4620523183_UHD.jpg)*
 
 ------END IMAGE------
 
