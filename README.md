@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Aerial view of Olvera, Andalusia, Spain (© Marco Bottigelli/Getty Images)](https://bing.com/th?id=OHR.Olvera_EN-US4712443253_UHD.jpg&w=1000)
-*[Aerial view of Olvera, Andalusia, Spain (© Marco Bottigelli/Getty Images)](https://bing.com/th?id=OHR.Olvera_EN-US4712443253_UHD.jpg)*
+![The Flight 93 National Memorial Visitor Center near Shanksville, Pennsylvania (© Maurice Savage/Alamy)](https://bing.com/th?id=OHR.Flight93_EN-US5966783443_UHD.jpg&w=1000)
+*[The Flight 93 National Memorial Visitor Center near Shanksville, Pennsylvania (© Maurice Savage/Alamy)](https://bing.com/th?id=OHR.Flight93_EN-US5966783443_UHD.jpg)*
 
 ------END IMAGE------
 
