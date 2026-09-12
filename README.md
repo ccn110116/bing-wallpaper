@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![The Flight 93 National Memorial Visitor Center near Shanksville, Pennsylvania (© Maurice Savage/Alamy)](https://bing.com/th?id=OHR.Flight93_EN-US5966783443_UHD.jpg&w=1000)
-*[The Flight 93 National Memorial Visitor Center near Shanksville, Pennsylvania (© Maurice Savage/Alamy)](https://bing.com/th?id=OHR.Flight93_EN-US5966783443_UHD.jpg)*
+![California sea lions hunting a sardine bait ball, offshore Mexico, Pacific Ocean (© Henley Spiers/Nature Picture Library)](https://bing.com/th?id=OHR.SardineBait_EN-US4802395270_UHD.jpg&w=1000)
+*[California sea lions hunting a sardine bait ball, offshore Mexico, Pacific Ocean (© Henley Spiers/Nature Picture Library)](https://bing.com/th?id=OHR.SardineBait_EN-US4802395270_UHD.jpg)*
 
 ------END IMAGE------
 
