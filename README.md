@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Cadini di Misurina, Dolomites, Veneto, Italy (© Vithun Khamsong/Getty Images)](https://bing.com/th?id=OHR.MisurinaPeak_EN-US4897144498_UHD.jpg&w=1000)
-*[Cadini di Misurina, Dolomites, Veneto, Italy (© Vithun Khamsong/Getty Images)](https://bing.com/th?id=OHR.MisurinaPeak_EN-US4897144498_UHD.jpg)*
+![Field of kochia plants, China (© lingqi xie/Getty Images)](https://bing.com/th?id=OHR.KochiaChina_EN-US5037126636_UHD.jpg&w=1000)
+*[Field of kochia plants, China (© lingqi xie/Getty Images)](https://bing.com/th?id=OHR.KochiaChina_EN-US5037126636_UHD.jpg)*
 
 ------END IMAGE------
 
