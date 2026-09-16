@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Fort Union National Monument, New Mexico (© zrfphoto/Getty Images)](https://bing.com/th?id=OHR.FortUnion_EN-US5138724452_UHD.jpg&w=1000)
-*[Fort Union National Monument, New Mexico (© zrfphoto/Getty Images)](https://bing.com/th?id=OHR.FortUnion_EN-US5138724452_UHD.jpg)*
+![Polar bear cubs playing in Svalbard, Norway (© Danny Green/Nature Picture Library)](https://bing.com/th?id=OHR.IcyCubs_EN-US5222104616_UHD.jpg&w=1000)
+*[Polar bear cubs playing in Svalbard, Norway (© Danny Green/Nature Picture Library)](https://bing.com/th?id=OHR.IcyCubs_EN-US5222104616_UHD.jpg)*
 
 ------END IMAGE------
 
