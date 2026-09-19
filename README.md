@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Winnats Pass, Peak District National Park, England (© Daniel_Kay/Getty Images)](https://bing.com/th?id=OHR.WinnatsPassPeak_EN-US6112068451_UHD.jpg&w=1000)
-*[Winnats Pass, Peak District National Park, England (© Daniel_Kay/Getty Images)](https://bing.com/th?id=OHR.WinnatsPassPeak_EN-US6112068451_UHD.jpg)*
+![Alphorn players, Bavaria, Germany (© U. J. Alexander/Shutterstock)](https://bing.com/th?id=OHR.AlphornBavaria_EN-US6200857270_UHD.jpg&w=1000)
+*[Alphorn players, Bavaria, Germany (© U. J. Alexander/Shutterstock)](https://bing.com/th?id=OHR.AlphornBavaria_EN-US6200857270_UHD.jpg)*
 
 ------END IMAGE------
 
