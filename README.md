@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Alphorn players, Bavaria, Germany (© U. J. Alexander/Shutterstock)](https://bing.com/th?id=OHR.AlphornBavaria_EN-US6200857270_UHD.jpg&w=1000)
-*[Alphorn players, Bavaria, Germany (© U. J. Alexander/Shutterstock)](https://bing.com/th?id=OHR.AlphornBavaria_EN-US6200857270_UHD.jpg)*
+![Eiffel Tower at sunset, Paris, France (© Alexander Spatari/Getty Images)](https://bing.com/th?id=OHR.ParisSunset_EN-US6532307523_UHD.jpg&w=1000)
+*[Eiffel Tower at sunset, Paris, France (© Alexander Spatari/Getty Images)](https://bing.com/th?id=OHR.ParisSunset_EN-US6532307523_UHD.jpg)*
 
 ------END IMAGE------
 
