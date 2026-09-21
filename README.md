@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Eiffel Tower at sunset, Paris, France (© Alexander Spatari/Getty Images)](https://bing.com/th?id=OHR.ParisSunset_EN-US6532307523_UHD.jpg&w=1000)
-*[Eiffel Tower at sunset, Paris, France (© Alexander Spatari/Getty Images)](https://bing.com/th?id=OHR.ParisSunset_EN-US6532307523_UHD.jpg)*
+![Sea otter grooming fur, Monterey Bay, California (© Suzi Eszterhas/Minden Pictures)](https://bing.com/th?id=OHR.GroomingOtter_EN-US6710084372_UHD.jpg&w=1000)
+*[Sea otter grooming fur, Monterey Bay, California (© Suzi Eszterhas/Minden Pictures)](https://bing.com/th?id=OHR.GroomingOtter_EN-US6710084372_UHD.jpg)*
 
 ------END IMAGE------
 
