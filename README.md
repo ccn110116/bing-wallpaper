@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Sea otter grooming fur, Monterey Bay, California (© Suzi Eszterhas/Minden Pictures)](https://bing.com/th?id=OHR.GroomingOtter_EN-US6710084372_UHD.jpg&w=1000)
-*[Sea otter grooming fur, Monterey Bay, California (© Suzi Eszterhas/Minden Pictures)](https://bing.com/th?id=OHR.GroomingOtter_EN-US6710084372_UHD.jpg)*
+![Fall aspen trees near Guardsman Pass, Utah, USA (© Danita Delimont/Shutterstock)](https://bing.com/th?id=OHR.FallAspens_EN-US7211031109_UHD.jpg&w=1000)
+*[Fall aspen trees near Guardsman Pass, Utah, USA (© Danita Delimont/Shutterstock)](https://bing.com/th?id=OHR.FallAspens_EN-US7211031109_UHD.jpg)*
 
 ------END IMAGE------
 
