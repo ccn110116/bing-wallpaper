@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Fall aspen trees near Guardsman Pass, Utah, USA (© Danita Delimont/Shutterstock)](https://bing.com/th?id=OHR.FallAspens_EN-US7211031109_UHD.jpg&w=1000)
-*[Fall aspen trees near Guardsman Pass, Utah, USA (© Danita Delimont/Shutterstock)](https://bing.com/th?id=OHR.FallAspens_EN-US7211031109_UHD.jpg)*
+![Hobbit house at Hobbiton Movie Set, Matamata, New Zealand (© djr-photography/Shutterstock)](https://bing.com/th?id=OHR.TolkienWeek_EN-US7313336185_UHD.jpg&w=1000)
+*[Hobbit house at Hobbiton Movie Set, Matamata, New Zealand (© djr-photography/Shutterstock)](https://bing.com/th?id=OHR.TolkienWeek_EN-US7313336185_UHD.jpg)*
 
 ------END IMAGE------
 
