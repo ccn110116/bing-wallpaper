@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Hobbit house at Hobbiton Movie Set, Matamata, New Zealand (© djr-photography/Shutterstock)](https://bing.com/th?id=OHR.TolkienWeek_EN-US7313336185_UHD.jpg&w=1000)
-*[Hobbit house at Hobbiton Movie Set, Matamata, New Zealand (© djr-photography/Shutterstock)](https://bing.com/th?id=OHR.TolkienWeek_EN-US7313336185_UHD.jpg)*
+![Aerial view of black lava beach, El Golfo, Lanzarote, Canary Islands, Spain (© Westend61/Adobe Stock)](https://bing.com/th?id=OHR.ElGolfo_EN-US9261454857_UHD.jpg&w=1000)
+*[Aerial view of black lava beach, El Golfo, Lanzarote, Canary Islands, Spain (© Westend61/Adobe Stock)](https://bing.com/th?id=OHR.ElGolfo_EN-US9261454857_UHD.jpg)*
 
 ------END IMAGE------
 
