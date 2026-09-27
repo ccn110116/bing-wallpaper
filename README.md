@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Cedar Mesa and Muley Point near Bears Ears National Monument, Utah, USA (© Jeff Clay/Tandem Stills + Motion)](https://bing.com/th?id=OHR.BearsEars_EN-US9429791451_UHD.jpg&w=1000)
-*[Cedar Mesa and Muley Point near Bears Ears National Monument, Utah, USA (© Jeff Clay/Tandem Stills + Motion)](https://bing.com/th?id=OHR.BearsEars_EN-US9429791451_UHD.jpg)*
+![Decorator crab on a sea pen, Komodo National Park, Indonesia (© Alex Mustard/Nature Picture Library)](https://bing.com/th?id=OHR.DecoCrab_EN-US9587426678_UHD.jpg&w=1000)
+*[Decorator crab on a sea pen, Komodo National Park, Indonesia (© Alex Mustard/Nature Picture Library)](https://bing.com/th?id=OHR.DecoCrab_EN-US9587426678_UHD.jpg)*
 
 ------END IMAGE------
 
