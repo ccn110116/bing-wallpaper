@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Decorator crab on a sea pen, Komodo National Park, Indonesia (© Alex Mustard/Nature Picture Library)](https://bing.com/th?id=OHR.DecoCrab_EN-US9587426678_UHD.jpg&w=1000)
-*[Decorator crab on a sea pen, Komodo National Park, Indonesia (© Alex Mustard/Nature Picture Library)](https://bing.com/th?id=OHR.DecoCrab_EN-US9587426678_UHD.jpg)*
+![Sattais Katcheri Hall in Amber Fort near Jaipur, Rajasthan, India (© R.M. Nunes/Getty Images)](https://bing.com/th?id=OHR.AmberHall_EN-US9930812541_UHD.jpg&w=1000)
+*[Sattais Katcheri Hall in Amber Fort near Jaipur, Rajasthan, India (© R.M. Nunes/Getty Images)](https://bing.com/th?id=OHR.AmberHall_EN-US9930812541_UHD.jpg)*
 
 ------END IMAGE------
 
