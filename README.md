@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Sattais Katcheri Hall in Amber Fort near Jaipur, Rajasthan, India (© R.M. Nunes/Getty Images)](https://bing.com/th?id=OHR.AmberHall_EN-US9930812541_UHD.jpg&w=1000)
-*[Sattais Katcheri Hall in Amber Fort near Jaipur, Rajasthan, India (© R.M. Nunes/Getty Images)](https://bing.com/th?id=OHR.AmberHall_EN-US9930812541_UHD.jpg)*
+![The blue, glacier-fed waters of the Kasilof River, Alaska, USA (© jared lloyd/Getty Images)](https://bing.com/th?id=OHR.KasilofRiver_EN-US0047556055_UHD.jpg&w=1000)
+*[The blue, glacier-fed waters of the Kasilof River, Alaska, USA (© jared lloyd/Getty Images)](https://bing.com/th?id=OHR.KasilofRiver_EN-US0047556055_UHD.jpg)*
 
 ------END IMAGE------
 
