@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![The blue, glacier-fed waters of the Kasilof River, Alaska, USA (© jared lloyd/Getty Images)](https://bing.com/th?id=OHR.KasilofRiver_EN-US0047556055_UHD.jpg&w=1000)
-*[The blue, glacier-fed waters of the Kasilof River, Alaska, USA (© jared lloyd/Getty Images)](https://bing.com/th?id=OHR.KasilofRiver_EN-US0047556055_UHD.jpg)*
+![Male bearded reedling, Norfolk, England (© Andrew Sproule/Shutterstock)](https://bing.com/th?id=OHR.BeardReedling_EN-US0124350202_UHD.jpg&w=1000)
+*[Male bearded reedling, Norfolk, England (© Andrew Sproule/Shutterstock)](https://bing.com/th?id=OHR.BeardReedling_EN-US0124350202_UHD.jpg)*
 
 ------END IMAGE------
 
