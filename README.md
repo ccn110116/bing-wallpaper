@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Male bearded reedling, Norfolk, England (© Andrew Sproule/Shutterstock)](https://bing.com/th?id=OHR.BeardReedling_EN-US0124350202_UHD.jpg&w=1000)
-*[Male bearded reedling, Norfolk, England (© Andrew Sproule/Shutterstock)](https://bing.com/th?id=OHR.BeardReedling_EN-US0124350202_UHD.jpg)*
+![Sunset from Olmsted Point, Yosemite National Park, California, USA (© Robb Hirsch/Tandem Stills + Motion)](https://bing.com/th?id=OHR.OlmstedPoint_EN-US0964858045_UHD.jpg&w=1000)
+*[Sunset from Olmsted Point, Yosemite National Park, California, USA (© Robb Hirsch/Tandem Stills + Motion)](https://bing.com/th?id=OHR.OlmstedPoint_EN-US0964858045_UHD.jpg)*
 
 ------END IMAGE------
 
