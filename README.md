@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Sunset from Olmsted Point, Yosemite National Park, California, USA (© Robb Hirsch/Tandem Stills + Motion)](https://bing.com/th?id=OHR.OlmstedPoint_EN-US0964858045_UHD.jpg&w=1000)
-*[Sunset from Olmsted Point, Yosemite National Park, California, USA (© Robb Hirsch/Tandem Stills + Motion)](https://bing.com/th?id=OHR.OlmstedPoint_EN-US0964858045_UHD.jpg)*
+![Chattooga River in the Appalachian Mountains, North Carolina (© mtilghma/Getty Images)](https://bing.com/th?id=OHR.ChattoogaRiver_EN-US5042787453_UHD.jpg&w=1000)
+*[Chattooga River in the Appalachian Mountains, North Carolina (© mtilghma/Getty Images)](https://bing.com/th?id=OHR.ChattoogaRiver_EN-US5042787453_UHD.jpg)*
 
 ------END IMAGE------
 
