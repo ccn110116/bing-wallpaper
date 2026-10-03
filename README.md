@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Chattooga River in the Appalachian Mountains, North Carolina (© mtilghma/Getty Images)](https://bing.com/th?id=OHR.ChattoogaRiver_EN-US5042787453_UHD.jpg&w=1000)
-*[Chattooga River in the Appalachian Mountains, North Carolina (© mtilghma/Getty Images)](https://bing.com/th?id=OHR.ChattoogaRiver_EN-US5042787453_UHD.jpg)*
+![Brown bear in Silver Salmon Creek, Lake Clark National Park and Preserve, Alaska (© Danny Green/Nature Picture Library)](https://bing.com/th?id=OHR.GrizzlySwim_EN-US5133524829_UHD.jpg&w=1000)
+*[Brown bear in Silver Salmon Creek, Lake Clark National Park and Preserve, Alaska (© Danny Green/Nature Picture Library)](https://bing.com/th?id=OHR.GrizzlySwim_EN-US5133524829_UHD.jpg)*
 
 ------END IMAGE------
 
