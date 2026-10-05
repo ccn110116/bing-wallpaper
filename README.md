@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Artemis I moon rocket at Launch Complex 39B, Kennedy Space Center, Florida, June 15, 2022 (© EVA MARIE UZCATEGUI/Getty Images)](https://bing.com/th?id=OHR.ArtemisRocket_EN-US5256990037_UHD.jpg&w=1000)
-*[Artemis I moon rocket at Launch Complex 39B, Kennedy Space Center, Florida, June 15, 2022 (© EVA MARIE UZCATEGUI/Getty Images)](https://bing.com/th?id=OHR.ArtemisRocket_EN-US5256990037_UHD.jpg)*
+![Adélie penguins, Antarctica (© Otto Plantema/Minden Pictures)](https://bing.com/th?id=OHR.AdelieTeacher_EN-US5343194378_UHD.jpg&w=1000)
+*[Adélie penguins, Antarctica (© Otto Plantema/Minden Pictures)](https://bing.com/th?id=OHR.AdelieTeacher_EN-US5343194378_UHD.jpg)*
 
 ------END IMAGE------
 
