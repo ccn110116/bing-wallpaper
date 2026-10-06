@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Adélie penguins, Antarctica (© Otto Plantema/Minden Pictures)](https://bing.com/th?id=OHR.AdelieTeacher_EN-US5343194378_UHD.jpg&w=1000)
-*[Adélie penguins, Antarctica (© Otto Plantema/Minden Pictures)](https://bing.com/th?id=OHR.AdelieTeacher_EN-US5343194378_UHD.jpg)*
+![Danxia landform, Zhangye National Geopark, Gansu, China (© Weiquan Lin/Getty Images)](https://bing.com/th?id=OHR.DanxiaLandform_EN-US5459628079_UHD.jpg&w=1000)
+*[Danxia landform, Zhangye National Geopark, Gansu, China (© Weiquan Lin/Getty Images)](https://bing.com/th?id=OHR.DanxiaLandform_EN-US5459628079_UHD.jpg)*
 
 ------END IMAGE------
 
