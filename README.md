@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Danxia landform, Zhangye National Geopark, Gansu, China (© Weiquan Lin/Getty Images)](https://bing.com/th?id=OHR.DanxiaLandform_EN-US5459628079_UHD.jpg&w=1000)
-*[Danxia landform, Zhangye National Geopark, Gansu, China (© Weiquan Lin/Getty Images)](https://bing.com/th?id=OHR.DanxiaLandform_EN-US5459628079_UHD.jpg)*
+![Moss-covered rocks in Puzzlewood, Forest of Dean, Gloucestershire, England (© Fulcanelli_AOS/Getty Images)](https://bing.com/th?id=OHR.ForestofDean_EN-US7262962048_UHD.jpg&w=1000)
+*[Moss-covered rocks in Puzzlewood, Forest of Dean, Gloucestershire, England (© Fulcanelli_AOS/Getty Images)](https://bing.com/th?id=OHR.ForestofDean_EN-US7262962048_UHD.jpg)*
 
 ------END IMAGE------
 
