@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Moss-covered rocks in Puzzlewood, Forest of Dean, Gloucestershire, England (© Fulcanelli_AOS/Getty Images)](https://bing.com/th?id=OHR.ForestofDean_EN-US7262962048_UHD.jpg&w=1000)
-*[Moss-covered rocks in Puzzlewood, Forest of Dean, Gloucestershire, England (© Fulcanelli_AOS/Getty Images)](https://bing.com/th?id=OHR.ForestofDean_EN-US7262962048_UHD.jpg)*
+![Octopus in defensive posture, Mayotte, Indian Ocean (© Gabriel Barathieu/Minden Pictures)](https://bing.com/th?id=OHR.MayotteOctopus_EN-US5694987016_UHD.jpg&w=1000)
+*[Octopus in defensive posture, Mayotte, Indian Ocean (© Gabriel Barathieu/Minden Pictures)](https://bing.com/th?id=OHR.MayotteOctopus_EN-US5694987016_UHD.jpg)*
 
 ------END IMAGE------
 
