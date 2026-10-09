@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Octopus in defensive posture, Mayotte, Indian Ocean (© Gabriel Barathieu/Minden Pictures)](https://bing.com/th?id=OHR.MayotteOctopus_EN-US5694987016_UHD.jpg&w=1000)
-*[Octopus in defensive posture, Mayotte, Indian Ocean (© Gabriel Barathieu/Minden Pictures)](https://bing.com/th?id=OHR.MayotteOctopus_EN-US5694987016_UHD.jpg)*
+![View of the Sanguinaires Islands from Corsica, France (© Francesco Riccardo Iacomino/Getty Images)](https://bing.com/th?id=OHR.IlesSanguinaires_EN-US5801644173_UHD.jpg&w=1000)
+*[View of the Sanguinaires Islands from Corsica, France (© Francesco Riccardo Iacomino/Getty Images)](https://bing.com/th?id=OHR.IlesSanguinaires_EN-US5801644173_UHD.jpg)*
 
 ------END IMAGE------
 
