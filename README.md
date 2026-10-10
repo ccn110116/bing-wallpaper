@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![View of the Sanguinaires Islands from Corsica, France (© Francesco Riccardo Iacomino/Getty Images)](https://bing.com/th?id=OHR.IlesSanguinaires_EN-US5801644173_UHD.jpg&w=1000)
-*[View of the Sanguinaires Islands from Corsica, France (© Francesco Riccardo Iacomino/Getty Images)](https://bing.com/th?id=OHR.IlesSanguinaires_EN-US5801644173_UHD.jpg)*
+![Double-crested cormorants over Monterey Bay, California (© Hiroya Minakuchi/Minden Pictures)](https://bing.com/th?id=OHR.CormorantsFlight_EN-US5972403355_UHD.jpg&w=1000)
+*[Double-crested cormorants over Monterey Bay, California (© Hiroya Minakuchi/Minden Pictures)](https://bing.com/th?id=OHR.CormorantsFlight_EN-US5972403355_UHD.jpg)*
 
 ------END IMAGE------
 
