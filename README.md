@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Double-crested cormorants over Monterey Bay, California (© Hiroya Minakuchi/Minden Pictures)](https://bing.com/th?id=OHR.CormorantsFlight_EN-US5972403355_UHD.jpg&w=1000)
-*[Double-crested cormorants over Monterey Bay, California (© Hiroya Minakuchi/Minden Pictures)](https://bing.com/th?id=OHR.CormorantsFlight_EN-US5972403355_UHD.jpg)*
+![Glade Creek Grist Mill, Babcock State Park, West Virginia (© dszc/Getty Images)](https://bing.com/th?id=OHR.BabcockSP_EN-US6068931791_UHD.jpg&w=1000)
+*[Glade Creek Grist Mill, Babcock State Park, West Virginia (© dszc/Getty Images)](https://bing.com/th?id=OHR.BabcockSP_EN-US6068931791_UHD.jpg)*
 
 ------END IMAGE------
 
