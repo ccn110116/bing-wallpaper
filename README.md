@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![White House Ruin at Canyon de Chelly National Monument in Arizona (© Ingo Arndt/Minden Pictures)](https://bing.com/th?id=OHR.WhiteHouse_EN-US6161912809_UHD.jpg&w=1000)
-*[White House Ruin at Canyon de Chelly National Monument in Arizona (© Ingo Arndt/Minden Pictures)](https://bing.com/th?id=OHR.WhiteHouse_EN-US6161912809_UHD.jpg)*
+![Plitvice Lakes National Park, Croatia (© Jan Wlodarczyk/Alamy)](https://bing.com/th?id=OHR.PlitviceAutumn_EN-US6255909048_UHD.jpg&w=1000)
+*[Plitvice Lakes National Park, Croatia (© Jan Wlodarczyk/Alamy)](https://bing.com/th?id=OHR.PlitviceAutumn_EN-US6255909048_UHD.jpg)*
 
 ------END IMAGE------
 
