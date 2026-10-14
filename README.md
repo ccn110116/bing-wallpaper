@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Plitvice Lakes National Park, Croatia (© Jan Wlodarczyk/Alamy)](https://bing.com/th?id=OHR.PlitviceAutumn_EN-US6255909048_UHD.jpg&w=1000)
-*[Plitvice Lakes National Park, Croatia (© Jan Wlodarczyk/Alamy)](https://bing.com/th?id=OHR.PlitviceAutumn_EN-US6255909048_UHD.jpg)*
+![Ammonite fossils from the Jurassic Period (© J Nemchinova/Getty Images)](https://bing.com/th?id=OHR.AmmoniteFossils_EN-US6354038755_UHD.jpg&w=1000)
+*[Ammonite fossils from the Jurassic Period (© J Nemchinova/Getty Images)](https://bing.com/th?id=OHR.AmmoniteFossils_EN-US6354038755_UHD.jpg)*
 
 ------END IMAGE------
 
