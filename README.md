@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Ammonite fossils from the Jurassic Period (© J Nemchinova/Getty Images)](https://bing.com/th?id=OHR.AmmoniteFossils_EN-US6354038755_UHD.jpg&w=1000)
-*[Ammonite fossils from the Jurassic Period (© J Nemchinova/Getty Images)](https://bing.com/th?id=OHR.AmmoniteFossils_EN-US6354038755_UHD.jpg)*
+![View of the Wroclaw Market Square from the Witches' Bridge in Wroclaw, Poland (© Piotr Mitelski/Shutterstock)](https://bing.com/th?id=OHR.WroclawPoland_EN-US7757698922_UHD.jpg&w=1000)
+*[View of the Wroclaw Market Square from the Witches' Bridge in Wroclaw, Poland (© Piotr Mitelski/Shutterstock)](https://bing.com/th?id=OHR.WroclawPoland_EN-US7757698922_UHD.jpg)*
 
 ------END IMAGE------
 
