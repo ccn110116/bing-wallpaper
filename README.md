@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![View of the Wroclaw Market Square from the Witches' Bridge in Wroclaw, Poland (© Piotr Mitelski/Shutterstock)](https://bing.com/th?id=OHR.WroclawPoland_EN-US7757698922_UHD.jpg&w=1000)
-*[View of the Wroclaw Market Square from the Witches' Bridge in Wroclaw, Poland (© Piotr Mitelski/Shutterstock)](https://bing.com/th?id=OHR.WroclawPoland_EN-US7757698922_UHD.jpg)*
+![Mount Sneffels in the San Juan Mountains near Ridgway, Colorado (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.SneffelsAutumn_EN-US3953128777_UHD.jpg&w=1000)
+*[Mount Sneffels in the San Juan Mountains near Ridgway, Colorado (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.SneffelsAutumn_EN-US3953128777_UHD.jpg)*
 
 ------END IMAGE------
 
