@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Mount Sneffels in the San Juan Mountains near Ridgway, Colorado (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.SneffelsAutumn_EN-US3953128777_UHD.jpg&w=1000)
-*[Mount Sneffels in the San Juan Mountains near Ridgway, Colorado (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.SneffelsAutumn_EN-US3953128777_UHD.jpg)*
+![Life-size replica of Chauvet  cave art in Vallon-Pont-d'Arc, France (© Audrey Poree/Alamy)](https://bing.com/th?id=OHR.ChauvetPaintingsFrance_EN-US6137200151_UHD.jpg&w=1000)
+*[Life-size replica of Chauvet  cave art in Vallon-Pont-d'Arc, France (© Audrey Poree/Alamy)](https://bing.com/th?id=OHR.ChauvetPaintingsFrance_EN-US6137200151_UHD.jpg)*
 
 ------END IMAGE------
 
