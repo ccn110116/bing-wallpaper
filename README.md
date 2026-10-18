@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Life-size replica of Chauvet  cave art in Vallon-Pont-d'Arc, France (© Audrey Poree/Alamy)](https://bing.com/th?id=OHR.ChauvetPaintingsFrance_EN-US6137200151_UHD.jpg&w=1000)
-*[Life-size replica of Chauvet  cave art in Vallon-Pont-d'Arc, France (© Audrey Poree/Alamy)](https://bing.com/th?id=OHR.ChauvetPaintingsFrance_EN-US6137200151_UHD.jpg)*
+![Dolbadarn Castle, Llanberis, Eryri National Park (Snowdonia), Wales (© joe daniel price/Getty Images)](https://bing.com/th?id=OHR.DolbadarnWales_EN-US6620614213_UHD.jpg&w=1000)
+*[Dolbadarn Castle, Llanberis, Eryri National Park (Snowdonia), Wales (© joe daniel price/Getty Images)](https://bing.com/th?id=OHR.DolbadarnWales_EN-US6620614213_UHD.jpg)*
 
 ------END IMAGE------
 
