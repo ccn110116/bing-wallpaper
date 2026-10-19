@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Dolbadarn Castle, Llanberis, Eryri National Park (Snowdonia), Wales (© joe daniel price/Getty Images)](https://bing.com/th?id=OHR.DolbadarnWales_EN-US6620614213_UHD.jpg&w=1000)
-*[Dolbadarn Castle, Llanberis, Eryri National Park (Snowdonia), Wales (© joe daniel price/Getty Images)](https://bing.com/th?id=OHR.DolbadarnWales_EN-US6620614213_UHD.jpg)*
+![Grand Canal in Venice, Italy (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.VeniceSunrise_EN-US6714393168_UHD.jpg&w=1000)
+*[Grand Canal in Venice, Italy (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.VeniceSunrise_EN-US6714393168_UHD.jpg)*
 
 ------END IMAGE------
 
