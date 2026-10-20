@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Grand Canal in Venice, Italy (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.VeniceSunrise_EN-US6714393168_UHD.jpg&w=1000)
-*[Grand Canal in Venice, Italy (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.VeniceSunrise_EN-US6714393168_UHD.jpg)*
+![Brown-throated sloth, Puerto Viejo de Talamanca, Costa Rica (© Suzi Eszterhas/Minden Pictures)](https://bing.com/th?id=OHR.BrownSloth_EN-US6816754257_UHD.jpg&w=1000)
+*[Brown-throated sloth, Puerto Viejo de Talamanca, Costa Rica (© Suzi Eszterhas/Minden Pictures)](https://bing.com/th?id=OHR.BrownSloth_EN-US6816754257_UHD.jpg)*
 
 ------END IMAGE------
 
