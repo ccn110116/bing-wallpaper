@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Nguyen Hoang Bridge over the Perfume River, Hue, Vietnam (© VU PHAM VAN/Getty Images)](https://bing.com/th?id=OHR.VietnamBridge_EN-US6907946681_UHD.jpg&w=1000)
-*[Nguyen Hoang Bridge over the Perfume River, Hue, Vietnam (© VU PHAM VAN/Getty Images)](https://bing.com/th?id=OHR.VietnamBridge_EN-US6907946681_UHD.jpg)*
+![Autumn in Naejangsan National Park, South Korea (© Twenty47studio/Getty Images)](https://bing.com/th?id=OHR.NaejangsanNP_EN-US7010419904_UHD.jpg&w=1000)
+*[Autumn in Naejangsan National Park, South Korea (© Twenty47studio/Getty Images)](https://bing.com/th?id=OHR.NaejangsanNP_EN-US7010419904_UHD.jpg)*
 
 ------END IMAGE------
 
