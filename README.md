@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Autumn in Naejangsan National Park, South Korea (© Twenty47studio/Getty Images)](https://bing.com/th?id=OHR.NaejangsanNP_EN-US7010419904_UHD.jpg&w=1000)
-*[Autumn in Naejangsan National Park, South Korea (© Twenty47studio/Getty Images)](https://bing.com/th?id=OHR.NaejangsanNP_EN-US7010419904_UHD.jpg)*
+![Two gray wolves, Yellowstone National Park, Wyoming (© John Morrison/Getty Images)](https://bing.com/th?id=OHR.YellowstoneWolves_EN-US7105521535_UHD.jpg&w=1000)
+*[Two gray wolves, Yellowstone National Park, Wyoming (© John Morrison/Getty Images)](https://bing.com/th?id=OHR.YellowstoneWolves_EN-US7105521535_UHD.jpg)*
 
 ------END IMAGE------
 
