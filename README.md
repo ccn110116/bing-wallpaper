@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Royal Portuguese Cabinet of Reading, Rio de Janeiro, Brazil (© Antonio Salaverry/Shutterstock)](https://bing.com/th?id=OHR.PortugueseLibrary_EN-US7519268149_UHD.jpg&w=1000)
-*[Royal Portuguese Cabinet of Reading, Rio de Janeiro, Brazil (© Antonio Salaverry/Shutterstock)](https://bing.com/th?id=OHR.PortugueseLibrary_EN-US7519268149_UHD.jpg)*
+![Autumn waterfalls near Sitovo, Plovdiv Province, Bulgaria (© Nadya85/Getty Images)](https://bing.com/th?id=OHR.SitovoWaterfall_EN-US7626867890_UHD.jpg&w=1000)
+*[Autumn waterfalls near Sitovo, Plovdiv Province, Bulgaria (© Nadya85/Getty Images)](https://bing.com/th?id=OHR.SitovoWaterfall_EN-US7626867890_UHD.jpg)*
 
 ------END IMAGE------
 
