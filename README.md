@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Gray-headed flying fox, Victoria, Australia (© Doug Gimesy/Nature Picture Library)](https://bing.com/th?id=OHR.HangingBat_EN-US7714746725_UHD.jpg&w=1000)
-*[Gray-headed flying fox, Victoria, Australia (© Doug Gimesy/Nature Picture Library)](https://bing.com/th?id=OHR.HangingBat_EN-US7714746725_UHD.jpg)*
+![A grove of pond cypress trees with fall foliage, Georgia, USA (© Chris Moore/Getty Images)](https://bing.com/th?id=OHR.PondCypress_EN-US0123444779_UHD.jpg&w=1000)
+*[A grove of pond cypress trees with fall foliage, Georgia, USA (© Chris Moore/Getty Images)](https://bing.com/th?id=OHR.PondCypress_EN-US0123444779_UHD.jpg)*
 
 ------END IMAGE------
 
