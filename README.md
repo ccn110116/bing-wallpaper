@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![A grove of pond cypress trees with fall foliage, Georgia, USA (© Chris Moore/Getty Images)](https://bing.com/th?id=OHR.PondCypress_EN-US0123444779_UHD.jpg&w=1000)
-*[A grove of pond cypress trees with fall foliage, Georgia, USA (© Chris Moore/Getty Images)](https://bing.com/th?id=OHR.PondCypress_EN-US0123444779_UHD.jpg)*
+![Kunětická hora Castle, Bohemia, Czechia (© Marek Saroch/Alamy)](https://bing.com/th?id=OHR.KuneticeCastle_EN-US9492527404_UHD.jpg&w=1000)
+*[Kunětická hora Castle, Bohemia, Czechia (© Marek Saroch/Alamy)](https://bing.com/th?id=OHR.KuneticeCastle_EN-US9492527404_UHD.jpg)*
 
 ------END IMAGE------
 
