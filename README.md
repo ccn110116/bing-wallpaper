@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Kunětická hora Castle, Bohemia, Czechia (© Marek Saroch/Alamy)](https://bing.com/th?id=OHR.KuneticeCastle_EN-US9492527404_UHD.jpg&w=1000)
-*[Kunětická hora Castle, Bohemia, Czechia (© Marek Saroch/Alamy)](https://bing.com/th?id=OHR.KuneticeCastle_EN-US9492527404_UHD.jpg)*
+![Standing stones at Avebury in Wiltshire, England (© George W Johnson/Getty Images)](https://bing.com/th?id=OHR.AveburyStones_EN-US9568662876_UHD.jpg&w=1000)
+*[Standing stones at Avebury in Wiltshire, England (© George W Johnson/Getty Images)](https://bing.com/th?id=OHR.AveburyStones_EN-US9568662876_UHD.jpg)*
 
 ------END IMAGE------
 
