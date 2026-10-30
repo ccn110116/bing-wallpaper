@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Standing stones at Avebury in Wiltshire, England (© George W Johnson/Getty Images)](https://bing.com/th?id=OHR.AveburyStones_EN-US9568662876_UHD.jpg&w=1000)
-*[Standing stones at Avebury in Wiltshire, England (© George W Johnson/Getty Images)](https://bing.com/th?id=OHR.AveburyStones_EN-US9568662876_UHD.jpg)*
+![Sandhill cranes, Bosque del Apache National Wildlife Refuge, New Mexico, USA (© Terry St.Louis/Getty Images)](https://bing.com/th?id=OHR.AutumnCranes_EN-US9795571462_UHD.jpg&w=1000)
+*[Sandhill cranes, Bosque del Apache National Wildlife Refuge, New Mexico, USA (© Terry St.Louis/Getty Images)](https://bing.com/th?id=OHR.AutumnCranes_EN-US9795571462_UHD.jpg)*
 
 ------END IMAGE------
 
