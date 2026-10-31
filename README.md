@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Sandhill cranes, Bosque del Apache National Wildlife Refuge, New Mexico, USA (© Terry St.Louis/Getty Images)](https://bing.com/th?id=OHR.AutumnCranes_EN-US9795571462_UHD.jpg&w=1000)
-*[Sandhill cranes, Bosque del Apache National Wildlife Refuge, New Mexico, USA (© Terry St.Louis/Getty Images)](https://bing.com/th?id=OHR.AutumnCranes_EN-US9795571462_UHD.jpg)*
+![St. Bartholomew's Cathedral in Frankfurt, Germany (© AlxeyPnferov/Getty Images)](https://bing.com/th?id=OHR.FrankfurtHalloween_EN-US0115213682_UHD.jpg&w=1000)
+*[St. Bartholomew's Cathedral in Frankfurt, Germany (© AlxeyPnferov/Getty Images)](https://bing.com/th?id=OHR.FrankfurtHalloween_EN-US0115213682_UHD.jpg)*
 
 ------END IMAGE------
 
