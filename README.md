@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![St. Bartholomew's Cathedral in Frankfurt, Germany (© AlxeyPnferov/Getty Images)](https://bing.com/th?id=OHR.FrankfurtHalloween_EN-US0115213682_UHD.jpg&w=1000)
-*[St. Bartholomew's Cathedral in Frankfurt, Germany (© AlxeyPnferov/Getty Images)](https://bing.com/th?id=OHR.FrankfurtHalloween_EN-US0115213682_UHD.jpg)*
+![Handmade baskets, Santa Fe, New Mexico (© Patrick Lane/Getty Images)](https://bing.com/th?id=OHR.NativeBaskets_EN-US0205712064_UHD.jpg&w=1000)
+*[Handmade baskets, Santa Fe, New Mexico (© Patrick Lane/Getty Images)](https://bing.com/th?id=OHR.NativeBaskets_EN-US0205712064_UHD.jpg)*
 
 ------END IMAGE------
 
