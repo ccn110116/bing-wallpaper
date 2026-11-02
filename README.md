@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Handmade baskets, Santa Fe, New Mexico (© Patrick Lane/Getty Images)](https://bing.com/th?id=OHR.NativeBaskets_EN-US0205712064_UHD.jpg&w=1000)
-*[Handmade baskets, Santa Fe, New Mexico (© Patrick Lane/Getty Images)](https://bing.com/th?id=OHR.NativeBaskets_EN-US0205712064_UHD.jpg)*
+![Polar bear and cubs by Hudson Bay, Manitoba, Canada (© Danita Delimont/Adobe Stock)](https://bing.com/th?id=OHR.HudsonBear_EN-US0297833232_UHD.jpg&w=1000)
+*[Polar bear and cubs by Hudson Bay, Manitoba, Canada (© Danita Delimont/Adobe Stock)](https://bing.com/th?id=OHR.HudsonBear_EN-US0297833232_UHD.jpg)*
 
 ------END IMAGE------
 
