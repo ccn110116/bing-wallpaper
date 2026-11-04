@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Lake Braies, Fanes‑Sennes‑Braies Nature Park, Dolomites, Italy (© leonid_tit/Getty Images)](https://bing.com/th?id=OHR.AlpineBraies_EN-US6636326357_UHD.jpg&w=1000)
-*[Lake Braies, Fanes‑Sennes‑Braies Nature Park, Dolomites, Italy (© leonid_tit/Getty Images)](https://bing.com/th?id=OHR.AlpineBraies_EN-US6636326357_UHD.jpg)*
+![People rowing among colorful bald cypress, Xuancheng, Anhui, China (© Jackal Pan/Getty Images)](https://bing.com/th?id=OHR.AutumnChina_EN-US0467722422_UHD.jpg&w=1000)
+*[People rowing among colorful bald cypress, Xuancheng, Anhui, China (© Jackal Pan/Getty Images)](https://bing.com/th?id=OHR.AutumnChina_EN-US0467722422_UHD.jpg)*
 
 ------END IMAGE------
 
