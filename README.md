@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![People rowing among colorful bald cypress, Xuancheng, Anhui, China (© Jackal Pan/Getty Images)](https://bing.com/th?id=OHR.AutumnChina_EN-US0467722422_UHD.jpg&w=1000)
-*[People rowing among colorful bald cypress, Xuancheng, Anhui, China (© Jackal Pan/Getty Images)](https://bing.com/th?id=OHR.AutumnChina_EN-US0467722422_UHD.jpg)*
+![Wooden stile at a stone wall, Black Crag, Lake District, England (© Alex Treadway/Getty Images)](https://bing.com/th?id=OHR.StileCrossing_EN-US9052435517_UHD.jpg&w=1000)
+*[Wooden stile at a stone wall, Black Crag, Lake District, England (© Alex Treadway/Getty Images)](https://bing.com/th?id=OHR.StileCrossing_EN-US9052435517_UHD.jpg)*
 
 ------END IMAGE------
 
