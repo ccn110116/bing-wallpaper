@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Wooden stile at a stone wall, Black Crag, Lake District, England (© Alex Treadway/Getty Images)](https://bing.com/th?id=OHR.StileCrossing_EN-US9052435517_UHD.jpg&w=1000)
-*[Wooden stile at a stone wall, Black Crag, Lake District, England (© Alex Treadway/Getty Images)](https://bing.com/th?id=OHR.StileCrossing_EN-US9052435517_UHD.jpg)*
+![Bamboo forest, Pīpīwai Trail, Haleakalā National Park, Maui, Hawaii (© MNStudio/Getty Images)](https://bing.com/th?id=OHR.PipiwaiTrail_EN-US0631882545_UHD.jpg&w=1000)
+*[Bamboo forest, Pīpīwai Trail, Haleakalā National Park, Maui, Hawaii (© MNStudio/Getty Images)](https://bing.com/th?id=OHR.PipiwaiTrail_EN-US0631882545_UHD.jpg)*
 
 ------END IMAGE------
 
