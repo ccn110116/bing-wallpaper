@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Bamboo forest, Pīpīwai Trail, Haleakalā National Park, Maui, Hawaii (© MNStudio/Getty Images)](https://bing.com/th?id=OHR.PipiwaiTrail_EN-US0631882545_UHD.jpg&w=1000)
-*[Bamboo forest, Pīpīwai Trail, Haleakalā National Park, Maui, Hawaii (© MNStudio/Getty Images)](https://bing.com/th?id=OHR.PipiwaiTrail_EN-US0631882545_UHD.jpg)*
+![A bison in the grasslands of Theodore Roosevelt National Park, North Dakota (© Tandem Stock/Adobe Stock)](https://bing.com/th?id=OHR.DakotaBison_EN-US0710175615_UHD.jpg&w=1000)
+*[A bison in the grasslands of Theodore Roosevelt National Park, North Dakota (© Tandem Stock/Adobe Stock)](https://bing.com/th?id=OHR.DakotaBison_EN-US0710175615_UHD.jpg)*
 
 ------END IMAGE------
 
