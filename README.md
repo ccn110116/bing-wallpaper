@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![A bison in the grasslands of Theodore Roosevelt National Park, North Dakota (© Tandem Stock/Adobe Stock)](https://bing.com/th?id=OHR.DakotaBison_EN-US0710175615_UHD.jpg&w=1000)
-*[A bison in the grasslands of Theodore Roosevelt National Park, North Dakota (© Tandem Stock/Adobe Stock)](https://bing.com/th?id=OHR.DakotaBison_EN-US0710175615_UHD.jpg)*
+![Lanterns for Diwali, Mumbai, Maharashtra, India (© Dinodia Photo/Getty Images)](https://bing.com/th?id=OHR.DiwaliLamps_EN-US0788074051_UHD.jpg&w=1000)
+*[Lanterns for Diwali, Mumbai, Maharashtra, India (© Dinodia Photo/Getty Images)](https://bing.com/th?id=OHR.DiwaliLamps_EN-US0788074051_UHD.jpg)*
 
 ------END IMAGE------
 
