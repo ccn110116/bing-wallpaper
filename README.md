@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Historic district of Triana, Seville, Spain (© Andrzej Rostek/Getty Images)](https://bing.com/th?id=OHR.TrianaSpain_EN-US0872031458_UHD.jpg&w=1000)
-*[Historic district of Triana, Seville, Spain (© Andrzej Rostek/Getty Images)](https://bing.com/th?id=OHR.TrianaSpain_EN-US0872031458_UHD.jpg)*
+![Aerial view of Rose Island, The Bahamas (© Abstract Aerial Art/Getty Images)](https://bing.com/th?id=OHR.RoseIsland_EN-US0952497192_UHD.jpg&w=1000)
+*[Aerial view of Rose Island, The Bahamas (© Abstract Aerial Art/Getty Images)](https://bing.com/th?id=OHR.RoseIsland_EN-US0952497192_UHD.jpg)*
 
 ------END IMAGE------
 
