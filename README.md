@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Aerial view of Rose Island, The Bahamas (© Abstract Aerial Art/Getty Images)](https://bing.com/th?id=OHR.RoseIsland_EN-US0952497192_UHD.jpg&w=1000)
-*[Aerial view of Rose Island, The Bahamas (© Abstract Aerial Art/Getty Images)](https://bing.com/th?id=OHR.RoseIsland_EN-US0952497192_UHD.jpg)*
+![American flags in a public park in upstate New York (© Matt Champlin/Getty Images)](https://bing.com/th?id=OHR.SunsetFlags_EN-US1046151448_UHD.jpg&w=1000)
+*[American flags in a public park in upstate New York (© Matt Champlin/Getty Images)](https://bing.com/th?id=OHR.SunsetFlags_EN-US1046151448_UHD.jpg)*
 
 ------END IMAGE------
 
