@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![American flags in a public park in upstate New York (© Matt Champlin/Getty Images)](https://bing.com/th?id=OHR.SunsetFlags_EN-US1046151448_UHD.jpg&w=1000)
-*[American flags in a public park in upstate New York (© Matt Champlin/Getty Images)](https://bing.com/th?id=OHR.SunsetFlags_EN-US1046151448_UHD.jpg)*
+![North Window, Arches National Park, Moab, Utah (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.NorthWindow_EN-US1170338293_UHD.jpg&w=1000)
+*[North Window, Arches National Park, Moab, Utah (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.NorthWindow_EN-US1170338293_UHD.jpg)*
 
 ------END IMAGE------
 
