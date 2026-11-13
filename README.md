@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![North Window, Arches National Park, Moab, Utah (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.NorthWindow_EN-US1170338293_UHD.jpg&w=1000)
-*[North Window, Arches National Park, Moab, Utah (© lightphoto/Getty Images)](https://bing.com/th?id=OHR.NorthWindow_EN-US1170338293_UHD.jpg)*
+![Abraham Lake in Alberta, Canada (© Guang Cao/Getty Images)](https://bing.com/th?id=OHR.AbrahamCanada_EN-US3455540217_UHD.jpg&w=1000)
+*[Abraham Lake in Alberta, Canada (© Guang Cao/Getty Images)](https://bing.com/th?id=OHR.AbrahamCanada_EN-US3455540217_UHD.jpg)*
 
 ------END IMAGE------
 
