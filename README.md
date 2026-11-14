@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Abraham Lake in Alberta, Canada (© Guang Cao/Getty Images)](https://bing.com/th?id=OHR.AbrahamCanada_EN-US3455540217_UHD.jpg&w=1000)
-*[Abraham Lake in Alberta, Canada (© Guang Cao/Getty Images)](https://bing.com/th?id=OHR.AbrahamCanada_EN-US3455540217_UHD.jpg)*
+![Victoria Harbour, Hong Kong, China (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.BlueHK_EN-US7870996687_UHD.jpg&w=1000)
+*[Victoria Harbour, Hong Kong, China (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.BlueHK_EN-US7870996687_UHD.jpg)*
 
 ------END IMAGE------
 
