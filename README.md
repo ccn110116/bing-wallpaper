@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Victoria Harbour, Hong Kong, China (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.BlueHK_EN-US7870996687_UHD.jpg&w=1000)
-*[Victoria Harbour, Hong Kong, China (© Juan Romero/Cavan Images)](https://bing.com/th?id=OHR.BlueHK_EN-US7870996687_UHD.jpg)*
+![Frozen azalea with red leaves (© avoferten/Shutterstock)](https://bing.com/th?id=OHR.FirstFrost_EN-US8881008245_UHD.jpg&w=1000)
+*[Frozen azalea with red leaves (© avoferten/Shutterstock)](https://bing.com/th?id=OHR.FirstFrost_EN-US8881008245_UHD.jpg)*
 
 ------END IMAGE------
 
