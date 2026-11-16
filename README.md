@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Frozen azalea with red leaves (© avoferten/Shutterstock)](https://bing.com/th?id=OHR.FirstFrost_EN-US8881008245_UHD.jpg&w=1000)
-*[Frozen azalea with red leaves (© avoferten/Shutterstock)](https://bing.com/th?id=OHR.FirstFrost_EN-US8881008245_UHD.jpg)*
+![Gila Cliff Dwellings National Monument, New Mexico (© Chiara Salvadori/Getty Images)](https://bing.com/th?id=OHR.GilaCliff_EN-US2139490645_UHD.jpg&w=1000)
+*[Gila Cliff Dwellings National Monument, New Mexico (© Chiara Salvadori/Getty Images)](https://bing.com/th?id=OHR.GilaCliff_EN-US2139490645_UHD.jpg)*
 
 ------END IMAGE------
 
