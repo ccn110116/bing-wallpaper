@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Gila Cliff Dwellings National Monument, New Mexico (© Chiara Salvadori/Getty Images)](https://bing.com/th?id=OHR.GilaCliff_EN-US2139490645_UHD.jpg&w=1000)
-*[Gila Cliff Dwellings National Monument, New Mexico (© Chiara Salvadori/Getty Images)](https://bing.com/th?id=OHR.GilaCliff_EN-US2139490645_UHD.jpg)*
+![Trail of the Cedars, Glacier National Park, Montana (© DBushue Photography/Getty Images)](https://bing.com/th?id=OHR.TrailCedars_EN-US2240500417_UHD.jpg&w=1000)
+*[Trail of the Cedars, Glacier National Park, Montana (© DBushue Photography/Getty Images)](https://bing.com/th?id=OHR.TrailCedars_EN-US2240500417_UHD.jpg)*
 
 ------END IMAGE------
 
