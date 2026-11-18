@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Trail of the Cedars, Glacier National Park, Montana (© DBushue Photography/Getty Images)](https://bing.com/th?id=OHR.TrailCedars_EN-US2240500417_UHD.jpg&w=1000)
-*[Trail of the Cedars, Glacier National Park, Montana (© DBushue Photography/Getty Images)](https://bing.com/th?id=OHR.TrailCedars_EN-US2240500417_UHD.jpg)*
+![Pair of barn owls (© Zahoor Salmi/Getty Images)](https://bing.com/th?id=OHR.BarnOwlsUnite_EN-US9661992435_UHD.jpg&w=1000)
+*[Pair of barn owls (© Zahoor Salmi/Getty Images)](https://bing.com/th?id=OHR.BarnOwlsUnite_EN-US9661992435_UHD.jpg)*
 
 ------END IMAGE------
 
