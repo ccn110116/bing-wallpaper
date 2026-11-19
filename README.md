@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Pair of barn owls (© Zahoor Salmi/Getty Images)](https://bing.com/th?id=OHR.BarnOwlsUnite_EN-US9661992435_UHD.jpg&w=1000)
-*[Pair of barn owls (© Zahoor Salmi/Getty Images)](https://bing.com/th?id=OHR.BarnOwlsUnite_EN-US9661992435_UHD.jpg)*
+![The "Body of Knowledge" sculpture by Jaume Plensa at Goethe University in Frankfurt, Germany (© Todamo/Shutterstock)](https://bing.com/th?id=OHR.KnowledgeSculpture_EN-US9746703110_UHD.jpg&w=1000)
+*[The "Body of Knowledge" sculpture by Jaume Plensa at Goethe University in Frankfurt, Germany (© Todamo/Shutterstock)](https://bing.com/th?id=OHR.KnowledgeSculpture_EN-US9746703110_UHD.jpg)*
 
 ------END IMAGE------
 
