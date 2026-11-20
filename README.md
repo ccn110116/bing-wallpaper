@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![The "Body of Knowledge" sculpture by Jaume Plensa at Goethe University in Frankfurt, Germany (© Todamo/Shutterstock)](https://bing.com/th?id=OHR.KnowledgeSculpture_EN-US9746703110_UHD.jpg&w=1000)
-*[The "Body of Knowledge" sculpture by Jaume Plensa at Goethe University in Frankfurt, Germany (© Todamo/Shutterstock)](https://bing.com/th?id=OHR.KnowledgeSculpture_EN-US9746703110_UHD.jpg)*
+![Diving humpback whale, Kvaloya, Troms, Northern Norway (© Espen Bergersen/Minden Pictures)](https://bing.com/th?id=OHR.Megaptera_EN-US1728719939_UHD.jpg&w=1000)
+*[Diving humpback whale, Kvaloya, Troms, Northern Norway (© Espen Bergersen/Minden Pictures)](https://bing.com/th?id=OHR.Megaptera_EN-US1728719939_UHD.jpg)*
 
 ------END IMAGE------
 
