@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Nice, Provence-Alpes-Côte d'Azur, France (© Siripong Kaewla-iad/Getty Images)](https://bing.com/th?id=OHR.RedNice_EN-US9978351403_UHD.jpg&w=1000)
-*[Nice, Provence-Alpes-Côte d'Azur, France (© Siripong Kaewla-iad/Getty Images)](https://bing.com/th?id=OHR.RedNice_EN-US9978351403_UHD.jpg)*
+![The chapel and hermitage of Santa Justa in Cantabria, Spain (© Tramont_ana/Getty Images)](https://bing.com/th?id=OHR.JustaHermitage_EN-US0130271816_UHD.jpg&w=1000)
+*[The chapel and hermitage of Santa Justa in Cantabria, Spain (© Tramont_ana/Getty Images)](https://bing.com/th?id=OHR.JustaHermitage_EN-US0130271816_UHD.jpg)*
 
 ------END IMAGE------
 
