@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![The chapel and hermitage of Santa Justa in Cantabria, Spain (© Tramont_ana/Getty Images)](https://bing.com/th?id=OHR.JustaHermitage_EN-US0130271816_UHD.jpg&w=1000)
-*[The chapel and hermitage of Santa Justa in Cantabria, Spain (© Tramont_ana/Getty Images)](https://bing.com/th?id=OHR.JustaHermitage_EN-US0130271816_UHD.jpg)*
+![Fiddlehead fern (© Reza Saputra/Getty Images)](https://bing.com/th?id=OHR.FibonacciFern_EN-US6307771770_UHD.jpg&w=1000)
+*[Fiddlehead fern (© Reza Saputra/Getty Images)](https://bing.com/th?id=OHR.FibonacciFern_EN-US6307771770_UHD.jpg)*
 
 ------END IMAGE------
 
