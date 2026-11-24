@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Fiddlehead fern (© Reza Saputra/Getty Images)](https://bing.com/th?id=OHR.FibonacciFern_EN-US6307771770_UHD.jpg&w=1000)
-*[Fiddlehead fern (© Reza Saputra/Getty Images)](https://bing.com/th?id=OHR.FibonacciFern_EN-US6307771770_UHD.jpg)*
+![Red squirrel in Cairngorms National Park, Highlands, Scotland (© Scotland: The Big Picture/Minden Pictures)](https://bing.com/th?id=OHR.CairngormsSquirrel_EN-US7053432564_UHD.jpg&w=1000)
+*[Red squirrel in Cairngorms National Park, Highlands, Scotland (© Scotland: The Big Picture/Minden Pictures)](https://bing.com/th?id=OHR.CairngormsSquirrel_EN-US7053432564_UHD.jpg)*
 
 ------END IMAGE------
 
