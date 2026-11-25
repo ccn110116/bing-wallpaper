@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Red squirrel in Cairngorms National Park, Highlands, Scotland (© Scotland: The Big Picture/Minden Pictures)](https://bing.com/th?id=OHR.CairngormsSquirrel_EN-US7053432564_UHD.jpg&w=1000)
-*[Red squirrel in Cairngorms National Park, Highlands, Scotland (© Scotland: The Big Picture/Minden Pictures)](https://bing.com/th?id=OHR.CairngormsSquirrel_EN-US7053432564_UHD.jpg)*
+![Sunset Point, Bryce Canyon National Park, Utah (© Colin D. Young/Alamy)](https://bing.com/th?id=OHR.SunsetPoint_EN-US0827880440_UHD.jpg&w=1000)
+*[Sunset Point, Bryce Canyon National Park, Utah (© Colin D. Young/Alamy)](https://bing.com/th?id=OHR.SunsetPoint_EN-US0827880440_UHD.jpg)*
 
 ------END IMAGE------
 
