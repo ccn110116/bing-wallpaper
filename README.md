@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Sunset Point, Bryce Canyon National Park, Utah (© Colin D. Young/Alamy)](https://bing.com/th?id=OHR.SunsetPoint_EN-US0827880440_UHD.jpg&w=1000)
-*[Sunset Point, Bryce Canyon National Park, Utah (© Colin D. Young/Alamy)](https://bing.com/th?id=OHR.SunsetPoint_EN-US0827880440_UHD.jpg)*
+![Two wild tom turkeys (© davidsdodd/Getty Images)](https://bing.com/th?id=OHR.WildTom_EN-US1069249609_UHD.jpg&w=1000)
+*[Two wild tom turkeys (© davidsdodd/Getty Images)](https://bing.com/th?id=OHR.WildTom_EN-US1069249609_UHD.jpg)*
 
 ------END IMAGE------
 
