@@ -3,8 +3,8 @@
 
 -----BEGIN IMAGE-----
 
-![Butte at sunset, Face Canyon, Lake Powell, Utah (© Jeff Foott/Minden)](https://bing.com/th?id=OHR.FaceCanyon_EN-US6254374163_UHD.jpg&w=1000)
-*[Butte at sunset, Face Canyon, Lake Powell, Utah (© Jeff Foott/Minden)](https://bing.com/th?id=OHR.FaceCanyon_EN-US6254374163_UHD.jpg)*
+![Old town and Vltava River, Prague, Czechia (© Lara_Uhryn/Getty Images)](https://bing.com/th?id=OHR.VltavaPrague_EN-US6068116977_UHD.jpg&w=1000)
+*[Old town and Vltava River, Prague, Czechia (© Lara_Uhryn/Getty Images)](https://bing.com/th?id=OHR.VltavaPrague_EN-US6068116977_UHD.jpg)*
 
 ------END IMAGE------
 
